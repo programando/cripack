@@ -1,0 +1,34 @@
+<figure>
+
+
+</figure>
+				<a href="<?=BASE_URL ;?>index">
+					<img style="width: 250px;" src= "<?= BASE_URL ; ?>public/images/logo_cripack.jpg"  alt="Cripack S.A.S." />
+				</a>
+</figure>
+
+		<div id="nombre-usuario">
+				<?php if (Session::Get('nombre_usuario')) echo 'Bienvenido : ' . Session::Get('nombre_usuario') ; ?>
+  </div>
+			</header>
+
+    <nav>
+				<ul id="Nav-Ul">
+
+
+						<li><a href="<?=BASE_URL ;?>terceros/visitas_nuevo">Estado OT's</a></li>
+						<li><a href="<?=BASE_URL ;?>terceros/agenda_x_vendedor">Historial de OT's</a></li>
+						<li><a href="<?=BASE_URL ;?>terceros/clientes_consulta_por_vendedor">Remisiones</a></li>
+						<li><a href="<?=BASE_URL ;?>terceros/clientes_consulta_por_vendedor">Cumplimientos </a></li>
+						<li><a href="<?=BASE_URL ;?>terceros/clientes_consulta_por_vendedor">Contacto</a></li>
+											<?php if(Session::Get('Autenticado')==true): ?>
+						<li><a href="<?=BASE_URL ;?>login/cerrar" />Cerrar Sesión</a></li>
+					<?php endif; ?>
+
+					<?php if(Session::Get('Autenticado')==false): ?>
+						<li><a href="<?=BASE_URL ;?>login" />Ingresar al sistema</a></li>
+					<?php endif; ?>
+
+			   <!-- <li><a href="<?=BASE_URL ;?>bancos" />Opcion de referencia</a></li> -->
+				</ul>
+				</nav>

@@ -31,7 +31,10 @@
         public function Mostrar_Vista($vista,$View_Vars=array())
         {
          $RutaView     = ROOT .  'views' . DS  . $this->Controlador. DS . $vista . '.phtml';
-         $RutaTemplate = ROOT .  'views' . DS . 'template.phtml';
+         $RutaTemplate = ROOT .  'views' . DS . 'template' .DS . 'template.phtml';
+         $RutaFooter   = ROOT .  'views' . DS . 'template' .DS .  'footer.phtml';
+         $RutaLogoMenu = ROOT .  'views' . DS . 'template' .DS . 'menu.phtml';
+
             if(is_readable($RutaView))
             {
                extract($View_Vars);
