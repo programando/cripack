@@ -1,0 +1,119 @@
+<div class="div-ventana-emergente" id="dialog-confirm" title="¡ Información... !">
+  <p id="error"><span class="ui-icon ui-icon-alert" ></span></p>
+</div>
+
+<div id="forms-effect">
+  <h2>Registro de Visitas </h2>
+
+  <form action="">
+    <input type="hidden" value="-1" name="idtercero" class="idtercero" />
+    <input type="hidden" value="1" name="Aceptar" />
+
+    <fieldset id='datos-cliente'>
+      <legend> Datos del Cliente</legend>
+
+      <div   class="div-codigo_tercero">
+        <label  for="codigo_tercero" class="label-codigo_tercero">Código </label>
+        <input  type="text" name ="codigo_tercero" id ="codigo_tercero" class="text-codigo_tercero"  >
+      </div>
+
+      <div class="div-nomtercero">
+        <label for="nomtercero" class="label-nomtercero">Nombre</label>
+        <select name="nomtercero" id="nomtercero" class="select-nomtercero">
+         <option value="0">Seleccione uno de los clientes...</option>
+         <?php
+         foreach ($this->Terceros as $Tercero)
+         {
+          $nomtercero = String_Functions::Formato_Texto($Tercero['nomtercero']);
+          $idtercero  = $Tercero['idtercero'];
+          ?>
+          <option value="<?= $idtercero ;?>"> <?= $nomtercero ;?> </option>
+          <?php }?>
+        </select>
+      </div>
+
+      <div class="div-nommcipio">
+        <label for="nommcipio" class="label-nommcipio">Ciudad</label>
+        <input type="text" name ="nommcipio" id ="nommcipio" disabled="disabled" class="text-nommcipio">
+      </div>
+
+      <div class="div-nomvendedor">
+        <label for="nomvendedor" class="label-nomvendedor">Vendedor </label>
+        <input type="text" name ="nomvendedor" id ="nomvendedor" disabled="disabled" class="text-nomvendedor">
+      </div>
+      <div class="div-contacto">
+        <label for="contacto" class="label-contacto">Contacto</label>
+        <input type="text" name ="contacto" id ="contacto" disabled="disabled" class="text-contacto">
+      </div>
+    </fieldset>
+    <br />
+
+    <fieldset id='datos-visita'>
+     <legend>Datos de la Visita</legend>
+
+     <div class="div-fecha_visita">
+      <label for="fecha_visita" class="label-fecha_visita">Fecha Visita</label>
+      <input type="text" name ="fecha_visita" id ="fecha_visita" class="text-fecha_visita" />
+    </div>
+
+    <div class="div-tipo_visita">
+      <label for="tipo_visita" class="label-tipo_visita">Tipo Visita</label>
+      <select name="tipo_visita" id="tipo_visita" class="select-tipo_visita">
+        <option value="0">Seleccione el tipo de visita</option>
+        <option value="1">VISITA EN SITIO</option>
+        <option value="2">CONTACTO TELÉFONICO</option>
+      </select>
+    </div>
+    <div class="div-idmtvovisita">
+      <label for="idmtvovisita" class="label-idmtvovisita">Motivo Visita :</label>
+      <select name="idmtvovisita" id="idmtvovisita" class="select-idmtvovisita">
+        <option value="0">Seleccione el tipo de visita</option>
+        <?php foreach ($this->Motivos_Visitas as $Motivo_Visita) {
+          $idmotivo     = $Motivo_Visita['idmtvovisita'];
+          $MotivoVisita = String_Functions::Formato_Texto($Motivo_Visita['nommtvovisita']);
+          ?>
+          <option value="<?=$idmotivo ;?>"><?= $MotivoVisita  ; ?> </option>
+          <?php }?>
+        </select>
+      </div>
+      <div class="div-atendido_por">
+        <label for="atendido_por" class="label-atendido_por">Persona que atendió</label>
+        <input type="text" name ="atendido_por" id ="atendido_por" class="text-atendido_por" />
+      </div>
+
+      <div class="div-fecha_proxvisita">
+        <label for="fecha_proxvisita" class="label-fecha_proxvisita">Próxima Visita</label>
+        <input type="date" name ="fecha_proxvisita" id ="fecha_proxvisita"  class="text-fecha_proxvisita">
+      </div>
+    </fieldset>
+
+    <br/>
+
+    <fieldset id="resultado_anterior">
+      <legend>Resultado de la última visita</legend>
+
+      <div class="div-resultado_anterior">
+        <textarea  title="Este es el resultado de la visita anterior." name ="resultado_anterior" id="resultado_anterior" rows="3" cols="20" disabled="disabled"  placeholder="Resulado anterior" class="text-resultado_anterior" ></textarea>
+      </div>
+      <div class="div-siguiente_paso_anterior">
+        <textarea name ="siguiente_paso_anterior" id="siguiente_paso_anterior"rows="3" cols="20" disabled="disabled"  placeholder="Siguiente paso en la última visita" class="text-siguiente_paso_anterior" ></textarea>
+      </div>
+    </fieldset>
+
+    <fieldset id="resultado_hoy">
+      <legend>Resultado de esta Visita</legend>
+      <div class="div-resultado_hoy">
+        <textarea name ="resultado_hoy" id="resultado_hoy" rows="3" cols="20"    placeholder="Resulado de esta visita" class="text-resultado_hoy" ></textarea>
+      </div>
+      <div class="div-siguiente_paso_hoy">
+        <textarea name ="siguiente_paso_hoy" id="siguiente_paso_anterior"rows="3" cols="20"    placeholder="Siguiente paso en esta visita" class="text-siguiente_paso_hoy" ></textarea>
+      </div>
+    </fieldset>
+    <br/>
+    <div class="dv-btngrabar">
+      <button class="submit" type="submit"  >Grabar Registro de Visita</button>
+    </div>
+  </form>
+</div>
+
+

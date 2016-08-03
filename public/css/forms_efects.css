@@ -1,0 +1,137 @@
+/*estilos para los lebel da cada <li> */
+
+legend
+{
+	font-weight: bold;
+	color      : #3f3e3e;
+}
+
+#forms-effect label {
+				color      : #555555;
+				display    : inline-block;
+				float      : left;
+				font-size  : 13px;
+				font-weight: bold;
+				margin-top : 3px;
+				padding    : 3px;
+
+}
+
+/*Con el anterior código damos estilos a los <input>, damos un ancho, alto y padding, de igual manera al textarea y
+al botón de enviar la damos un margin left para posicionarlo.*/
+#forms-effect input, #forms-effect select {
+				height :20px;
+				padding:2px 5px;
+
+}
+
+ #forms-effect select {
+				height :28px;
+				padding:2px 5px;
+
+}
+
+#forms-effect button {
+			margin-left:190px;
+}
+
+
+
+/*----- estilos visuales de los elementos --------
+Con los estilos anteriores damos un aspecto visual agradable a los campos de entrada de texto,
+entre ellos un borde, una sombra interna por medio de box-shadow inset, bordes redondeados, padding y una transición
+que se hace con el padding que simula una animación que cambia del estado normal a focus, en este estado cambiamos
+el background el color del borde y el box-shadow.
+*/
+#forms-effect input, #forms-effect textarea, #forms-effect select  {
+			-moz-transition   : padding .25s;
+			-o-transition     : padding .25s;
+			-webkit-transition: padding .25s;
+			border-radius     :2px;
+			border            :1px solid #aaa;
+			box-shadow        : 0px 0px 3px #ccc, 0 10px 15px #eee inset;
+			color             : #888;
+			font-size         : 13px;
+			padding-right     :30px;
+			transition        : padding .25s;
+}
+
+#forms-effect input:focus, #forms-effect textarea:focus {
+			background   : #fff;
+			border       :1px solid #555;
+			box-shadow   : 0 0 3px #aaa;
+			/*padding-right:80px;*/
+}
+
+/* === Estilos de Validacion ===
+con el código anterior lo que hacemos es darle las propiedades a los diferentes estados de los campos de entrada,
+el primero es verde y se coloca cuando hay información y es válida, esto va de acuerdo al tipo de entrada del campo,
+y se coloca rojo cuando está en estado focus o la entrada es invalida.
+*/
+#forms-effect input:required:valid, #forms-effect textarea:required:valid {
+			box-shadow  : 0 0 5px #5cd053;
+			border-color: #28921f;
+}
+#forms-effect input:focus:invalid, #forms-effect textarea:focus:invalid {
+				box-shadow  : 0 0 5px #d45252;
+				border-color: #b03535
+}
+
+
+#forms-effect h2 {
+				background   : none repeat scroll 0 0 #F3F3F3;
+				border-radius: 5px;
+				color        : #0011B1;
+				display      : block;
+				font-family  : sans-serif;
+				font-size    : 20px;
+				margin       : auto;
+				padding      : 2px;
+				text-align   : center;
+				text-shadow  : 1px 1px 1px #CCCCCC;
+				width        : 433px;
+}
+
+
+#forms-effect {
+					-moz-border-radius   : 4px;
+					-webkit-border-radius: 4px;
+					background-color     : #fff;
+					border               : 1px solid #ccc;
+					border-radius        : 4px;
+					padding              : 10px;
+					position             : relative;
+					width                : 1005px;
+					margin: auto;
+}
+
+#forms-effect:before,
+#forms-effect:after {
+		-moz-box-shadow   : 0 8px 16px rgba(0, 0, 0, 0.3);
+		-moz-transform    : skew(-15deg) rotate(-6deg);
+		-ms-transform     : skew(-15deg) rotate(-6deg);
+		-o-transform      : skew(-15deg) rotate(-6deg);
+		-webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+		-webkit-transform : skew(-15deg) rotate(-6deg);
+		bottom            : 14px;
+		box-shadow        : 0 8px 16px rgba(0, 0, 0, 0.3);
+		content           : '';
+		height            : 55%;
+		left              : 18px;
+		max-height        : 100px;
+		max-width         : 300px;
+		position          : absolute;
+		transform         : skew(-15deg) rotate(-6deg);
+		width             : 69%;
+		z-index           : -1;
+}
+#forms-effect:after {
+		-moz-transform   : skew(15deg) rotate(6deg);
+		-ms-transform    : skew(15deg) rotate(6deg);
+		-o-transform     : skew(15deg) rotate(6deg);
+		-webkit-transform: skew(15deg) rotate(6deg);
+		left             : auto;
+		right            : 14px;
+		transform        : skew(15deg) rotate(6deg);
+}
+

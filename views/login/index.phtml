@@ -1,0 +1,28 @@
+
+
+<div id="effect">
+<h2> INGRESO DE USUARIOS AL SISTEMA </h2><br/>
+<form class ="form-login" id="form-login" name="form-login" method="post" action="">
+    <ul>
+     <input type="hidden" value="1" name="Aceptar" />
+       <li>
+           	<label for="identificacion">Identificación :</label>
+    		<input type="text" name="identificacion" id="identificacion" autofocus required placeholder="Número de cédula"><br>
+         </li>
+      <li>
+    		<label for="Clave"> Clave de Ingreso : </label>
+    		<input type="password" name="password" id ="password" requiered placeholder="Contraseña"/><br>
+        </li>
+        <li>
+            <aside id='error'>
+            <?php if(isset($this->Mensaje_Error)) echo $this->Mensaje_Error ; ?>
+            </aside>
+         </li>
+        <li>
+            <button class="submit" type="submit"  >Aceptar</button>
+       </li>
+    </ul>
+</form>
+</div>
+
+

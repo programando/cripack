@@ -1,0 +1,114 @@
+/*@import url('http://fonts.googleapis.com/css?family=Raleway');*/
+
+* { margin: 0; padding: 0; }
+
+body
+{
+    margin: 0;
+
+}
+
+footer
+{
+    bottom        : 0%;
+    color         : #0012B2;
+    font-family:  : Helvetica, Arial, sans-serif;
+    font-size     : 14px;
+    height        : 35px;
+    position      : auto;
+    position      : fixed;
+    text-align    : center;
+    vertical-align: bottom;
+    width         : 100%;
+    font-weight   : bold;
+    background     : #e8e9f2;
+}
+
+footer a
+{
+    color: blue;
+}
+header
+{
+
+  padding: 0.1em;
+ margin: 0 10px 0 30px;
+
+
+}
+header figure
+{
+  margin :0.1em;
+
+   display: inline-block;
+}
+header figure img
+{
+    width: 180px;
+
+}
+
+nav
+ {
+    background: #0514B2;
+    margin: 0;
+
+ }
+nav ul li{
+display: inline-block;
+vertical-align: top;
+margin: 0 0.1em 0 0;
+}
+nav ul li a
+{
+    color:white;
+    display: block;
+    padding: 0.2em;
+    text-decoration: none;
+
+    width: 150px;
+    text-align: center;
+
+
+}
+
+nav ul{
+    list-style: none;
+    margin :0 ;
+    padding: 2px;
+}
+
+.div-ventana-emergente{
+    display: none;
+}
+
+
+nav li a:hover {
+background-color: #2586d7;
+margin-top:-2px;
+padding:4px;
+}
+
+#main-content {
+  width: 1000px;
+  margin: 20px auto;
+  height: 400px;
+}
+
+#nombre-usuario
+{
+
+    color         : #0011B1;
+    display: inline-block;
+    font-size     : 12px;
+    height        : 1em;
+    text-align    : center;
+    margin : 0 0 0 10px;
+}
+
+.div-slider-index{
+
+    margin : 0 auto;
+    width: 800px;
+}
+

@@ -1,0 +1,29 @@
+#forms-effect
+{
+		width  : 100%;
+		display: inline-block;
+		margin : 0 auto;
+
+}
+
+
+
+.div-fecha_consulta{
+
+	display: inline-block;
+
+margin: 0 auto;
+
+}
+
+.div-fecha_consulta .submit{
+	display: inline;
+	margin: 0 auto;
+}
+
+
+.vertical-text {
+  width:15px;
+  word-wrap: break-word;
+  text-align:center;
+}

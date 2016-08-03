@@ -1,0 +1,191 @@
+
+#forms-effect
+{
+	width: 100%;
+  display: inline-block;
+  margin: 0 auto;
+}
+#datos-cliente,
+#datos-visita,
+#resultado_anterior,
+#resultado_hoy  {
+  margin :0 auto;
+  width: 100%;
+  padding: 2px;
+
+}
+
+#forms-effect legend{
+  color: #001860;
+  font-size: 13px;
+}
+
+
+
+/* ORDENAMIENTO DEL FORMULARIO */
+/*--------------------------------------------*/
+
+.text-resultado_hoy,
+.text-siguiente_paso_hoy,
+.text-atendido_por{
+text-transform : uppercase;
+}
+
+.div-codigo_tercero,
+.div-nomtercero,
+.div-nommcipio,
+.div-nomvendedor,
+.div-contacto,
+.div-fecha_visita,
+.div-tipo_visita,
+.div-idmtvovisita,
+.div-atendido_por,
+.div-fecha_proxvisita,
+.div-resultado_anterior,
+.div-siguiente_paso_anterior,
+.div-resultado_hoy,
+.div-siguiente_paso_hoy{
+  display: inline-block;
+
+}
+
+.div-codigo_tercero .label-codigo_tercero,
+.div-nomtercero .label-nomtercero,
+.div-nommcipio .label-nommcipio ,
+.div-nomvendedor .label-nomvendedor,
+.div-contacto .label-contacto,
+.div-fecha_visita .label-fecha_visita,
+.div-tipo_visita .label-tipo_visita,
+.div-idmtvovisita .label-idmtvovisita,
+.div-atendido_por .label-atendido_por,
+.div-fecha_proxvisita .label-fecha_proxvisita,
+.div-resultado_anterior .label-resultado_anterior,
+.div-siguiente_paso_anterior .label-siguiente_paso_anterior,
+.div-resultado_hoy .label-resultado_hoy,
+.div-siguiente_paso_hoy .label-siguiente_paso_hoy{
+  display: block;
+  width: 100%;
+}
+
+.div-codigo_tercero{
+ width  : 5%;
+}
+.div-codigo_tercero .text-codigo_tercero{
+  width: 30%;
+}
+
+
+.div-nomtercero{
+ width  : 28%;
+}
+.div-nomtercero .select-nomtercero{
+  width: 100%;
+}
+
+.div-nommcipio{
+  width: 16%;
+}
+.div-nommcipio .text-nommcipio{
+  width: 75%;
+}
+
+.div-nomvendedor{
+  width: 20%;
+}
+.div-nomvendedor .text-nomvendedor{
+  width: 80%
+}
+
+.div-contacto{
+  width: 27%;
+}
+.div-contacto .text-contacto{
+  width: 90%;
+}
+
+.div-fecha_visita {
+  width: 13%;
+}
+
+.div-fecha_visita .text-fecha_visita{
+  width: 70%;
+}
+
+.div-tipo_visita{
+  width: 18%;
+}
+
+.div-tipo_visita .select-tipo_visita{
+  width: 100%;
+}
+
+.div-idmtvovisita {
+  width: 21%;
+}
+
+.div-idmtvovisita .select-idmtvovisita {
+  width: 100%;
+}
+
+.div-atendido_por{
+  width: 23%;
+}
+
+.div-atendido_por .text-atendido_por{
+  width: 80%;
+}
+
+.div-fecha_proxvisita{
+  width: 20%;
+}
+
+.div-fecha_proxvisita .text-fecha_proxvisita{
+  width: 75%;
+}
+
+.div-resultado_anterior{
+  width: 45%;
+  float: left;
+}
+
+#forms-effect .div-resultado_anterior .text-resultado_anterior{
+  width: 95%;
+  resize:none;
+}
+
+.div-siguiente_paso_anterior{
+  width: 50%;
+  float: right;
+}
+
+#forms-effect .div-siguiente_paso_anterior .text-siguiente_paso_anterior{
+  width: 90%;
+  resize:none;
+}
+
+.div-resultado_hoy{
+   width: 45%;
+  float: left;
+}
+
+#forms-effect .div-resultado_hoy .text-resultado_hoy{
+  width: 95%;
+  resize:none;
+}
+
+
+.div-siguiente_paso_hoy{
+  width: 50%;
+  float: right;
+}
+
+#forms-effect .div-siguiente_paso_hoy .text-siguiente_paso_hoy{
+  width: 90%;
+  resize:none;
+}
+
+
+#forms-effect .dv-btngrabar .submit
+{
+  margin :  0 auto;
+}

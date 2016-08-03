@@ -1,0 +1,16 @@
+<h2>REGISTRO DE NUEVOS BANCOS</h2>
+
+<form id="form1" method="POST" action="<?= BASE_URL ; ?>bancos/nuevo">
+
+	<input type="hidden" name="guardar" value="1" />
+	<br />
+	<p>
+		Código del banco :
+		<input type="text" name="codbanco" />
+	</p>
+	<p>
+		Nombre del banco :
+		<input type="text" name="nombanco" />
+	</p>
+	<input type="submit" value="Guardar">
+</form>
