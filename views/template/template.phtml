@@ -19,23 +19,17 @@
      <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,400italic,300italic' rel='stylesheet' type='text/css'>
      <!-- CSS de Bootstrap -->
      <link type="text/css" rel="stylesheet" href="<?=BASE_CSS ;?>bootstrap.min.css" media="screen" />
+     <link type="text/css" rel="stylesheet" href="<?=BASE_CSS ;?>bootstrap.theme.min.css" media="screen" />
      <link type="text/css" rel="stylesheet" href="<?=BASE_CSS ;?>normalize.css"  />
      <link type="text/css" rel="stylesheet" href="<?=BASE_CSS ;?>cripack.css"   />
 
-     <!--
-     			<link type="text/css" rel="stylesheet" href="<?=BASE_CSS ;?>custom.css" media="screen" />
-					-->
 
 				<!-- OCTUBRE 09 DE 2014 -> INCLUSIÓN DE ARCHIVOS JS - REALACIONADOS CON LA VISTA EN PARTUCULAR QUE ESTOY CARGANDO -->
-      <?php  if(isset($this->Css) && !empty($this->Css)) {
+      <?php  if( isset($this->Css) && !empty($this->Css) ) {
           foreach ($this->Css as $Archivo_Css) { ?>
-       <link type="text/css"  rel="stylesheet" href="<?= $Archivo_Css ;?>"   />
+          <link type="text/css"  rel="stylesheet" href="<?= $Archivo_Css ;?>"   />
        <?php }} ?>
 				<!-- FIN INLCUSIÓN DE ARCHIVOS JS -->
- <?php
-			$css =   Session::Get('Css_Logueo');
-			if(!empty($css)) {?>  <link rel="stylesheet" href="<?= $css;?>"   />
-   <?php }; ?>
 </head>
 
 <body>
@@ -53,7 +47,9 @@
 
   	<script type="text/javascript" src="<?= BASE_JS ; ?>modernizr.js">		 </script>
   	<script type="text/javascript" src="<?= BASE_JS ; ?>prefixfree.min.js"></script>
-  	<script   src ="<?= BASE_JS ; ?>jquery-1.11.1.Oct.10.2014.min.js"  type="text/javascript" >	  </script>
+  	<script   src ="<?= BASE_JS ; ?>jquery-3.1.0.min.js"  type="text/javascript" >	  </script>
+    <script   src ="<?= BASE_JS ; ?>bootstrap.min.js"  type="text/javascript" >    </script>
+
 
 </body>
 </html>
