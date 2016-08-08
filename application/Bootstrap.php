@@ -14,9 +14,7 @@ class Bootstrap
         $Metodo          = $peticion->getMetodo();
         $args            = $peticion->getArgs();
 
-//Debug::Mostrar($Controller );
-//Debug::Mostrar($RutaControlador );
-//Debug::Mostrar($Metodo );
+
 
         if(is_readable($RutaControlador))
         {
