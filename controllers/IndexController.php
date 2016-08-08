@@ -4,8 +4,8 @@
 			a Cada controlador el corresponde una vista. en el proyecto se encuentran dentro de carpetas
 			La extensión de estas vistas es PHTML, dentro del rectorio views
 	 */
-class IndexController extends Controller
-{
+class IndexController extends Controller {
+
     public function __construct()  {
         parent::__construct();
     }
@@ -13,10 +13,6 @@ class IndexController extends Controller
     public function Index() {
         $this->View->Mostrar_Vista('index');
     }
-	
-
-
-
 
 }
 
