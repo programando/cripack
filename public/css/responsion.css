@@ -1,0 +1,152 @@
+@charset "utf-8";
+
+
+
+@media only screen and (min-width: 1400px) {
+	.appOnlyMax								{ display:block; }
+}
+
+@media only screen and (min-width: 1260px) and (max-width: 1399px) {
+	.appOnlyMax								{ display:block; width:450px; }
+}
+
+@media only screen and (min-width: 1080px) and (max-width: 1259px) {
+
+	#wowslider-container1 .ws-title{
+		padding-left: 40%;
+	}
+	#wowslider-container1 .ws-title div{
+		font-size: 24px !important;
+		line-height: 20px;
+	}
+	#wowslider-container1 .ws-title span{
+		font-size:50px !important;
+		line-height:45px !important;
+	}
+
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1079px) {
+	body								{ font-size:12px; }
+	.onlySmart							{ }
+	.onlyPC								{ display:none; }
+	
+
+	#wowslider-container1 .ws-title{
+		padding-left: 30% !important;
+	}
+	#wowslider-container1 .ws-title div{
+		font-size: 20px !important;
+		line-height: 18px;
+	}
+	#wowslider-container1 .ws-title span{
+		font-size:40px !important;
+		line-height:40px !important;
+	}
+	ul.navbar-nav						{ width:440px !important; }
+	.navbar-right .t16 					{ font-size:12px !important; padding:10px 8px; }
+
+}
+
+@media only screen and (min-width: 482px) and (max-width: 767px) {
+	body								{ font-size:11px; }
+	.onlySmart							{ }
+	.onlyPC								{ display:none; }
+}
+
+@media only screen and (max-width: 481px) {
+	body								{ font-size:11px; }
+	.onlySmart							{ }
+	.onlyPC								{ display:none; }
+}
+
+
+
+/* BOOTSTRAP */
+
+
+@media screen and (min-width: 768px) {
+	
+	.onlySmartBoo						{ display:none; }
+	.onlyPCBoo							{ }
+	
+	.menuion .navbar-brand				{ padding:0; }
+	.menuion .navbar-nav				{ }
+	.menuion .navbar-nav > li			{ height:84px; vertical-align:middle; display:table; }
+	.menuion .navbar-nav > li:hover		{ }
+	.menuion .navbar-nav > li.active	{ background:#fff; }
+	.menuion .navbar-nav > li > a		{ color:#FFF; height:84px; display:table-cell; vertical-align:middle; }
+	.menuion .navbar-nav > li > a:hover	{ background-color:transparent; }
+	.menuion .navbar-nav > li.active a	{ }
+	.menuion .navbar-collapse			{ padding:0; }
+	
+	.pL115								{ padding-left:115px; }
+	.mL115								{ margin-left:115px; }
+	.pT80								{ padding-top:80px; }
+	.pT200								{ padding-top:200px; }
+	.pB300								{ padding-bottom:300px; }
+	.fluck								{ position:absolute; margin-top:-200px; }
+
+}
+
+@media screen and (max-width: 767px) {
+
+	.onlySmartBoo						{ }
+	.onlyPCBoo							{ display:none !important; }
+
+	.navbar-header						{ padding:0; margin:0; border:0; height:94px; }
+	.navbar-toggle						{ background-color:; margin:20px 0; }
+	.menuion .navbar-brand				{ padding:0; }
+	.menuion .navbar-brand img			{ height:60px; margin-top:18px; }
+	.menuion .navbar-nav				{ background:#FFF; height:84px; margin:0; border:0; width:100%; }	
+	.menuion .navbar-nav > li			{ background:; display:table !important; width:100% !important; }
+	.menuion .navbar-nav > li:hover		{ }
+	.menuion .navbar-nav > li.active	{ background:#fff; }
+	.menuion .navbar-nav > li > a		{ height:auto; display:table-cell; width:100%; vertical-align:middle; display:table-cell; text-align:left; }
+	.menuion .navbar-nav > li > a:hover	{ background-color:#eee; }
+	.menuion .navbar-nav > li.active a	{ }
+	.menuion .navbar-collapse			{ padding:0; }
+	
+	
+	.t60								{ font-size:2.143em; }
+	.t50								{ font-size:2.0em; line-height:1em; }
+	.t40								{ font-size:1.714em; line-height:1em; }
+
+	.pL115								{ padding-left:50px; }
+	.mL115								{ margin-left:50px; }
+	.p20_SP								{ padding:20px; }
+	.p30_SP								{ padding:30px; }
+	.mb10_SP							{ margin-bottom:10px; }
+	.mb30_SP							{ margin-bottom:30px; }
+	.mb20_SP							{ margin-bottom:20px; }
+	.mb10_SP							{ margin-bottom:10px; }
+	.taC_SP								{ text-align:center; }
+	.pT80								{ padding-top:20px; }
+	.pT200								{ padding-top:20px; }
+	.pB20								{ padding-bottom:20px; }
+	.pT20								{ padding-top:20px; }
+	.no_SP								{ display:none; }
+	.w20_SP								{ width:20px; }
+	.pB300								{ padding-bottom:0px; }
+	.fluck								{ position:relative; margin-top:0; }
+	
+	
+	#wowslider-container1 .ws-title{
+		bottom:20%;
+		padding-left:30% !important;
+	}
+	#wowslider-container1 .ws-title div{
+		font-size: 16px !important;
+		line-height: 14px !important;
+	}
+	#wowslider-container1 .ws-title span{
+		font-size:24px !important;
+		line-height:22px !important;
+		
+	}
+	
+	.bI111								{ background:#333; }
+
+
+}

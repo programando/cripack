@@ -15,6 +15,8 @@ class IndexController extends Controller
         $this->View->Mostrar_Vista('index');
 
     }
+	
+
 
 }
 

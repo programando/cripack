@@ -15,6 +15,14 @@ class TercerosController extends Controller
         $this->View->Mostrar_Vista('login');
 
     }
+	
+	public function Historial() {
+
+        $this->View->Mostrar_Vista('historial');
+
+    }
+	
+	
 
 }
 

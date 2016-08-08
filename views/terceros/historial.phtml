@@ -1,0 +1,35 @@
+<div class="p50 allionIn" style="overflow:auto;">
+
+	<div class="t40 colorCri1 ff2 mb20">Historial de OT's</div>
+    
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th># OT</th>
+                    <th>Fecha</th>
+                    <th>Referencia</th>
+                    <th>Estilo</th>
+                    <th>Tipo trabajo</th>
+                    <th>Cabida</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+            	<?php for($r=0; $r<115; $r++){ ?>
+                    <tr>
+                        <td><?= $r+1; ?></td>
+                        <td>2015/08/25</td>
+                        <td>615631</td>
+                        <td>Cool</td>
+                        <td>Trabajo forzado</td>
+                        <td>A toda su ancha</td>
+                        <td>Finalizado</td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+

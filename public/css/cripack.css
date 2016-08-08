@@ -1,114 +1,36 @@
-/*@import url('http://fonts.googleapis.com/css?family=Raleway');*/
+/* GENERAL */
+*									{ margin:0; border:0; padding:0; outline:none; text-decoration:none; word-break:break-strict; }
+img									{ max-width:100%; }
+body								{ font-family: 'Open Sans', sans-serif; font-weight:400; font-size:14px; line-height:1em; position:relative; }
+a:hover, a:focus					{ text-decoration:none; outline:none; }
+a									{ outline:none !important; }
 
-* { margin: 0; padding: 0; }
+/* ESTRUCTURA */
+.ionix								{ width:100%; max-width:1920px; min-width:320px; height:auto; position:relative; margin:0 auto;}
+.generalMin							{ width:90%; max-width:1200px; min-width:320px; height:auto; position:relative; margin:0 auto; }
+.general							{ width:90%; max-width:1440px; min-width:320px; height:auto; position:relative; margin:0 auto; }
+.general2							{ width:100%; max-width:1440px; min-width:320px; height:auto; position:relative; margin:0 auto; }
+.generalMax							{ width:98%; max-width:1920px; min-width:320px; height:auto; position:relative; margin:0 auto; }
+.generalMaxMax						{ width:100%; max-width:1920px; min-width:320px; height:auto; position:relative; margin:0 auto; }
+.allion								{ width:100%; height:auto; position:relative; }
 
-body
-{
-    margin: 0;
-
-}
-
-footer
-{
-    bottom        : 0%;
-    color         : #0012B2;
-    font-family:  : Helvetica, Arial, sans-serif;
-    font-size     : 14px;
-    height        : 35px;
-    position      : auto;
-    position      : fixed;
-    text-align    : center;
-    vertical-align: bottom;
-    width         : 100%;
-    font-weight   : bold;
-    background     : #e8e9f2;
-}
-
-footer a
-{
-    color: blue;
-}
-header
-{
-
-  padding: 0.1em;
- margin: 0 10px 0 30px;
+.tabAll								{ width:100%; height:100%; display:table; position:relative; }
+.tabAllMenHeader					{ width:25%; height:100%; display:inline-table; position:relative; }
+.tabAllMenHeader2					{ width:33.3%; height:100%; display:inline-table; position:relative; }
+.tab								{ width:100%; display:table; position:relative; }
+.tabIn								{ display:table-cell; width:; vertical-align:middle; position:relative; }
+.tab2								{ display:table-cell; width:2%; vertical-align:middle; position:relative; }
+.tab5								{ display:table-cell; width:5%; vertical-align:middle; position:relative; }
+.tab20								{ display:table-cell; width:20%; vertical-align:middle; position:relative; }
+.tab25								{ display:table-cell; width:25%; vertical-align:middle; position:relative; }
+.tab30								{ display:table-cell; width:30%; vertical-align:middle; position:relative; }
+.tab32								{ display:table-cell; width:32%; vertical-align:middle; position:relative; }
+.tab50								{ display:table-cell; width:50%; vertical-align:middle; position:relative; }
+.tab70								{ display:table-cell; width:70%; vertical-align:middle; position:relative; }
+.tab80								{ display:table-cell; width:80%; vertical-align:middle; position:relative; }
 
 
-}
-header figure
-{
-  margin :0.1em;
-
-   display: inline-block;
-}
-header figure img
-{
-    width: 180px;
-
-}
-
-nav
- {
-    background: #0514B2;
-    margin: 0;
-
- }
-nav ul li{
-display: inline-block;
-vertical-align: top;
-margin: 0 0.1em 0 0;
-}
-nav ul li a
-{
-    color:white;
-    display: block;
-    padding: 0.2em;
-    text-decoration: none;
-
-    width: 150px;
-    text-align: center;
+.bHaaa:hover 						{ background-color:#aaa; }
 
 
-}
-
-nav ul{
-    list-style: none;
-    margin :0 ;
-    padding: 2px;
-}
-
-.div-ventana-emergente{
-    display: none;
-}
-
-
-nav li a:hover {
-background-color: #2586d7;
-margin-top:-2px;
-padding:4px;
-}
-
-#main-content {
-  width: 1000px;
-  margin: 20px auto;
-  height: 400px;
-}
-
-#nombre-usuario
-{
-
-    color         : #0011B1;
-    display: inline-block;
-    font-size     : 12px;
-    height        : 1em;
-    text-align    : center;
-    margin : 0 0 0 10px;
-}
-
-.div-slider-index{
-
-    margin : 0 auto;
-    width: 800px;
-}
 
