@@ -62,6 +62,8 @@ class Request
             }
            $this->Metodo         =  String_Functions::LowerCamel($this->Metodo);
            $this->Metodo         = str_replace('-', '_', $this->Metodo );
+           Session::Set('Zona', $this->Metodo);
+
         }
     public function ResolveParams(&$segmentos_url)
         {
