@@ -13,13 +13,14 @@
        <div class="modal-header text-center">
        <!-- Boton de cierre en el lado derecho      -->
         <!--  <button type="button"  class="close" data-dismiss="modal"> <span aria-hidden="true">&times;</span> </button> -->
-          <h3>¡¡¡ SORPRESA !!!</h3>
+          <h5 id="contenido" >¡ ERROR AL INGRESAR AL SISTEMA !</h5>
        </div>
 
        <!-- body -->
-       <div class="modal-body">
+       <div class="modal-body text-aligment">
           <div id="contenido">
-                EROROR
+                El correo electrónico y la contraseña no pudieron ser validados en nuestro sistema.<br>
+                <br>Confirme y registre nuevamente sus datos.
           </div>
        </div>
 

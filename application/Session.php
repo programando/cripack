@@ -40,13 +40,6 @@
             session_destroy();
             session_start();
             session_regenerate_id(true);
-
-           /* $_SESSION['userAgent']       = $_SERVER['HTTP_USER_AGENT'];
-            $_SESSION['SKey']            = uniqid(mt_rand(), true);
-            $_SESSION['IPaddress']       = $_SERVER['REMOTE_ADDR'];
-            $_SESSION['LastActivity']    = $_SERVER['REQUEST_TIME'];
-*/
-
         }
 
 

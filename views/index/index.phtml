@@ -50,6 +50,10 @@
                     </div>
                 </form>
 
+
+
+
+
                 <form class="dN dRegistro form-login " id="form-login" name="form-login" method="post" action="">
                     <div class="w500 mAUTO colorfff">
                         <div class="row">
@@ -58,46 +62,44 @@
                                 <label>ID / NIT:</label>
                             </div><!--
                             --><div class="col-sm-9 col-xs-12 vcenter taL color333 mb5">
-                                <input class="w100p p1020" type="text" autofocus required placeholder="Ingrese el número"><br>
+                                <input id="identificacion" class="w100p p1020" type="text" autofocus required placeholder="Ingrese nit o cédula"><br>
                             </div>
 
                             <div class="col-sm-3 col-xs-12 vcenter taL mb5">
                                 <label>Nombre Empresa:</label>
                             </div><!--
                             --><div class="col-sm-9 col-xs-12 vcenter taL color333 mb5">
-                                <input class="w100p p1020" type="text" readonly placeholder="Nombre de la empresa"><br>
+                                <input id="nomtercero"class="w100p p1020" type="text" readonly placeholder="Nombre de la empresa"
+                                disabled="disabled"><br>
                             </div>
 
                             <div class="col-sm-3 col-xs-12 vcenter taL mb5">
                                 <label>E-mail:</label>
                             </div><!--
                             --><div class="col-sm-9 col-xs-12 vcenter taL color333 mb5">
-                                <input class="w100p p1020" type="text" readonly placeholder="Correo electrónico"><br>
+                                <input id ="email-registro" class="w100p p1020" type="text" placeholder="Correo electrónico"><br>
                             </div>
 
                             <div class="col-sm-3 col-xs-12 vcenter taL mb10">
                                 <label>Contraseña:</label>
                             </div><!--
                             --><div class="col-sm-9 col-xs-12 vcenter taL color333 mb10">
-                                <input class="w100p p1020" type="password" requiered placeholder="Contraseña"/>
+                                <input id="password" class="w100p p1020" type="password" requiered placeholder="Contraseña"/>
                             </div>
 
                             <div class="col-sm-3 col-xs-12 vcenter taL mb10">
                                 <label>Repite Contraseña:</label>
                             </div><!--
                             --><div class="col-sm-9 col-xs-12 vcenter taL color333 mb10">
-                                <input class="w100p p1020" type="password" requiered placeholder="Contraseña"/>
+                                <input  id="password-confirma" class="w100p p1020" type="password" requiered placeholder="Contraseña"/>
                             </div>
 
-                            <div class="col-sm-12 col-xs-12">
-                                <aside id='error' class="mb20">
-                                    <?php if(isset( $this->Mensaje_Error )) echo $this->Mensaje_Error; ?>
-                                </aside>
-                            </div>
+
 
                             <div class="col-sm-12 col-xs-12">
-                                <button class="colorCri1 bfff bHaaa t20 p1025 rr10 ff2" type="submit">Registrar</button>
+                                <button id="btn-registrarse" type="button" class="btn btn-success btn-md btn-login">Registrar Datos</button>
                             </div>
+
 
                         </div>
                         <br>
