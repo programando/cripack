@@ -71,6 +71,8 @@
 	.onlySmartBoo						{ display:none; }
 	.onlyPCBoo							{ }
 	
+	.pLR40_oPC 							{ padding:0 40px; }
+	
 	.menuion .navbar-brand				{ padding:0; }
 	.menuion .navbar-nav				{ }
 	.menuion .navbar-nav > li			{ height:84px; vertical-align:middle; display:table; }
