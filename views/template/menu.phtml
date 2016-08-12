@@ -1,20 +1,19 @@
-	<div class="ionix allion">
-        <div class="tabAll">
-            <div class="tabIn bCri1 taC p40" style="width:300px; vertical-align:top;">
-
-                <img src="<?= BASE_URL ; ?>public/images/logo.png" class="mb20" alt="Cripack S.A.S." />
-                <a class="colorfff t18 taL ff2 dB p1025" href="<?=BASE_URL ;?>index">Perfil</a>
-                <a class="colorfff t18 taL ff2 dB p1025" href="<?=BASE_URL ;?>terceros/visitas_nuevo">Estado OT's</a>
-                <a class="colorfff t18 taL ff2 dB p1025" href="<?=BASE_URL ;?>terceros/historial">Historial de OT's</a>
-                <a class="colorfff t18 taL ff2 dB p1025" href="<?=BASE_URL ;?>terceros/clientes_consulta_por_vendedor">Remisiones</a>
-                <a class="colorfff t18 taL ff2 dB p1025" href="<?=BASE_URL ;?>terceros/clientes_consulta_por_vendedor">Cumplimientos</a>
-                <a class="colorfff t18 taL ff2 dB p1025" href="<?=BASE_URL ;?>terceros/clientes_consulta_por_vendedor">Contacto</a>
-                <a class="colorfff t18 taL ff2 dB p1025" href="<?=BASE_URL ;?>Index/Cerrar_Sesion">Cerrar Sessión</a>
-                <?php require_once ( $RutaFooter );?>
-            </div>
-
-            <div class="tabIn taC p50 taL">
-                <?= $ContenidoBody; ?>
-            </div>
+<div class="ionix allion">
+    <div class="tab bCri1" style="height:84px;">
+        <div class="tabIn pLR40_oPC taC_oS">
+        	<img src="<?= BASE_URL ; ?>public/images/logo.png" class="" alt="Cripack S.A.S." />
         </div>
+            <a class="tabIn colorfff ff2 tU taC" style="width:12%;" href="<?=BASE_URL ;?>index">Perfil</a>
+            <a class="tabIn colorfff ff2 tU taC" style="width:12%;" href="<?=BASE_URL ;?>terceros/visitas_nuevo">Estado OT's</a>
+            <a class="tabIn colorfff ff2 tU taC" style="width:12%;" href="<?=BASE_URL ;?>terceros/historial">Historial de OT's</a>
+            <a class="tabIn colorfff ff2 tU taC" style="width:12%;" href="<?=BASE_URL ;?>terceros/clientes_consulta_por_vendedor">Remisiones</a>
+            <a class="tabIn colorfff ff2 tU taC" style="width:12%;" href="<?=BASE_URL ;?>terceros/clientes_consulta_por_vendedor">Cumplimientos</a>
+            <a class="tabIn colorfff ff2 tU taC" style="width:12%;" href="<?=BASE_URL ;?>terceros/clientes_consulta_por_vendedor">Contacto</a>
+            
+            <?php //require_once ( $RutaFooter );?>
+	</div>
+
+    <div class="taC p20 taL">
+        <?= $ContenidoBody; ?>
     </div>
+</div>

@@ -28,6 +28,7 @@ class Request
         $this->ResolveMethod    ($segmentos_url);
         $this->ResolveParams    ($segmentos_url);
 
+
     }
 
     /**
