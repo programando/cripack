@@ -40,8 +40,9 @@ class TercerosController extends Controller
 
 		public function Historial() {
           $idtercero = Session::Get('idtercero') ;
-
+          //$idtercero = 0;
           $this->View->Ots = $this->Terceros->Consulta_Trabajos_x_Tercero( $idtercero ) ;
+          $this->View->CantidadRegistros =  $this->Terceros->Cantidad_Registros ;
 	        $this->View->Mostrar_Vista('historial');
 	    }
 
@@ -61,7 +62,7 @@ class TercerosController extends Controller
             $Respuesta ='IdentificacionExiste';
           }
           $nomtercero = Session::Get('nomtercero');
-          $Datos            = compact('Respuesta','nomtercero');
+          $Datos      = compact('Respuesta','nomtercero');
           echo json_encode($Datos,256);
       }
 
@@ -79,12 +80,21 @@ class TercerosController extends Controller
           if ( $Registro && $Registro[0]['email_registrado'] == 'NO' ){
                $Respuesta ='Email-Ok';
           }
-
-
-
           $Datos            = compact('Respuesta');
           echo json_encode($Datos,256);
     }
+
+    public function Grabar_Registro(){
+          $idtercero = Session::Get('idtercero');
+          $email     = General_Functions::Validar_Entrada('email','TEXT');
+          $password  = General_Functions::Validar_Entrada('password','TEXT');
+          $password  = md5($password );
+          $Registro  = $this->Terceros->Grabar_Registro ( $idtercero, $email, $password );
+          $Respuesta = 'RegistroGrabado';
+          $Datos     = compact('Respuesta');
+          echo json_encode($Datos,256);
+    }
+
 
 
 

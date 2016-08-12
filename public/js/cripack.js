@@ -3,6 +3,7 @@
 //PROCESO DE LOGUE / INGRESO AL SISTEMA  btn-ingresar
 //----------------------------------------
 var $RespuestaAjax='';
+var $Titulo           = '¡ ERROR EN REGISTRO !';
 
 var Ingresar_Sistema = function( Parametros ) {
 
@@ -77,8 +78,22 @@ var Valida_Exista_Email = function( Parametros ) {
 				});
 };
 
+var Registro_Grabar = function( Parametros ) {
+//2.		Valida que el email exista dentro de cripak y que no esté registrado
+				$.ajax({
+							data:  Parametros,
+							dataType: 'json',
+							url:      '/cripack/terceros/Grabar_Registro',
+							type:     'post',
+       success:  function ( Respuesta ){
+       	if (Respuesta.Respuesta=='RegistroGrabado'){
+       	 		window.location.href = "/cripack/Index/";
+       	}
+       }
+				});
+};
+
 $('#email-registro').on('blur',function(){
-	 var $Titulo         = '¡ ERROR EN REGISTRO !';
 		var $email 		 = $("#email-registro").val();
 		$Parametros 	 						   = {'email':$email } ;
 		Valida_Exista_Email ( $Parametros);
@@ -91,42 +106,40 @@ $('#identificacion').on('blur',function(){
 		var $identificacion 		 = $("#identificacion").val();
 		$Parametros 	 						   = {'identificacion':$identificacion } ;
 		Valida_Exista_Identificacion ( $Parametros);
+		if ( $RespuestaAjax == 'No-Ok'){
+			Mostrar_Mensajes( $Titulo, 'La identificación no se encuentra registrada en Cripack S.A.S.');
+		}
 });
 
 $("#btn-registrarse").on('click', function() {
+				var $identificacion   = $("#identificacion").val();
+				var $email            = $("#email-registro").val();
+				var $password         = $("#password-registro").val();
+				var $passwordconfirma = $("#password-confirma").val();
 
-		var $Titulo           = '¡ ERROR EN REGISTRO !';
-		var $identificacion   = $("#identificacion").val();
-		var $email            = $("#email-registro").val();
-		var $password         = $("#password").val();
-		var $passwordconfirma = $("#password-confirma").val();
+				$Parametros 	 						   = {'identificacion':$identificacion } ;
+				Valida_Exista_Identificacion ( $Parametros);
+				if ( $RespuestaAjax == 'No-Ok'){
+						Mostrar_Mensajes( $Titulo, 'La identificación no se encuentra registrada en Cripack S.A.S.');
+						return ;
+				}
 
-		$Parametros 	 						   = {'identificacion':$identificacion } ;
-		Valida_Exista_Identificacion ( $Parametros);
-		if ( $RespuestaAjax == 'No-Ok'){
-				Mostrar_Mensajes( $Titulo, 'La identificación no se encuentra registrada en Cripack S.A.S.');
-				return ;
-		}
+				$Parametros 	 						   = { 'email':$email } ;
+				Valida_Exista_Email ( $Parametros);
 
-		$Parametros 	 						   = {'email':$email  } ;
-		Valida_Exista_Email ( $Parametros);
+				if ( $RespuestaAjax == 'No-Ok'){
+						Mostrar_Mensajes( $Titulo, 'El correo electrónico que ha digitado no existe o ya se encuentra registrado dentro de nuestra base de datos.');
+						return ;
+				}
 
-		if ( $RespuestaAjax == 'No-Ok'){
-				Mostrar_Mensajes( $Titulo, 'El correo electrónico que ha digitado no existe o ya se encuentra registrado dentro de nuestra base de datos.');
-				return ;
-		}
-
-		if ( $password != $passwordconfirma ){
-
-		}
-
+				if ( $password != $passwordconfirma ){
+						Mostrar_Mensajes( $Titulo, 'La contraseña y su confirmación debe ser iguales.');
+						return ;
+				}
+				$Parametros 	 						   = {'email':$email,'password':$password } ;
+				Registro_Grabar ($Parametros  )
 
 });
-
-
-
-
-
 
 
 

@@ -19,7 +19,7 @@ class IndexController extends Controller {
         Session::Set('logueado', FALSE );
         session_unset($_SESSION['logueado']);
         Session::LogOut();
-        $this->Index();
+        header('Location: ' . BASE_URL);
     }
 
 

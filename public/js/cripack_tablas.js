@@ -1,4 +1,6 @@
 $('#tabla-historial-ots').DataTable( {
+     "dom": '<"bottom">rt<"bottom"lpif><"clear">',
+
      "language": {
  				"sProcessing":    "Procesando...",
      "sLengthMenu":     "Mostrar _MENU_ registros",
@@ -24,3 +26,13 @@ $('#tabla-historial-ots').DataTable( {
     			}
 				}
 });
+
+/*
+
+            $("#tblPlayers").dataTable({
+                "aaSorting": [[2, "asc"]],
+                'iDisplayLength': 5,
+                "aLengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]]
+            } );
+
+            */
