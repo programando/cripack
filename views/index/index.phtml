@@ -91,15 +91,13 @@
 
                             <div class="col-sm-12 col-xs-12">
                                 <aside id='error' class="mb20">
-                                    <?php //if(isset($this->Mensaje_Error)) echo $this->Mensaje_Error; ?>
+                                    <?php if(isset( $this->Mensaje_Error )) echo $this->Mensaje_Error; ?>
                                 </aside>
                             </div>
 
                             <div class="col-sm-12 col-xs-12">
                                 <button class="colorCri1 bfff bHaaa t20 p1025 rr10 ff2" type="submit">Registrar</button>
                             </div>
-
-
 
                         </div>
                         <br>
@@ -110,5 +108,6 @@
             </div>
         </div>
     </div>
+    <?php include ( VENTANAS_MODALES .'mensaje_error.php') ;?>
 </div>
 

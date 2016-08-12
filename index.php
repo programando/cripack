@@ -4,6 +4,8 @@
 					define('LIBS',ROOT . 'libs' .DS);
 					define('APP_PATH', ROOT . 'application' . DS);
 
+					define('VENTANAS_MODALES',     							ROOT . 'application_sections' . DS . 'modales' . DS );
+
 
 					try{
 					    foreach (glob(APP_PATH .'*.php') as $file) { 	 require_once $file;     } //Arhivos de aplicacion

@@ -10,9 +10,18 @@ class IndexController extends Controller {
         parent::__construct();
     }
 
-    public function Index() {
+    public function Index(  ) {
         $this->View->Mostrar_Vista('index');
     }
+
+
+    public function Cerrar_Sesion() {
+        Session::Set('logueado', FALSE );
+        session_unset($_SESSION['logueado']);
+        Session::LogOut();
+        $this->Index();
+    }
+
 
 }
 

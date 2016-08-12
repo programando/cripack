@@ -7,9 +7,6 @@
 btn-ingresar
 */
 
-
-
-
 $('#tabla-historial-ots').DataTable( {
      "language": {
  				"sProcessing":    "Procesando...",
@@ -47,10 +44,11 @@ var Ingresar_Sistema = function( Parametros ) {
        success:  function (Respuesta){
 
        		 if ( Respuesta.Resultado_Logueo =='NO-Logueo_OK'){
-       		 		alert(Respuesta.Email);
+       		 		$(".modal-body #contenido").val( "EEOEOEO" );
+       		 		 $('#modal_error').modal('show');
        		 }
        		 if ( Respuesta.Resultado_Logueo =='Logueo_OK'){
-       		 			window.location.href = "/cripack/Index";
+       		 			window.location.href = "/cripack/Terceros/Historial/";
        		 }
       	 	 }
 
