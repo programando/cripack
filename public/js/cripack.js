@@ -18,7 +18,7 @@ var Ingresar_Sistema = function( Parametros ) {
        		 		 $('#modal_error').modal('show');
        		 }
        		 if ( Respuesta.Resultado_Logueo =='Logueo_OK'){
-       		 			window.location.href = "/cripack/Terceros/Historial/";
+       		 			window.location.href = "/cripack/terceros/Historial";
        		 }
       	 	 }
 				});
@@ -193,7 +193,7 @@ var Ion = {
 
 		$(".allion").height(alto);
 		$(".allionIn").height(alto-164);
-		
+
 
 	},
 
