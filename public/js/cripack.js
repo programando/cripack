@@ -87,7 +87,7 @@ var Registro_Grabar = function( Parametros ) {
 							type:     'post',
        success:  function ( Respuesta ){
        	if (Respuesta.Respuesta=='RegistroGrabado'){
-       	 		window.location.href = "/cripack/Index/";
+       	 		window.location.href = "/cripack/index/";
        	}
        }
 				});
