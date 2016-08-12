@@ -1,4 +1,5 @@
 $('#tabla-historial-ots').DataTable( {
+
      "dom": '<"bottom">rt<"bottom"lpif><"clear">',
 
      "language": {
@@ -25,6 +26,7 @@ $('#tabla-historial-ots').DataTable( {
 	        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
     			}
 				}
+
 });
 
 /*

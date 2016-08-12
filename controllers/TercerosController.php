@@ -14,6 +14,7 @@ class TercerosController extends Controller
     public function Index() { }
 
 
+
    public function Ingreso_Sistema_Validaciones(){
       	 Session::Set('logueado',   FALSE);
          $Email                = General_Functions::Validar_Entrada('email','TEXT');
@@ -45,6 +46,7 @@ class TercerosController extends Controller
           $this->View->CantidadRegistros =  $this->Terceros->Cantidad_Registros ;
 	        $this->View->Mostrar_Vista('historial');
 	    }
+
 
 
     public function Buscar_Por_Identificacion() {
