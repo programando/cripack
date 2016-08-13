@@ -1,7 +1,9 @@
 // JavaScript Document
 
-//PROCESO DE LOGUE / INGRESO AL SISTEMA  btn-ingresar
-//----------------------------------------
+//=========================================================================================================
+/// PROCESO DE INGRESO AL SISTEMA			btn-ingresar
+//=========================================================================================================
+
 var $RespuestaAjax='';
 var $Titulo           = '¡ ERROR EN REGISTRO !';
 
@@ -36,9 +38,14 @@ var Mostrar_Mensajes = function( $Titulo, $Contenido ){
      $('.modal-body #contenido').html($Contenido);
      $('#modal_error').modal('show');
 }
+//=========================================================================================================
+/// FIN PROCESO DE INGRESO			btn-ingresar
+//=========================================================================================================
+
+
 
 //=========================================================================================================
-/// REGISTRO DE INFORMACIÓN
+/// REGISTRO DE INFORMACIÓN 		btn-registrarse
 //=========================================================================================================
 var Valida_Exista_Identificacion = function( Parametros ) {
 //1.		Valida que el Nit Exista dentro de nuestra base de datos.
@@ -140,6 +147,10 @@ $("#btn-registrarse").on('click', function() {
 				Registro_Grabar ($Parametros  )
 
 });
+//=========================================================================================================
+/// FIN REGISTRO DE INFORMACIÓN 		btn-registrarse
+//=========================================================================================================
+
 
 
 
