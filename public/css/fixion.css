@@ -91,7 +91,7 @@
 .colorVerde1						{ color:#62ff69; }
 .colorAzul1							{ color:#00b4e9; }
 .colorAzul2							{ color:#104694; }
-.colorCri1							{ color:#272c6b; }
+.colorCri1							{ color:#20286d; }
 
 /* BACKGROUND */
 .bGray								{ background-color:#f7f7f7; }
@@ -108,7 +108,7 @@
 .bAzul1								{ background-color:#00b4e9; }
 .bAzul2								{ background-color:#104694; }
 
-.bCri1								{ background-color:#272c6b; }				
+.bCri1								{ background-color:#20286d; }				
 .bI111								{ background:url(../../resources/img/demo/111.jpg) center center; }
 
 .bHover:hover						{ background:#FFF; color:#00b4e9; }

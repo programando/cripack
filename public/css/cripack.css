@@ -9,6 +9,7 @@ a									{ outline:none !important; }
 .ionix								{ width:100%; max-width:1920px; min-width:320px; height:auto; position:relative; margin:0 auto;}
 .generalMin							{ width:90%; max-width:1200px; min-width:320px; height:auto; position:relative; margin:0 auto; }
 .general							{ width:90%; max-width:1440px; min-width:320px; height:auto; position:relative; margin:0 auto; }
+.generalSpecial						{ width:90%; max-width:800px; min-width:320px; height:auto; position:relative; margin:0 auto; }
 .general2							{ width:100%; max-width:1440px; min-width:320px; height:auto; position:relative; margin:0 auto; }
 .generalMax							{ width:98%; max-width:1920px; min-width:320px; height:auto; position:relative; margin:0 auto; }
 .generalMaxMax						{ width:100%; max-width:1920px; min-width:320px; height:auto; position:relative; margin:0 auto; }

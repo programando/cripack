@@ -1,49 +1,54 @@
+<?php if (  $this->CantidadRegistros == 0 ) :?>
+
+	<div class="allionIn">
+		<div class="tabAll">
+			<div class="tabIn colorCri1 ff0 taC t30">
+				No hay registros de órdenes de trabajo en el sistema.
+			</div>
+		</div>
+	</div>
+
+<?php else :?>
+	<div class="t40 colorCri1 ff2 mb20">Historial de OT's</div>
+	<div class="table-responsive">
+		<table id="tabla-historial-ots" class="table table-hover display" cellspacing="0" width="100%">
+			<thead>
+				<tr>
+					<th># OT</th>
+					<th>Fecha</th>
+					<th>Referencia</th>
+					<th>Estilo</th>
+					<th>Cantidad</th>
+					<th>Cabida</th>
+					<th>Estado</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<?php foreach ( $this->Ots as $OT )   :?>
+					<?php $fecha_solicitud = date("d-m-Y", strtotime($OT['fecha_solicitud'])) ;?>
+					<?php if ( $OT['terminada'] == TRUE ){
+						$Estado = 'Terminada';
+					}else{
+							$Estado = 'En Proceso';
+					}
+					?>
+				<tr>
+					<td> <?= $OT['numero_ot']  ?>           </td>
+					<td> <?= $fecha_solicitud  ?>     </td>
+					<td> <?= $OT['referencia']  ?>     </td>
+					<td> <?= trim($OT['nomestilotrabajo']) . ' - ' . trim($OT['nomtipotrabajo']) ?>     </td>
+					<td> <?= $OT['cantidad']  ?>     </td>
+					<td> <?= $OT['cabida']  ?>     </td>
+					<td> <?= $Estado ;?> </td>
+				 </tr>
+				<?php endforeach ;?>
 
 
-    <?php if (  $this->CantidadRegistros == 0 ) :?>
-        <div class="t40 colorCri1 ff2 mb20"></div>
-            <div class="t40 colorCri1 ff2 mb20">Cliente no registra órdenes de trabajo en nuestro sistema.</div>
-        <?php else :?>
-           	<div class="t40 colorCri1 ff2 mb20">Historial de OT's</div>
-            <div class="table-responsive">
-                <table id="tabla-historial-ots" class="table table-hover display" cellspacing="0" width="100%">
-                    <thead>
-                        <tr>
-                            <th># OT</th>
-                            <th>Fecha</th>
-                            <th>Referencia</th>
-                            <th>Estilo</th>
-                            <th>Cantidad</th>
-                            <th>Cabida</th>
-                            <th>Estado</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        <?php foreach ( $this->Ots as $OT )   :?>
-                            <?php $fecha_solicitud = date("d-m-Y", strtotime($OT['fecha_solicitud'])) ;?>
-                            <?php if ( $OT['terminada'] == TRUE ){
-                                $Estado = 'Terminada';
-                            }else{
-                                    $Estado = 'En Proceso';
-                            }
-                            ?>
-                        <tr>
-                            <td> <?= $OT['numero_ot']  ?>           </td>
-                            <td> <?= $fecha_solicitud  ?>     </td>
-                            <td> <?= $OT['referencia']  ?>     </td>
-                            <td> <?= trim($OT['nomestilotrabajo']) . ' - ' . trim($OT['nomtipotrabajo']) ?>     </td>
-                            <td> <?= $OT['cantidad']  ?>     </td>
-                            <td> <?= $OT['cabida']  ?>     </td>
-                            <td> <?= $Estado ;?> </td>
-                         </tr>
-                        <?php endforeach ;?>
-
-
-                    </tbody>
-                </table>
-            </div>
-        <?php endif ;?>
+			</tbody>
+		</table>
+	</div>
+<?php endif ;?>
 
 
 
