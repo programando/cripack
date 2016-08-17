@@ -1,158 +1,71 @@
 // JavaScript Document
 
-//=========================================================================================================
-/// PROCESO DE INGRESO AL SISTEMA			btn-ingresar
-//=========================================================================================================
+//PROCESO DE LOGUE / INGRESO AL SISTEMA
+//----------------------------------------
 
-var $RespuestaAjax='';
-var $Titulo           = '¡ ERROR EN REGISTRO !';
+/*
+btn-ingresar
+*/
+
+
+
+
+$('#tabla-historial-ots').DataTable( {
+     "language": {
+ 				"sProcessing":    "Procesando...",
+     "sLengthMenu":     "Mostrar _MENU_ registros",
+     "sZeroRecords":    "No se encontraron resultados",
+     "sEmptyTable":     "Ningún dato disponible en esta tabla",
+     "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+     "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+     "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+     "sInfoPostFix":    "",
+     "sSearch":         "Buscar:",
+     "sUrl":            "",
+     "sInfoThousands":  ",",
+     "sLoadingRecords": "Cargando...",
+     "oPaginate": {
+        "sFirst":    "Primero",
+        "sLast":     "Último",
+        "sNext":     "Siguiente",
+        "sPrevious": "Anterior"
+ 					},
+	    "oAria": {
+	        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+	        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+    			}
+				}
+});
+
 
 var Ingresar_Sistema = function( Parametros ) {
-
 			$.ajax({
 							data:  Parametros,
 							dataType: 'json',
 							url:      '/cripack/terceros/Ingreso_Sistema_Validaciones',
 							type:     'post',
-       success:  function ( Respuesta ){
+       success:  function (Respuesta){
+
        		 if ( Respuesta.Resultado_Logueo =='NO-Logueo_OK'){
-       		 		//$('.modal-body #contenido').html('Modificar país: ');
-       		 		 $('#modal_error').modal('show');
+       		 		alert(Respuesta.Email);
        		 }
        		 if ( Respuesta.Resultado_Logueo =='Logueo_OK'){
-       		 			window.location.href = "/cripack/terceros/Historial";
+       		 			window.location.href = "/cripack/Index";
        		 }
       	 	 }
+
+
 				});
 }
+
+
+
 $("#btn-ingresar").on('click', function() {
 		var $email 		 = $("#email").val();
 		var $password = $("#password").val();
 		$Parametros 	 = {'email':$email,'Password':$password  } ;
 		Ingresar_Sistema ( $Parametros)
 });
-
-
-var Mostrar_Mensajes = function( $Titulo, $Contenido ){
-	    $('.modal-header #contenido').html($Titulo);
-     $('.modal-body #contenido').html($Contenido);
-     $('#modal_error').modal('show');
-}
-//=========================================================================================================
-/// FIN PROCESO DE INGRESO			btn-ingresar
-//=========================================================================================================
-
-
-
-//=========================================================================================================
-/// REGISTRO DE INFORMACIÓN 		btn-registrarse
-//=========================================================================================================
-var Valida_Exista_Identificacion = function( Parametros ) {
-//1.		Valida que el Nit Exista dentro de nuestra base de datos.
-				$.ajax({
-							data:  Parametros,
-							dataType: 'json',
-							url:      '/cripack/terceros/Buscar_Por_Identificacion',
-							type:     'post',
-							async:    false,
-       success:  function ( Respuesta ){
-       	if (Respuesta.Respuesta=='IdentificacionExiste'){
-       			$('#nomtercero').val(Respuesta.nomtercero);
-       		$RespuestaAjax = 'ok'
-       	}else{
-       		$RespuestaAjax = 'No-Ok';
-       	}
-       }
-				});
-};
-
-var Valida_Exista_Email = function( Parametros ) {
-//2.		Valida que el email exista dentro de cripak y que no esté registrado
-				$.ajax({
-							data:  Parametros,
-							dataType: 'json',
-							url:      '/cripack/terceros/Consultar_Emails',
-							type:     'post',
-							async:    false,
-       success:  function ( Respuesta ){
-
-       	if (Respuesta.Respuesta=='Email-Ok'){
-       		$RespuestaAjax = 'ok'
-       	}else{
-       		$RespuestaAjax = 'No-Ok';
-       	}
-       }
-				});
-};
-
-var Registro_Grabar = function( Parametros ) {
-//2.		Valida que el email exista dentro de cripak y que no esté registrado
-				$.ajax({
-							data:  Parametros,
-							dataType: 'json',
-							url:      '/cripack/terceros/Grabar_Registro',
-							type:     'post',
-       success:  function ( Respuesta ){
-       	if (Respuesta.Respuesta=='RegistroGrabado'){
-       	 		window.location.href = "/cripack/index/";
-       	}
-       }
-				});
-};
-
-$('#email-registro').on('blur',function(){
-		var $email 		 = $("#email-registro").val();
-		$Parametros 	 						   = {'email':$email } ;
-		Valida_Exista_Email ( $Parametros);
-		if ( $RespuestaAjax == 'No-Ok'){
-				Mostrar_Mensajes( $Titulo, 'El correo electrónico que ha digitado no existe o ya se encuentra registrado dentro de nuestra base de datos.');
-			}
-});
-
-$('#identificacion').on('blur',function(){
-		var $identificacion 		 = $("#identificacion").val();
-		$Parametros 	 						   = {'identificacion':$identificacion } ;
-		Valida_Exista_Identificacion ( $Parametros);
-		if ( $RespuestaAjax == 'No-Ok'){
-			Mostrar_Mensajes( $Titulo, 'La identificación no se encuentra registrada en Cripack S.A.S.');
-		}
-});
-
-$("#btn-registrarse").on('click', function() {
-				var $identificacion   = $("#identificacion").val();
-				var $email            = $("#email-registro").val();
-				var $password         = $("#password-registro").val();
-				var $passwordconfirma = $("#password-confirma").val();
-
-				$Parametros 	 						   = {'identificacion':$identificacion } ;
-				Valida_Exista_Identificacion ( $Parametros);
-				if ( $RespuestaAjax == 'No-Ok'){
-						Mostrar_Mensajes( $Titulo, 'La identificación no se encuentra registrada en Cripack S.A.S.');
-						return ;
-				}
-
-				$Parametros 	 						   = { 'email':$email } ;
-				Valida_Exista_Email ( $Parametros);
-
-				if ( $RespuestaAjax == 'No-Ok'){
-						Mostrar_Mensajes( $Titulo, 'El correo electrónico que ha digitado no existe o ya se encuentra registrado dentro de nuestra base de datos.');
-						return ;
-				}
-
-				if ( $password != $passwordconfirma ){
-						Mostrar_Mensajes( $Titulo, 'La contraseña y su confirmación debe ser iguales.');
-						return ;
-				}
-				$Parametros 	 						   = {'email':$email,'password':$password } ;
-				Registro_Grabar ($Parametros  )
-
-});
-//=========================================================================================================
-/// FIN REGISTRO DE INFORMACIÓN 		btn-registrarse
-//=========================================================================================================
-
-
-
 
 
 
@@ -203,8 +116,7 @@ var Ion = {
 		var ancho = $(window).width();
 
 		$(".allion").height(alto);
-		$(".allionIn").height(alto-164);
-
+		$(".allionIn").height(alto-200);
 
 	},
 
