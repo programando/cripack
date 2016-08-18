@@ -3,7 +3,7 @@ $('#tabla-historial-ots').DataTable( {
      "dom": '<"bottom">rt<"bottom"lpif><"clear">',
 
      "language": {
- 				"sProcessing":    "Procesando...",
+                "sProcessing":    "Procesando...",
      "sLengthMenu":     "Mostrar _MENU_ registros",
      "sZeroRecords":    "No se encontraron resultados",
      "sEmptyTable":     "Ningún dato disponible en esta tabla",
@@ -20,13 +20,19 @@ $('#tabla-historial-ots').DataTable( {
         "sLast":     "Último",
         "sNext":     "Siguiente",
         "sPrevious": "Anterior"
- 					},
-	    "oAria": {
-	        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-	        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-    			}
-				}
+                    },
+        "oAria": {
+            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                }
+                }
 
 });
 
-
+/*
+            $("#tblPlayers").dataTable({
+                "aaSorting": [[2, "asc"]],
+                'iDisplayLength': 5,
+                "aLengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]]
+            } );
+            */
