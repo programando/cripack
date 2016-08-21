@@ -1,0 +1,63 @@
+<?php if (  $this->CantidadRegistros == 0 ) :?>
+
+	<div class="allionIn">
+		<div class="tabAll">
+			<div class="tabIn colorCri1 ff0 taC t30">
+				No hay registros de remisiones en el sistema.
+			</div>
+		</div>
+	</div>
+
+<?php else :?>
+	<div class="t40 colorCri1 ff2 mb20">Historial Remisiones</div>
+	<div class="table-responsive">
+			<table id="tablas" class="table table-hover display" cellspacing="0" width="100%">
+			<thead>
+				<tr>
+					<th>Fecha</th>
+					<th>#Remisión</th>
+					<th>#Guía TCC</th>
+
+					<th>OT</th>
+					<th>Referencia</th>
+					<th>Tipo Trabajo</th>
+					<th>Observación</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<?php foreach ( $this->Datos_Unicos as $Cabecera )   :?>
+							<tr>
+									<td> <?= Fechas::Formato (  $Cabecera['fecha_remision'] ) ;?>  </td>
+									<td> <?= $Cabecera['nro_remision']  ?>     																				</td>
+									<td> <?= $Cabecera['nro_guia']  ?>     																								</td>
+							</tr>
+
+							 <?php foreach ( $this->Remisiones as $Remision )   :?>
+
+														<?php if ($Remision['idremision']  == $Cabecera ['idremision']) :;?>
+																	<tr>
+																			<td></td>
+																			<td></td>
+																			<td></td>
+																			<td> <?= $Remision['numero_ot']      ?>     							</td>
+																			<td> <?= $Remision['referencia']     ?>     						</td>
+																			<td> <?= $Remision['tipo_trabajo']   ?>     				</td>
+																			<td> <?= $Remision['observaciones']  ?>     			</td>
+																	</tr>
+
+													<?php endif; ?>
+
+						 	<?php endforeach ;?>
+
+				<?php endforeach ;?>
+
+			</tbody>
+		</table>
+	</div>
+
+
+<?php endif ;?>
+
+
+

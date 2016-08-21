@@ -1,4 +1,4 @@
-$('#tabla-historial-ots').DataTable( {
+$('#tablas').DataTable( {
 
      "dom": '<"bottom">rt<"bottom"lpif><"clear">',
 
@@ -25,14 +25,8 @@ $('#tabla-historial-ots').DataTable( {
             "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
             "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                 }
-                }
+        }
 
 });
 
-/*
-            $("#tblPlayers").dataTable({
-                "aaSorting": [[2, "asc"]],
-                'iDisplayLength': 5,
-                "aLengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]]
-            } );
-            */
+

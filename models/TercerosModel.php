@@ -38,7 +38,13 @@
 
 						$SQL 							 = "$idtercero, '$email','$password'";
 						$Registro    =  $this->Db->Ejecutar_Sp("terceros_web_grabar_registro ( ".$SQL.")");
+				}
 
+
+				public function Consulta_Remisiones ( $idtercero  ){
+					 $Terceros                 = $this->Db->Ejecutar_Sp("remisiones_consulta_x_id_tercero ( $idtercero )");
+						$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
+						return $Terceros;
 				}
 
 

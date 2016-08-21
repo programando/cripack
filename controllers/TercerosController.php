@@ -41,7 +41,7 @@ class TercerosController extends Controller
 
 		public function Historial() {
           $idtercero = Session::Get('idtercero') ;
-          //$idtercero = 0;
+         // $idtercero = 733;
           $this->View->Ots = $this->Terceros->Consulta_Trabajos_x_Tercero( $idtercero ) ;
           $this->View->CantidadRegistros =  $this->Terceros->Cantidad_Registros ;
 	        $this->View->Mostrar_Vista('historial');
@@ -99,10 +99,58 @@ class TercerosController extends Controller
 
 
 
+   public function consulta_remisiones () {
+
+        $idtercero = Session::Get('idtercero');
+        //$idtercero = 733;
+        $Registro  = $this->Terceros->Consulta_Remisiones ( $idtercero);
+
+        $IdRemision = 0;
+        $I          = 0;
+
+       $DatosUnicos = array(array('idremision'      =>  0,
+                                   'nro_remision'   =>  0,
+                                   'fecha_remision' =>  '',
+                                   'nro_guia'       =>  0,
+                                   'observaciones'  =>  0));
+
+        if ( $this->Terceros->Cantidad_Registros > 0){
+           $IdRemision                        = $Registro [0]['idremision'];
+           $DatosUnicos[$I]['idremision']     = $Registro [0]['idremision'];
+           $DatosUnicos[$I]['nro_remision']   = $Registro [0]['nro_remision'];
+           $DatosUnicos[$I]['fecha_remision'] = $Registro [0]['fecha_remision'];
+           $DatosUnicos[$I]['nro_guia']       = $Registro [0]['nro_guia'];
+           $DatosUnicos[$I]['observaciones']  = $Registro [0]['observaciones'];
+           $I++;
+
+            foreach ($Registro as $Dato  ) {
+                if ( $IdRemision != $Dato['idremision'] ) {
+                 $DatosUnicos[$I]['idremision']     = $Dato['idremision'];
+                 $IdRemision                        = $Dato['idremision'] ;
+                 $DatosUnicos[$I]['nro_remision']   = $Dato['nro_remision'];
+                 $DatosUnicos[$I]['fecha_remision'] = $Dato['fecha_remision'];
+                 $DatosUnicos[$I]['nro_guia']       = $Dato['nro_guia'];
+                 $DatosUnicos[$I]['observaciones']  = $Dato['observaciones'];
+                 $I++;
+                }
+            }
+        }
+        $this->View->CantidadRegistros = $this->Terceros->Cantidad_Registros ;
+        $this->View->Datos_Unicos      = $DatosUnicos;
+        $this->View->Remisiones        = $Registro;
+        $this->View->Mostrar_Vista('remisiones');
+
+
+   } // Fin Consulta_Remsiones
+
+
+
+
+
+
 
 
 
 }
-
 ?>
 
