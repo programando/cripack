@@ -81,6 +81,7 @@ class TercerosController extends Controller
           }
           if ( $Registro && $Registro[0]['email_registrado'] == 'NO' ){
                $Respuesta ='Email-Ok';
+               Session::Set('idtercero',$Registro[0]['idtercero'] ) ;
           }
           $Datos            = compact('Respuesta');
           echo json_encode($Datos,256);
@@ -146,12 +147,12 @@ class TercerosController extends Controller
 
    public function Cumplimiento_Entregas(){
       $IdTercero = Session::Get('idtercero');
-      $IdTercero = 733 ;
+      //$IdTercero = 733 ;
       $Registro  = $this->Terceros->Cumplimiento_Entregas ( $IdTercero );
 
-      $data = array(0 => 25, 1 => 35);
+       /*$data = array(0 => 25, 1 => 35);
 
-        /*$data = array(
+       $data = array(
                 0 => round($enero['TOTAL'],1),
                 1 => round($febrero['TOTAL'],1),
                 2 => round($marzo['TOTAL'],1),
@@ -168,6 +169,7 @@ class TercerosController extends Controller
 
       // echo json_encode($data);
         $this->View->data = $Registro ;
+
         $this->View->Mostrar_Vista('cumplimiento_entregas');
    }
 

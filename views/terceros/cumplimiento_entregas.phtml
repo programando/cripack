@@ -2,6 +2,12 @@
 							//Debug::Mostrar( $this->data );
  		$Dato1 = $this->data[0]['cumplimiento'];
  		$Dato2 = $this->data[1]['cumplimiento'];
+ 		if ( is_null( $Dato1 )){
+ 					$Dato1 = 0;
+ 		}
+ 			if ( is_null( $Dato2 )){
+ 					$Dato2 = 0;
+ 		}
 ?>
 
 

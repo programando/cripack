@@ -100,7 +100,7 @@ var Registro_Grabar = function( Parametros ) {
 				});
 };
 
-$('#email-registro').on('blur',function(){
+/*$('#email-registro').on('blur',function(){
 		var $email 		 = $("#email-registro").val();
 		$Parametros 	 						   = {'email':$email } ;
 		Valida_Exista_Email ( $Parametros);
@@ -108,6 +108,7 @@ $('#email-registro').on('blur',function(){
 				Mostrar_Mensajes( $Titulo, 'El correo electrónico que ha digitado no existe o ya se encuentra registrado dentro de nuestra base de datos.');
 			}
 });
+*/
 
 $('#identificacion').on('blur',function(){
 		var $identificacion 		 = $("#identificacion").val();
