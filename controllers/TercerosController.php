@@ -144,13 +144,35 @@ class TercerosController extends Controller
    } // Fin Consulta_Remsiones
 
 
+   public function Cumplimiento_Entregas(){
+      $IdTercero = Session::Get('idtercero');
+      $IdTercero = 733 ;
+      $Registro  = $this->Terceros->Cumplimiento_Entregas ( $IdTercero );
+
+      $data = array(0 => 25, 1 => 35);
+
+        /*$data = array(
+                0 => round($enero['TOTAL'],1),
+                1 => round($febrero['TOTAL'],1),
+                2 => round($marzo['TOTAL'],1),
+                3 => round($abril['TOTAL'],1),
+                4 => round($mayo['TOTAL'],1),
+                5 => round($junio['TOTAL'],1),
+                6 => round($julio['TOTAL'],1),
+                7 => round($agosto['TOTAL'],1),
+                8 => round($septiembre['TOTAL'],1),
+                9 => round($octubre['TOTAL'],1),
+                10 => round($noviembre['TOTAL'],1),
+                11 => round($diciembre['TOTAL'],1)
+                );*/
+
+      // echo json_encode($data);
+        $this->View->data = $Registro ;
+        $this->View->Mostrar_Vista('cumplimiento_entregas');
+   }
 
 
 
 
-
-
-
-}
-?>
+}?>
 

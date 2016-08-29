@@ -34,6 +34,29 @@ abstract class Controller
     	{ throw new Exception("Error de modelo"); }
     }
 
+    /** SEP 10 DE 2014
+     * MÉTODO ENCARGADO DE CARCAR OTRO CONTROLADORES
+     * @param   $Controlador [nombre del modelo que se cargará]
+     */
+    protected function Load_Controller($Controlador)
+    {
+        $Controlador      = $Controlador . 'Controller';
+        $Ruta_Controlador = ROOT . 'controllers' . DS . $Controlador. '.php';
+
+        if (is_readable($Ruta_Controlador))
+        {
+            require_once ($Ruta_Controlador);
+            $Controlador = new $Controlador;
+            return $Controlador;
+        }
+        else
+        {
+            throw new Exception("Error de controlador");
+        }
+    }
+
+
+
 /**
  * SET 10 DE 2014
  * REDIRECCIONA EL FLUJO DE PROCESOS  A CUALQUIER PARTE DEL APLICATIVO
@@ -52,6 +75,24 @@ abstract class Controller
             exit;
         }
     }
-}
 
-?>
+
+
+    protected function Load_External_Library($libreria)
+    {
+        /** ENERO 29 DE 2014
+        *   SE ENCRGA DE LLAMAR LIBRERÍAS EXTERNAS AL PROYECTO COMO POR EJEMPLO PHPMAILER O PDF
+        */
+        $rutaLibreria = ROOT . 'libs_external' . DS . $libreria . '.php';
+        if(is_readable($rutaLibreria)){
+            require_once $rutaLibreria;
+        }
+        else{
+            throw new Exception('Error de libreria');
+        }
+    }
+
+
+
+
+} ?>

@@ -47,8 +47,15 @@
 						return $Terceros;
 				}
 
+				public function Cumplimiento_Entregas ( $idtercero  ){
+					 $Terceros                 = $this->Db->Ejecutar_Sp("ordenes_trabajo_reportes_cumplimiento_entregas_x_cliente_web ( $idtercero )");
+						$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
+						return $Terceros;
+				}
 
 
 
-  }
-?>
+
+
+
+} ?>
