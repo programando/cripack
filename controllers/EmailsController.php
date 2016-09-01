@@ -51,11 +51,11 @@
 
         $this->Email->Body    = $this->Unir_Partes_Correo ( $Texto_Correo ) ;
 
-        $this->Email->AddAddress( 'jhonjamesmg@hotmail.com'  );
-        //$this->Email->AddCC("Serviclientes@cripack.net");
+        $this->Email->AddAddress(  $Email   );
+        $this->Email->AddCC("Serviclientes@cripack.net");
+        $this->Email->AddBCC("jhonjamesmg@hotmail.com");
         $Respuesta              = $this->Enviar_Correo();
-        Debug::Mostrar( $Respuesta  );
-        Debug::Mostrar( $Email  );
+
       }
 
 

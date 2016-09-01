@@ -37,7 +37,7 @@ class RemisionesController extends Controller {
                $this->Emails->Remisiones_Enviar_Informe_Correo (  $Empresa, $Destinatario, $NumeroGuia, $Datos_Ots , $Email  ) ;
             }
         }
-        //$this->Remisiones->Despachos_Actualizar_Enviados();
+        $this->Remisiones->Despachos_Actualizar_Enviados();
 
     }
 
