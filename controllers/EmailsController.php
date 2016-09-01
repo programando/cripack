@@ -17,14 +17,17 @@
 
 
 
-      public function Remisiones_Enviar_Informe_Correo ( $Empresa, $Destinatario, $NumeroGuia, $Datos_Ots  ){
+      public function Remisiones_Enviar_Informe_Correo ( $Empresa, $Destinatario, $NumeroGuia, $Datos_Ots, $Email   ){
 
         $this->Configurar_Cuenta('Notificación despacho desde Cripack S.A.S. Guía Nro.: ' . $NumeroGuia );
-        $Texto_Correo    = file_get_contents(BASE_EMAILS.'remisiones_despachadas.phtml','r');
-        $Texto_Correo    = str_replace("#_EMPRESA_#"        , $Empresa,$Texto_Correo);
-        $Texto_Correo    = str_replace("#_DESTINATARIO_#"   , $Destinatario , $Texto_Correo);
-        $Texto_Correo    = str_replace("#_DESTINATARIO_#"   , $Destinatario , $Texto_Correo);
-        $Texto_Correo    = str_replace("#_NUMERO_GUIA_#"   ,  $NumeroGuia   , $Texto_Correo);
+       $Url = 'https://www.tcc.com.co/rastreo?tipo=RE&documento='.$NumeroGuia;
+       $Texto_Correo    = file_get_contents(BASE_EMAILS.'remisiones_despachadas.phtml','r');
+       $Texto_Correo    = str_replace("#_EMPRESA_#"        , $Empresa,$Texto_Correo);
+       $Texto_Correo    = str_replace("#_DESTINATARIO_#"   , $Destinatario , $Texto_Correo);
+       $Texto_Correo    = str_replace("#_DESTINATARIO_#"   , $Destinatario , $Texto_Correo);
+       $Texto_Correo    = str_replace("#_NUMERO_GUIA_#"    ,  $NumeroGuia   , $Texto_Correo);
+       $Texto_Correo    = str_replace("#_URL_#"            ,  $Url  , $Texto_Correo);
+
 
          $Tabla    = '';
          $Paquetes = 1 ;
@@ -48,11 +51,10 @@
 
         $this->Email->Body    = $this->Unir_Partes_Correo ( $Texto_Correo ) ;
 
-        $this->Email->AddAddress( 'cripackger@une.net.co' );
-        $this->Email->AddCC("jhonjamesmg@hotmail.com");
+        $this->Email->AddAddress( $Email  );
+        $this->Email->AddCC("Serviclientes@cripack.net");
         $Respuesta              = $this->Enviar_Correo();
-        Debug::Mostrar( $Respuesta  );
-
+        //Debug::Mostrar( $Respuesta  );
       }
 
 
@@ -66,7 +68,7 @@
        $this->Email->ContentType   = "text/html";
        $this->Email->CharSet       = "utf-8";
        $this->Email->SMTPSecure    = 'ssl';                     // sets the prefix to the servier
-       $this->Email->Host          = 'smtp.gmail.com';         // sets GMAIL as the SMTP server
+       $this->Email->Host          = 'smtpcal.une.net.co';         // sets GMAIL as the SMTP server
        $this->Email->Port          = 465;
        $this->Email->SMTPKeepAlive = true;
        $this->Email->Mailer        = "smtp";                   // set the SMTP port

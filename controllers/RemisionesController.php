@@ -29,7 +29,12 @@ class RemisionesController extends Controller {
             foreach ( $Datos_Empresas as $Datos_Empresa ) {
                $Empresa      = $Datos_Empresa['nomtercero'];
                $Destinatario = $Datos_Empresa['contacto'];
-               $this->Emails->Remisiones_Enviar_Informe_Correo (  $Empresa, $Destinatario, $NumeroGuia, $Datos_Ots  ) ;
+               $Sucursal     = $Datos_Empresa['nom_sucursal'];
+               $Email        = $Datos_Empresa['email'];
+               if ( !empty( $Sucursal  )) {
+                    $Empresa  = $Empresa . ' - ' .  $Sucursal ;
+               }
+               $this->Emails->Remisiones_Enviar_Informe_Correo (  $Empresa, $Destinatario, $NumeroGuia, $Datos_Ots , $Email  ) ;
             }
 
 
