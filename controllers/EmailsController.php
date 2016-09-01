@@ -51,8 +51,8 @@
 
         $this->Email->Body    = $this->Unir_Partes_Correo ( $Texto_Correo ) ;
 
-        $this->Email->AddAddress( $Email  );
-        $this->Email->AddCC("Serviclientes@cripack.net");
+        $this->Email->AddAddress( 'jhonjamesmg@hotmail.com'  );
+        //$this->Email->AddCC("Serviclientes@cripack.net");
         $Respuesta              = $this->Enviar_Correo();
 
       }
