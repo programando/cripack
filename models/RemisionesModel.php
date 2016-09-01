@@ -37,6 +37,12 @@
 				}
 
 
+				public function Despachos_Actualizar_Enviados (  )	{
+						/** ACTUALIZA LOS DESPACHOS QUE YA FUERON ENVIADOS **/
+						$Datos_Ots              = $this->Db->Ejecutar_Sp("remisiones_despachos_actualizar_emails_enviados()");
+
+				}
+
 
 
   }

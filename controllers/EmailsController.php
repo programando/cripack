@@ -54,7 +54,7 @@
         $this->Email->AddAddress( $Email  );
         $this->Email->AddCC("Serviclientes@cripack.net");
         $Respuesta              = $this->Enviar_Correo();
-        //Debug::Mostrar( $Respuesta  );
+
       }
 
 
