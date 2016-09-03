@@ -10,7 +10,7 @@
 
 				public function Consulta_Remisiones_Informar_Email( )	{
 						/** CONSULTA DATOS DEL USUARIO CON PASSWORD + EMAIL. DESDE EL LOGIN				*/
-						$Registros               = $this->Db->Ejecutar_Sp("remisiones_despachos_consulta_datos_email_00_despachos( )");
+						$Registros                = $this->Db->Ejecutar_Sp("remisiones_despachos_consulta_datos_email_00_despachos( )");
 						$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
 						return $Registros ;
 				}
@@ -24,26 +24,24 @@
 
 				public function Datos_Enviar_x_Remesa_Datos_Empresa ( $id_remesa )	{
 						/** CONSULTA DATOS DEL USUARIO CON PASSWORD + EMAIL. DESDE EL LOGIN				*/
-						$Datos_Empresa              = $this->Db->Ejecutar_Sp("remisiones_despachos_consulta_datos_email_02_empresa( $id_remesa )");
+						$Datos_Empresa            = $this->Db->Ejecutar_Sp("remisiones_despachos_consulta_datos_email_02_empresa( $id_remesa )");
 						$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
 						return $Datos_Empresa  ;
 				}
 
 				public function Datos_Enviar_x_Remesa_Datos_Ots ( $id_remesa )	{
 						/** CONSULTA DATOS DEL USUARIO CON PASSWORD + EMAIL. DESDE EL LOGIN				*/
-						$Datos_Ots              = $this->Db->Ejecutar_Sp("remisiones_despachos_consulta_datos_email_03_ots( $id_remesa )");
+						$Datos_Ots                = $this->Db->Ejecutar_Sp("remisiones_despachos_consulta_datos_email_03_ots( $id_remesa )");
 						$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
 						return $Datos_Ots   ;
 				}
 
 
-				public function Despachos_Actualizar_Enviados (  )	{
+				public function Despachos_Actualizar_Enviados ( $id_remesa  )	{
 						/** ACTUALIZA LOS DESPACHOS QUE YA FUERON ENVIADOS **/
-						$Datos_Ots              = $this->Db->Ejecutar_Sp("remisiones_despachos_actualizar_emails_enviados()");
-
+						$Datos_Ots              = $this->Db->Ejecutar_Sp("remisiones_despachos_actualizar_emails_enviados( $id_remesa )");
 				}
 
 
 
-  }
-?>
+  }?>

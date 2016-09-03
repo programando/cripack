@@ -29,15 +29,17 @@ class RemisionesController extends Controller {
             foreach ( $Datos_Empresas as $Datos_Empresa ) {
                $Empresa      = $Datos_Empresa['nomtercero'];
                $Destinatario = $Datos_Empresa['contacto'];
-               $Sucursal     = $Datos_Empresa['nom_sucursal'];
+               $Sucursal     = trim($Datos_Empresa['nom_sucursal']);
                $Email        = $Datos_Empresa['email'];
-               if ( !empty( $Sucursal  )) {
+               if ( !empty( $Sucursal  ) && strlen($Sucursal ) > 0 ) {
                     $Empresa  = $Empresa . ' - ' .  $Sucursal ;
                }
                $this->Emails->Remisiones_Enviar_Informe_Correo (  $Empresa, $Destinatario, $NumeroGuia, $Datos_Ots , $Email  ) ;
             }
+
+          $this->Remisiones->Despachos_Actualizar_Enviados( $Id_Remesa  );
         }
-        $this->Remisiones->Despachos_Actualizar_Enviados();
+
 
     }
 
