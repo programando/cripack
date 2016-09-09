@@ -40,9 +40,7 @@
            $Tabla = $Tabla . "<td>" . trim($OT['nomestilotrabajo'])   . "</td>" ;
            $Tabla = $Tabla . "<td>" . trim($OT['referencia'] )        . "</td>" ;
            $Tabla = $Tabla . '</tr>';
-           $Kilos  = $Kilos  + $OT['kilos_reales'] ;
-           $Paquetes ++;
-
+           $Kilos  =  $OT['kilos_reales'] ;
         }
         $Paquetes        = $Paquetes - 1;
         $Texto_Correo    = str_replace("#_TABLA_#"      ,  $Tabla       , $Texto_Correo);
@@ -53,7 +51,7 @@
 
         $this->Email->AddAddress(  $Email   );
         $this->Email->AddCC("Serviclientes@cripack.net");
-        $this->Email->AddBCC("jhonjamesmg@hotmail.com");
+       // $this->Email->AddBCC("jhonjamesmg@hotmail.com");
         $Respuesta              = $this->Enviar_Correo();
 
       }
