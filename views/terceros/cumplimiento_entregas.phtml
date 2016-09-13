@@ -1,7 +1,8 @@
  <?php
 							//Debug::Mostrar( $this->data );
- 		$Dato1 = $this->data[0]['cumplimiento'];
- 		$Dato2 = $this->data[1]['cumplimiento'];
+ 		$Dato1 = round($this->data[0]['cumplimiento'],0);
+ 		$Dato2 =  round($this->data[1]['cumplimiento'],0);
+
  		if ( is_null( $Dato1 )){
  					$Dato1 = 0;
  		}
@@ -10,37 +11,42 @@
  		}
 ?>
 
+ <script src ="<?= BASE_JS ; ?>jscharts.js"         type="text/javascript"  >   </script>
 
-
- <script src ="<?= BASE_JS ; ?>Chart.min.js"         type="text/javascript"  >   </script>
 	<div class="t40 colorCri1 ff2 mb20 text-center">Cumplimiento en Entregas</div>
 
-<div >
- 		<canvas id="grafico" width="500" height="170" ></canvas>
-</div>
 
-		<script>
+<div class="text-center" id="graph"> </div>
 
-		 var e   = <?= $Dato1 ;?>;
-		 var f   =  <?= $Dato2 ;?>;
+<script type="text/javascript">
+	var $Dato1 = <?= $Dato1 ;?> ;
+	var $Dato2 = <?= $Dato2 ;?> ;
 
-		  var Datos = {
-		          labels : ['Mes Anterior', 'Este Mes'],
-		          datasets : [
-		              {
-		                  fillColor : 'rgba(91,228,146,0.6)', //COLOR DE LAS BARRAS
-		                  strokeColor : 'rgba(57,194,112,0.7)', //COLOR DEL BORDE DE LAS BARRAS
-		                  highlightFill : 'rgba(73,206,180,0.6)', //COLOR "HOVER" DE LAS BARRAS
-		                  highlightStroke : 'rgba(66,196,157,0.7)', //COLOR "HOVER" DEL BORDE DE LAS BARRAS
-		                  data : [e, f ]
-		              },
-		          ]
-		      }
+	var myData = new Array(['Mes Anterior', $Dato1], ['Este Mes', $Dato2 ] );
+				var colors = ['#AF0202', '#EC7A00' ];
+				var myChart = new JSChart('graph', 'bar');
+				myChart.setDataArray(myData);
+				myChart.colorizeBars(colors);
+				myChart.setTitle('');
+				myChart.setTitleColor('#8E8E8E');
+				myChart.setAxisNameX('Periodos');
+				myChart.setAxisNameY(' ');
+				myChart.setAxisColor('#C4C4C4');
+				myChart.setAxisNameFontSize(16);
+				myChart.setAxisNameColor('#999');
+				myChart.setAxisValuesColor('#7E7E7E');
+				myChart.setBarValuesColor('#7E7E7E');
+				myChart.setAxisPaddingTop(60);
+				myChart.setAxisPaddingRight(140);
+				myChart.setAxisPaddingLeft(150);
+				myChart.setAxisPaddingBottom(40);
+				myChart.setTextPaddingLeft(105);
+				myChart.setTitleFontSize(11);
+				myChart.setBarBorderWidth(1);
+				myChart.setBarBorderColor('#C4C4C4');
+				myChart.setBarSpacingRatio(50);
+				myChart.setGrid(false);
+				myChart.setSize(600, 300);
 
-		      var contexto = document.getElementById('grafico').getContext('2d');
-
-		      $Algo = new Chart(contexto).Bar(Datos, { responsive : true });
-
-
-		</script>
-
+				myChart.draw();
+</script>
