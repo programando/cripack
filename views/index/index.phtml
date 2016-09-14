@@ -1,29 +1,28 @@
-<div class="ionix allion" style="background-image:url(public/images/13177877643.jpg); background-size:cover;">
-    <div class="generalSpecial hH" style="overflow:hidden">
-    
-    
+<div class="ionix allion" >
 
-  
-        <div class="tabAll" style="position:relative;">
-        	
-            <div class="tabIn" style="width:100px; background:url(public/images/false1.png)"></div>
-            <div class="tabIn taC bCri1">
+	<div class="tabAll">
+    	<div class="tabIn" style="background:url(public/images/13177877643.jpg); background-size:cover;">
+        	<div class="w500 mAUTO taC p40" style="background:url(public/images/shad.png); background-size:cover;">
 
-                <img src="<?= BASE_URL ; ?>public/images/logo.png" class="mb20" alt="Cripack S.A.S." />
-                <div class="colorfff t20 ff0 mb10">¡Bienvenidos!</div>
-                <div class="colorfff t14 ff0 mb30">Regístrese o ingrese para hacer seguimiento a sus servicios y procesos.</div>
+                <img src="<?= BASE_URL ; ?>public/images/logo.png" class="mb10" alt="Cripack S.A.S." />
+                
+                
 
-                <div class="botonoes">
+                <div class="botonoes dN">
                     <br><br>
                     <button class="colorCri1 bfff bHaaa p1020 rr10 ff2 bRegistro" type="submit">Registrarme</button> &nbsp;&nbsp;
                     <button class="colorCri1 bfff bHaaa p1020 rr10 ff2 bIngreso" type="submit">Ingresar</button>
                 </div>
 
-                <br><br>
 
-                <form class="dN dIngreso form-login " id="form-login" name="form-login" method="post" action="">
-                    <div class="w500 mAUTO colorfff">
-                        <div class="row">
+                <form class="dIngreso form-login " id="form-login" name="form-login" method="post" action="">
+                
+                	<div class="colorfff t16 ff0 mb30">
+                        Ingrese para hacer seguimiento a sus servicios y procesos.
+                    </div>
+                
+                    <div class="colorfff">
+                        <div class="row t12">
                             <input type="hidden" value="1" name="Aceptar" />
                             <div class="col-sm-3 col-xs-12 vcenter taL mb5">
                                 <label>E-mail :</label>
@@ -46,23 +45,19 @@
                             </div>
 
                             <div class="col-sm-12 col-xs-12">
-                                <!--  <button  class="colorCri1 bfff bHaaa t20 p1025 rr10 ff2" >Ingresar</button>     -->
-                                <button id="btn-ingresar" type="button" class="btn btn-success btn-md btn-login">Iniciar Sesión</button>
+                                 <button type="button" id="btn-ingresar"  class="colorCri1 bfff bHaaa t16 p1025 rr10 ff2" >Ingresar</button>     
+                                 <!--<button class="btn btn-success btn-md btn-login">Iniciar Sesión</button>-->
                             </div>
 
                         </div>
                         <br>
-                        <div class="t10 taC bRegistro cP">No me encuentro registrado</div>
+                        <div class="t12 taC bRegistro cP">Aún no estoy registrado, <strong>¡Registrarme!</strong></div>
                     </div>
                 </form>
 
-
-
-
-
                 <form class="dN dRegistro form-login " id="form-login" name="form-login" method="post" action="">
-                    <div class="w500 mAUTO colorfff">
-                        <div class="row">
+                    <div class="colorfff">
+                        <div class="row t12">
                             <input type="hidden" value="1" name="Aceptar" />
                             <div class="col-sm-3 col-xs-12 vcenter taL mb5">
                                 <label>ID / NIT:</label>
@@ -109,14 +104,15 @@
 
                         </div>
                         <br>
-                        <div class="t10 taC bIngreso cP">Ya estoy registrado, ¡Ingresar!</div>
+                        <div class="t12 taC bIngreso cP">Ya estoy registrado, <strong>¡Ingresar!</strong></div>
                     </div>
                 </form>
 
-            </div>
-            <div class="tabIn" style="width:100px; background:url(public/images/false2.png)"></div>
-        </div>
-    </div>
+                
+			</div>
+		</div>
+	</div>
+    
     <?php include ( VENTANAS_MODALES .'mensaje_error.php') ;?>
 </div>
 

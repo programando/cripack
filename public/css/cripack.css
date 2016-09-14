@@ -26,6 +26,7 @@ a									{ outline:none !important; }
 .tab25								{ display:table-cell; width:25%; vertical-align:middle; position:relative; }
 .tab30								{ display:table-cell; width:30%; vertical-align:middle; position:relative; }
 .tab32								{ display:table-cell; width:32%; vertical-align:middle; position:relative; }
+.tab40								{ display:table-cell; width:40%; vertical-align:middle; position:relative; }
 .tab50								{ display:table-cell; width:50%; vertical-align:middle; position:relative; }
 .tab70								{ display:table-cell; width:70%; vertical-align:middle; position:relative; }
 .tab80								{ display:table-cell; width:80%; vertical-align:middle; position:relative; }

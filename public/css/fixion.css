@@ -122,7 +122,9 @@
 }
 
 .w500								{ width:500px; }
+.w400								{ width:400px; }
 .w100p								{ width:100%; }
+.max50								{ max-width:50%; }
 .max70								{ max-width:70%; }
 .max90								{ max-width:90%; }
 .max80								{ max-width:80%; }
