@@ -17,6 +17,9 @@ class RemisionesController extends Controller {
 
 
     public function Remisiones_Informar_Clientes (){
+      /*  SEPTIEMBRE 05 2016
+      **      ENVIA CORREOS A PARTIR DE LAS GUÍAS DE TCC GENERADAS EN EL SISTEMA
+      */
 
         $Remesas = $this->Remisiones->Consulta_Remisiones_Informar_Email();                             //    00
         foreach ( $Remesas as $Remesa ) {
@@ -27,24 +30,44 @@ class RemisionesController extends Controller {
             $Datos_Ots      = $this->Remisiones->Datos_Enviar_x_Remesa_Datos_Ots     ( $Id_Remesa );     //     03
 
             foreach ( $Datos_Empresas as $Datos_Empresa ) {
-               $Empresa      = $Datos_Empresa['nomtercero'];
-               $Destinatario = $Datos_Empresa['contacto'];
-               $Sucursal     = trim($Datos_Empresa['nom_sucursal']);
-               $Email        = $Datos_Empresa['email'];
-               if ( !empty( $Sucursal  ) && strlen($Sucursal ) > 0 ) {
-                    $Empresa  = $Empresa . ' - ' .  $Sucursal ;
-               }
+               $Destinatario = trim( $Datos_Empresa['contacto'] );
+               $Email        = trim( $Datos_Empresa['email'] );
+               $Empresa      = $this->Unir_Empresa_Sucursal (  $Datos_Empresa['nomtercero'], $Datos_Empresa['nom_sucursal'] );
                $this->Emails->Remisiones_Enviar_Informe_Correo (  $Empresa, $Destinatario, $NumeroGuia, $Datos_Ots , $Email  ) ;
             }
 
           $this->Remisiones->Despachos_Actualizar_Enviados( $Id_Remesa  );
         }
+    }// Fin  Remisiones_Informar_Clientes
 
 
-    }
+    public function Notificaciones_Alternas_Remisiones() {
+      /* SEPTIEMBRE 20 2016
+      **    ENVIA CORREOS A LOS CLIENTES QUE SE LES REMISIONA PERO SUS DESPACHOS SE ENVÍAS A BOGOTÁ PARA QUE DESDE ALLI
+      **    SEAN ENTREGADOS
+      */
+      $Remisiones = $this->Remisiones->Notificacion_Clientes_Datos_Remision();
+      foreach ( $Remisiones as $Remision ) {
+            $Destinatario = trim( $Remision['contacto'] );
+            $Email        = trim( $Remision['email'] );
+            $NumeroGuia   = $Remision['nro_guia'] ;
+            $Empresa      = $this->Unir_Empresa_Sucursal (  $Remision['nomtercero'], $Remision['nom_sucursal'] );
+            $Datos_Ots    = $this->Remisiones->Notificacion_Clientes_Datos_Remision_Ots     ( $Remision['idremision'] );
+            $this->Emails->Remisiones_Enviar_Informe_Correo (  $Empresa, $Destinatario, $NumeroGuia, $Datos_Ots , $Email  ) ;
+      }// Fin Foreach Remisiones
+    }// Fin Notificaciones_Alternas_Remisiones
 
 
-}
+    private function Unir_Empresa_Sucursal($Empresa, $Sucursal ){
+         $Sucursal = trim (  $Sucursal );
+         $Empresa  = trim ( $Empresa   ) ;
 
-?>
+        if ( !empty( $Sucursal  ) && strlen($Sucursal ) > 0 ) {
+                $Empresa  = $Empresa . ' - ' .  $Sucursal ;
+           }
+           return trim( $Empresa ) ;
+    }// fin Unir_Empresa_Sucursal
+
+
+}?>
 

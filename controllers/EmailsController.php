@@ -42,18 +42,21 @@
            $Tabla = $Tabla . '</tr>';
            $Kilos  =  $OT['kilos_reales'] ;
         }
-        $Paquetes        = $Paquetes - 1;
         $Texto_Correo    = str_replace("#_TABLA_#"      ,  $Tabla       , $Texto_Correo);
         $Texto_Correo    = str_replace("#_PAQUETES_#"   ,  $Paquetes    , $Texto_Correo);
-        $Texto_Correo    = str_replace("#_KILOS_#"      ,  $Kilos       , $Texto_Correo);
 
+        if ( $Kilos > 0 ) {
+            $TextoKilos = "Total : <strong> $Paquetes paquetes/unidades </strong> con un peso aproximado de : <strong> $Kilos Kilos. </strong>";
+        }else{
+          $TextoKilos = '';
+        }
+
+        $Texto_Correo    = str_replace("#_KILOS_#"      ,  $TextoKilos      , $Texto_Correo);
         $this->Email->Body    = $this->Unir_Partes_Correo ( $Texto_Correo ) ;
 
-        $this->Email->AddAddress(  $Email   );
+        $this->Email->AddAddress( $Email  );
         $this->Email->AddCC("Serviclientes@cripack.net");
-       // $this->Email->AddBCC("jhonjamesmg@hotmail.com");
         $Respuesta              = $this->Enviar_Correo();
-
       }
 
 
