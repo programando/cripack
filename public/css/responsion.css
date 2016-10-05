@@ -44,8 +44,8 @@
 		font-size:40px !important;
 		line-height:40px !important;
 	}
-	ul.navbar-nav						{ width:440px !important; }
-	.navbar-right .t16 					{ font-size:12px !important; padding:10px 8px; }
+	ul.navbar-nav						{ width:500px !important; }
+	.navbar-right .t16 					{ font-size:12px !important; padding:0 4px; }
 
 }
 
@@ -73,13 +73,16 @@
 	
 	.pLR40_oPC 							{ padding:0 40px; }
 	
+	.menion								{ width:100%; z-index:100; position:fixed; height:84px; top:0; -webkit-box-shadow: 0 0 7px 3px #333; box-shadow: 0 0 7px 3px #333; }
+
+	.menuion .navbar-default 			{  background-color:transparent; border:none; }
 	.menuion .navbar-brand				{ padding:0; }
 	.menuion .navbar-nav				{ }
 	.menuion .navbar-nav > li			{ height:84px; vertical-align:middle; display:table; }
 	.menuion .navbar-nav > li:hover		{ }
 	.menuion .navbar-nav > li.active	{ background:#fff; }
 	.menuion .navbar-nav > li > a		{ color:#FFF; height:84px; display:table-cell; vertical-align:middle; }
-	.menuion .navbar-nav > li > a:hover	{ background-color:transparent; }
+	.menuion .navbar-nav > li > a:hover	{ background-color:#050c4b; color:#eee }
 	.menuion .navbar-nav > li.active a	{ }
 	.menuion .navbar-collapse			{ padding:0; }
 	
@@ -97,11 +100,13 @@
 	.onlySmartBoo						{ }
 	.onlyPCBoo							{ display:none !important; }
 
+	.menion								{ width:100%; z-index:100; position:fixed; height:84px; top:0; -webkit-box-shadow: 0 0 7px 3px #333; box-shadow: 0 0 7px 3px #333; }
+	.menuion .navbar-default 			{  background-color:transparent; border:none; }
 	.navbar-header						{ padding:0; margin:0; border:0; height:94px; }
 	.navbar-toggle						{ background-color:; margin:20px 0; }
 	.menuion .navbar-brand				{ padding:0; }
 	.menuion .navbar-brand img			{ height:60px; margin-top:18px; }
-	.menuion .navbar-nav				{ background:#FFF; height:84px; margin:0; border:0; width:100%; }	
+	.menuion .navbar-nav				{ background:#eee; height:auto; margin:0; border:0; width:100%; }	
 	.menuion .navbar-nav > li			{ background:; display:table !important; width:100% !important; }
 	.menuion .navbar-nav > li:hover		{ }
 	.menuion .navbar-nav > li.active	{ background:#fff; }

@@ -252,7 +252,7 @@ var Ion = {
 		var ancho = $(window).width();
 
 		$(".allion").height(alto);
-		$(".allionIn").height(alto-164);
+		$(".allionIn").height(alto-84-40);
 
 
 	},

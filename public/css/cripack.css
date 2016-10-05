@@ -33,6 +33,9 @@ a									{ outline:none !important; }
 
 
 .bHaaa:hover 						{ background-color:#aaa; }
+.inpG								{ width:100%; max-width:500px; }
+.btnIn1								{ border:solid 3px #20286d; display:inline-block; }
+
 
 
 
