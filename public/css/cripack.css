@@ -34,5 +34,8 @@ a									{ outline:none !important; }
 
 .bHaaa:hover 						{ background-color:#aaa; }
 
+.tablas		{ width:35%; height:auto;display:table ;}
+.tablas thead { color: red; }
+
 
 

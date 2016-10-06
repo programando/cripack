@@ -6,6 +6,9 @@
 	 */
 class TercerosController extends Controller
 {
+
+
+
     public function __construct()  {
         parent::__construct();
         $this->Terceros            = $this->Load_Model('Terceros');
@@ -19,14 +22,85 @@ class TercerosController extends Controller
     }
 
 
+
+    public function estado_ordenes_trabajo (){
+      /*  OCTUBRE 03 DE 2016
+              CONSULTA Y MUESTRA EL ESTADO DE LAS ORDENES DE TRABAJO DEL UN CLIENTE. ES EL TABLERO DE PRODUCCIÓN
+      */
+          $idtercero                     = Session::Get('idtercero') ;
+          //$idtercero                     = 668;
+          $this->View->Ots               = $this->Terceros->Consulta_Tablero_Produccion( $idtercero ) ; // Paso 01 Conformación Tabla temporal
+
+          $this->View->Ots               = $this->estado_ordenes_trabajo_ots_unicas ( $idtercero );
+          $this->View->CantidadRegistros = $this->Terceros->Cantidad_Registros ;
+
+         $this->View->Mostrar_Vista('tablero_produccion');
+    }
+
+    public function estado_ordenes_trabajo_ots_unicas( $idtercero  ) {
+
+      $DatosTablero = array( array('numero_ot'=>0,'referencia'=>'', 'nomestilotrabajo'=>'','nomtipotrabajo'=>'',
+                            'labor1'=>'', 'labor2'=>'', 'labor3'=>'', 'labor4'=>'', 'labor5'=>'',
+                            'labor6'=>'', 'labor7'=>'', 'labor8'=>'', 'labor9'=>'', 'labor10'=>'',
+                            'color1'=>'', 'color2'=>'', 'color3'=>'', 'color4'=>'', 'color5'=>'',
+                            'color6'=>'', 'color7'=>'', 'color8'=>'', 'color9'=>'', 'color10'=>''
+
+                             ));
+      $Ots_Unicas   = $this->Terceros->Consulta_Tablero_Produccion_Ots_Unicas ( $idtercero  );
+      $I            = 0;
+      foreach  ($Ots_Unicas as $Ot_Unica ) {
+          $DatosTablero[$I]['numero_ot']        = $Ot_Unica['numero_ot'];
+          $DatosTablero[$I]['referencia']       = trim( $Ot_Unica['referencia']       );
+          $DatosTablero[$I]['nomestilotrabajo'] = trim( $Ot_Unica['nomestilotrabajo'] );
+          $DatosTablero[$I]['nomtipotrabajo']   = trim( $Ot_Unica['nomtipotrabajo'] );
+          //CONSULTA LAS LABORES DE LA OT
+          //-------------------------------
+          $IdLabor = 1;
+          $Labores = $this->Terceros->Consulta_Tablero_Produccion_Labores_OT( $Ot_Unica['idregistro_ot'] ) ;
+          foreach ($Labores  as $Labor) {
+              $Anio_Inicio = $Labor['anio_inicio'];
+              $Anio_Final  = $Labor['anio_final'];
+              $IdInactiva  = $Labor['id_motivo_inactiva_ot'];
+
+              $DatosTablero[$I]["labor$IdLabor"] = $Labor['nomlabor'];
+
+              if ( $Anio_Inicio > 0 && $Anio_Final > 0){
+                $DatosTablero[$I]["color$IdLabor"] = 'VERDE';
+              }
+              if ( $Anio_Inicio == 0 && $Anio_Final == 0){
+                $DatosTablero[$I]["color$IdLabor"] = 'AZUL';
+              }
+              if ( $Anio_Inicio > 0 && $Anio_Final == 0){
+                $DatosTablero[$I]["color$IdLabor"] = 'AMARILLO';
+              }
+              if ( $IdInactiva !=0 && $IdInactiva != 7 ){
+                $DatosTablero[$I]["color$IdLabor"] = 'ROJO';
+              }
+              $IdLabor ++;
+          }// Fin For Each Labores
+          if ( $IdLabor < 11 )  {
+            $IdLabor = $IdLabor-1;
+            for ($K=$IdLabor; $K <=10 ; $K++) {
+               $DatosTablero[$I]["labor$K"] = '';
+               $DatosTablero[$I]["color$K"] = '';
+            }
+          }
+
+        $I++;
+      }
+
+      return $DatosTablero;
+    }
+
+
+
+
    public function Ingreso_Sistema_Validaciones(){
       	 Session::Set('logueado',   FALSE);
          $Email                = General_Functions::Validar_Entrada('email','TEXT');
          $Password             = General_Functions::Validar_Entrada('Password','TEXT');
          $Password             = md5($Password );
          $Registro             = $this->Terceros->Consulta_Datos_Por_Password_Email( $Password, $Email );
-
-
 
       	if (!$Registro ) {
            $Resultado_Logueo = "NO-Logueo_OK";
@@ -45,11 +119,13 @@ class TercerosController extends Controller
 
 		public function Historial() {
           $idtercero = Session::Get('idtercero') ;
-         // $idtercero = 733;
+         // $idtercero = 668;
           $this->View->Ots = $this->Terceros->Consulta_Trabajos_x_Tercero( $idtercero ) ;
           $this->View->CantidadRegistros =  $this->Terceros->Cantidad_Registros ;
 	        $this->View->Mostrar_Vista('historial');
 	    }
+
+
 
 
 
@@ -153,13 +229,9 @@ class TercerosController extends Controller
       $IdTercero = Session::Get('idtercero');
       //$IdTercero = 733 ;
       $this->View->SetCss(array('chartist'));
-
       $Registro  = $this->Terceros->Cumplimiento_Entregas ( $IdTercero );
-
-
-        $this->View->data = $Registro ;
-
-        $this->View->Mostrar_Vista('cumplimiento_entregas');
+      $this->View->data = $Registro ;
+      $this->View->Mostrar_Vista('cumplimiento_entregas');
    }
 
 

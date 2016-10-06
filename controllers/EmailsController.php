@@ -4,16 +4,55 @@
   {
   	  private $Email ;
 
-      public function __construct()
-      {
+      public function __construct() {
           parent::__construct();
           $this->Remisiones = $this->Load_Model('Remisiones');
-          $this->Email    = $this->Load_External_Library('class.phpmailer');
-          $this->Email    = new PHPMailer();
+          $this->Email      = $this->Load_External_Library('class.phpmailer');
+          $this->Email      = new PHPMailer();
       }
 
       public function Index() { }
 
+
+    public function Cotizaciones_Enviar_Notificacion ($Email, $Destinatario , $Cotizacion_H , $Cotizacion_Dt  ){
+      /*  OCTUBRE 03 DE 2016
+            REALIZA ENVÍO DE CORREOS DE NOTIFICACIÓN PARA LAS COTIZACIONES  A LAS QUE HACEMOS SEGUIMIENTO
+      */
+
+        $Empresa       =  $Cotizacion_H[0]['nomtercero'];
+        $FechaCotiz    =  Fechas::Formato( $Cotizacion_H[0]['fecha']) ;
+        $NroCotizacion = $Cotizacion_H[0]['numcotizacion'];
+        $Texto_Correo  = file_get_contents(BASE_EMAILS.'cotizaciones.phtml','r');
+
+        $Texto_Correo    = str_replace("#_EMPRESA_#"              , $Empresa        , $Texto_Correo);
+        $Texto_Correo    = str_replace("#_DESTINATARIO_#"         , $Destinatario   , $Texto_Correo);
+        $Texto_Correo    = str_replace("#_FECHA_COTIZACION_#"     , $FechaCotiz     , $Texto_Correo);
+        $Texto_Correo    = str_replace("#_NUMERO_COTIZACION_#"    , $NroCotizacion  , $Texto_Correo);
+
+         $Tabla    = '';
+
+        foreach ($Cotizacion_Dt  as $CotizDt) {
+
+           $Tabla =  $Tabla ."<tr>" ;
+
+           $Tabla = $Tabla . "<td>" . trim( $CotizDt['referencia']        )    . "</td>" ;
+           $Tabla = $Tabla . "<td>" . trim( $CotizDt['nomestilotrabajo']  )    . "</td>" ;
+           $Tabla = $Tabla . "<td>" . trim( $CotizDt['nomtipotrabajo']    )    . "</td>" ;
+           $Tabla = $Tabla . "<td>" . trim( $CotizDt['nommaterial']       )    . "</td>" ;
+           $Tabla = $Tabla . "<td style='text-align: center'>" . trim( $CotizDt['cabida']            )    . "</td>" ;
+           $Tabla = $Tabla . "<td style='text-align: center'>" . trim( $CotizDt['cantidad']            )    . "</td>" ;
+           $Tabla = $Tabla . "<td style='text-align: center'>" . trim( $CotizDt['encauche']            )    . "</td>" ;
+           $Tabla = $Tabla . "<td>" . Numeric_Functions::Formato_Numero( $CotizDt['vr_precio_vta_dado'] )                . "</td>" ;
+           $Tabla = $Tabla . '</tr>';
+        }
+        $Texto_Correo       = str_replace("#_TABLA_#"      ,  $Tabla       , $Texto_Correo);
+        $this->Email->Body  = $this->Unir_Partes_Correo ( $Texto_Correo ) ;
+
+        $this->Configurar_Cuenta('Seguimiento Cotización Nro.: ' .$NroCotizacion  . ' Cripack S.A.S '   );
+        $this->Email->AddAddress( $Email  );
+        $this->Email->AddCC("Serviclientes@cripack.net");
+        $Respuesta   = $this->Enviar_Correo();
+    }
 
 
 
@@ -40,7 +79,7 @@
            $Tabla = $Tabla . "<td>" . trim($OT['nomestilotrabajo'])   . "</td>" ;
            $Tabla = $Tabla . "<td>" . trim($OT['referencia'] )        . "</td>" ;
            $Tabla = $Tabla . '</tr>';
-           $Kilos  =  $OT['kilos_reales'] ;
+           $Kilos =  $OT['kilos_reales'] ;
         }
         $Texto_Correo    = str_replace("#_TABLA_#"      ,  $Tabla       , $Texto_Correo);
         $Texto_Correo    = str_replace("#_PAQUETES_#"   ,  $Paquetes    , $Texto_Correo);
@@ -58,6 +97,10 @@
         $this->Email->AddCC("Serviclientes@cripack.net");
         $Respuesta              = $this->Enviar_Correo();
       }
+
+
+
+
 
 
 
