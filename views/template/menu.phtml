@@ -1,20 +1,42 @@
 <div class="ionix allion">
-    <div class="tab bCri1" style="height:84px;">
-        <div class="tabIn pLR40_oPC taC_oS">
-        	<a href="<?=BASE_URL ;?>index"><img src="<?= BASE_URL ; ?>public/images/logo.png" class="" alt="Cripack S.A.S." />
-            </a>
+
+
+    <div class="bCri1 menion">
+        <div class="pLR10 menuion">
+
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target=".navbar-ex1-collapse">
+                      <span class="sr-only">Desplegar navegación</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="<?=BASE_URL ;?>index"><img src="<?= BASE_URL ; ?>public/images/logo.png" class="" alt="Cripack S.A.S." /></a>
+                </div>
+
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+
+                      <li class="aa1"><a class="tU t16 ff2" href="<?=BASE_URL ;?>terceros/historial">Historial de OT's</a></li>
+                      <li class="aa1"><a class="tU t16 ff2" href="<?=BASE_URL ;?>terceros/estado_ordenes_trabajo">Estado OT's</a></li>
+                      <li class="aa1"><a class="tU t16 ff2" href="<?=BASE_URL ;?>terceros/consulta_remisiones">Remisiones</a></li>
+                      <li class="aa1"><a class="tU t16 ff2" href="<?=BASE_URL ;?>terceros/Cumplimiento_Entregas" >Cumplimientos</a></li>
+                      <li class="aa1"><a class="tU t16 ff2" href="<?=BASE_URL ;?>terceros/Contacto">Contacto</a></li>
+                      <li class="aa1"><a class="tU t16 ff2" href="<?=BASE_URL ;?>Index/Cerrar_Sesion"><i class="glyphicon glyphicon-remove"></i></a></li>
+
+                    </ul>
+                </div>
+            </nav>
+
         </div>
+    </div>
 
-        <a class="tabIn colorfff ff2 tU taC" style="width:12%;" href="<?=BASE_URL ;?>terceros/historial">Historial de OT's</a>
-        <a class="tabIn colorfff ff2 tU taC" style="width:12%;" href="<?=BASE_URL ;?>terceros/estado_ordenes_trabajo">Estado OT's</a>
-        <a class="tabIn colorfff ff2 tU taC" style="width:12%;" href="<?=BASE_URL ;?>terceros/consulta_remisiones">Remisiones</a>
-        <a class="tabIn colorfff ff2 tU taC" style="width:12%;" href="<?=BASE_URL ;?>terceros/cumplimiento_entregas" >Cumplimientos</a>
-        <a class="tabIn colorfff ff2 tU taC" style="width:12%;" href="<?=BASE_URL ;?>terceros/contacto">Contacto</a>
-        <a class="tabIn colorfff ff2 tU taC" style="width:4%;" href="<?=BASE_URL ;?>Index/Cerrar_Sesion"><i class="glyphicon glyphicon-remove"></i></a>
-
-	</div>
+    <div style="height:84px;"></div>
 
     <div class="taC p20 taL">
         <?= $ContenidoBody; ?>
     </div>
+
 </div>
