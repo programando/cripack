@@ -33,9 +33,14 @@
 				}
 
 
-				public function Despachos_Actualizar_Enviados ( $id_remesa  )	{
+				public function Despachos_Actualizar_Enviados ( $id_remesa=0,  $idregistro = 0 )	{
 						/** ACTUALIZA LOS DESPACHOS QUE YA FUERON ENVIADOS **/
-						$Datos_Ots              = $this->Db->Ejecutar_Sp("remisiones_despachos_actualizar_emails_enviados( $id_remesa )");
+						if ( $id_remesa > 0 ){
+									$Datos_Ots              = $this->Db->Ejecutar_Sp("remisiones_despachos_actualizar_emails_enviados( $id_remesa )");
+								}
+						if ( $idregistro > 0 ) {
+									$Datos_Ots              = $this->Db->Ejecutar_Sp("remisiones_despachos_actualizar_remisiones_enviadas( $idregistro )");
+						}
 				}
 
 				public function Notificacion_Clientes_Datos_Remision (   )	{

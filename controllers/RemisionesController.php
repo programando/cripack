@@ -36,7 +36,7 @@ class RemisionesController extends Controller {
                $this->Emails->Remisiones_Enviar_Informe_Correo (  $Empresa, $Destinatario, $NumeroGuia, $Datos_Ots , $Email  ) ;
             }
 
-          $this->Remisiones->Despachos_Actualizar_Enviados( $Id_Remesa  );
+          $this->Remisiones->Despachos_Actualizar_Enviados( $Id_Remesa ,0 );
         }
     }// Fin  Remisiones_Informar_Clientes
 
@@ -48,13 +48,18 @@ class RemisionesController extends Controller {
       */
       $Remisiones = $this->Remisiones->Notificacion_Clientes_Datos_Remision();
       foreach ( $Remisiones as $Remision ) {
+            $IdRegistro   = $Remision['idregistro']
             $Destinatario = trim( $Remision['contacto'] );
             $Email        = trim( $Remision['email'] );
             $NumeroGuia   = $Remision['nro_guia'] ;
             $Empresa      = $this->Unir_Empresa_Sucursal (  $Remision['nomtercero'], $Remision['nom_sucursal'] );
             $Datos_Ots    = $this->Remisiones->Notificacion_Clientes_Datos_Remision_Ots     ( $Remision['idremision'] );
             $this->Emails->Remisiones_Enviar_Informe_Correo (  $Empresa, $Destinatario, $NumeroGuia, $Datos_Ots , $Email  ) ;
+
+            $this->Remisiones->Despachos_Actualizar_Enviados( 0 , $IdRegistro );
+
       }// Fin Foreach Remisiones
+
     }// Fin Notificaciones_Alternas_Remisiones
 
 
