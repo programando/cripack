@@ -98,6 +98,7 @@
         $this->Email->AddCC("Serviclientes@cripack.net");
         $this->Email->AddCC("jhonjamesmg@hotmail.com");
         $Respuesta              = $this->Enviar_Correo();
+        return  $Respuesta;
       }
 
 

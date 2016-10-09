@@ -54,9 +54,10 @@ class RemisionesController extends Controller {
             $NumeroGuia   = $Remision['nro_guia'] ;
             $Empresa      = $this->Unir_Empresa_Sucursal (  $Remision['nomtercero'], $Remision['nom_sucursal'] );
             $Datos_Ots    = $this->Remisiones->Notificacion_Clientes_Datos_Remision_Ots     ( $Remision['idremision'] );
-            $this->Emails->Remisiones_Enviar_Informe_Correo (  $Empresa, $Destinatario, $NumeroGuia, $Datos_Ots , $Email  ) ;
-
-            $this->Remisiones->Despachos_Actualizar_Enviados( 0 , $IdRegistro );
+            $Respuesta = $this->Emails->Remisiones_Enviar_Informe_Correo (  $Empresa, $Destinatario, $NumeroGuia, $Datos_Ots , $Email  ) ;
+            if ( $Respuesta == 'correo_OK'){
+              $this->Remisiones->Despachos_Actualizar_Enviados( 0 , $IdRegistro );
+            }
 
       }// Fin Foreach Remisiones
 
