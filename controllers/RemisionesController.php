@@ -48,7 +48,7 @@ class RemisionesController extends Controller {
       */
       $Remisiones = $this->Remisiones->Notificacion_Clientes_Datos_Remision();
       foreach ( $Remisiones as $Remision ) {
-            $IdRegistro   = $Remision['idregistro']
+            $IdRegistro   = $Remision['idregistro'];
             $Destinatario = trim( $Remision['contacto'] );
             $Email        = trim( $Remision['email'] );
             $NumeroGuia   = $Remision['nro_guia'] ;
