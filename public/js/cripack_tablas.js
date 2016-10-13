@@ -1,7 +1,8 @@
+
 $('#tablas').DataTable( {
 
-     "dom": '<"bottom">rt<"bottom"lpif><"clear">',
-
+     "dom": '<"top"i>rt<"bottom"ftlp><"clear">',
+     "order": [[ 0, "desc" ]],
      "language": {
                 "sProcessing":    "Procesando...",
      "sLengthMenu":     "Mostrar _MENU_ registros",

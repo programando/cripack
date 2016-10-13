@@ -21,27 +21,53 @@
 					<th>Cantidad</th>
 					<th>Cabida</th>
 					<th>Estado</th>
+					<th>#Factura</th>
+					<th>#Remisión</th>
+					<th>#Guía</th>
 				</tr>
 			</thead>
 			<tbody>
 
 				<?php foreach ( $this->Ots as $OT )   :?>
 
-					<?php $fecha_solicitud = Fechas::Formato ( $OT['fecha_solicitud'] ) ;?>
-					<?php if ( $OT['terminada'] == TRUE ){
-						$Estado = 'Terminada';
-					}else{
-							$Estado = 'En Proceso';
-					}
+					<?php
+							$NroFactura = $OT['numero_factura'] ;
+							if ( !is_numeric( $NroFactura ) ) {
+									$NroFactura ='N/A';
+							}
+							$fecha_solicitud         = Fechas::Formato ( $OT['fecha_solicitud'] ) ;
+							$NumeroGuia                = $OT['nro_guia'];
+							$IdTercero_Transportador = $OT['idtercero_transportador'];
+
+							if ( $OT['terminada'] == TRUE ){
+								$Estado = 'Terminada';
+							}else{
+									$Estado = 'En Proceso';
+							}
+							if ( $OT['activa'] =='0' ){ $Estado = 'Anulada';}
 					?>
+
 				<tr>
-					<td> <?= $OT['numero_ot']  ?>           </td>
-					<td> <?= $fecha_solicitud  ?>     </td>
-					<td> <?= $OT['referencia']  ?>     </td>
+					<td> <?= $OT['numero_ot']  ?>        </td>
+					<td> <?= $fecha_solicitud  ?>     			</td>
+					<td> <?= $OT['referencia']  ?>     		</td>
 					<td> <?= trim($OT['nomestilotrabajo']) . ' - ' . trim($OT['nomtipotrabajo']) ?>     </td>
-					<td> <?= $OT['cantidad']  ?>     </td>
-					<td> <?= $OT['cabida']  ?>     </td>
-					<td> <?= $Estado ;?> </td>
+					<td> <?= $OT['cantidad']  ?>     				</td>
+					<td> <?= $OT['cabida']  ?>     						</td>
+					<td> <?= $Estado ;?> 																</td>
+					<td> <?= $NroFactura;?> 													</td>
+
+					<td> <?= $OT['nro_remision'];?> </td>
+					<?php if ( $IdTercero_Transportador != 856 ) : ;?>
+								<td> <?= 	$NumeroGuia;?> </td>
+							<?php else : ?>
+								<td> <a target="_blank" href="https://www.tcc.com.co/rastreo?tipo=RE&documento=<?= $NumeroGuia ; ?> "> TCC-<?=	$NumeroGuia;?> </a></td>
+					<?php endif ;?>
+
+
+
+
+
 				 </tr>
 				<?php endforeach ;?>
 
