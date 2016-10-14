@@ -10,6 +10,12 @@
 
 
 					public function Consulta_Tablero_Produccion ( $idtercero )	{
+						Debug::Mostrar( $idtercero );
+						Debug::Mostrar( Session::Get('idtercero') );
+						if ( empty ( $idtercero  )) {
+									$idtercero                     = Session::Get('idtercero') ;
+							}
+
 						$Ots                = $this->Db->Ejecutar_Sp("ordenes_trabajo_consulta_estado_procesos_labores_web_cliente( $idtercero )");
 						$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
 						return $Ots;
