@@ -25,6 +25,7 @@ class Database extends PDO
     }
 
     public function Ejecutar_Sp($nombre_sp_y_parametros) {
+        Debug::Mostrar( Session::Get('idtercero') );
         Debug::Mostrar($nombre_sp_y_parametros);
       try {
           $this->Cantidad_Registros = 0;

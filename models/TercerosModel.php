@@ -10,8 +10,8 @@
 
 
 					public function Consulta_Tablero_Produccion ( $idtercero )	{
-						Debug::Mostrar( $idtercero );
-						Debug::Mostrar( Session::Get('idtercero') );
+
+
 						if ( empty ( $idtercero  )) {
 									$idtercero                     = Session::Get('idtercero') ;
 							}
