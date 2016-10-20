@@ -9,9 +9,11 @@
 	</div>
 
 <?php else :?>
+
+<div class="p30">
 	<div class="t40 colorCri1 ff2 mb20">Estado Órdenes de Producción</div>
 
-	<div class="table-responsive" style ="overflow-y: scroll; height: 400px;" >
+	<div class="table-responsive" style ="overflow-y:auto; min-height:200px;" >
 
 
 				<table id="estado_ot" class="table table-hover display" cellspacing="0" width="90%">
@@ -262,18 +264,19 @@
 
 	</div>
 <br>
-<br>
-			Convenciones de color utilizadas para labores en las Ot's <br>
-					<table   cellspacing="10" class="tablas	table-hover t14">
-			<thead >
-						<tr>
-								<th style="background-color: #1EFF37; color: black; font-weight:normal;" >Finalizadas </th>
-								<th style="background-color: #FFFD7C; color: black; font-weight:normal;"   >Iniciadas </th>
-								<th style="background-color: #001860; color: white; font-weight:normal;"   >Por Iniciar </th>
-								<th style="background-color: red; color: white; font-weight:normal;"   >Suspendidas </th>
-				</thead>
-	</table>
+<hr>
 
+<div class="taR">
+	<div class="mb10 dIB">Convenciones de color utilizadas para labores en las Ot's</div>
+	&nbsp;&nbsp;&nbsp;
+    <div class="dIB p510 ff2 t12" style="background-color: #1EFF37;" >Finalizadas</div>
+    <div class="dIB p510 ff2 t12" style="background-color: #FFFD7C;"   >Iniciadas </div>
+    <div class="dIB p510 ff2 t12 colorfff" style="background-color: #001860;"   >Por Iniciar </div>
+    <div class="dIB p510 ff2 t12 colorfff" style="background-color: red;"   >Suspendidas </div>
+</div>
+    
+</div>
+    
 <?php endif ;?>
 <!--
 class="t40 colorCri1 ff2 mb20"

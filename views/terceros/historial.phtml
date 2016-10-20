@@ -1,3 +1,8 @@
+<style>
+	th 			{ font-size:12px; padding-right::20px !important; }
+	td 			{ vertical-align:middle !important; font-size:12px; }
+</style>
+
 <?php if (  $this->CantidadRegistros == 0 ) :?>
 
 	<div class="allionIn">
@@ -9,6 +14,8 @@
 	</div>
 
 <?php else :?>
+
+<div class="p30">
 	<div class="t40 colorCri1 ff2 mb20">Historial de OT's</div>
 	<div class="table-responsive">
 		<table id="tablas" class="table table-hover display" cellspacing="0" width="100%">
@@ -75,6 +82,8 @@
 			</tbody>
 		</table>
 	</div>
+    
+</div>    
 <?php endif ;?>
 
 
