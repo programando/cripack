@@ -38,8 +38,8 @@
 				<?php foreach ( $this->Ots as $OT )   :?>
 
 					<?php
-							$NroFactura = $OT['numero_factura'] ;
-							if ( !is_numeric( $NroFactura ) ) {
+							$NroFactura = (int)($OT['numero_factura']) ;
+							if (  is_numeric($NroFactura) === FALSE || $NroFactura=='0') {
 									$NroFactura ='N/A';
 							}
 							$fecha_solicitud         = Fechas::Formato ( $OT['fecha_solicitud'] ) ;
@@ -82,8 +82,8 @@
 			</tbody>
 		</table>
 	</div>
-    
-</div>    
+
+</div>
 <?php endif ;?>
 
 

@@ -106,9 +106,11 @@ class TercerosController extends Controller
            $Resultado_Logueo = "NO-Logueo_OK";
          }else {
               $Resultado_Logueo = "Logueo_OK";
+              $Nombre=  explode(' ',$Registro[0]['nombre_usuario']);
               Session::Set('logueado',   TRUE);
               Session::Set('idtercero',        $Registro[0]['idtercero'] ) ;
               Session::Set('nomtercero',       $Registro[0]['nomtercero'] ) ;
+              Session::Set('nombre_usuario',    $Nombre[0] ) ;
               Session::Set('uso_web_empresa',  $Registro[0]['uso_web_empresa'] ) ;
               Session::Set('identificacion',   $Registro[0]['identificacion'] ) ;
            }

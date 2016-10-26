@@ -17,16 +17,20 @@
                 </div>
 
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
-                
+
                 	<ul class="nav navbar-nav">
-                		
-                        <li class="colorfff" style="padding:28px 0 0 50px;">
+
+                        <li class="colorfff" style="padding:30px 0 0 50px;">
                         	Bienvenido<br>
-                        	<strong>William Aragón</strong>
+
+                        	<strong><?= Session::Get('nombre_usuario') ?></strong><br>
+                          <strong><?= Session::Get('nomtercero') ?></strong>
+
+
                         </li>
-                    
+
                     </ul>
-                
+
                     <ul class="nav navbar-nav navbar-right">
 
                       <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>terceros/historial">Historial de OT's</a></li>
