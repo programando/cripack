@@ -1,0 +1,62 @@
+<style>
+ th    { font-size:14px; padding-right::20px !important; }
+ td    { vertical-align:middle !important; font-size:12px; }
+</style>
+
+<?php if (  $this->CantidadRegistros == 0 ) :?>
+
+ <div class="allionIn">
+  <div class="tabAll">
+   <div class="tabIn colorCri1 ff0 taC t30">
+    No hay registro de actividades programadas hasta la fecha.
+   </div>
+  </div>
+ </div>
+
+<?php else :?>
+
+<div class="p30">
+ <div class="t40 colorCri1 ff2 mb20">Historial de Pendientes</div>
+ <div class="table-responsive">
+  <table id="tablas1" class="table table-hover display" cellspacing="0" width="100%">
+   <thead>
+    <tr>
+
+     <th>Fecha</th>
+     <th>Operario</th>
+     <th>Máquina</th>
+     <th>Tipo Servicio</th>
+     <th>Tipo Falla/Actividad</th>
+     <th>Descripción</th>
+     <th> </th>
+
+    </tr>
+   </thead>
+   <tbody>
+
+    <?php foreach ( $this->Servicios as $Servicio )   :?>
+
+   <?php  $IdRegistro =  $Servicio['idregistro'] ;?>
+
+    <tr>
+
+     <td> <?=  Fechas::Formato ( $Servicio['fecha'] ) ; ?>       </td>
+     <td> <?= $Servicio['nomtercero']  ?>         </td>
+     <td> <?= $Servicio['nom_maquina']  ?>        </td>
+     <td> <?= $Servicio['nom_actividad']  ?>        </td>
+     <td> <?= $Servicio['nom_falla']  ?>           </td>
+     <td> <?= $Servicio['descripcion_trabajo']  ?>           </td>
+    <td> <a class="btn btn-success" role="button" href="<?=BASE_URL ;?>terceros/responder_reporte/<?=$IdRegistro?>">Responder</a> </td>
+     </tr>
+    <?php endforeach ;?>
+
+
+   </tbody>
+  </table>
+ </div>
+
+</div>
+<?php endif ;?>
+
+
+

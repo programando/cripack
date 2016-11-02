@@ -195,8 +195,35 @@ $("#btn-cumplimiento-entregas").on('click', function() {
 			});
 //
 
+//=========================================================================================================
+/// REPORTE DE PROVEEDORES ACTUALIZAR REPORTE
+//=========================================================================================================
+
+$("#btn-actualizar-reporte").on('click', function() {
+			var $Solucion      = $("#solucion_implementada").val();
+			var $Pasos         = $("#Pasos").val();
+			var $Observaciones = $("#observaciones").val();
+		 var $IdRegistro    = $(this).attr("data-idregistro");
 
 
+	 if ( $Solucion  === '' ) {
+	 				Mostrar_Mensajes( "Datos Incompletos ", 'Debe diligneciar el campo: Respuesta del proveedor');
+							return ;
+				}
+			$Parametros 	 						   = {'Solucion':$Solucion ,'Pasos':$Pasos,'Observaciones':$Observaciones, "idregistro":$IdRegistro   } ;
+			$.ajax({
+							data:  $Parametros,
+							dataType: 'text',
+							url:      '/cripack/terceros/Mantenimiento_Actualizar',
+							type:     'post',
+   				success:  function ( Respuesta ){
+
+   							if ( $.trim(Respuesta)=='OK'){
+   	 								window.location.href = "/cripack/terceros/maquinas/";
+   						}
+   				}
+					});
+});
 
 
 

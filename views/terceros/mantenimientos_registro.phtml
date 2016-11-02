@@ -1,0 +1,31 @@
+
+<div class="p30">
+ <div class="t20 colorCri1 ff2 mb10">
+ Respuesta del Proveedor
+ </div>
+
+ Descripción de la Novedad
+ <textarea class="form-control" rows="2" readonly="readonly"> <?= $this->Observaciones ;?> </textarea>
+ <br>
+
+  Respuesta del Proveedor
+ <textarea class="form-control" rows="2" id="solucion_implementada"></textarea>
+ <br>
+
+  Observaciones Adicionales
+ <textarea class="form-control" rows="2" id="observaciones"></textarea>
+ <br>
+
+  Documentación de la Solución <br>
+  <small><p>Describa de manera puntual los pasos que se llevaron a cabo para dar solución al reporte. Esta información se usará para crear un documento que quedará disponible como apoyo en situaciones posteriores.</p></small>
+ <textarea class="form-control" rows="3" id="Pasos"></textarea>
+ <br>
+
+ <a class="btn btn-success" role="button" href="#" id="btn-actualizar-reporte" data-idregistro ="<?= $this->IdRegistro ;?> ">Actualizar Reporte</a>
+
+ </div>
+
+ <?php include ( VENTANAS_MODALES .'mensaje_error.php') ;?>
+
+
+

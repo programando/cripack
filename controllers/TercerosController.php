@@ -113,6 +113,8 @@ class TercerosController extends Controller
               Session::Set('nombre_usuario',    $Nombre[0] ) ;
               Session::Set('uso_web_empresa',  $Registro[0]['uso_web_empresa'] ) ;
               Session::Set('identificacion',   $Registro[0]['identificacion'] ) ;
+              Session::Set('proveedor'      ,   $Registro[0]['proveedor'] ) ;
+              Session::Set('cliente'      ,   $Registro[0]['cliente'] ) ;
            }
 
            $Datos            = compact('Resultado_Logueo','Email');
@@ -228,16 +230,66 @@ class TercerosController extends Controller
 
 
    public function Cumplimiento_Entregas(){
-      $IdTercero = Session::Get('idtercero');
-      //$IdTercero = 733 ;
+      $IdTercero        = Session::Get('idtercero');
+      //$IdTercero      = 733 ;
       $this->View->SetCss(array('chartist'));
-      $Registro  = $this->Terceros->Cumplimiento_Entregas ( $IdTercero );
+      $Registro         = $this->Terceros->Cumplimiento_Entregas ( $IdTercero );
       $this->View->data = $Registro ;
       $this->View->Mostrar_Vista('cumplimiento_entregas');
    }
 
 
 
+   public function Maquinas(){
+       $IdTercero                     = Session::Get('idtercero');
+       //$IdTercero                     = 143 ;
+       $Registro                      = $this->Terceros->Proveedores_Consulta_Mantenimientos_Pendientes ( $IdTercero );
+       $this->View->CantidadRegistros = $this->Terceros->Cantidad_Registros ;
+       $this->View->Servicios          = $Registro ;
+       $this->View->Mostrar_Vista('mantenimientos_listado');
+
+   }
+
+   public function Responder_reporte( $idregistro ){
+
+      $Registro                  = $this->Terceros->Proveedores_Mantenimientos_Consulta_Observaciones( $idregistro );
+      $this->View->Observaciones = $Registro[0]['descripcion_trabajo'];
+      $this->View->IdRegistro    = $idregistro  ;
+      $this->View->Mostrar_Vista('mantenimientos_registro');
+   }
+
+   public function Mantenimiento_Actualizar(){
+       $solucion      = General_Functions::Validar_Entrada('Solucion','TEXT');
+       $pasos         = General_Functions::Validar_Entrada('Pasos','TEXT');
+       $observaciones = General_Functions::Validar_Entrada('Observaciones','TEXT');
+       $idregistro    = General_Functions::Validar_Entrada('idregistro','NUM');
+       $idtercero     = Session::Get('idtercero');
+
+        $solucion      = strtoupper(  $solucion );
+        $pasos         = strtoupper(  $pasos );
+        $observaciones = strtoupper(  $observaciones );
+
+
+       if ( strlen( $solucion ) > 0 ){
+          $Paso_1     = substr($pasos,0,249);
+          $Paso_2     = substr($pasos,249,249);
+          $Paso_3     = substr($pasos,500,249);
+          $Paso_4     = substr($pasos,750,249);
+          $Paso_5     = substr($pasos,1000,249);
+
+          $Datos = Compact('idregistro','solucion','observaciones','Paso_1','Paso_2','Paso_3','Paso_4','Paso_5','idtercero');
+          $this->Terceros->Proveedores_Mantenimientos_Actualizar_Respuesta( $Datos );
+          echo "OK";
+       }else{
+        echo "NO-OK";
+       }
+
+
+  //$SQL = "$idregistro, $solucion,'$observaciones', '$Paso_1', '$Paso_2','$Paso_3','$Paso_4','$Paso_5'";
+
+
+
+   }
 
 }?>
 

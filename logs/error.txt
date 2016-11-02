@@ -1,0 +1,31 @@
+[31-Oct-2016 17:17:54 America/Bogota] PHP Notice:  Undefined variable: IdRegistro in C:\xampp\htdocs\cripack\views\terceros\mantenimientos_listado.phtml on line 48
+[01-Nov-2016 14:34:20 America/Bogota] PHP Notice:  Undefined variable: IdRegistro in C:\xampp\htdocs\cripack\views\terceros\mantenimientos_registro.phtml on line 14
+[01-Nov-2016 14:34:53 America/Bogota] PHP Notice:  Undefined variable: IdRegistro in C:\xampp\htdocs\cripack\views\terceros\mantenimientos_registro.phtml on line 20
+[01-Nov-2016 14:35:09 America/Bogota] PHP Notice:  Undefined variable: IdRegistro in C:\xampp\htdocs\cripack\views\terceros\mantenimientos_registro.phtml on line 20
+[01-Nov-2016 14:35:22 America/Bogota] PHP Notice:  Undefined variable: IdRegistro in C:\xampp\htdocs\cripack\views\terceros\mantenimientos_registro.phtml on line 18
+[01-Nov-2016 14:35:42 America/Bogota] PHP Notice:  Undefined variable: IdRegistro in C:\xampp\htdocs\cripack\views\terceros\mantenimientos_registro.phtml on line 20
+[01-Nov-2016 14:35:51 America/Bogota] PHP Notice:  Undefined variable: IdRegistro in C:\xampp\htdocs\cripack\views\terceros\mantenimientos_registro.phtml on line 20
+[01-Nov-2016 14:36:39 America/Bogota] PHP Notice:  Undefined variable: IdRegistro in C:\xampp\htdocs\cripack\views\terceros\mantenimientos_registro.phtml on line 20
+[01-Nov-2016 14:36:46 America/Bogota] PHP Notice:  Undefined variable: IdRegistro in C:\xampp\htdocs\cripack\views\terceros\mantenimientos_registro.phtml on line 20
+[01-Nov-2016 14:40:17 America/Bogota] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in C:\xampp\htdocs\cripack\controllers\TercerosController.php on line 256
+[01-Nov-2016 14:40:20 America/Bogota] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in C:\xampp\htdocs\cripack\controllers\TercerosController.php on line 256
+[01-Nov-2016 14:40:21 America/Bogota] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in C:\xampp\htdocs\cripack\controllers\TercerosController.php on line 256
+[01-Nov-2016 14:40:33 America/Bogota] PHP Notice:  Undefined variable: IdRegistro in C:\xampp\htdocs\cripack\views\terceros\mantenimientos_registro.phtml on line 20
+[01-Nov-2016 15:30:03 America/Bogota] PHP Fatal error:  Cannot redeclare TercerosModel::Proveedores_Consulta_Mantenimientos_Pendientes() in C:\xampp\htdocs\cripack\models\TercerosModel.php on line 91
+[01-Nov-2016 15:30:25 America/Bogota] PHP Fatal error:  Cannot redeclare TercerosModel::Proveedores_Consulta_Mantenimientos_Pendientes() in C:\xampp\htdocs\cripack\models\TercerosModel.php on line 91
+[01-Nov-2016 15:30:41 America/Bogota] PHP Fatal error:  Cannot redeclare TercerosModel::Proveedores_Consulta_Mantenimientos_Pendientes() in C:\xampp\htdocs\cripack\models\TercerosModel.php on line 91
+[01-Nov-2016 15:30:47 America/Bogota] PHP Fatal error:  Cannot redeclare TercerosModel::Proveedores_Consulta_Mantenimientos_Pendientes() in C:\xampp\htdocs\cripack\models\TercerosModel.php on line 91
+[01-Nov-2016 15:30:51 America/Bogota] PHP Fatal error:  Cannot redeclare TercerosModel::Proveedores_Consulta_Mantenimientos_Pendientes() in C:\xampp\htdocs\cripack\models\TercerosModel.php on line 91
+[01-Nov-2016 15:30:57 America/Bogota] PHP Fatal error:  Cannot redeclare TercerosModel::Proveedores_Consulta_Mantenimientos_Pendientes() in C:\xampp\htdocs\cripack\models\TercerosModel.php on line 91
+[01-Nov-2016 15:31:10 America/Bogota] PHP Fatal error:  Cannot redeclare TercerosModel::Proveedores_Consulta_Mantenimientos_Pendientes() in C:\xampp\htdocs\cripack\models\TercerosModel.php on line 91
+[01-Nov-2016 15:31:17 America/Bogota] PHP Fatal error:  Cannot redeclare TercerosModel::Proveedores_Consulta_Mantenimientos_Pendientes() in C:\xampp\htdocs\cripack\models\TercerosModel.php on line 91
+[01-Nov-2016 15:31:22 America/Bogota] PHP Fatal error:  Cannot redeclare TercerosModel::Proveedores_Consulta_Mantenimientos_Pendientes() in C:\xampp\htdocs\cripack\models\TercerosModel.php on line 91
+[01-Nov-2016 15:32:13 America/Bogota] PHP Fatal error:  Cannot redeclare TercerosModel::Proveedores_Consulta_Mantenimientos_Pendientes() in C:\xampp\htdocs\cripack\models\TercerosModel.php on line 91
+[01-Nov-2016 15:32:46 America/Bogota] PHP Notice:  Array to string conversion in C:\xampp\htdocs\cripack\views\terceros\mantenimientos_registro.phtml on line 7
+[01-Nov-2016 15:32:46 America/Bogota] PHP Notice:  Undefined variable: IdRegistro in C:\xampp\htdocs\cripack\views\terceros\mantenimientos_registro.phtml on line 20
+[01-Nov-2016 15:33:24 America/Bogota] PHP Notice:  Undefined variable: IdRegistro in C:\xampp\htdocs\cripack\views\terceros\mantenimientos_registro.phtml on line 20
+[01-Nov-2016 15:34:10 America/Bogota] PHP Notice:  Undefined variable: IdRegistro in C:\xampp\htdocs\cripack\views\terceros\mantenimientos_registro.phtml on line 24
+[01-Nov-2016 15:34:40 America/Bogota] PHP Notice:  Undefined variable: IdRegistro in C:\xampp\htdocs\cripack\views\terceros\mantenimientos_registro.phtml on line 24
+[01-Nov-2016 16:08:15 America/Bogota] PHP Fatal error:  Call to a member function fetchall() on boolean in C:\xampp\htdocs\cripack\application\Database.php on line 33
+[01-Nov-2016 16:08:20 America/Bogota] PHP Fatal error:  Call to a member function fetchall() on boolean in C:\xampp\htdocs\cripack\application\Database.php on line 33
+[01-Nov-2016 16:09:08 America/Bogota] PHP Fatal error:  Call to a member function fetchall() on boolean in C:\xampp\htdocs\cripack\application\Database.php on line 33

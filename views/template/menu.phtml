@@ -21,7 +21,7 @@
                 	<ul class="nav navbar-nav">
 
                         <li class="colorfff" style="padding:30px 0 0 50px;">
-                        	Bienvenido<br>
+                        	Bienvenido,
 
                         	<strong><?= Session::Get('nombre_usuario') ?></strong><br>
                           <strong><?= Session::Get('nomtercero') ?></strong>
@@ -30,8 +30,9 @@
                         </li>
 
                     </ul>
+                <ul class="nav navbar-nav navbar-right">
+                  <?php if ( Session::Get('Cliente') == TRUE ) :?>
 
-                    <ul class="nav navbar-nav navbar-right">
 
                       <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>terceros/historial">Historial de OT's</a></li>
                       <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>terceros/estado_ordenes_trabajo">Estado OT's</a></li>
@@ -41,9 +42,16 @@
                       <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>terceros/Cumplimiento_Entregas" >Cumplimientos</a></li>
         -->
                       <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>terceros/Contacto">Contacto</a></li>
-                      <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>Index/Cerrar_Sesion"><i class="glyphicon glyphicon-remove"></i></a></li>
+
 
                     </ul>
+                  <?php else :?>
+
+                        <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>terceros/maquinas">Ver Reportes Pendientes</a></li>
+
+                  <?php endif ;?>
+              <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>Index/Cerrar_Sesion"><i class="glyphicon glyphicon-remove"></i></a></li>
+              </ul>
                 </div>
             </nav>
 

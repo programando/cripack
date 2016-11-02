@@ -81,8 +81,25 @@
 				}
 
 
+				public function Proveedores_Consulta_Mantenimientos_Pendientes ( $Idtercero_Proveedor  ){
+					 $Terceros                 = $this->Db->Ejecutar_Sp("mantenimiento_registro_consultar_x_proveedor ( $Idtercero_Proveedor )");
+						$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
+						return $Terceros;
+				}
 
 
+				public function Proveedores_Mantenimientos_Consulta_Observaciones ( $idregistro  ){
+					 $Registro                 = $this->Db->Ejecutar_Sp("mantenimiento_registro_consulta_observaciones ( $idregistro )");
+						$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
+						return $Registro;
+				}
+
+
+				public function  Proveedores_Mantenimientos_Actualizar_Respuesta ($Datos=Array() ){
+						extract( $Datos );
+						$SQL = "$idregistro, '$solucion','$observaciones', '$Paso_1', '$Paso_2','$Paso_3','$Paso_4','$Paso_5',$idtercero";
+						$Registro    =  $this->Db->Ejecutar_Sp("mantenimiento_registro_actualizar_respuesta(".$SQL.")");
+				}
 
 
 } ?>
