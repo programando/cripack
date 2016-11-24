@@ -11,8 +11,65 @@ class TercerosController extends Controller
 
     public function __construct()  {
         parent::__construct();
-        $this->Terceros            = $this->Load_Model('Terceros');
+        $this->Terceros = $this->Load_Model('Terceros');
+        $this->pData    = $this->Load_External_Library('/pChart/pData.class');
+        $this->pChart   = $this->Load_External_Library('/pChart/pChart.class');
     }
+
+
+   public function Cumplimiento_Entregas(){
+      $IdTercero        = Session::Get('idtercero');
+      //$IdTercero      = 733 ;
+
+      $Registro         = $this->Terceros->Cumplimiento_Entregas ( $IdTercero );
+      $Cumplimiento_0        = $Registro[0]['cumplimiento']   ;
+      $Cumplimiento_1        = $Registro[1]['cumplimiento'];
+
+        $this->DatosGrafico = new pData;
+        $this->ImgGrafico   = new pChart(800,600);
+
+       $this->DatosGrafico->AddPoint(array($Cumplimiento_0 ),"Serie1");
+       $this->DatosGrafico->AddPoint(array($Cumplimiento_1),"Serie2");
+
+       $this->DatosGrafico->AddAllSeries();
+       $this->DatosGrafico->SetAbsciseLabelSerie();
+       $this->DatosGrafico->SetSerieName("Cumplimiento Mes Pasado","Serie1");
+       $this->DatosGrafico->SetSerieName("Cumplimiento Este Mes","Serie2");
+
+
+
+       //$this->ImgGrafico->setFontProperties(APP_EXTERNAL_LIBS_PCHAR_FONTS ."tahoma.ttf",8);
+       $this->ImgGrafico->setGraphArea(25,15,800,300);
+       // $this->ImgGrafico->drawFilledRoundedRectangle(7,7,693,223,5,240,240,240);
+       //$this->ImgGrafico->drawRoundedRectangle(5,5,695,225,5,230,230,230);
+       $this->ImgGrafico->drawGraphArea(255,255,255,TRUE);
+       $this->ImgGrafico->drawScale($this->DatosGrafico->GetData(),$this->DatosGrafico->GetDataDescription(),SCALE_START0,150,150,150,TRUE,0,2,TRUE);
+       $this->ImgGrafico->drawGrid(4,FALSE,230,230,230,50);
+
+       // Draw the 0 line
+       //$this->ImgGrafico->setFontProperties(APP_EXTERNAL_LIBS_PCHAR_FONTS . "tahoma.ttf",6);
+       $this->ImgGrafico->drawTreshold(0,143,55,72,TRUE,TRUE);
+
+       // Draw the bar graph
+       $this->ImgGrafico->drawBarGraph($this->DatosGrafico->GetData(),$this->DatosGrafico->GetDataDescription(),TRUE,80);
+
+
+       // Finish the graph
+       //$this->ImgGrafico->setFontProperties(APP_EXTERNAL_LIBS_PCHAR_FONTS."tahoma.ttf",8);
+       $this->ImgGrafico->drawLegend(30,30,$this->DatosGrafico->GetDataDescription(),255,255,255);
+       //$this->ImgGrafico->setFontProperties(APP_EXTERNAL_LIBS_PCHAR_FONTS . "tahoma.ttf",10);
+       //$this->ImgGrafico->drawTitle(50,22,"Example 12",50,50,50,585);
+       $NombreImagen =   "temp_graf.png";
+       $this->ImgGrafico->Render($NombreImagen );
+
+
+      $this->View->Mostrar_Vista('cumplimiento_entregas');
+      Debug::Mostrar( APP_EXTERNAL_LIBS_PCHAR_FONTS ."tahoma.ttf");
+
+   }
+
+
+
 
     public function Index() { }
 
@@ -114,7 +171,7 @@ class TercerosController extends Controller
               Session::Set('uso_web_empresa',  $Registro[0]['uso_web_empresa'] ) ;
               Session::Set('identificacion',   $Registro[0]['identificacion'] ) ;
               Session::Set('proveedor'      ,   $Registro[0]['proveedor'] ) ;
-              Session::Set('cliente'      ,   $Registro[0]['cliente'] ) ;
+              Session::Set('Cliente'      ,   $Registro[0]['cliente'] ) ;
            }
 
            $Datos            = compact('Resultado_Logueo','Email');
@@ -229,14 +286,6 @@ class TercerosController extends Controller
    } // Fin Consulta_Remsiones
 
 
-   public function Cumplimiento_Entregas(){
-      $IdTercero        = Session::Get('idtercero');
-      //$IdTercero      = 733 ;
-      $this->View->SetCss(array('chartist'));
-      $Registro         = $this->Terceros->Cumplimiento_Entregas ( $IdTercero );
-      $this->View->data = $Registro ;
-      $this->View->Mostrar_Vista('cumplimiento_entregas');
-   }
 
 
 

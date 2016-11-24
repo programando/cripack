@@ -1,4 +1,6 @@
+
 <div class="ionix allion">
+
 
 
     <div class="bCri1 menion">
@@ -30,6 +32,7 @@
                         </li>
 
                     </ul>
+
                 <ul class="nav navbar-nav navbar-right">
                   <?php if ( Session::Get('Cliente') == TRUE ) :?>
 
@@ -39,18 +42,18 @@
 
                       <!--
                       <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>terceros/consulta_remisiones">Remisiones</a></li>
+                      -->
                       <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>terceros/Cumplimiento_Entregas" >Cumplimientos</a></li>
-        -->
+
                       <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>terceros/Contacto">Contacto</a></li>
+                      <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>Index/Cerrar_Sesion"><i class="glyphicon glyphicon-remove"></i></a></li>
 
-
-                    </ul>
                   <?php else :?>
 
                         <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>terceros/maquinas">Ver Reportes Pendientes</a></li>
-
+                      <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>Index/Cerrar_Sesion"><i class="glyphicon glyphicon-remove"></i></a></li>
                   <?php endif ;?>
-              <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>Index/Cerrar_Sesion"><i class="glyphicon glyphicon-remove"></i></a></li>
+
               </ul>
                 </div>
             </nav>
@@ -62,6 +65,7 @@
 
     <div class="taC p20 taL">
         <?= $ContenidoBody; ?>
-    </div>
 
+
+    </div>
 </div>
