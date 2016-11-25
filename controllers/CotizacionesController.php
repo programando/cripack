@@ -20,7 +20,7 @@ class CotizacionesController extends Controller {
 
     public function Consulta_Notificaciones() {
       /* SEPTIEMBRE 30 2016
-      **    ENVIA CORREOS A LOS CLIENTES QUE A QUEINES SE HA COTIZACDO PARA HACER SEGUIMIENTO
+      **    ENVIA CORREOS A LOS CLIENTES QUE A QUEINES SE HA COTIZADO PARA HACER SEGUIMIENTO
       */
       $Notificaciones = $this->Cotizaciones->Consulta_Notificaciones();
       foreach ( $Notificaciones as $Notificacion ) {

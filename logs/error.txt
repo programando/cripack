@@ -1046,3 +1046,5 @@
 [16-Nov-2016 16:40:31 America/Bogota] PHP Warning:  imageftbbox(): Invalid font filename in C:\xampp\htdocs\cripack\libs_external\pChart\pChart.class.php on line 1019
 [16-Nov-2016 16:40:31 America/Bogota] PHP Warning:  imagettftext(): Invalid font filename in C:\xampp\htdocs\cripack\libs_external\pChart\pChart.class.php on line 1017
 [16-Nov-2016 16:40:31 America/Bogota] PHP Warning:  imageftbbox(): Invalid font filename in C:\xampp\htdocs\cripack\libs_external\pChart\pChart.class.php on line 1019
+[25-Nov-2016 08:27:24 America/Bogota] PHP Notice:  Use of undefined constant BASE_IMG_EMPRESA - assumed 'BASE_IMG_EMPRESA' in C:\xampp\htdocs\cripack\views\template\template.phtml on line 3
+[25-Nov-2016 08:27:31 America/Bogota] PHP Notice:  Use of undefined constant BASE_IMG_EMPRESA - assumed 'BASE_IMG_EMPRESA' in C:\xampp\htdocs\cripack\views\template\template.phtml on line 3
