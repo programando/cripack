@@ -12,59 +12,54 @@ class TercerosController extends Controller
     public function __construct()  {
         parent::__construct();
         $this->Terceros = $this->Load_Model('Terceros');
-        $this->pData    = $this->Load_External_Library('/pChart/pData.class');
-        $this->pChart   = $this->Load_External_Library('/pChart/pChart.class');
+        $this->Emails   = $this->Load_Controller('Emails');
     }
+
+
+  public function Pendientes_Produccion(){
+    /*  NOV. 26 2016
+          CONSULTA Y ENVIA CORREOS DE LAS OTS QUE ESTÁN EN PROCESO DE PRODUCCIÓN
+          1. CONSULTA OT ( CREA TABLA TEMPORAL)         2. DEVUELVE CLIENTES
+          3. SE CONSULTAN CONTACTOS                     4. SE CONSULTAN OTS PENDIENTES
+          5. SE ENVÍAN CORREOS
+    */
+    $Clientes = $this->Terceros->Consulta_Ots_Pendientes_Produccion();
+    foreach ($Clientes as $Cliente) {
+        $idtercero = $Cliente['idtercero'];
+        $cliente   = trim( $Cliente['nomtercero'] );
+        $sucursal  = trim( $Cliente['nom_sucursal'] );
+        $Contactos = $this->Terceros->Contactos_Por_IdTercero      ( $idtercero );
+        $Ots       = $this->Terceros->Ots_Pendientes_Por_IdTercero ( $idtercero );
+        $Destinatarios ='';
+        foreach ($Contactos as $Contacto) {
+          $email = trim( $Contacto['email']);
+          if ( !empty($email )){
+            $Destinatarios = $Destinatarios . $email .';';
+          }
+        }
+
+        // ENVIAR CORREO AL TERCERO
+        $this->Emails->Informe_Ots_Pendientes ( $cliente, $sucursal, $Destinatarios, $Ots  );
+
+    }
+
+  } // Pendientes_Produccion
+
+
+
 
 
    public function Cumplimiento_Entregas(){
       $IdTercero        = Session::Get('idtercero');
-      //$IdTercero      = 733 ;
+      $IdTercero      = 733 ;
 
       $Registro         = $this->Terceros->Cumplimiento_Entregas ( $IdTercero );
       $Cumplimiento_0        = $Registro[0]['cumplimiento']   ;
       $Cumplimiento_1        = $Registro[1]['cumplimiento'];
 
-        $this->DatosGrafico = new pData;
-        $this->ImgGrafico   = new pChart(800,600);
-
-       $this->DatosGrafico->AddPoint(array($Cumplimiento_0 ),"Serie1");
-       $this->DatosGrafico->AddPoint(array($Cumplimiento_1),"Serie2");
-
-       $this->DatosGrafico->AddAllSeries();
-       $this->DatosGrafico->SetAbsciseLabelSerie();
-       $this->DatosGrafico->SetSerieName("Cumplimiento Mes Pasado","Serie1");
-       $this->DatosGrafico->SetSerieName("Cumplimiento Este Mes","Serie2");
-
-
-
-       //$this->ImgGrafico->setFontProperties(APP_EXTERNAL_LIBS_PCHAR_FONTS ."tahoma.ttf",8);
-       $this->ImgGrafico->setGraphArea(25,15,800,300);
-       // $this->ImgGrafico->drawFilledRoundedRectangle(7,7,693,223,5,240,240,240);
-       //$this->ImgGrafico->drawRoundedRectangle(5,5,695,225,5,230,230,230);
-       $this->ImgGrafico->drawGraphArea(255,255,255,TRUE);
-       $this->ImgGrafico->drawScale($this->DatosGrafico->GetData(),$this->DatosGrafico->GetDataDescription(),SCALE_START0,150,150,150,TRUE,0,2,TRUE);
-       $this->ImgGrafico->drawGrid(4,FALSE,230,230,230,50);
-
-       // Draw the 0 line
-       //$this->ImgGrafico->setFontProperties(APP_EXTERNAL_LIBS_PCHAR_FONTS . "tahoma.ttf",6);
-       $this->ImgGrafico->drawTreshold(0,143,55,72,TRUE,TRUE);
-
-       // Draw the bar graph
-       $this->ImgGrafico->drawBarGraph($this->DatosGrafico->GetData(),$this->DatosGrafico->GetDataDescription(),TRUE,80);
-
-
-       // Finish the graph
-       //$this->ImgGrafico->setFontProperties(APP_EXTERNAL_LIBS_PCHAR_FONTS."tahoma.ttf",8);
-       $this->ImgGrafico->drawLegend(30,30,$this->DatosGrafico->GetDataDescription(),255,255,255);
-       //$this->ImgGrafico->setFontProperties(APP_EXTERNAL_LIBS_PCHAR_FONTS . "tahoma.ttf",10);
-       //$this->ImgGrafico->drawTitle(50,22,"Example 12",50,50,50,585);
-       $NombreImagen =   "temp_graf.png";
-       $this->ImgGrafico->Render($NombreImagen );
-
-
+      $this->View->Cumplimiento_0 = $Registro[0]['cumplimiento'];
+      $this->View->Cumplimiento_1 = $Registro[1]['cumplimiento'];
       $this->View->Mostrar_Vista('cumplimiento_entregas');
-      Debug::Mostrar( APP_EXTERNAL_LIBS_PCHAR_FONTS ."tahoma.ttf");
 
    }
 
@@ -332,9 +327,6 @@ class TercerosController extends Controller
        }else{
         echo "NO-OK";
        }
-
-
-  //$SQL = "$idregistro, $solucion,'$observaciones', '$Paso_1', '$Paso_2','$Paso_3','$Paso_4','$Paso_5'";
 
 
 

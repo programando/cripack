@@ -8,10 +8,28 @@
 				}
 
 
+				public function Ots_Pendientes_Por_IdTercero( $IdTercero ) {
+						$Ots                = $this->Db->Ejecutar_Sp("ordenes_trabajo_consulta_pendientes_descarga_x_idtercero ( $IdTercero )");
+						$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
+						return $Ots;
+				}
+
+				public function Consulta_Ots_Pendientes_Produccion(){
+							$Ots                = $this->Db->Ejecutar_Sp("ordenes_trabajo_consulta_pendientes_descarga");
+						$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
+						return $Ots;
+				}
+
+
+				public function Contactos_Por_IdTercero ( $IdTercero ){
+						$Contactos                = $this->Db->Ejecutar_Sp("terceros_contactos_consultar_por_tercero ($IdTercero ) ");
+						$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
+						return $Contactos;
+
+
+				}
 
 					public function Consulta_Tablero_Produccion ( $idtercero )	{
-
-
 						if ( empty ( $idtercero  )) {
 									$idtercero                     = Session::Get('idtercero') ;
 							}

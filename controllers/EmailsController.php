@@ -51,10 +51,52 @@
         $this->Configurar_Cuenta('Seguimiento Cotización Nro.: ' .$NroCotizacion  . ' Cripack S.A.S '   );
         $this->Email->AddAddress( $Email  );
         $this->Email->AddCC("Serviclientes@cripack.net");
-        //$this->Email->AddCC("jhonjamesmg@hotmail.com");
+
         $Respuesta   = $this->Enviar_Correo();
-        //echo  $Respuesta;
+
     }
+
+
+
+
+
+public function Informe_Ots_Pendientes ( $Empresa, $Sucursal, $Email, $Datos_Ots    ){
+
+       $this->Configurar_Cuenta('Informe Trabajos Pendientes' );
+       $Texto_Correo    = file_get_contents(BASE_EMAILS.'ots_pendientes.phtml','r');
+       $Texto_Correo    = str_replace("#_EMPRESA_#"        , $Empresa,$Texto_Correo);
+       $Texto_Correo    = str_replace("#_SUCURSAL_#"   , $Sucursal , $Texto_Correo);
+
+        $Tabla    = '';
+        foreach ($Datos_Ots  as $OT) {
+          if ( $OT['encauche'] == 'X'){
+              $encauche ='SI';
+          }else{
+             $encauche ='NO';
+          }
+          $Tabla =  $Tabla ."<tr>" ;
+             $Tabla = $Tabla . "<td>" . trim($OT['referencia'] )        . "</td>" ;
+             $Tabla = $Tabla . "<td>" . trim($OT['nomestilotrabajo'] )  . "</td>" ;
+             $Tabla = $Tabla . "<td>" . trim($OT['nomtipotrabajo'])     . "</td>" ;
+             $Tabla = $Tabla . "<td style='text-align: center;'>" . trim($OT['cabida'] )            . "</td>" ;
+             $Tabla = $Tabla . "<td style='text-align: center;'>" . $OT['cantidad']                 . "</td>" ;
+             $Tabla = $Tabla . "<td style='text-align: center;'>" . $encauche                 . "</td>" ;
+           $Tabla = $Tabla . '</tr>';
+
+        }
+        $Texto_Correo    = str_replace("#_TABLA_#"      ,  $Tabla       , $Texto_Correo);
+
+        $this->Email->Body    = $this->Unir_Partes_Correo ( $Texto_Correo ) ;
+
+        $this->Email->AddAddress( $Email );
+        $this->Email->AddCC("Serviclientes@cripack.net");
+        $Respuesta              = $this->Enviar_Correo();
+      }
+
+
+
+
+/////////////////
 
 
 
