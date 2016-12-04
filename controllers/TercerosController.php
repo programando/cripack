@@ -51,8 +51,6 @@ class TercerosController extends Controller
 
    public function Cumplimiento_Entregas(){
       $IdTercero        = Session::Get('idtercero');
-      //$IdTercero      = 733 ;
-
       $Registro         = $this->Terceros->Cumplimiento_Entregas ( $IdTercero );
       $Cumplimiento_0        = $Registro[0]['cumplimiento']   ;
       $Cumplimiento_1        = $Registro[1]['cumplimiento'];
