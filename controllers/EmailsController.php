@@ -69,18 +69,14 @@ public function Informe_Ots_Pendientes ( $Empresa, $Sucursal, $Email, $Datos_Ots
 
         $Tabla    = '';
         foreach ($Datos_Ots  as $OT) {
-          if ( $OT['encauche'] == 'X'){
-              $encauche ='SI';
-          }else{
-             $encauche ='NO';
-          }
+
           $Tabla =  $Tabla ."<tr>" ;
              $Tabla = $Tabla . "<td>" . trim($OT['referencia'] )        . "</td>" ;
              $Tabla = $Tabla . "<td>" . trim($OT['nomestilotrabajo'] )  . "</td>" ;
              $Tabla = $Tabla . "<td>" . trim($OT['nomtipotrabajo'])     . "</td>" ;
              $Tabla = $Tabla . "<td style='text-align: center;'>" . trim($OT['cabida'] )            . "</td>" ;
              $Tabla = $Tabla . "<td style='text-align: center;'>" . $OT['cantidad']                 . "</td>" ;
-             $Tabla = $Tabla . "<td style='text-align: center;'>" . $encauche                 . "</td>" ;
+             $Tabla = $Tabla . "<td style='text-align: left;'>" . $OT['abreviatura_labor']        . "</td>" ;
            $Tabla = $Tabla . '</tr>';
 
         }
@@ -88,7 +84,7 @@ public function Informe_Ots_Pendientes ( $Empresa, $Sucursal, $Email, $Datos_Ots
 
         $this->Email->Body    = $this->Unir_Partes_Correo ( $Texto_Correo ) ;
 
-        $this->Email->AddAddress( $Email );
+        $this->Email->AddAddress( $Email);
         $this->Email->AddCC("Serviclientes@cripack.net");
         $Respuesta              = $this->Enviar_Correo();
       }
