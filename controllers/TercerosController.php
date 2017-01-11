@@ -54,6 +54,7 @@ class TercerosController extends Controller
             $IdTercero        = Session::Get('idtercero');
           }
       Session::Set('logueado', TRUE );
+      Session::Set('Cliente', TRUE );
       $Registro         = $this->Terceros->Cumplimiento_Entregas ( $IdTercero );
       $Cumplimiento_0   = $Registro[0]['cumplimiento']   ;
       $Cumplimiento_1   = $Registro[1]['cumplimiento'];
@@ -85,6 +86,7 @@ class TercerosController extends Controller
             $idtercero                     = Session::Get('idtercero') ;
           }
           Session::Set('logueado', TRUE );
+          Session::Set('Cliente', TRUE );
           //$idtercero                     = 668;
           $this->View->Ots               = $this->Terceros->Consulta_Tablero_Produccion( $idtercero ) ; // Paso 01 Conformación Tabla temporal
           $this->View->Ots               = $this->estado_ordenes_trabajo_ots_unicas ( $idtercero );
@@ -184,6 +186,7 @@ class TercerosController extends Controller
             $idtercero = Session::Get('idtercero') ;
           }
           Session::Set('logueado', TRUE );
+          Session::Set('Cliente', TRUE );
           $this->View->Ots               = $this->Terceros->Consulta_Trabajos_x_Tercero( $idtercero ) ;
           $this->View->CantidadRegistros =  $this->Terceros->Cantidad_Registros ;
 	        $this->View->Mostrar_Vista('historial');
