@@ -49,8 +49,13 @@ class TercerosController extends Controller
 
 
 
-   public function Cumplimiento_Entregas(){
-      $IdTercero        = Session::Get('idtercero');
+   public function Cumplimiento_Entregas($IdTercero = 0){
+       if ( $IdTercero == 0 ){
+            $IdTercero        = Session::Get('idtercero');
+          }
+
+
+
       $Registro         = $this->Terceros->Cumplimiento_Entregas ( $IdTercero );
       $Cumplimiento_0   = $Registro[0]['cumplimiento']   ;
       $Cumplimiento_1   = $Registro[1]['cumplimiento'];
@@ -73,11 +78,14 @@ class TercerosController extends Controller
 
 
 
-    public function estado_ordenes_trabajo (){
+    public function estado_ordenes_trabajo ($idtercero = 0){
       /*  OCTUBRE 03 DE 2016
               CONSULTA Y MUESTRA EL ESTADO DE LAS ORDENES DE TRABAJO DEL UN CLIENTE. ES EL TABLERO DE PRODUCCIÓN
       */
-          $idtercero                     = Session::Get('idtercero') ;
+
+          if ( $idtercero  == 0 ){
+            $idtercero                     = Session::Get('idtercero') ;
+          }
           //$idtercero                     = 668;
           $this->View->Ots               = $this->Terceros->Consulta_Tablero_Produccion( $idtercero ) ; // Paso 01 Conformación Tabla temporal
           $this->View->Ots               = $this->estado_ordenes_trabajo_ots_unicas ( $idtercero );
