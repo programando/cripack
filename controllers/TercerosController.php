@@ -170,9 +170,8 @@ class TercerosController extends Controller
               Session::Set('identificacion',   $Registro[0]['identificacion'] ) ;
               Session::Set('proveedor'      ,   $Registro[0]['proveedor'] ) ;
               Session::Set('Cliente'      ,   $Registro[0]['cliente'] ) ;
+              Session::Set('email'        , $Email);
            }
-
-
 
            $Datos            = compact('Resultado_Logueo','Email');
            echo json_encode($Datos,256);

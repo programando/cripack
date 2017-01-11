@@ -16,7 +16,6 @@ var Ingresar_Sistema = function( Parametros ) {
 							type:     'post',
        success:  function ( Respuesta ){
        		 if ( Respuesta.Resultado_Logueo =='NO-Logueo_OK'){
-       		 		//$('.modal-body #contenido').html('Modificar país: ');
        		 		 $('#modal_error').modal('show');
        		 }
        		 if ( Respuesta.Resultado_Logueo =='Logueo_OK'){
