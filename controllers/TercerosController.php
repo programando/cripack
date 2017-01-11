@@ -135,7 +135,7 @@ class TercerosController extends Controller
           }// Fin For Each Labores
           if ( $IdLabor < 11 )  {
             $IdLabor = $IdLabor-1;
-            for ($K=$IdLabor; $K <=10 ; $K++) {
+            for ( $K=$IdLabor; $K <=10 ; $K++ ) {
                $DatosTablero[$I]["labor$K"] = '';
                $DatosTablero[$I]["color$K"] = '';
             }
@@ -247,7 +247,6 @@ class TercerosController extends Controller
    public function consulta_remisiones () {
 
         $idtercero = Session::Get('idtercero');
-        //$idtercero = 733;
         $Registro  = $this->Terceros->Consulta_Remisiones ( $idtercero);
 
         $IdRemision = 0;
@@ -292,8 +291,11 @@ class TercerosController extends Controller
 
 
 
-   public function Maquinas(){
-       $IdTercero                     = Session::Get('idtercero');
+   public function Maquinas($IdTercero = 0){
+     if ( $IdTercero  == 0 ){
+        $IdTercero                     = Session::Get('idtercero');
+      }
+      Session::Set('Cliente', FALSE ) ;
        //$IdTercero                     = 143 ;
        $Registro                      = $this->Terceros->Proveedores_Consulta_Mantenimientos_Pendientes ( $IdTercero );
        $this->View->CantidadRegistros = $this->Terceros->Cantidad_Registros ;
