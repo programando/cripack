@@ -187,8 +187,8 @@ class TercerosController extends Controller
           $this->View->CantidadRegistros =  $this->Terceros->Cantidad_Registros ;
 	        $this->View->Mostrar_Vista('historial');
 
-                    Debug::Mostrar( $_SESSION );
-          Debug::Mostrar( Session::Get('nomtercero') );
+          //          Debug::Mostrar( $_SESSION );
+          //Debug::Mostrar( Session::Get('nomtercero') );
 	    }
 
 
