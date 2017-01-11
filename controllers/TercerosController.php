@@ -184,7 +184,7 @@ class TercerosController extends Controller
           if ( $idtercero == 0 ) {
             $idtercero = Session::Get('idtercero') ;
           }
-          $this->View->Ots = $this->Terceros->Consulta_Trabajos_x_Tercero( $idtercero ) ;
+          $this->View->Ots               = $this->Terceros->Consulta_Trabajos_x_Tercero( $idtercero ) ;
           $this->View->CantidadRegistros =  $this->Terceros->Cantidad_Registros ;
 	        $this->View->Mostrar_Vista('historial');
 	    }
