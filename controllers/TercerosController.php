@@ -181,7 +181,7 @@ class TercerosController extends Controller
           $idtercero = Session::Get('idtercero') ;
          // $idtercero = 668;
 
-Debug::Mostrar(  $idtercero );
+
           $this->View->Ots = $this->Terceros->Consulta_Trabajos_x_Tercero( $idtercero ) ;
           $this->View->CantidadRegistros =  $this->Terceros->Cantidad_Registros ;
 	        $this->View->Mostrar_Vista('historial');
