@@ -33,13 +33,7 @@
 
                 <ul class="nav navbar-nav navbar-right">
                   <?php if ( Session::Get('Cliente') == TRUE ) :?>
-                    <?php
-                        $IdTercero = Session::Get('idtercero');
-                        if ( $IdTercero > 0) {
-                          Session::Set('logueado', TRUE );
-                        }
-
-                    ?>
+                    <?php    $IdTercero = Session::Get('idtercero');   ?>
 
 
                       <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>terceros/historial/<?=$IdTercero ;?>">Historial</a></li>
