@@ -52,6 +52,7 @@ class TercerosController extends Controller
    public function Cumplimiento_Entregas(){
       $IdTercero        = Session::Get('idtercero');
       Debug::Mostrar( $_SESSION );
+      Debug::Mostrar( Session::Get('logueado') );
       /*
       */
       $Registro         = $this->Terceros->Cumplimiento_Entregas ( $IdTercero );
