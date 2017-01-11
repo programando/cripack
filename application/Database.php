@@ -26,7 +26,7 @@ class Database extends PDO
 
     public function Ejecutar_Sp($nombre_sp_y_parametros) {
 
-        Debug::Mostrar($nombre_sp_y_parametros);  //gettype
+        //Debug::Mostrar($nombre_sp_y_parametros);  //gettype
       try {
           $this->Cantidad_Registros = 0;
           $resultado_consulta       = $this->query('CALL ' . $nombre_sp_y_parametros);

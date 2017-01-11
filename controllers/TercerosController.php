@@ -172,8 +172,10 @@ class TercerosController extends Controller
            echo json_encode($Datos,256);
      }
 
-		public function Historial() {
-          $idtercero = Session::Get('idtercero') ;
+		public function Historial($idtercero = 0) {
+          if ( $idtercero == 0 ) {
+            $idtercero = Session::Get('idtercero') ;
+          }
           $this->View->Ots = $this->Terceros->Consulta_Trabajos_x_Tercero( $idtercero ) ;
           $this->View->CantidadRegistros =  $this->Terceros->Cantidad_Registros ;
 	        $this->View->Mostrar_Vista('historial');
