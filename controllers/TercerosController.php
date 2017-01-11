@@ -154,9 +154,8 @@ class TercerosController extends Controller
          $Password             = General_Functions::Validar_Entrada('Password','TEXT');
          $Password             = md5($Password );
          $Registro             = $this->Terceros->Consulta_Datos_Por_Password_Email( $Password, $Email );
-Debug::Mostrar($Registro     );
-Debug::Mostrar( $Password );
-Debug::Mostrar(  $Email);
+
+
 
       	if (!$Registro ) {
            $Resultado_Logueo = "NO-Logueo_OK";
@@ -173,7 +172,7 @@ Debug::Mostrar(  $Email);
               Session::Set('Cliente'      ,   $Registro[0]['cliente'] ) ;
            }
 
-      Debug::Mostrar( $_SESSION );
+
 
            $Datos            = compact('Resultado_Logueo','Email');
            echo json_encode($Datos,256);
