@@ -51,8 +51,7 @@ class TercerosController extends Controller
 
    public function Cumplimiento_Entregas(){
       $IdTercero        = Session::Get('idtercero');
-      Debug::Mostrar( $_SESSION );
-      Debug::Mostrar( Session::Get('logueado') );
+
       /*
       */
       $Registro         = $this->Terceros->Cumplimiento_Entregas ( $IdTercero );
@@ -155,6 +154,9 @@ class TercerosController extends Controller
          $Password             = General_Functions::Validar_Entrada('Password','TEXT');
          $Password             = md5($Password );
          $Registro             = $this->Terceros->Consulta_Datos_Por_Password_Email( $Password, $Email );
+Debug::Mostrar($Registro     );
+Debug::Mostrar( $Password );
+Debug::Mostrar(  $Email);
 
       	if (!$Registro ) {
            $Resultado_Logueo = "NO-Logueo_OK";
@@ -170,6 +172,8 @@ class TercerosController extends Controller
               Session::Set('proveedor'      ,   $Registro[0]['proveedor'] ) ;
               Session::Set('Cliente'      ,   $Registro[0]['cliente'] ) ;
            }
+
+      Debug::Mostrar( $_SESSION );
 
            $Datos            = compact('Resultado_Logueo','Email');
            echo json_encode($Datos,256);
