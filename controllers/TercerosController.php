@@ -85,10 +85,11 @@ class TercerosController extends Controller
       }else
         {
           $this->View->Verificacion_Token = TRUE ;
+          $this->View->idtercero  = $Token_Verificado[0]['idtercero'];
         }
 
       $this->View->Numero_Confirmacion = $numero_confirmacion;
-      $this->View->idtercero  = $Token_Verificado[0]['idtercero'];
+
       $this->View->Mostrar_Vista('password_cambiar');
 
     }
