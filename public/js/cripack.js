@@ -346,6 +346,10 @@ $("#btn-recupera-pass").on('click',function(){
 $("#btn-cambio_password-inicio").on('click',function(){
 		window.location.href = "/cripack/";
 });
+
+$("#btn-inicio-no-token").on('click',function(){
+		window.location.href = "/cripack/";
+});
 //=========================================================================================================
 /// FIN PARA CAMBIO DE CONTRASEÑA
 //=========================================================================================================
