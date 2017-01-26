@@ -35,8 +35,8 @@
          $RutaFooter   = ROOT .  'views' . DS . 'template' .DS .  'footer.phtml';
          $RutaLogoMenu = ROOT .  'views' . DS . 'template' .DS . 'menu.phtml';
 
-            if(is_readable($RutaView))
-            {
+            if(is_readable($RutaView)) {
+
                extract($View_Vars);
                ob_start();
                require_once ($RutaView);
@@ -45,6 +45,7 @@
             }
             else {
                 throw new Exception(header('Location: ' . BASE_URL .'error/404.php'));
+                //Debug::Mostrar( $RutaView );
             }
         }
 

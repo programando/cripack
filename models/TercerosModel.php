@@ -8,6 +8,38 @@
 				}
 
 
+
+				public function Clave_Temporal_Grabar_Cambio_Clave($idtercero, $password_temporal){
+				/** ENERO 24 DE 2017
+        **  INSERTA EN LA TABLA UN REGISTRO TEMPORAL QUE SE USARÁ PARA LA VERIFICACIÓN EN EL CAMBIO DE CLAVE
+        **		NOTA:  EN ESTE CASO NO ES NECESARIO idtercero ni plan de compras.
+        */
+					 $this->Db->Ejecutar_Sp("terceros_web_passwords_temporales_registro($idtercero ,'$password_temporal')");
+				}
+
+				public function Password_Actualizar($idtercero, $password)	{
+					 $Terceros = $this->Db->Ejecutar_Sp("terceros_web_passwords_actualizar ($idtercero ,'$password') ");
+				}
+
+
+			public function Verificar_Token_Cambio_Contrasenia( $Numero_Confirmacion )	{
+						/** ENERO 31DE 2014
+								 CONSULTA DATOS DEL USUARIO CON  EMAIL. DESDE EL LOGIN				*/
+
+						$Terceros                 = $this->Db->Ejecutar_Sp("terceros_web_passwords_temporales_verificar('$Numero_Confirmacion')");
+						return $Terceros;
+				}
+
+
+				public function Consulta_Datos_Por_Email($email)	{
+						/** ENERO 31DE 2014
+								 CONSULTA DATOS DEL USUARIO CON  EMAIL. DESDE EL LOGIN				*/
+						$Terceros                 = $this->Db->Ejecutar_Sp("terceros_consulta_datos_x_email('$email')");
+						$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
+
+						return $Terceros;
+				}
+
 				public function Ots_Pendientes_Por_IdTercero( $IdTercero ) {
 						$Ots                = $this->Db->Ejecutar_Sp("ordenes_trabajo_consulta_pendientes_descarga_x_idtercero ( $IdTercero )");
 						$this->Cantidad_Registros = $this->Db->Cantidad_Registros;

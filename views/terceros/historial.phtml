@@ -15,14 +15,16 @@
 
 <?php else :?>
 
-<div class="p30">
+<div class="p15">
 	<div class="t40 colorCri1 ff2 mb20">Historial de OT's</div>
 	<div class="table-responsive">
 		<table id="tablas" class="table table-hover display" cellspacing="0" width="100%">
 			<thead>
 				<tr>
 					<th># OT</th>
-					<th>Fecha</th>
+					<th>Solicitud</th>
+					<th>Terminada</th>
+					<th>Despacho</th>
 					<th>Referencia</th>
 					<th>Estilo</th>
 					<th>Cantidad</th>
@@ -43,6 +45,9 @@
 									$NroFactura ='N/A';
 							}
 							$fecha_solicitud         = Fechas::Formato ( $OT['fecha_solicitud'] ) ;
+							$fecha_terminada         = Fechas::Formato ( $OT['fecha_terminada'] ) ;
+							$fecha_entrega_producc   = Fechas::Formato ( $OT['fecha_entrega_producc'] ) ;
+
 							$NumeroGuia                = $OT['nro_guia'];
 							$IdTercero_Transportador = $OT['idtercero_transportador'];
 
@@ -57,6 +62,9 @@
 				<tr>
 					<td> <?= $OT['numero_ot']  ?>        </td>
 					<td> <?= $fecha_solicitud  ?>     			</td>
+				 <td> <?= $fecha_terminada  ?>     			</td>
+					<td> <?= $fecha_entrega_producc  ?>     			</td>
+
 					<td> <?= $OT['referencia']  ?>     		</td>
 					<td> <?= trim($OT['nomestilotrabajo']) . ' - ' . trim($OT['nomtipotrabajo']) ?>     </td>
 					<td> <?= $OT['cantidad']  ?>     				</td>
@@ -81,6 +89,11 @@
 
 			</tbody>
 		</table>
+		<div class="p15">
+					<strong>Nota: <br>
+					La fecha de despacho es un dato tentativo.
+					</strong>
+		</div>
 	</div>
 
 </div>

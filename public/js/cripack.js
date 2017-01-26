@@ -99,15 +99,7 @@ var Registro_Grabar = function( Parametros ) {
 				});
 };
 
-/*$('#email-registro').on('blur',function(){
-		var $email 		 = $("#email-registro").val();
-		$Parametros 	 						   = {'email':$email } ;
-		Valida_Exista_Email ( $Parametros);
-		if ( $RespuestaAjax == 'No-Ok'){
-				Mostrar_Mensajes( $Titulo, 'El correo electrónico que ha digitado no existe o ya se encuentra registrado dentro de nuestra base de datos.');
-			}
-});
-*/
+
 
 $('#identificacion').on('blur',function(){
 		var $identificacion 		 = $("#identificacion").val();
@@ -227,7 +219,135 @@ $("#btn-actualizar-reporte").on('click', function() {
 
 
 //=========================================================================================================
-/// CUMPLIMIENTO EN ENTREGAS
+/// PROCESOS PARA CAMBIO DE CONTRASEÑA
+//=========================================================================================================
+
+var Mensaje_Resultado_Cambio_Password_OK = function()
+{
+		 var $html =''
+			$('#dv-img-cargando').hide();
+			$('.modal-body').html('');
+			$('.header-login').html('');
+			$('.header-login').html('Correo enviado correctamente');
+			$html ='<br>Hemos enviado a la cuenta de correo electrónico registrada las instrucciones necesarias para que cambies tu contraseña.<br>';
+			$html = $html + '<br><br>';
+			$('.modal-body').html($html);
+			$('.btn-enviar').hide();
+
+}
+
+
+var Mensaje_Resultado_Cambio_Password_NoEnvio_Correo = function()
+{
+	$('#dv-img-cargando').hide();
+	$("#msgbox").removeClass().addClass('messagebox').text('El correo no pudo ser enviado. Tal vez se deba a saturación del servidor. Favor inténtelo más tarde.').fadeIn(3000);
+}
+
+var Mensaje_Resultado_Cambio_Password_Cuenta_No_Ok = function()
+{
+		$('#dv-img-cargando').hide();
+		$("#msgbox").removeClass().addClass('messagebox').text('La cuenta de correo no tiene un formato válido para el envío de correos electrónicos.').fadeIn(3000);
+}
+
+var Mensaje_Resultado_Cambio_Password_Correo_No_Existe = function()
+{
+			$('#dv-img-cargando').hide();
+			$("#msgbox").removeClass().addClass('messagebox').text('La cuenta de correo digitada no se encuentra registrada en nuestra base de datos.').fadeIn(3000);
+}
+
+
+function Recuperar_Password(Parametros)
+{
+			$("#dv-img-cargando").show();
+
+			$.ajax({
+							data:  Parametros,
+							dataType: 'json',
+							url:      '/cripack/terceros/Recuperar_Password_Paso_01/',
+							type:     'post',
+        success:  function (resultado)
+      	 {
+
+      	 		if (resultado.CorreoEnviado=='Ok'){
+      	 					 Mensaje_Resultado_Cambio_Password_OK();
+      	 					}
+      	 		if (resultado.CorreoEnviado=='NoOk'){
+      	 						Mensaje_Resultado_Cambio_Password_NoEnvio_Correo();
+      	 					}
+	     	 		if (resultado.CorreoEnviado=='Correo_No_OK'){
+	     	 					Mensaje_Resultado_Cambio_Password_Cuenta_No_Ok();
+	     	 				 }
+	     	 		if (resultado.CorreoEnviado=='NoUsuario')		{
+	     	 			   Mensaje_Resultado_Cambio_Password_Correo_No_Existe();
+	     	 			  }
+
+	     	 		},
+	     	complet: function(){
+	     	 					$("#dv-img-cargando").hide();
+      	 }
+				});
+
+}
+
+
+
+$("#dv-img-cargando").hide();
+$("#btn-cambio_password-inicio").hide();
+
+$("#modal_cambiar_password").on('click', function() {
+	$('#modal_cambio_password').modal('show');
+});
+
+// BOTON PARA RECUPERAR CONTRASEÑA $("#btn-recupera-pass").on('click',function(){
+$("#btn-recupera-pass").on('click',function(){
+		var $email 			  = $('#login-username').val();
+		var $Parametros = { "Email": $email };
+		Recuperar_Password($Parametros);
+
+});
+
+
+ $("#btn-cambio_password").on('click',function(){
+		var $password 			  					= $('#password-nuevo').val();
+		var $password_confirma 	= $('#password-nuevo-confirma').val();
+		var $token 												 = $('#codigo-verificacion').val();
+		var $idtercero 								 = $('#idtercero').val();
+		$Titulo ='CAMBIO DE CONTRASEÑA';
+
+
+		 if( $("#password-nuevo").val().length < 1) {
+		 	 		Mostrar_Mensajes( $Titulo, 'La contraseña es un campo obligatorio, no puede estar en blanco.' );
+		 }else{
+
+		if ( ( $password != $password_confirma )  ){
+				 Mostrar_Mensajes( $Titulo, 'La constraseña y su confirmación deben ser iguales y no pueden estar en blanco.' );
+				}else {
+						var $Parametros = { "password": $password , "idtercero" : $idtercero };
+						$.ajax({
+							data:  $Parametros,
+							dataType: 'json',
+							url:      '/cripack/terceros/Password_Modificar/',
+							type:     'post',
+        success:  function (resultado) 	 {
+      	 		if (resultado.PasswordCambiado=='Ok'){
+      	 					Mostrar_Mensajes( $Titulo, 'La constraseña ha sido cambiada con éxito. Ahora podrá hacer uso del nuestro sistema de información' );
+      	 					}
+	     	 		},
+	     	complete: function(){
+	     					$('#btn-cambio_password').hide();
+	     					$("#btn-cambio_password-inicio").show();
+      	 }
+				});
+				}
+			}
+});
+
+// BOTON PARA RECUPERAR CONTRASEÑA $("#btn-recupera-pass").on('click',function(){
+$("#btn-cambio_password-inicio").on('click',function(){
+		window.location.href = "/cripack/";
+});
+//=========================================================================================================
+/// FIN PARA CAMBIO DE CONTRASEÑA
 //=========================================================================================================
 
 
@@ -235,7 +355,6 @@ var Ion = {
 
 	init : function()
 	{
-		//console.log("RUN ION");
 
 		$(document).ready(function() {
 

@@ -40,9 +40,11 @@
 
         <?php $Logueado = Session::Get('logueado') ;?>
 
+
         <?php if( isset($Logueado) && $Logueado == TRUE ) :; ?>
             <?php require_once ( $RutaLogoMenu );?>
         <?php else :?>
+
                 <div>  <?= $ContenidoBody; ?> </div>
         <?php endif ;?>
 

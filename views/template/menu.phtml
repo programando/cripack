@@ -1,10 +1,14 @@
 
+
+
 <div class="ionix allion">
 
 
 
     <div class="bCri1 menion">
         <div class="pLR10 menuion">
+
+
 
             <nav class="navbar navbar-default" role="navigation">
                 <div class="navbar-header">
@@ -22,12 +26,11 @@
 
                 	<ul class="nav navbar-nav">
 
-                        <li class="colorfff" style="padding:30px 0 0 50px;">
-                        	Bienvenido (a),
-
-                        	<strong><?= Session::Get('nombre_usuario') ?></strong><br>
-                          <strong><?= Session::Get('nomtercero') ?></strong>
-                        </li>
+                      <li class="colorfff" style="padding:30px 0 0 50px;">
+                      	Bienvenido (a),
+                      	<strong><?= Session::Get('nombre_usuario') ?></strong><br>
+                        <strong><?= Session::Get('nomtercero') ?></strong>
+                      </li>
 
                     </ul>
 
@@ -51,17 +54,33 @@
                   <?php endif ;?>
 
               </ul>
+
+
+
+
+
+
                 </div>
             </nav>
+
+
+ <!-- Nav-body -->
+
+
+
 
         </div>
     </div>
 
     <div style="height:84px;"></div>
 
+
     <div class="taC p20 taL">
         <?= $ContenidoBody; ?>
 
 
     </div>
+
+   <?php include (VENTANAS_MODALES . 'terceros_cambiar_password.php');?>
+
 </div>

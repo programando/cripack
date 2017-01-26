@@ -16,6 +16,11 @@ class TercerosController extends Controller
     }
 
 
+
+
+
+
+
   public function Pendientes_Produccion(){
     /*  NOV. 26 2016
           CONSULTA Y ENVIA CORREOS DE LAS OTS QUE ESTÁN EN PROCESO DE PRODUCCIÓN
@@ -44,6 +49,66 @@ class TercerosController extends Controller
     }
 
   } // Pendientes_Produccion
+
+
+
+  public function Recuperar_Password_Paso(){
+         $email     = General_Functions::Validar_Entrada('Email','TEXT');
+         $Es_email  = General_Functions::Validar_Entrada('Email','EMAIL');
+         $Tercero   = $this->Terceros->Consulta_Datos_Por_Email($email);
+
+
+          if ($Es_email  == false) {
+              $CorreoEnviado ='Correo_No_OK';
+            } else {
+                if (!$Tercero) {
+                         $CorreoEnviado ='NoUsuario';
+                    }else{
+                     $CorreoEnviado = $this->Emails->Recuperar_Password($email);
+                     $idtercero     = $Tercero[0]['idtercero'];
+                     if (  $CorreoEnviado =='Ok'){
+                        $this->Terceros->Clave_Temporal_Grabar_Cambio_Clave($idtercero ,Session::Get('codigo_confirmacion'));
+                        Session::Destroy('codigo_confirmacion');
+                        }
+                      }
+                    }
+       $Datos = compact('CorreoEnviado');
+       echo  json_encode($Datos,256);
+    }
+
+    public function Reset_Password( $numero_confirmacion ) {
+
+      $this->View->Verificacion_Token = FALSE ;
+      $Token_Verificado = $this->Terceros->Verificar_Token_Cambio_Contrasenia( $numero_confirmacion );
+      if ( !$Token_Verificado ){
+        $this->View->Verificacion_Token = FALSE ;
+      }else
+        {
+          $this->View->Verificacion_Token = TRUE ;
+        }
+
+      $this->View->Numero_Confirmacion = $numero_confirmacion;
+      $this->View->idtercero  = $Token_Verificado[0]['idtercero'];
+      $this->View->Mostrar_Vista('password_cambiar');
+
+    }
+
+
+  public function Password_Modificar(){
+         $password     = General_Functions::Validar_Entrada('password','TEXT');
+         $idtercero    = General_Functions::Validar_Entrada('idtercero','NUM');
+         $password     = md5($password );
+         if ( empty($password)){
+            $PasswordCambiado ='No-Ok';
+          }else{
+                $this->Terceros->Password_Actualizar ( $idtercero,$password );
+                $PasswordCambiado ='Ok';
+       }
+
+       $Datos = compact('PasswordCambiado');
+       echo  json_encode($Datos,256);
+
+    }
 
 
 

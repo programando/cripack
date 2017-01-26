@@ -14,6 +14,36 @@
       public function Index() { }
 
 
+      public function Recuperar_Password( $email ) {
+         /** ENERO 31 DE 2015
+         **  PROCEDIMIENTO PARA RECUPERAR CONTRASEÑA DE USUARIOS
+         */
+
+          $this->Configurar_Cuenta('Recuperación de Contraseña.');
+          $this->Email->AddAddress($email );
+
+          $codigo_confirmacion = General_Functions::Generar_Codigo_Confirmacion();
+          $enlace              = '<a href=' . BASE_URL .'terceros/Reset_Password/'. $codigo_confirmacion .'> Cambio de Contraseña </a>';
+          $Pagina_Correo       = file_get_contents(BASE_EMAILS.'password_cambiar.phtml','r');
+          $Pagina_Correo       = str_replace("#_ENLACE_RECUPERA_PASSWORD_#"   , $enlace  ,$Pagina_Correo);
+
+          $this->Email->Body   = $this->Unir_Partes_Correo ($Pagina_Correo );
+
+          if ( $this->Email->Send()) {
+              $this->Email->clearAddresses();
+              Session::Set('codigo_confirmacion',$codigo_confirmacion);
+              $CorreoEnviado ='Ok';
+            }
+            else {
+              $CorreoEnviado='NoOk';
+            }
+            return $CorreoEnviado ;
+      }
+
+
+
+
+
     public function Cotizaciones_Enviar_Notificacion ($Email, $Destinatario , $Cotizacion_H , $Cotizacion_Dt  ){
       /*  OCTUBRE 03 DE 2016
             REALIZA ENVÍO DE CORREOS DE NOTIFICACIÓN PARA LAS COTIZACIONES  A LAS QUE HACEMOS SEGUIMIENTO
@@ -60,34 +90,34 @@
 
 
 
-public function Informe_Ots_Pendientes ( $Empresa, $Sucursal, $Email, $Datos_Ots    ){
+    public function Informe_Ots_Pendientes ( $Empresa, $Sucursal, $Email, $Datos_Ots    ){
 
-       $this->Configurar_Cuenta('Informe Trabajos Pendientes' );
-       $Texto_Correo    = file_get_contents(BASE_EMAILS.'ots_pendientes.phtml','r');
-       $Texto_Correo    = str_replace("#_EMPRESA_#"        , $Empresa,$Texto_Correo);
-       $Texto_Correo    = str_replace("#_SUCURSAL_#"   , $Sucursal , $Texto_Correo);
+           $this->Configurar_Cuenta('Informe Trabajos Pendientes' );
+           $Texto_Correo    = file_get_contents(BASE_EMAILS.'ots_pendientes.phtml','r');
+           $Texto_Correo    = str_replace("#_EMPRESA_#"        , $Empresa,$Texto_Correo);
+           $Texto_Correo    = str_replace("#_SUCURSAL_#"   , $Sucursal , $Texto_Correo);
 
-        $Tabla    = '';
-        foreach ($Datos_Ots  as $OT) {
+            $Tabla    = '';
+            foreach ($Datos_Ots  as $OT) {
 
-          $Tabla =  $Tabla ."<tr>" ;
-             $Tabla = $Tabla . "<td>" . trim($OT['referencia'] )        . "</td>" ;
-             $Tabla = $Tabla . "<td>" . trim($OT['nomestilotrabajo'] )  . "</td>" ;
-             $Tabla = $Tabla . "<td>" . trim($OT['nomtipotrabajo'])     . "</td>" ;
-             $Tabla = $Tabla . "<td style='text-align: center;'>" . trim($OT['cabida'] )            . "</td>" ;
-             $Tabla = $Tabla . "<td style='text-align: center;'>" . $OT['cantidad']                 . "</td>" ;
-             $Tabla = $Tabla . "<td style='text-align: left;'>" . $OT['abreviatura_labor']        . "</td>" ;
-           $Tabla = $Tabla . '</tr>';
+              $Tabla =  $Tabla ."<tr>" ;
+                 $Tabla = $Tabla . "<td>" . trim($OT['referencia'] )        . "</td>" ;
+                 $Tabla = $Tabla . "<td>" . trim($OT['nomestilotrabajo'] )  . "</td>" ;
+                 $Tabla = $Tabla . "<td>" . trim($OT['nomtipotrabajo'])     . "</td>" ;
+                 $Tabla = $Tabla . "<td style='text-align: center;'>" . trim($OT['cabida'] )            . "</td>" ;
+                 $Tabla = $Tabla . "<td style='text-align: center;'>" . $OT['cantidad']                 . "</td>" ;
+                 $Tabla = $Tabla . "<td style='text-align: left;'>" . $OT['abreviatura_labor']        . "</td>" ;
+               $Tabla = $Tabla . '</tr>';
 
-        }
-        $Texto_Correo    = str_replace("#_TABLA_#"      ,  $Tabla       , $Texto_Correo);
+            }
+            $Texto_Correo    = str_replace("#_TABLA_#"      ,  $Tabla       , $Texto_Correo);
 
-        $this->Email->Body    = $this->Unir_Partes_Correo ( $Texto_Correo ) ;
+            $this->Email->Body    = $this->Unir_Partes_Correo ( $Texto_Correo ) ;
 
-        $this->Email->AddAddress( $Email);
-        $this->Email->AddCC("Serviclientes@cripack.net");
-        $Respuesta              = $this->Enviar_Correo();
-      }
+            $this->Email->AddAddress( $Email);
+            $this->Email->AddCC("Serviclientes@cripack.net");
+            $Respuesta              = $this->Enviar_Correo();
+          }
 
 
 
