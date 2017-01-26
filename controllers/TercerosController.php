@@ -52,7 +52,7 @@ class TercerosController extends Controller
 
 
 
-  public function Recuperar_Password_Paso(){
+  public function Recuperar_Password_Paso_01(){
          $email     = General_Functions::Validar_Entrada('Email','TEXT');
          $Es_email  = General_Functions::Validar_Entrada('Email','EMAIL');
          $Tercero   = $this->Terceros->Consulta_Datos_Por_Email($email);
