@@ -33,6 +33,7 @@
 							<th style="text-align: center"></th>
 							<th style="text-align: center"></th>
 							<th style="text-align: center"></th>
+							<th>Fecha Confirmada</th>
 
 						</tr>
 					</thead>
@@ -253,7 +254,7 @@
 												<?php if ( $OT['color10'] ==''  ) :; ?>
 															<td> <?= $OT['labor10']  ?>     </td>
 												<?php endif ;?>
-
+										<td> <?= $OT['fecha_confirmada']  ?>     </td>
 						 </tr>
 						<?php endforeach ;?>
 
@@ -266,7 +267,10 @@
 <br>
 <hr>
 
+
+
 <div class="taR">
+
 	<div class="mb10 dIB">Convenciones de color utilizadas para labores en las Ot's</div>
 	&nbsp;&nbsp;&nbsp;
     <div class="dIB p510 ff2 t12" style="background-color: #1EFF37;" >Finalizadas</div>
@@ -274,13 +278,14 @@
     <div class="dIB p510 ff2 t12 colorfff" style="background-color: #001860;"   >Por Iniciar </div>
     <div class="dIB p510 ff2 t12 colorfff" style="background-color: red;"   >Suspendidas </div>
 </div>
-    
+		<div class="p30">
+					<strong>Nota: <br>
+					La fecha de confirmada se encuentra en modo pruebas.
+					</strong>
+		</div>
 </div>
-    
-<?php endif ;?>
-<!--
-class="t40 colorCri1 ff2 mb20"
 
- -->
+<?php endif ;?>
+
 
 

@@ -18,9 +18,6 @@ class TercerosController extends Controller
 
 
 
-
-
-
   public function Pendientes_Produccion(){
     /*  NOV. 26 2016
           CONSULTA Y ENVIA CORREOS DE LAS OTS QUE ESTÁN EN PROCESO DE PRODUCCIÓN
@@ -166,8 +163,8 @@ class TercerosController extends Controller
                             'labor1'=>'', 'labor2'=>'', 'labor3'=>'', 'labor4'=>'', 'labor5'=>'',
                             'labor6'=>'', 'labor7'=>'', 'labor8'=>'', 'labor9'=>'', 'labor10'=>'',
                             'color1'=>'', 'color2'=>'', 'color3'=>'', 'color4'=>'', 'color5'=>'',
-                            'color6'=>'', 'color7'=>'', 'color8'=>'', 'color9'=>'', 'color10'=>''
-
+                            'color6'=>'', 'color7'=>'', 'color8'=>'', 'color9'=>'', 'color10'=>'',
+                             'fecha_confirmada'=>''
                              ));
       $Ots_Unicas   = $this->Terceros->Consulta_Tablero_Produccion_Ots_Unicas ( $idtercero  );
       $I            = 0;
@@ -176,6 +173,7 @@ class TercerosController extends Controller
           $DatosTablero[$I]['referencia']       = trim( $Ot_Unica['referencia']       );
           $DatosTablero[$I]['nomestilotrabajo'] = trim( $Ot_Unica['nomestilotrabajo'] );
           $DatosTablero[$I]['nomtipotrabajo']   = trim( $Ot_Unica['nomtipotrabajo'] );
+          $DatosTablero[$I]['fecha_confirmada'] = Fechas::Formato( $Ot_Unica['fecha_confirmada']) ;
           //CONSULTA LAS LABORES DE LA OT
           //-------------------------------
           $IdLabor = 1;
