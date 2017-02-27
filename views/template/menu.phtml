@@ -37,8 +37,6 @@
                 <ul class="nav navbar-nav navbar-right">
                   <?php if ( Session::Get('Cliente') == TRUE ) :?>
                     <?php    $IdTercero = Session::Get('idtercero');   ?>
-
-
                       <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>terceros/historial/<?=$IdTercero ;?>">Historial</a></li>
                       <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>terceros/estado_ordenes_trabajo/<?=$IdTercero ;?>">Estado OT's</a></li>
 
