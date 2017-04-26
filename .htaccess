@@ -7,7 +7,7 @@ RewriteEngine on
 
     # RewriteCond %{HTTP_HOST} ^cripack.co$
     # RewriteRule (.*) http://www.cripack.co/$1 [R=301,L]
-
+     # RewriteRule (.*) http://www.cripack.co/$1 [R=301,L]
 
 		Options -Indexes
 
