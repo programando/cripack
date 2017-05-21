@@ -69,6 +69,13 @@
 						$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
 						return $Ots;
 				}
+					public function Consulta_Tablero_Produccion_Ferias_Eventos (  )	{
+
+						$Ots                = $this->Db->Ejecutar_Sp("ferias_eventos_ot_consulta_estado_procesos_labores_web()");
+						$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
+						return $Ots;
+				}
+
 
 
 					public function Consulta_Tablero_Produccion_Ots_Unicas ( $idtercero )	{
@@ -76,6 +83,15 @@
 						$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
 						return $Ots;
 				}
+
+					public function Consulta_Tablero_Produccion_Ots_Unicas_Ferias_Eventos (  )	{
+						$Ots                = $this->Db->Ejecutar_Sp("ferias_eventos_web_temp_tablero_paso_01_ots_unicas()");
+						$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
+						return $Ots;
+				}
+
+
+
 
 					public function Consulta_Tablero_Produccion_Labores_OT ( $Idregistro_Ot )	{
 						$Ots                = $this->Db->Ejecutar_Sp("web_temp_tablero_paso_02_labores_por_ot( $Idregistro_Ot )");
@@ -98,6 +114,13 @@
 						$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
 						return $Terceros;
 				}
+
+				public function Consulta_Trabajos_Ferias_Eventos (  )	{
+						$Terceros                 = $this->Db->Ejecutar_Sp("ferias_eventos_consulta_trabajos()");
+						$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
+						return $Terceros;
+				}
+
 
 					public function Buscar_Por_Identificacion ( $identificacion )	{
 						$Terceros                 = $this->Db->Ejecutar_Sp("terceros_clientes_buscar_x_identificacion( '$identificacion' )");

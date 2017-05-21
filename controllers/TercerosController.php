@@ -138,6 +138,9 @@ class TercerosController extends Controller
       $this->View->Mostrar_Vista('contactos');
     }
 
+    public function Registro_Feria() {
+      $this->View->Mostrar_Vista('registro_feria');
+    }
 
 
     public function estado_ordenes_trabajo ($idtercero = 0){
@@ -148,10 +151,12 @@ class TercerosController extends Controller
           if ( $idtercero  == 0 ){
             $idtercero                     = Session::Get('idtercero') ;
           }
-          Session::Set('logueado', TRUE );
-          Session::Set('Cliente', TRUE );
-          //$idtercero                     = 668;
-          $this->View->Ots               = $this->Terceros->Consulta_Tablero_Produccion( $idtercero ) ; // Paso 01 Conformación Tabla temporal
+
+          if ( Session::Get('cuenta_cripack') === TRUE ){
+              $this->View->Ots               = $this->Terceros->Consulta_Tablero_Produccion_Ferias_Eventos() ; // Paso 01
+            }else{
+              $this->View->Ots               = $this->Terceros->Consulta_Tablero_Produccion( $idtercero ) ; // Paso 01 Conformación Tabla temporal
+            }
           $this->View->Ots               = $this->estado_ordenes_trabajo_ots_unicas ( $idtercero );
           $this->View->CantidadRegistros = $this->Terceros->Cantidad_Registros ;
           $this->View->Mostrar_Vista('tablero_produccion');
@@ -166,7 +171,12 @@ class TercerosController extends Controller
                             'color6'=>'', 'color7'=>'', 'color8'=>'', 'color9'=>'', 'color10'=>'',
                              'fecha_confirmada'=>''
                              ));
-      $Ots_Unicas   = $this->Terceros->Consulta_Tablero_Produccion_Ots_Unicas ( $idtercero  );
+      if ( Session::Get('cuenta_cripack') === TRUE ){
+          $Ots_Unicas   = $this->Terceros->Consulta_Tablero_Produccion_Ots_Unicas_Ferias_Eventos ( );
+        }else{
+          $Ots_Unicas   = $this->Terceros->Consulta_Tablero_Produccion_Ots_Unicas ( $idtercero  );
+        }
+
       $I            = 0;
       foreach  ($Ots_Unicas as $Ot_Unica ) {
           $DatosTablero[$I]['numero_ot']        = $Ot_Unica['numero_ot'];
@@ -217,13 +227,12 @@ class TercerosController extends Controller
 
 
    public function Ingreso_Sistema_Validaciones(){
+
       	 Session::Set('logueado',   FALSE);
          $Email                = General_Functions::Validar_Entrada('email','TEXT');
          $Password             = General_Functions::Validar_Entrada('Password','TEXT');
          $Password             = md5($Password );
          $Registro             = $this->Terceros->Consulta_Datos_Por_Password_Email( $Password, $Email );
-
-
 
       	if (!$Registro ) {
            $Resultado_Logueo = "NO-Logueo_OK";
@@ -239,19 +248,33 @@ class TercerosController extends Controller
               Session::Set('proveedor'      ,   $Registro[0]['proveedor'] ) ;
               Session::Set('Cliente'      ,   $Registro[0]['cliente'] ) ;
               Session::Set('email'        , $Email);
+
+             Session::Set('cuenta_cripack'        , FALSE);
+               $Email_Cripack = strpos($Email,'cripack');
+              if ( $Email_Cripack > 0 ){
+                Session::Set('cuenta_cripack'        , TRUE);
+              }
+
            }
 
            $Datos            = compact('Resultado_Logueo','Email');
            echo json_encode($Datos,256);
+
      }
 
 		public function Historial($idtercero = 0) {
           if ( $idtercero == 0 ) {
             $idtercero = Session::Get('idtercero') ;
           }
-          Session::Set('logueado', TRUE );
-          Session::Set('Cliente', TRUE );
-          $this->View->Ots               = $this->Terceros->Consulta_Trabajos_x_Tercero( $idtercero ) ;
+          //Session::Set('logueado', TRUE );
+          //Session::Set('Cliente', TRUE );
+          if ( Session::Get('cuenta_cripack') === TRUE ){
+            $this->View->Ots               = $this->Terceros->Consulta_Trabajos_Ferias_Eventos( ) ;
+          }else{
+            $this->View->Ots               = $this->Terceros->Consulta_Trabajos_x_Tercero( $idtercero ) ;
+          }
+
+
           $this->View->CantidadRegistros =  $this->Terceros->Cantidad_Registros ;
 	        $this->View->Mostrar_Vista('historial');
 	    }

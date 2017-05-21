@@ -3,82 +3,84 @@
 
 <div class="ionix allion">
 
+  <div class="bCri1 menion">
+    <div class="pLR10 menuion">
 
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse"
+          data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Desplegar navegación</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><img src="<?= BASE_URL ; ?>public/images/logo.png" class="" alt="Cripack S.A.S." /></a>
+      </div>
 
-    <div class="bCri1 menion">
-        <div class="pLR10 menuion">
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
 
+       <ul class="nav navbar-nav">
 
+        <li class="colorfff" style="padding:30px 0 0 50px;">
+         Bienvenido (a),
+         <strong><?= Session::Get('nombre_usuario') ?></strong><br>
+         <strong><?= Session::Get('nomtercero') ?></strong><br>
 
-            <nav class="navbar navbar-default" role="navigation">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse"
-                            data-target=".navbar-ex1-collapse">
-                      <span class="sr-only">Desplegar navegación</span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#"><img src="<?= BASE_URL ; ?>public/images/logo.png" class="" alt="Cripack S.A.S." /></a>
-                </div>
+       </li>
 
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
+     </ul>
 
-                	<ul class="nav navbar-nav">
+     <ul class="nav navbar-nav navbar-right">
+      <?php if ( Session::Get('Cliente') == TRUE ) :?>
+        <?php    $IdTercero = Session::Get('idtercero');   ?>
+        <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>terceros/historial/<?=$IdTercero ;?>">Historial</a></li>
+        <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>terceros/estado_ordenes_trabajo/<?=$IdTercero ;?>">Estado OT's</a></li>
 
-                      <li class="colorfff" style="padding:30px 0 0 50px;">
-                      	Bienvenido (a),
-                      	<strong><?= Session::Get('nombre_usuario') ?></strong><br>
-                        <strong><?= Session::Get('nomtercero') ?></strong>
-                      </li>
+        <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>terceros/Cumplimiento_Entregas/<?=$IdTercero ;?>" >Cumplimientos</a></li>
 
-                    </ul>
+        <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>terceros/Contacto">Contacto</a></li>
 
-                <ul class="nav navbar-nav navbar-right">
-                  <?php if ( Session::Get('Cliente') == TRUE ) :?>
-                    <?php    $IdTercero = Session::Get('idtercero');   ?>
-                      <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>terceros/historial/<?=$IdTercero ;?>">Historial</a></li>
-                      <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>terceros/estado_ordenes_trabajo/<?=$IdTercero ;?>">Estado OT's</a></li>
+        <?php if ( Session::Get('cuenta_cripack') == TRUE ) : ?>
+          <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>terceros/Registro_Feria">Registro</a></li>
+        <?php endif ;?>
 
-                <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>terceros/Cumplimiento_Entregas/<?=$IdTercero ;?>" >Cumplimientos</a></li>
+      <?php else :?>
 
-                      <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>terceros/Contacto">Contacto</a></li>
-                      <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>Index/Cerrar_Sesion"><i class="glyphicon glyphicon-remove"></i></a></li>
+        <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>terceros/maquinas/<?=$IdTercero ;?>">Ver Reportes Pendientes</a></li>
 
-                  <?php else :?>
-
-                        <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>terceros/maquinas/<?=$IdTercero ;?>">Ver Reportes Pendientes</a></li>
-                      <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>Index/Cerrar_Sesion"><i class="glyphicon glyphicon-remove"></i></a></li>
-                  <?php endif ;?>
-
-              </ul>
-
-
-
-
-
-
-                </div>
-            </nav>
-
-
- <!-- Nav-body -->
+      <?php endif ;?>
+      <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>Index/Cerrar_Sesion">
+        <i class="glyphicon glyphicon-remove"></i></a>
+      </li>
+    </ul>
 
 
 
 
-        </div>
-    </div>
-
-    <div style="height:84px;"></div>
 
 
-    <div class="taC p20 taL">
-        <?= $ContenidoBody; ?>
+  </div>
+</nav>
 
 
-    </div>
+<!-- Nav-body -->
 
-   <?php include (VENTANAS_MODALES . 'password_cambiar.php');?>
+
+
+
+</div>
+</div>
+
+<div style="height:84px;"></div>
+
+
+<div class="taC p20 taL">
+  <?= $ContenidoBody; ?>
+
+
+</div>
+
+<?php include (VENTANAS_MODALES . 'password_cambiar.php');?>
 
 </div>

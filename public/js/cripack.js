@@ -12,14 +12,14 @@ var Ingresar_Sistema = function( Parametros ) {
 			$.ajax({
 							data:  Parametros,
 							dataType: 'json',
-							url:      '/cripack/terceros/Ingreso_Sistema_Validaciones',
+							url:      '/terceros/Ingreso_Sistema_Validaciones',
 							type:     'post',
        success:  function ( Respuesta ){
        		 if ( Respuesta.Resultado_Logueo =='NO-Logueo_OK'){
        		 		 $('#modal_error').modal('show');
        		 }
        		 if ( Respuesta.Resultado_Logueo =='Logueo_OK'){
-       		 			window.location.href = "/cripack/terceros/Historial";
+       		 			window.location.href = "/terceros/Historial";
        		 }
       	 	 }
 				});
@@ -51,7 +51,7 @@ var Valida_Exista_Identificacion = function( Parametros ) {
 				$.ajax({
 							data:  Parametros,
 							dataType: 'json',
-							url:      '/cripack/terceros/Buscar_Por_Identificacion',
+							url:      '/terceros/Buscar_Por_Identificacion',
 							type:     'post',
 							async:    false,
        success:  function ( Respuesta ){
@@ -70,7 +70,7 @@ var Valida_Exista_Email = function( Parametros ) {
 				$.ajax({
 							data:  Parametros,
 							dataType: 'json',
-							url:      '/cripack/terceros/Consultar_Emails',
+							url:      '/terceros/Consultar_Emails',
 							type:     'post',
 							async:    false,
        success:  function ( Respuesta ){
@@ -89,11 +89,11 @@ var Registro_Grabar = function( Parametros ) {
 				$.ajax({
 							data:  Parametros,
 							dataType: 'json',
-							url:      '/cripack/terceros/Grabar_Registro',
+							url:      '/terceros/Grabar_Registro',
 							type:     'post',
        success:  function ( Respuesta ){
        	if (Respuesta.Respuesta=='RegistroGrabado'){
-       	 		window.location.href = "/cripack/";
+       	 		window.location.href = "/index";
        	}
        }
 				});
@@ -155,7 +155,7 @@ $("#btn-cumplimiento-entregas").on('click', function() {
 		 $.ajax({
            data:  '',
            dataType: 'json',
-           url:      '/cripack/terceros/Cumplimiento_Entregas/',
+           url:      '/terceros/Cumplimiento_Entregas/',
            type:     'post',
            async:    true,
        success:function(data){
@@ -178,7 +178,6 @@ $("#btn-cumplimiento-entregas").on('click', function() {
                         },
                     ]
                 }
-                //window.location.href = "/cripack/terceros/cumplimiento_entregas/";
                 var contexto = document.getElementById('grafico').getContext('2d');
                 window.Barra = new Chart(contexto).Bar(Datos, { responsive : true });
                }
@@ -205,12 +204,12 @@ $("#btn-actualizar-reporte").on('click', function() {
 			$.ajax({
 							data:  $Parametros,
 							dataType: 'text',
-							url:      '/cripack/terceros/Mantenimiento_Actualizar',
+							url:      '/terceros/Mantenimiento_Actualizar',
 							type:     'post',
    				success:  function ( Respuesta ){
 
    							if ( $.trim(Respuesta)=='OK'){
-   	 								window.location.href = "/cripack/terceros/maquinas/";
+   	 								window.location.href = "/terceros/maquinas/";
    						}
    				}
 					});
@@ -263,7 +262,7 @@ function Recuperar_Password(Parametros)
 			$.ajax({
 							data:  Parametros,
 							dataType: 'json',
-							url:      '/cripack/terceros/Recuperar_Password_Paso_01/',
+							url:      '/terceros/Recuperar_Password_Paso_01/',
 							type:     'post',
         success:  function (resultado)
       	 {
@@ -326,7 +325,7 @@ $("#btn-recupera-pass").on('click',function(){
 						$.ajax({
 							data:  $Parametros,
 							dataType: 'json',
-							url:      '/cripack/terceros/Password_Modificar/',
+							url:      '/terceros/Password_Modificar/',
 							type:     'post',
         success:  function (resultado) 	 {
       	 		if (resultado.PasswordCambiado=='Ok'){
@@ -344,11 +343,11 @@ $("#btn-recupera-pass").on('click',function(){
 
 // BOTON PARA RECUPERAR CONTRASEÑA $("#btn-recupera-pass").on('click',function(){
 $("#btn-cambio_password-inicio").on('click',function(){
-		window.location.href = "/cripack/";
+		window.location.href = "/index/";
 });
 
 $("#btn-inicio-no-token").on('click',function(){
-		window.location.href = "/cripack/";
+		window.location.href = "/index/";
 });
 //=========================================================================================================
 /// FIN PARA CAMBIO DE CONTRASEÑA
