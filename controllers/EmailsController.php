@@ -211,8 +211,8 @@
      }
 
    private function Unir_Partes_Correo (   $Body ){
-       $Header             = file_get_contents(APPLICATION_SECTIONS . 'emails/header.php','r');
-       $Footer             = file_get_contents(APPLICATION_SECTIONS . 'emails/footer.php','r');
+       $Header             = file_get_contents(EMAILS . 'emails/header.php','r');
+       $Footer             = file_get_contents(EMAILS . 'emails/footer.php','r');
        $Texto_Final_Correo = $Header.$Body.$Footer;
 
        return $Texto_Final_Correo ;

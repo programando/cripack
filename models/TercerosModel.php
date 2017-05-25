@@ -174,5 +174,41 @@
 						$Registro    =  $this->Db->Ejecutar_Sp("mantenimiento_registro_actualizar_respuesta(".$SQL.")");
 				}
 
+				public function  Terceros_Tipos_Documentos ( ){
+						$Registro    =  $this->Db->Ejecutar_Sp("tipos_documentos_listado_activos_no_kardex()");
+						return $Registro;
+				}
+
+				public function  Terceros_Cargos_Externos ( ){
+						$Registro    =  $this->Db->Ejecutar_Sp("terceros_cargos_externos_listado_activos()");
+						return $Registro;
+				}
+
+				public function  Terceros_Areas_Empresa ( ){
+						$Registro    =  $this->Db->Ejecutar_Sp("terceros_areas_empresa_listado_activas()");
+						return $Registro;
+				}
+				public function  Municipios ( ){
+						$Registro    =  $this->Db->Ejecutar_Sp("municipios_listado_general()");
+						return $Registro;
+				}
+
+				public function  Zona_Ventas ( ){
+						$Registro    =  $this->Db->Ejecutar_Sp("zonas_ventas_listado_activos()");
+						return $Registro;
+				}
+
+				public function  Estilos_Trabajos ( ){
+						$Registro    =  $this->Db->Ejecutar_Sp("estilos_trabajos_consultar_activos()");
+						return $Registro;
+				}
+
+			public function  Paises ( ){
+						$Registro    =  $this->Db->Ejecutar_Sp("paises_listado_activos()");
+						return $Registro;
+				}
+
+
+
 
 } ?>

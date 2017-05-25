@@ -139,3 +139,35 @@
 [20-May-2017 15:57:06 UTC] PHP Warning:  include(): http:// wrapper is disabled in the server configuration by allow_url_include=0 in C:\laragon\www\cripack\views\terceros\registro_feria.phtml on line 14
 [20-May-2017 15:57:06 UTC] PHP Warning:  include(http://cripack.dev/application_sections/terceros/a.php): failed to open stream: no suitable wrapper could be found in C:\laragon\www\cripack\views\terceros\registro_feria.phtml on line 14
 [20-May-2017 15:57:06 UTC] PHP Warning:  include(): Failed opening 'http://cripack.dev/application_sections/terceros/a.php' for inclusion (include_path='.;C:/laragon/etc/php/pear') in C:\laragon\www\cripack\views\terceros\registro_feria.phtml on line 14
+[22-May-2017 21:48:39 UTC] PHP Warning:  include(): http:// wrapper is disabled in the server configuration by allow_url_include=0 in C:\laragon\www\cripack\views\terceros\registro_feria.phtml on line 241
+[22-May-2017 21:48:39 UTC] PHP Warning:  include(http://cripack.dev/application_sections/terceros/terceros.php): failed to open stream: no suitable wrapper could be found in C:\laragon\www\cripack\views\terceros\registro_feria.phtml on line 241
+[22-May-2017 21:48:39 UTC] PHP Warning:  include(): Failed opening 'http://cripack.dev/application_sections/terceros/terceros.php' for inclusion (include_path='.;C:/laragon/etc/php/pear') in C:\laragon\www\cripack\views\terceros\registro_feria.phtml on line 241
+[22-May-2017 22:08:34 UTC] PHP Notice:  Undefined property: TercerosController::$Terceros_Tipos_Documentos in C:\laragon\www\cripack\controllers\TercerosController.php on line 142
+[22-May-2017 22:09:03 UTC] PHP Notice:  Undefined property: TercerosController::$Terceros_Tipos_Documentos in C:\laragon\www\cripack\controllers\TercerosController.php on line 142
+[22-May-2017 22:09:35 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method TercerosController::Terceros_Tipos_Documentos() in C:\laragon\www\cripack\controllers\TercerosController.php:142
+Stack trace:
+#0 C:\laragon\www\cripack\application\Bootstrap.php(32): TercerosController->Registro_Datos_Basicos()
+#1 C:\laragon\www\cripack\index.php(17): Bootstrap::Run(Object(Request))
+#2 {main}
+  thrown in C:\laragon\www\cripack\controllers\TercerosController.php on line 142
+[22-May-2017 22:09:45 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method TercerosController::Terceros_Tipos_Documentos() in C:\laragon\www\cripack\controllers\TercerosController.php:142
+Stack trace:
+#0 C:\laragon\www\cripack\application\Bootstrap.php(32): TercerosController->Registro_Datos_Basicos()
+#1 C:\laragon\www\cripack\index.php(17): Bootstrap::Run(Object(Request))
+#2 {main}
+  thrown in C:\laragon\www\cripack\controllers\TercerosController.php on line 142
+[22-May-2017 22:09:53 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method TercerosController::Terceros_Tipos_Documentos() in C:\laragon\www\cripack\controllers\TercerosController.php:142
+Stack trace:
+#0 C:\laragon\www\cripack\application\Bootstrap.php(32): TercerosController->Registro_Datos_Basicos()
+#1 C:\laragon\www\cripack\index.php(17): Bootstrap::Run(Object(Request))
+#2 {main}
+  thrown in C:\laragon\www\cripack\controllers\TercerosController.php on line 142
+[22-May-2017 22:10:02 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method TercerosController::Terceros_Tipos_Documentos() in C:\laragon\www\cripack\controllers\TercerosController.php:142
+Stack trace:
+#0 C:\laragon\www\cripack\application\Bootstrap.php(32): TercerosController->Registro_Datos_Basicos()
+#1 C:\laragon\www\cripack\index.php(17): Bootstrap::Run(Object(Request))
+#2 {main}
+  thrown in C:\laragon\www\cripack\controllers\TercerosController.php on line 142
+[22-May-2017 22:18:06 UTC] PHP Fatal error:  Cannot use isset() on the result of an expression (you can use "null !== expression" instead) in C:\laragon\www\cripack\controllers\TercerosController.php on line 146
+[22-May-2017 22:18:17 UTC] PHP Fatal error:  Cannot use isset() on the result of an expression (you can use "null !== expression" instead) in C:\laragon\www\cripack\controllers\TercerosController.php on line 146
+[22-May-2017 22:18:24 UTC] PHP Fatal error:  Cannot use isset() on the result of an expression (you can use "null !== expression" instead) in C:\laragon\www\cripack\controllers\TercerosController.php on line 146

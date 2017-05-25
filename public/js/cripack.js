@@ -1,12 +1,22 @@
 // JavaScript Document
 
-//=========================================================================================================
-/// PROCESO DE INGRESO AL SISTEMA			btn-ingresar
-//=========================================================================================================
 
-var $RespuestaAjax='';
-var $Titulo           = '¡ ERROR EN REGISTRO !';
 
+var $RespuestaAjax        ='';
+var $Titulo               = '¡ ERROR EN REGISTRO !';
+var $Respuesta_Validacion ='';
+
+
+var Mostrar_Mensajes = function( $Titulo, $Contenido ){
+     $('.modal-header #contenido').html($Titulo);
+     $('.modal-body #contenido').html($Contenido);
+     $('#modal_error').modal('show');
+}
+
+
+//=========================================================================================================
+/// PROCESO DE INGRESO AL SISTEMA   btn-ingresar
+//=========================================================================================================
 var Ingresar_Sistema = function( Parametros ) {
 
 			$.ajax({
@@ -31,12 +41,6 @@ $("#btn-ingresar").on('click', function() {
 		Ingresar_Sistema ( $Parametros)
 });
 
-
-var Mostrar_Mensajes = function( $Titulo, $Contenido ){
-	    $('.modal-header #contenido').html($Titulo);
-     $('.modal-body #contenido').html($Contenido);
-     $('#modal_error').modal('show');
-}
 //=========================================================================================================
 /// FIN PROCESO DE INGRESO			btn-ingresar
 //=========================================================================================================
@@ -46,8 +50,9 @@ var Mostrar_Mensajes = function( $Titulo, $Contenido ){
 //=========================================================================================================
 /// REGISTRO DE INFORMACIÓN 		btn-registrarse
 //=========================================================================================================
-var Valida_Exista_Identificacion = function( Parametros ) {
+var Valida_Exista_Identificacion = function( Parametros, $Reemplazar_Nombre ) {
 //1.		Valida que el Nit Exista dentro de nuestra base de datos.
+
 				$.ajax({
 							data:  Parametros,
 							dataType: 'json',
@@ -55,8 +60,11 @@ var Valida_Exista_Identificacion = function( Parametros ) {
 							type:     'post',
 							async:    false,
        success:  function ( Respuesta ){
+
        	if (Respuesta.Respuesta=='IdentificacionExiste'){
-       			$('#nomtercero').val(Respuesta.nomtercero);
+           if ( $Reemplazar_Nombre != 'undefined' ) {
+       			     $('#nomtercero').val(Respuesta.nomtercero);
+            }
        		$RespuestaAjax = 'ok'
        	}else{
        		$RespuestaAjax = 'No-Ok';
@@ -101,10 +109,11 @@ var Registro_Grabar = function( Parametros ) {
 
 
 
+
 $('#identificacion').on('blur',function(){
 		var $identificacion 		 = $("#identificacion").val();
 		$Parametros 	 						   = {'identificacion':$identificacion } ;
-		Valida_Exista_Identificacion ( $Parametros);
+		Valida_Exista_Identificacion ( $Parametros, true );
 		if ( $RespuestaAjax == 'No-Ok'){
 			Mostrar_Mensajes( $Titulo, 'La identificación no se encuentra registrada en Cripack S.A.S.');
 		}
@@ -117,7 +126,7 @@ $("#btn-registrarse").on('click', function() {
 				var $passwordconfirma = $("#password-confirma").val();
 
 				$Parametros 	 						   = {'identificacion':$identificacion } ;
-				Valida_Exista_Identificacion ( $Parametros);
+				Valida_Exista_Identificacion ( $Parametros, true);
 				if ( $RespuestaAjax == 'No-Ok'){
 						Mostrar_Mensajes( $Titulo, 'La identificación no se encuentra registrada en Cripack S.A.S.');
 						return ;
@@ -354,12 +363,45 @@ $("#btn-inicio-no-token").on('click',function(){
 //=========================================================================================================
 
 
+
+
 //=========================================================================================================
 // REGISTRO DE DATOS EN FERIA
 //=========================================================================================================
 
+$('#identificacion_feria').on('blur',function(){
+   var $identificacion    = $("#identificacion_feria").val();
+  $Parametros            = {'identificacion':$identificacion } ;
+  Valida_Exista_Identificacion ( $Parametros );
+  if ( $RespuestaAjax == 'ok'){
+       Mostrar_Mensajes('REGISTRO DATOS BÁSICOS', 'La identificación : ' + $identificacion +' ya se encuentra registrada en Cripack S.A.S.');
+       $("#identificacion_feria").val('');
+  }
+
+})
+
+
 $('#feria-grabar-registro').on('click',function(){
- alert('pendiente grabar el registro');
+  var identificacion  = $("#identificacion_feria").val();
+  var Tipo_Doc        = $("select[name='idtpdoc']").val();
+  var nomtercero      = $("#nomtercero").val();
+  var cliente         = $('#cliente').is(':checked');
+  var proveedor       = $('#proveedor').is(':checked');
+  var direccion       = $("#direccion").val();
+  var telefono        = $("#telefono").val();
+  var idmcipio        = $("select[name='idmcipio']").val();
+  var idzona_ventas   = $("select[name='idzona_ventas']").val();
+  var contacto        = $("#contacto").val();
+  var idcargo_externo = $("select[name='idcargo_externo']").val();
+  var idarea          = $("select[name='idarea']").val();
+  var celular         = $("#celular").val();
+  var email           = $("#email").val();
+  var sector          = $("#sector").val();
+  var tipo_producto   = $("#tipo_producto").val();
+  var observacion     = $("#observacion").val();
+
+
+
 })
 
 //=========================================================================================================

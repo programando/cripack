@@ -138,9 +138,23 @@ class TercerosController extends Controller
       $this->View->Mostrar_Vista('contactos');
     }
 
-    public function Registro_Feria() {
+
+
+    public function Registro_Datos_Basicos() {
+
+      if ( !isset( $this->View->Tipos_Doc  )) { $this->View->Tipos_Doc    = $this->Terceros->Terceros_Tipos_Documentos(); }
+      if ( !isset($this->View->Cargos) )      { $this->View->Cargos       = $this->Terceros->Terceros_Cargos_Externos();  }
+      if ( !isset($this->View->AreasEmpresa)) { $this->View->AreasEmpresa = $this->Terceros->Terceros_Areas_Empresa();    }
+      if ( !isset($this->View->Municipios))   { $this->View->Municipios   = $this->Terceros->Municipios();                }
+      if ( !isset($this->View->Zona_Ventas) ) { $this->View->Zona_Ventas  = $this->Terceros->Zona_Ventas();               }
+      if ( !isset($this->View->Estilos) )     { $this->View->Estilos      = $this->Terceros->Estilos_Trabajos();          }
+      if ( !isset($this->View->Paises ) )     { $this->View->Paises       = $this->Terceros->Paises();          }
+
       $this->View->Mostrar_Vista('registro_feria');
     }
+
+
+
 
 
     public function estado_ordenes_trabajo ($idtercero = 0){
