@@ -12,6 +12,11 @@
         <meta name="viewport"              content="width=device-width, initial-scale=1">
 
         <title> <?= APP_NAME ;?> </title>
+<?php
+      $FileVersion = rand(1,100);
+      $FileVersion = "v=".$FileVersion;
+    ?>
+
 
         <!-- OCTUBRE 09 DE 2014 -> INCLUSIÓN DE ARCHIVOS CSS - REALACIONADOS CON LA VISTA EN PARTUCULAR QUE ESTOY CARGANDO
         ******************************************************************************************************************-->
@@ -24,16 +29,16 @@
 
 
 
-   		<link type="text/css" rel="stylesheet" href="<?=BASE_CSS ;?>cripack.css"   />
-        <link type="text/css" rel="stylesheet" href="<?=BASE_CSS ;?>fixion.css"   />
-        <link type="text/css" rel="stylesheet" href="<?=BASE_CSS ;?>responsion.css"   />
+   		<link type="text/css" rel="stylesheet" href="<?=BASE_CSS ;?>cripack.css?<?= $FileVersion ;?>"   />
+        <link type="text/css" rel="stylesheet" href="<?=BASE_CSS ;?>fixion.css?<?= $FileVersion ;?>"   />
+        <link type="text/css" rel="stylesheet" href="<?=BASE_CSS ;?>responsion.css?<?= $FileVersion ;?>"   />
 
 
 
         <!-- OCTUBRE 09 DE 2014 -> INCLUSIÓN DE ARCHIVOS CC - REALACIONADOS CON LA VISTA EN PARTUCULAR QUE ESTOY CARGANDO -->
         <?php if( isset($this->Css) && !empty($this->Css) ) : ; ?>
             <?php foreach ($this->Css as $Archivo_Css) : ;?>
-                 <link type="text/css"  rel="stylesheet" href="<?= $Archivo_Css ;?>"   />
+                 <link type="text/css"  rel="stylesheet" href="<?= $Archivo_Css ;?>?<?= $FileVersion ;?>"   />
         	<?php endforeach ;?>
         <?php endif ;?>
     </head>
@@ -53,12 +58,12 @@
         <?php endif ;?>
 
 
-        <script src ="<?= BASE_JS ; ?>jquery-3.1.0.min.js"  type="text/javascript"  >   </script>
-        <script src ="<?= BASE_JS ; ?>bootstrap.min.js"     type="text/javascript"  >   </script>
-        <script src ="<?= BASE_JS ; ?>dataTables.min.js"    type="text/javascript"  >   </script>
-        <script src ="<?= BASE_JS ; ?>funciones.js"         type="text/javascript"  >   </script>
-        <script src ="<?= BASE_JS ; ?>cripack.js"           type="text/javascript"  >   </script>
-        <script src ="<?= BASE_JS ; ?>cripack_tablas.js"    type="text/javascript"  >   </script>
+        <script src ="<?= BASE_JS ; ?>jquery-3.1.0.min.js?<?= $FileVersion ;?>"  type="text/javascript"  >   </script>
+        <script src ="<?= BASE_JS ; ?>bootstrap.min.js?<?= $FileVersion ;?>"     type="text/javascript"  >   </script>
+        <script src ="<?= BASE_JS ; ?>dataTables.min.js?<?= $FileVersion ;?>"    type="text/javascript"  >   </script>
+        <script src ="<?= BASE_JS ; ?>funciones.js?<?= $FileVersion ;?>"         type="text/javascript"  >   </script>
+        <script src ="<?= BASE_JS ; ?>cripack.js?<?= $FileVersion ;?>"           type="text/javascript"  >   </script>
+        <script src ="<?= BASE_JS ; ?>cripack_tablas.js?<?= $FileVersion ;?>"    type="text/javascript"  >   </script>
 
 
     </body>
