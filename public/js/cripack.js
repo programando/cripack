@@ -352,11 +352,11 @@ $("#btn-recupera-pass").on('click',function(){
 
 // BOTON PARA RECUPERAR CONTRASEÑA $("#btn-recupera-pass").on('click',function(){
 $("#btn-cambio_password-inicio").on('click',function(){
-		window.location.href = "/index/";
+		window.location.href = "/";
 });
 
 $("#btn-inicio-no-token").on('click',function(){
-		window.location.href = "/index/";
+		window.location.href = "/";
 });
 //=========================================================================================================
 /// FIN PARA CAMBIO DE CONTRASEÑA

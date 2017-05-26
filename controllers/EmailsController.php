@@ -165,7 +165,7 @@
 
         $this->Email->AddAddress( $Email  );
         $this->Email->AddCC("Serviclientes@cripack.net");
-        //$this->Email->AddCC("jhonjamesmg@hotmail.com");
+        $this->Email->AddCC("jhonjamesmg@hotmail.com");
         $Respuesta              = $this->Enviar_Correo();
         return  $Respuesta;
       }
@@ -211,8 +211,8 @@
      }
 
    private function Unir_Partes_Correo (   $Body ){
-       $Header             = file_get_contents(EMAILS . 'emails/header.php','r');
-       $Footer             = file_get_contents(EMAILS . 'emails/footer.php','r');
+       $Header             = file_get_contents(EMAILS . 'header.php','r');
+       $Footer             = file_get_contents(EMAILS . 'footer.php','r');
        $Texto_Final_Correo = $Header.$Body.$Footer;
 
        return $Texto_Final_Correo ;

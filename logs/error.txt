@@ -171,3 +171,5 @@ Stack trace:
 [22-May-2017 22:18:06 UTC] PHP Fatal error:  Cannot use isset() on the result of an expression (you can use "null !== expression" instead) in C:\laragon\www\cripack\controllers\TercerosController.php on line 146
 [22-May-2017 22:18:17 UTC] PHP Fatal error:  Cannot use isset() on the result of an expression (you can use "null !== expression" instead) in C:\laragon\www\cripack\controllers\TercerosController.php on line 146
 [22-May-2017 22:18:24 UTC] PHP Fatal error:  Cannot use isset() on the result of an expression (you can use "null !== expression" instead) in C:\laragon\www\cripack\controllers\TercerosController.php on line 146
+[26-May-2017 02:06:15 UTC] PHP Warning:  file_get_contents(C:\laragon\www\cripack\application_sections\emails\emails/header.php): failed to open stream: No such file or directory in C:\laragon\www\cripack\controllers\EmailsController.php on line 214
+[26-May-2017 02:06:15 UTC] PHP Warning:  file_get_contents(C:\laragon\www\cripack\application_sections\emails\emails/footer.php): failed to open stream: No such file or directory in C:\laragon\www\cripack\controllers\EmailsController.php on line 215
