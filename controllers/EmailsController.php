@@ -120,9 +120,32 @@
           }
 
 
+/* MAYO 30 DE 2017
+   ENVIA CORREO DE AGRADECIMIENTO PARA LAS PERSONAS QUE ASISTIERON A LA FERIA
+*/
+    public function Visitantes_Agradecer_Visita ( $Registro ){
+
+           $Empresa  = $Registro[0]['nomtercero'];
+           $Contacto = $Registro[0]['contacto'];
+           $Email    = $Registro[0]['email'];
+
+           $this->Configurar_Cuenta('Agradecimiento Vista' );
+           $Texto_Correo    = file_get_contents(BASE_EMAILS.'visitantes_agradecimiento_visita.phtml','r');
+           $Texto_Correo    = str_replace("#_EMPRESA_#"        , $Empresa,$Texto_Correo);
+           $Texto_Correo    = str_replace("#_CONTACTO_#"   , $Contacto , $Texto_Correo);
+
+            $this->Email->Body    = $this->Unir_Partes_Correo ( $Texto_Correo ) ;
+
+            $this->Email->AddAddress( $Email);
+            $Respuesta              = $this->Enviar_Correo();
+
+          }
 
 
-/////////////////
+
+
+
+
 
 
 

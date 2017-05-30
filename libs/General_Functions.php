@@ -51,58 +51,59 @@ public static function Generar_Codigo_Confirmacion($longitud=6){
 
 											$Email_Recibido = $Clave_Recibida;
 											$Clave_Recibida =  filter_var($Clave_Recibida, FILTER_VALIDATE_EMAIL) && preg_match('/@.+\./', $Clave_Recibida);
-											if ($Clave_Recibida == true)
-													{
+
+											if ($Clave_Recibida == true){
 															$Clave_Recibida  = $Email_Recibido;
-													}else
-												 	{
+													}else 	{
 												   $Clave_Recibida  = false ;
 											   }
 										break;
 
 										case 'BOL':
-										$Clave_Recibida = filter_var($Clave_Recibida,FILTER_VALIDATE_BOOLEAN);
-										break;
+														$Clave_Recibida = filter_var($Clave_Recibida,FILTER_VALIDATE_BOOLEAN);
+														if ( empty( $Clave_Recibida )) { $Clave_Recibida = 0 ; };
+																	break;
 
 									case 'TEXT':
-										$Clave_Recibida =  trim(htmlspecialchars( strtoupper($Clave_Recibida), ENT_QUOTES));
-
+														$Clave_Recibida =  trim(htmlspecialchars( strtoupper($Clave_Recibida), ENT_QUOTES));
+														$Clave_Recibida = strtoupper($Clave_Recibida);
+														break;
 
 									case 'TEXT-EMAIL':
-										$Clave_Recibida = trim(htmlspecialchars( strtolower( $Clave_Recibida), ENT_QUOTES));
-
-										break;
+													$Clave_Recibida = trim(htmlspecialchars( strtolower( $Clave_Recibida), ENT_QUOTES));
+													$Clave_Recibida = strtolower ($Clave_Recibida ) ;
+													break;
 
 									case 'NUM':
-											$Clave_Recibida  = filter_var($Clave_Recibida ,FILTER_VALIDATE_INT);
-										 break;
+														$Clave_Recibida  = filter_var($Clave_Recibida ,FILTER_VALIDATE_INT);
+													 break;
 
 									case 'DEC':
-											$Clave_Recibida  = filter_var($Clave_Recibida ,FILTER_VALIDATE_FLOAT);
-										 break;
+														$Clave_Recibida  = filter_var($Clave_Recibida ,FILTER_VALIDATE_FLOAT);
+													 break;
 
 									case 'FECHA':
-											$valores								=  explode("/", $Clave_Recibida);
-											$Clave_Recibida =  $valores[2].'-'.$valores[1].'-'.$valores[0];
-										 $Clave_Recibida =  strtotime($Clave_Recibida );
-										 $Clave_Recibida =  date('Y-m-d',$Clave_Recibida);
-										 break;
+															$valores								=  explode("/", $Clave_Recibida);
+															$Clave_Recibida =  $valores[2].'-'.$valores[1].'-'.$valores[0];
+														 $Clave_Recibida =  strtotime($Clave_Recibida );
+														 $Clave_Recibida =  date('Y-m-d',$Clave_Recibida);
+														 break;
 									case 'FECHA-HORA':
-											$valores          =  explode("/", $Clave_Recibida);
-											$anio             = substr($valores[2], 0,4);
-											$horas            = substr($valores[2], 5,2).':';
-											$minutos          = substr($valores[2], 8,2).':';
-											$segundos         ='00';
-											$Clave_Recibida   =  $anio.'-'.$valores[1].'-'.$valores[0] .' '. $horas . $minutos . 	$segundos;
-											$Clave_Recibida   =  strtotime($Clave_Recibida );
-											$Clave_Recibida   =  date('Y-m-d H:i:s',$Clave_Recibida);
-										 break;
+															$valores          =  explode("/", $Clave_Recibida);
+															$anio             = substr($valores[2], 0,4);
+															$horas            = substr($valores[2], 5,2).':';
+															$minutos          = substr($valores[2], 8,2).':';
+															$segundos         ='00';
+															$Clave_Recibida   =  $anio.'-'.$valores[1].'-'.$valores[0] .' '. $horas . $minutos . 	$segundos;
+															$Clave_Recibida   =  strtotime($Clave_Recibida );
+															$Clave_Recibida   =  date('Y-m-d H:i:s',$Clave_Recibida);
+														 break;
 
 									default:
-										if ($Tipo_Variable=='N' )
-										     { $Clave_Recibida =  0 ; }
-										else { $Clave_Recibida = '' ;  }
-										break;
+														if ($Tipo_Variable=='N' )
+														     { $Clave_Recibida =  0 ; }
+														else { $Clave_Recibida = '' ;  }
+														break;
 								}
 									 $_POST[$Clave] = $Clave_Recibida;
 							}

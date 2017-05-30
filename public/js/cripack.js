@@ -6,6 +6,8 @@ var $RespuestaAjax        ='';
 var $Titulo               = '¡ ERROR EN REGISTRO !';
 var $Respuesta_Validacion ='';
 
+$("#dv-img-cargando").hide();
+
 
 var Mostrar_Mensajes = function( $Titulo, $Contenido ){
      $('.modal-header #contenido').html($Titulo);
@@ -299,6 +301,8 @@ function Recuperar_Password(Parametros)
 
 
 
+
+
 $("#dv-img-cargando").hide();
 $("#btn-cambio_password-inicio").hide();
 
@@ -331,7 +335,8 @@ $("#btn-recupera-pass").on('click',function(){
 				 Mostrar_Mensajes( $Titulo, 'La constraseña y su confirmación deben ser iguales y no pueden estar en blanco.' );
 				}else {
 						var $Parametros = { "password": $password , "idtercero" : $idtercero };
-						$.ajax({
+
+      $.ajax({
 							data:  $Parametros,
 							dataType: 'json',
 							url:      '/terceros/Password_Modificar/',
@@ -347,6 +352,7 @@ $("#btn-recupera-pass").on('click',function(){
       	 }
 				});
 				}
+
 			}
 });
 
@@ -369,7 +375,18 @@ $("#btn-inicio-no-token").on('click',function(){
 // REGISTRO DE DATOS EN FERIA
 //=========================================================================================================
 
-$('#identificacion_feria').on('blur',function(){
+ var Validaciones_Previas_Registro_Feria = function(identificacion,nomtercero, cliente, proveedor,email) {
+    var texto = '';
+    if ( $.trim( identificacion ) =='') { texto ='Debe registrar el número de identificación.<br>'; }
+    if ( $.trim( nomtercero )     =='') { texto = texto +'Debe registrar el nombre o razón social.<br>'; }
+    if ( cliente == false && proveedor == false ){
+        texto = texto +'Indique si el registro es de un cliente o de un proveeor.<br>';
+       }
+    if ( $.trim( email )     =='') { texto = texto +'Registro el correo electrónico.<br>'; }
+    $Respuesta_Validacion = texto;
+ }
+
+/*$('#identificacion_feria').on('blur',function(){
    var $identificacion    = $("#identificacion_feria").val();
   $Parametros            = {'identificacion':$identificacion } ;
   Valida_Exista_Identificacion ( $Parametros );
@@ -379,29 +396,151 @@ $('#identificacion_feria').on('blur',function(){
   }
 
 })
+*/
+
+
+$('#entrega-tarjeta').on('click',function(){
+  var entrega_tarj      = $('#entrega-tarjeta').is(':checked');
+  if ( entrega_tarj  == true ) {
+    $('.entrega-tarj').text('SI');
+  }else{
+   $('.entrega-tarj').text('NO');
+  }
+})
+
+
+function Visitantes_Grabar_Datos( Parametros ){
+
+   $("#dv-img-cargando").show();
+
+   $.ajax({
+       data:  Parametros,
+       dataType: 'json',
+       url:      '/terceros/Visitantes_Grabar_Datos/',
+       type:     'post',
+        success:  function ( MyServerResponse ) {
+          if ( MyServerResponse.Respuesta == 'Todo-Ok'){
+                window.location.href = "/terceros/Listado_Visitantes";
+               $("#dv-img-cargando").hide();
+              }else{
+                Mostrar_Mensajes('REGISTRO DE VISITANTES', MyServerResponse.Respuesta);
+              }
+          },
+       complet: function(){
+             $("#dv-img-cargando").hide();
+        }
+    });
+}
+
+//--------------------------------------------------------
+/* MAYO 30 2017-    ELIMINAR EL REGISTRO DE UN VISITANTE
+-----------------------------------------------------------
+*/
+$('.container-fluid').on('click','.visitante-eliminar',function(){
+   var IdRegistro = $(this).data('idregistro');
+   $('.modal-body #idregistro').val(IdRegistro);
+   $('#modal_eliminar').modal('show');
+})
+//-----------------------------------------------------------------
+$('#btn-eliminar').on('click',function(){
+   var IdRegistro = $("#idregistro").val();
+
+    $.ajax({
+              data:  {"idregistro" :IdRegistro},
+              dataType: 'text',
+              url:      '/terceros/Eliminar_Registro_Visitante/',
+              type:     'post',
+        success:  function (resultado)  {
+               window.location.href = "/terceros/Listado_Visitantes";
+            },
+
+        });
+
+
+})
+//-----------------------------------------------------------------
+/* MAYO 30 2017     ENVIAR AGRADECIMIENTO A LOS VISITANTES
+//-----------------------------------------------------------------
+*/
+$('.container-fluid').on('click','.btn-agradecer',function(){
+  var IdRegistro = $(this).data('idregistro');
+
+      $.ajax({
+              data:  {"idregistro" :IdRegistro},
+              dataType: 'text',
+              url:      '/terceros/Visitantes_Agradecer_Visita/',
+              type:     'post',
+        success:  function (resultado)  {
+               window.location.href = "/terceros/Listado_Visitantes";
+            },
+
+        });
+
+})
+
+//-----------------------------------------------------------------
+/* MAYO 30 2017     ENVIAR AGRADECIMIENTO A LOS VISITANTES
+//-----------------------------------------------------------------
+*/
+$('.container-fluid').on('click','.btn-agregar-cliente',function(){
+  var IdRegistro = $(this).data('idregistro');
+      $.ajax({
+              data:  {"idregistro" :IdRegistro},
+              dataType: 'text',
+              url:      '/terceros/Visitantes_Convertir_Cliente/',
+              type:     'post',
+        success:  function (resultado)  {
+               window.location.href = "/terceros/Listado_Visitantes";
+               Mostrar_Mensajes('INFORMACIÓN', 'El registro se ha convertido en cliente. Desde CrossCut podrá complementar los datos.' );
+            },
+
+        });
+
+
+})
+
+
+
+
 
 
 $('#feria-grabar-registro').on('click',function(){
-  var identificacion  = $("#identificacion_feria").val();
-  var Tipo_Doc        = $("select[name='idtpdoc']").val();
-  var nomtercero      = $("#nomtercero").val();
-  var cliente         = $('#cliente').is(':checked');
-  var proveedor       = $('#proveedor').is(':checked');
-  var direccion       = $("#direccion").val();
-  var telefono        = $("#telefono").val();
-  var idmcipio        = $("select[name='idmcipio']").val();
-  var idzona_ventas   = $("select[name='idzona_ventas']").val();
-  var contacto        = $("#contacto").val();
-  var idcargo_externo = $("select[name='idcargo_externo']").val();
-  var idarea          = $("select[name='idarea']").val();
-  var celular         = $("#celular").val();
-  var email           = $("#email").val();
-  var sector          = $("#sector").val();
-  var tipo_producto   = $("#tipo_producto").val();
-  var observacion     = $("#observacion").val();
+  var identificacion    = $("#identificacion_feria").val();
+  var Tipo_Doc          = $("select[name='idtpdoc']").val();
+  var nomtercero        = $("#nomtercero").val();
+  var cliente           = $('#cliente').is(':checked');
+  var proveedor         = $('#proveedor').is(':checked');
+  var direccion         = $("#direccion").val();
+  var telefono          = $("#telefono").val();
+  var idmcipio          = $("select[name='idmcipio']").val();
+  var idpais            = $("select[name='idpais']").val();
+  var idzona_ventas     = $("select[name='idzona_ventas']").val();
+  var sector            = $("#sector").val();
+  var idestilotrabajo   = $("select[name='idestilotrabajo']").val();
+  var observacion       = $("#observacion").val();
+  var atendido_por      = $("#atendido-por").val();
 
+  var contacto          = $("#contacto").val();
+  var idcargo_externo   = $("select[name='idcargo_externo']").val();
+  var idarea            = $("select[name='idarea']").val();
+  var celular           = $("#celular").val();
+  var email             = $("#email").val();
 
+  var clien_existe      = $('#cliente-existente').is(':checked');
+  var posible_clien     = $('#posible-cliente').is(':checked');
+  var informacion       = $('#informacion').is(':checked');
+  var competencia       = $('#competencia').is(':checked');
+  var entrega_tarj      = $('#entrega-tarjeta').is(':checked');
 
+   Validaciones_Previas_Registro_Feria( identificacion,nomtercero, cliente, proveedor,email );
+  if ( $Respuesta_Validacion != '' ){
+       Mostrar_Mensajes('INFORMACIÓN REQUERIDA', $Respuesta_Validacion );
+       return;
+  }
+
+  parametros ={'identificacion':identificacion,'Tipo_Doc':Tipo_Doc,'nomtercero':nomtercero, 'cliente':cliente,'proveedor':proveedor, 'direccion':direccion,'telefono':telefono, 'idmcipio':idmcipio, 'idpais':idpais,'idzona_ventas':idzona_ventas, 'sector':sector,  'idestilotrabajo':idestilotrabajo,'observacion':observacion, 'atendido_por':atendido_por,'contacto':contacto,  'idcargo_externo':idcargo_externo, 'idarea':idarea, 'celular':celular, 'email':email, 'clien_existe':clien_existe, 'posible_clien':posible_clien,'informacion':informacion, 'competencia':competencia, 'entrega_tarj':entrega_tarj      };
+
+  Visitantes_Grabar_Datos ( parametros );
 })
 
 //=========================================================================================================

@@ -109,7 +109,9 @@ width: 220px;
     opacity: .5;
 }
 
-
+  .form-group {
+    display: flex;
+    align-items: center;
 
 
 

@@ -38,7 +38,7 @@
     <div class=" form-group">
       <label class="col-md-4 control-label" for="celular">Nro Celular :</label>
       <div class="col-md-8">
-        <input id="celular" name="celular" type="text" placeholder="Nombre Contacto" class="form-control input-md">
+        <input id="celular" name="celular" type="text" placeholder="Número Celular" class="form-control input-md">
       </div><br><br>
     </div>
 
@@ -85,10 +85,9 @@
       <label class="col-md-4 control-label" for="email">Entrega Tarjeta :</label>
       <div class="col-md-8">
         <div class="checkbox">
-          <label for="entrega-tarjeta" class="checkbox-inline">
+          <label for="entrega-tarjeta" class="checkbox-inline ">
             <input type="checkbox" value="" id="entrega-tarjeta" name="entrega-tarjeta">
-            <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
-
+            <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span><span class="entrega-tarj">NO</span>
           </label>
         </div>
       </div>

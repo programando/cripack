@@ -8,6 +8,47 @@
 				}
 
 
+				public function Visitantes_Grabar_Datos( $Parametros = array() ){
+					extract( $Parametros );
+
+					$SQL = "$idmcipio ,$idtpdoc ,$idvendedor ,$idformapago ,$idpais ,$idzona_ventas ,$codigo_tercero ,'$identificacion' ,'$dv' ,'$nomtercero' ,'$nom_sucursal' ,$cliente ,$proveedor ,$vendedor ,'$direccion' ,'$telefono' ,'$fax' ,'$contacto' ,'$email' ,$certificado_calidad ,$comision ,$vr_fletes ,'$atencion' ,'$cargo' ,'$despacho' ,'$celular' ,'$instrucciones' ,$costo_financiero ,$transportador ,'$cobros_contacto' ,'$cobros_telefono' ,$empleado ,'$cod_empleado' ,$aplica_extras ,$idcargo ,$salario ,'$fecha_ingreso' ,$vr_hora ,$vr_incentivo ,'$password_operario' ,$descarga_materiales ,$factor_salario ,$factor_transporte ,'$grupo_sanguineo' ,$inactivo ,'$maquinas' ,$presupuestoventas ,'$id_rgb' ,$incremento_ventas ,$comision_objetivo ,$id_lista_precio ,$cupo_credito ,$extra_cupo ,$cupo_pre_aprobado ,$dia_limite_recibe_facturas ,'$contacto_pagos' ,'$contacto_pagos_email' ,'$contacto_pagos_celular' ,$requiere_orden_compra ,$discrimina_materiales_factura ,$gran_contribuyente ,$auto_retenedor ,$retenedor_iva ,$retenedor_renta ,$agrupa_facturacion_estilo_trabajo ,$idcargo_externo ,$idarea ,'$horario_rbo_mercancia' ,'$dia_pago' ,$idbanco ,$plazo ,'$empleado_abrev' ,'$codigo_postal' ,$bloqueado ,'$ultimo_bloqueo' ,$dias_gracia ,$dia_informa_pagos ,'$cod_cuenta_tcc' ,'$alias' ,'$fecha_nacimiento' ,$prioridad_costeo ,$aplica_ferias ,$reg_ferias  ";
+						$Registro    =  $this->Db->Ejecutar_Sp("terceros_crear_registro_feria(".$SQL.")");
+						return $Registro;
+				}
+
+		 	public function Visitantes_Grabar_Otros_Datos( $Parametros = array() ){
+						extract( $Parametros );
+						$SQL = "$idtercero ,$idestilotrabajo ,$clien_existe ,$posible_clien ,$informacion ,$competencia ,$entrega_tarj ,'$atendido_por' ,'$observacion'";
+						$Registro    =  $this->Db->Ejecutar_Sp("terceros_crear_registro_feria_otros_datos(".$SQL.")");
+				}
+
+
+				public function Visitantes_Listado () {
+						$Registro                 = $this->Db->Ejecutar_Sp("terceros_registro_feria_listado()");
+						$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
+						return $Registro;
+				}
+
+				public function Visitantes_Eliminar_Registro ( $idregistro  ) {
+						$Registro                 = $this->Db->Ejecutar_Sp("terceros_registro_feria_eliminar( $idregistro )");
+				}
+
+				public function Visitantes_Agradecer_Visita( $idregistro  ) {
+							$Registro                 = $this->Db->Ejecutar_Sp("terceros_registro_feria_agradecimiento_visita( $idregistro )");
+							return 	$Registro;
+				}
+
+
+				public function Visitantes_Agradecer_Visita_Email_Enviado( $idregistro  ) {
+							$Registro   = $this->Db->Ejecutar_Sp("terceros_registro_feria_agradecimiento_email_enviado( $idregistro )");
+				}
+
+
+				public function Visitantes_Convertir_Cliente ( $idregistro  ) {
+							$Registro   = $this->Db->Ejecutar_Sp("terceros_registro_feria_cliente_confirmado( $idregistro )");
+				}
+
+
 
 				public function Clave_Temporal_Grabar_Cambio_Clave($idtercero, $password_temporal){
 				/** ENERO 24 DE 2017

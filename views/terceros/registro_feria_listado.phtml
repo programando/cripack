@@ -1,0 +1,103 @@
+<style>
+	.panel-heading {
+		background-color: white !important;
+	}
+	.panel-title   {
+		color: #20286D   !important;
+	}
+
+</style>
+
+<div class="listado-visitantes">
+		<div class="container-fluid">
+			<?php if ( !$this->Visitantes ) :?>
+
+					<div class="tabIn colorCri1 ff0 taC t30">
+								No hay registro de visitantes.
+					</div>
+
+			<?php else :?>
+
+				<div 	class="row">
+					<div class=" col-sm-12">
+						<div class="panel panel-primary miPanel">
+							<div class="panel-heading">
+								<h1 class="panel-title t30 colorCri1 ff2 mb20"> <?= $this->Cantidad ;?> &nbsp;VISITANTES REGISTRADOS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								</div>
+								<!-- Panel-Body-->
+								<div class="panel-body">
+
+									<table class="table table-condensed table-striped ">
+										<thead>
+											<tr>
+												<th>NOMBRE RAZÓN SOCIAL</th>
+												<th>CLASE REGISTRO</th>
+												<th>INTERESADO EN</th>
+												<th>OBSERVACIÓN</th>
+												<th> </th>
+											</tr>
+										</thead>
+										<tbody>
+											<?php foreach ( $this->Visitantes as $Visitante ) :?>
+												<?php
+												$Texto  = '';
+												$IdRegistro  = $Visitante['idegistro'] ;
+												$NomTercero  = $Visitante['nomtercero'];
+												$Observacion = $Visitante['observacion'];
+												$CE          = $Visitante['ce'];
+												$CP          = $Visitante['cp'];
+												$INFO        = $Visitante['inf'];
+												$CO          = $Visitante['co'];
+												$Interes     = $Visitante['nomestilotrabajo'];
+												$GraciasOK   = $Visitante['agradecimiento'];
+
+												if ( $CE   == TRUE  ) { $Texto = 'CLIENTE EXISTENTE' ; }
+												if ( $CP   == TRUE  ) { $Texto = 'CLIENTE POTENCIAL' ; }
+												if ( $INFO == TRUE  ) { $Texto = 'INFORMACIÓN' ; 					 }
+												if ( $CO   == TRUE  ) { $Texto = 'COMPETENCIA' ; 					 }
+
+												?>
+												<tr>
+													<td><?= $NomTercero ;?>		</td>
+													<td><?= $Texto ;?>							</td>
+													<td><?= $Interes ;?>					</td>
+													<td><?= $Observacion ;?>	</td>
+													<td>
+														<a href="#" class="btn btn-success btn-agregar-cliente" role="button" data-idregistro="<?=$IdRegistro;?>" >
+																	Registrar como Cliente
+														</a>
+
+														<?php if ( $GraciasOK  == TRUE) :?>
+																	<a href="#" class="btn btn-default"    role="button" id="<?=$IdRegistro;?>" disabled="disabled"  >
+																			Enviar Agradecimiento
+																	</a>
+														<?php else :?>
+																			<a href="#" class="btn btn-info btn-agradecer"    role="button" data-idregistro="<?=$IdRegistro;?>" "  >
+																						Enviar Agradecimiento
+																			</a>
+														<?php endif ;?>
+
+														<a href="#" class="btn btn-danger visitante-eliminar " role="button" data-idregistro="<?=$IdRegistro;?>" >
+														    Eliminar
+														</a>
+
+													</td>
+												</tr>
+
+											<?php endforeach ;?>
+										</tbody>
+									</table>
+
+								</div>	<!-- //Panel-Body-->
+
+							</div>
+
+						</div>
+
+					</div>
+
+				<?php endif ;?>
+			</div>
+ <?php include ( VENTANAS_MODALES .'eliminar_registro.php') ;?>
+	</div>
+

@@ -138,9 +138,35 @@ class TercerosController extends Controller
       $this->View->Mostrar_Vista('contactos');
     }
 
+    public function Visitantes_Convertir_Cliente (){
+        $idregistro  = General_Functions::Validar_Entrada('idregistro','NUM');
+        $Registro  = $this->Terceros->Visitantes_Convertir_Cliente ( $idregistro  );
+        echo "ok";
+    }
 
+    public function Visitantes_Agradecer_Visita(){
+        $idregistro  = General_Functions::Validar_Entrada('idregistro','NUM');
+        $Registro  = $this->Terceros->Visitantes_Agradecer_Visita ( $idregistro  );
 
-    public function Registro_Datos_Basicos() {
+       // ENVIAR CORREO AL TERCERO
+       $this->Emails->Visitantes_Agradecer_Visita                ( $Registro     );
+       $this->Terceros->Visitantes_Agradecer_Visita_Email_Enviado ( $idregistro   );
+
+    }
+
+    public function Eliminar_Registro_Visitante (){
+        $idregistro  = General_Functions::Validar_Entrada('idregistro','NUM');
+        $this->Terceros->Visitantes_Eliminar_Registro ( $idregistro  );
+        echo "ok";
+    }
+
+    public function Listado_Visitantes (){
+          $this->View->Visitantes = $this->Terceros->Visitantes_Listado();
+          $this->View->Cantidad   = $this->Terceros->Cantidad_Registros;
+          $this->View->Mostrar_Vista('registro_feria_listado');
+    }
+
+    public function Registro_Visitantes() {
 
       if ( !isset( $this->View->Tipos_Doc  )) { $this->View->Tipos_Doc    = $this->Terceros->Terceros_Tipos_Documentos(); }
       if ( !isset($this->View->Cargos) )      { $this->View->Cargos       = $this->Terceros->Terceros_Cargos_Externos();  }
@@ -154,6 +180,185 @@ class TercerosController extends Controller
     }
 
 
+    public function Visitantes_Grabar_Datos(){
+      /*  MAYO 25 2017
+          REGISTRO BASICO DE CLIENTES DESDE UNA FERIA O EVENTO
+      */
+         $Respuesta = '';
+
+         $identificacion  = General_Functions::Validar_Entrada('identificacion','TEXT');
+         $idtpdoc        = General_Functions::Validar_Entrada('Tipo_Doc','TEXT');
+         $nomtercero      = General_Functions::Validar_Entrada('nomtercero','TEXT');
+         $cliente         = General_Functions::Validar_Entrada('cliente','BOL');
+         $proveedor       = General_Functions::Validar_Entrada('proveedor','BOL');
+         $direccion       = General_Functions::Validar_Entrada('direccion','TEXT');
+         $telefono        = General_Functions::Validar_Entrada('telefono','TEXT');
+         $idmcipio        = General_Functions::Validar_Entrada('idmcipio','NUM');
+         $idpais          = General_Functions::Validar_Entrada('idpais','NUM');
+         $idzona_ventas   = General_Functions::Validar_Entrada('idzona_ventas','NUM');
+         $sector          = General_Functions::Validar_Entrada('sector','TEXT');
+         $contacto        = General_Functions::Validar_Entrada('contacto','TEXT');
+         $idcargo_externo = General_Functions::Validar_Entrada('idcargo_externo','NUM');
+         $idarea          = General_Functions::Validar_Entrada('idarea','NUM');
+         $celular         = General_Functions::Validar_Entrada('celular','TEXT');
+
+         $email           = General_Functions::Validar_Entrada('email','TEXT-EMAIL');
+
+         $Es_email        = General_Functions::Validar_Entrada('email','EMAIL');
+         $atendido_por    = General_Functions::Validar_Entrada('atendido_por','TEXT');
+         $observacion     = General_Functions::Validar_Entrada('observacion','TEXT');
+         $idestilotrabajo = General_Functions::Validar_Entrada('idestilotrabajo','NUM');
+
+         $clien_existe    = General_Functions::Validar_Entrada('clien_existe','BOL');
+         $posible_clien   = General_Functions::Validar_Entrada('posible_clien','BOL');
+         $informacion     = General_Functions::Validar_Entrada('informacion','BOL');
+         $competencia     = General_Functions::Validar_Entrada('competencia','BOL');
+         $entrega_tarj    = General_Functions::Validar_Entrada('entrega_tarj','BOL');
+
+
+        Debug::Mostrar( $nomtercero );
+        Debug::Mostrar( $email );
+
+         $parametros = compact('identificacion','nomtercero','cliente','proveedor','contacto','Es_email');
+
+         $Respuesta  = $this->Visitantes_Validar_Datos( $parametros ) ;
+
+
+         if ( $Respuesta == '' ){
+              $idvendedor                        = -1;
+              $idformapago                       = 0;
+              $codigo_tercero                    = '0';
+              $dv                                = '';
+              $nom_sucursal                      ='';
+              $vendedor                          = 0;
+              $fax                               ='';
+              $certificado_calidad               = 0;
+              $comision                          = 0;
+              $vr_fletes                         = 0;
+              $atencion                          ='';
+              $cargo                             = '';
+              $despacho                          = '';
+              $instrucciones                     = '';
+              $costo_financiero                  = 0 ;
+              $transportador                     = 0;
+              $cobros_contacto                   = '';
+              $cobros_telefono                   = '';
+              $empleado                          = 0;
+              $cod_empleado                      = '';
+              $aplica_extras                     = 0;
+              $idcargo                           = 0;
+              $salario                           = 0;
+              $fecha_ingreso                     = '1900/01/01';
+              $vr_hora                           = 0 ;
+              $vr_incentivo                      = 0;
+              $password_operario                 = '';
+              $descarga_materiales               = 0;
+              $factor_salario                    = 0;
+              $factor_transporte                 = 0;
+              $grupo_sanguineo                   = '';
+              $inactivo                          = 0;
+              $maquinas                          = '';
+              $presupuestoventas                 = 0 ;
+              $id_rgb                            = '';
+              $incremento_ventas                 = 0;
+              $comision_objetivo                 = 0;
+              $id_lista_precio                   = 1; // Lista en blanco
+              $cupo_credito                      = 0;
+              $extra_cupo                        = 0;
+              $cupo_pre_aprobado                 = 0;
+              $dia_limite_recibe_facturas        = 0;
+              $contacto_pagos                    = '';
+              $contacto_pagos_email              = '';
+              $contacto_pagos_celular            = '';
+              $requiere_orden_compra             = 0;
+              $discrimina_materiales_factura     = 0;
+              $gran_contribuyente                = 0;
+              $auto_retenedor                    = 0;
+              $retenedor_iva                     = 0;
+              $retenedor_renta                   = 0;
+              $agrupa_facturacion_estilo_trabajo = 0;
+              $horario_rbo_mercancia             = '';
+              $dia_pago                          = 0;
+              $idbanco                           = 0;
+              $plazo                             = 0;
+              $empleado_abrev                    = '';
+              $codigo_postal                     = '';
+              $bloqueado                         = 0;
+              $ultimo_bloqueo                    = '1900/01/01';
+              $dias_gracia                       = 0;
+              $dia_informa_pagos                 = 0 ;
+              $cod_cuenta_tcc                    = '';
+              $alias                             = $nomtercero;
+              $fecha_nacimiento                  = '1900/01/01';
+              $prioridad_costeo                  = 0;
+              $aplica_ferias                     = 0 ;
+              $reg_ferias                        = 1;
+
+
+          $Datos_Registro = compact('idmcipio' ,'idtpdoc' ,'idvendedor' ,'idformapago' ,'idpais' ,
+                            'idzona_ventas' ,'codigo_tercero' ,'identificacion' ,'dv' ,'nomtercero' ,
+                            'nom_sucursal' ,'cliente' ,'proveedor' ,'vendedor' ,'direccion' ,
+                            'telefono' ,'fax' ,'contacto' ,'email' ,'certificado_calidad' ,
+                            'comision' ,'vr_fletes' ,'atencion' ,'cargo' ,'despacho' ,
+                            'celular' ,'instrucciones' ,'costo_financiero' ,'transportador' ,'cobros_contacto' ,
+                            'cobros_telefono' ,'empleado' ,'cod_empleado' ,'aplica_extras' ,'idcargo' ,
+                            'salario' ,'fecha_ingreso' ,'vr_hora' ,'vr_incentivo' ,'password_operario' ,
+                            'descarga_materiales' ,'factor_salario' ,'factor_transporte' ,'grupo_sanguineo' ,'inactivo' ,
+                            'maquinas' ,'presupuestoventas' ,'id_rgb' ,'incremento_ventas' ,'comision_objetivo' ,
+                            'id_lista_precio' ,'cupo_credito' ,'extra_cupo' ,'cupo_pre_aprobado' ,'dia_limite_recibe_facturas' ,
+                            'contacto_pagos' ,'contacto_pagos_email' ,'contacto_pagos_celular' ,'requiere_orden_compra' ,'discrimina_materiales_factura' ,'gran_contribuyente' ,'auto_retenedor' ,'retenedor_iva' ,'retenedor_renta' ,'agrupa_facturacion_estilo_trabajo' ,  'idcargo_externo' ,'idarea' ,'horario_rbo_mercancia' ,'dia_pago' ,'idbanco' ,'plazo' ,'empleado_abrev' ,'codigo_postal' ,
+                             'bloqueado' ,'ultimo_bloqueo' ,
+                            'dias_gracia' ,'dia_informa_pagos' ,'cod_cuenta_tcc' ,'alias' ,'fecha_nacimiento' ,
+                            'prioridad_costeo' ,'aplica_ferias' ,'reg_ferias' );
+
+            $Registro = $this->Terceros->Visitantes_Grabar_Datos ( $Datos_Registro );
+             $Respuesta ='Todo-Ok';
+            if ( $Registro ){
+                // GRABAR DATOS COMPLEMENTARIOS
+                //-----------------------------
+               $idtercero = $Registro [0]['idtercero'];
+               $Datos_Registro = compact('idtercero','idestilotrabajo','clien_existe','posible_clien','informacion','competencia','entrega_tarj','atendido_por','observacion' );
+                 $this->Terceros->Visitantes_Grabar_Otros_Datos( $Datos_Registro );
+                 $Respuesta ='Todo-Ok';
+            }else {
+               $Respuesta ='Todo-No-Ok';
+            }
+
+         }
+
+        $Respuesta  = compact('Respuesta');
+        echo json_encode($Respuesta,256);
+    }
+
+
+    private function Visitantes_Validar_Datos( $Parametros =array()){
+      $Texto = '';
+
+      extract( $Parametros );
+
+
+      if ( strlen($identificacion) == 0 ) {
+          $Texto = 'La identificación no puede estar en blanco.'.'<br>' ;
+        }
+
+      if ( strlen($nomtercero) == 0 )     {
+          $Texto  = $Texto. 'Especifique el nombre de la persona o empresa'. '<br>' ;
+        }
+
+      if ( $cliente == FALSE && $proveedor == FALSE ) {
+          $Texto  = $Texto. 'Debe indicar si los datos que registra son de un cliente o proveedor.'. '<br>' ;
+      }
+
+      if ( strlen($contacto) == 0 )     {
+          $Texto  = $Texto. 'Registre un nombre de contacto.'. '<br>' ;
+          }
+
+      if ( $Es_email == FALSE )     {
+          $Texto  = $Texto. 'La dirección de correo no tiene un formato válido.'. '<br>' ;
+        }
+
+      return $Texto;
+    }
 
 
 
@@ -243,7 +448,7 @@ class TercerosController extends Controller
    public function Ingreso_Sistema_Validaciones(){
 
       	 Session::Set('logueado',   FALSE);
-         $Email                = General_Functions::Validar_Entrada('email','TEXT');
+         $Email                = General_Functions::Validar_Entrada('email','TEXT-EMAIL');
          $Password             = General_Functions::Validar_Entrada('Password','TEXT');
          $Password             = md5($Password );
          $Registro             = $this->Terceros->Consulta_Datos_Por_Password_Email( $Password, $Email );
