@@ -216,8 +216,7 @@ class TercerosController extends Controller
          $entrega_tarj    = General_Functions::Validar_Entrada('entrega_tarj','BOL');
 
 
-        Debug::Mostrar( $nomtercero );
-        Debug::Mostrar( $email );
+
 
          $parametros = compact('identificacion','nomtercero','cliente','proveedor','contacto','Es_email');
 
