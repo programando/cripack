@@ -108,10 +108,22 @@ width: 220px;
 .radio label input[type="radio"]:disabled + .cr {
     opacity: .5;
 }
+/* FIN DISEÑO PARA LOS CHECKBOX */
 
-  .form-group {
+
+/* CENTRAR LOS CAMPOS DE FORMULARIOS */
+.form-group {
     display: flex;
     align-items: center;
+    vertical-align: middle;
+}
+
+
+/* CENTRAR RADIOS */
+input[type="radio"] {
+  margin-top: 1px;
+  vertical-align: top;
+}
 
 
 

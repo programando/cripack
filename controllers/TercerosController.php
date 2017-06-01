@@ -175,6 +175,10 @@ class TercerosController extends Controller
       if ( !isset($this->View->Zona_Ventas) ) { $this->View->Zona_Ventas  = $this->Terceros->Zona_Ventas();               }
       if ( !isset($this->View->Estilos) )     { $this->View->Estilos      = $this->Terceros->Estilos_Trabajos();          }
       if ( !isset($this->View->Paises ) )     { $this->View->Paises       = $this->Terceros->Paises();          }
+      if ( !isset($this->View->Asistentes_Ferias ) ){
+            $this->View->Asistentes_Ferias       = $this->Terceros->Asistentes_Ferias();
+          }
+
 
       $this->View->Mostrar_Vista('registro_feria');
     }
@@ -207,7 +211,10 @@ class TercerosController extends Controller
          $Es_email        = General_Functions::Validar_Entrada('email','EMAIL');
          $atendido_por    = General_Functions::Validar_Entrada('atendido_por','TEXT');
          $observacion     = General_Functions::Validar_Entrada('observacion','TEXT');
-         $idestilotrabajo = General_Functions::Validar_Entrada('idestilotrabajo','NUM');
+
+        $idestilotrabajo_array = $_POST["idestilotrabajo"]; // Lo recibo de esta manera porque es un select multiseleccion
+
+
 
          $clien_existe    = General_Functions::Validar_Entrada('clien_existe','BOL');
          $posible_clien   = General_Functions::Validar_Entrada('posible_clien','BOL');
@@ -316,9 +323,10 @@ class TercerosController extends Controller
                 // GRABAR DATOS COMPLEMENTARIOS
                 //-----------------------------
                $idtercero = $Registro [0]['idtercero'];
+               $idestilotrabajo = 0 ;
                $Datos_Registro = compact('idtercero','idestilotrabajo','clien_existe','posible_clien','informacion','competencia','entrega_tarj','atendido_por','observacion' );
                  $this->Terceros->Visitantes_Grabar_Otros_Datos( $Datos_Registro );
-                 $Respuesta ='Todo-Ok';
+                 $this->Visitantes_Areas_Interes_Grabar( $idtercero , $idestilotrabajo_array );
             }else {
                $Respuesta ='Todo-No-Ok';
             }
@@ -329,6 +337,19 @@ class TercerosController extends Controller
         echo json_encode($Respuesta,256);
     }
 
+      private function Visitantes_Areas_Interes_Grabar ($idtercero, $idestilotrabajo = array() ) {
+          $Texto_SQL         = "INSERT INTO terceros_visitantes_ferias_estilos_interes (idtercero,idestilotrabajo) VAlUES  ";
+          $Valores ='';
+          $Datos = '';
+          for ($i=0;  $i < count($idestilotrabajo); $i++)  {
+            $Valores           = $idtercero .',' .$idestilotrabajo[$i];
+            $Valores           = '( ' . $Valores . ' ),';
+            $Datos             = $Datos . $Valores ;
+          }
+          $Texto_SQL = $Texto_SQL . $Datos;
+          $Texto_SQL = substr($Texto_SQL, 0, strlen($Texto_SQL)-1);
+          $this->Terceros->Visitantes_Areas_Interes_Grabar ( $Texto_SQL );
+      }
 
     private function Visitantes_Validar_Datos( $Parametros =array()){
       $Texto = '';

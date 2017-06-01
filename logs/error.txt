@@ -1,0 +1,35 @@
+[31-May-2017 22:19:01 UTC] PHP Parse error:  syntax error, unexpected '1' (T_LNUMBER), expecting ',' or ')' in C:\laragon\www\cripack\controllers\TercerosController.php on line 212
+[31-May-2017 22:27:58 UTC] PHP Warning:  A non-numeric value encountered in C:\laragon\www\cripack\controllers\TercerosController.php on line 219
+[31-May-2017 22:27:58 UTC] PHP Notice:  A non well formed numeric value encountered in C:\laragon\www\cripack\controllers\TercerosController.php on line 219
+[31-May-2017 22:27:58 UTC] PHP Warning:  A non-numeric value encountered in C:\laragon\www\cripack\controllers\TercerosController.php on line 219
+[31-May-2017 22:28:37 UTC] PHP Warning:  A non-numeric value encountered in C:\laragon\www\cripack\controllers\TercerosController.php on line 219
+[31-May-2017 22:28:37 UTC] PHP Notice:  A non well formed numeric value encountered in C:\laragon\www\cripack\controllers\TercerosController.php on line 219
+[31-May-2017 22:28:37 UTC] PHP Warning:  A non-numeric value encountered in C:\laragon\www\cripack\controllers\TercerosController.php on line 219
+[31-May-2017 22:29:06 UTC] PHP Warning:  A non-numeric value encountered in C:\laragon\www\cripack\controllers\TercerosController.php on line 219
+[31-May-2017 22:29:06 UTC] PHP Notice:  A non well formed numeric value encountered in C:\laragon\www\cripack\controllers\TercerosController.php on line 219
+[31-May-2017 22:29:06 UTC] PHP Warning:  A non-numeric value encountered in C:\laragon\www\cripack\controllers\TercerosController.php on line 219
+[31-May-2017 22:30:43 UTC] PHP Warning:  A non-numeric value encountered in C:\laragon\www\cripack\controllers\TercerosController.php on line 224
+[31-May-2017 22:30:43 UTC] PHP Warning:  A non-numeric value encountered in C:\laragon\www\cripack\controllers\TercerosController.php on line 224
+[31-May-2017 22:30:43 UTC] PHP Warning:  A non-numeric value encountered in C:\laragon\www\cripack\controllers\TercerosController.php on line 224
+[31-May-2017 22:31:22 UTC] PHP Warning:  A non-numeric value encountered in C:\laragon\www\cripack\controllers\TercerosController.php on line 224
+[31-May-2017 22:31:22 UTC] PHP Warning:  A non-numeric value encountered in C:\laragon\www\cripack\controllers\TercerosController.php on line 224
+[31-May-2017 22:31:22 UTC] PHP Warning:  A non-numeric value encountered in C:\laragon\www\cripack\controllers\TercerosController.php on line 224
+[31-May-2017 22:43:19 UTC] PHP Notice:  Array to string conversion in C:\laragon\www\cripack\models\TercerosModel.php on line 21
+[31-May-2017 22:43:19 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetchall() on boolean in C:\laragon\www\cripack\application\Database.php:33
+Stack trace:
+#0 C:\laragon\www\cripack\models\TercerosModel.php(22): Database->Ejecutar_Sp('terceros_crear_...')
+#1 C:\laragon\www\cripack\controllers\TercerosController.php(323): TercerosModel->Visitantes_Grabar_Otros_Datos(Array)
+#2 C:\laragon\www\cripack\application\Bootstrap.php(32): TercerosController->Visitantes_Grabar_Datos('')
+#3 C:\laragon\www\cripack\index.php(17): Bootstrap::Run(Object(Request))
+#4 {main}
+  thrown in C:\laragon\www\cripack\application\Database.php on line 33
+[31-May-2017 22:43:28 UTC] PHP Notice:  Array to string conversion in C:\laragon\www\cripack\models\TercerosModel.php on line 21
+[31-May-2017 22:43:28 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetchall() on boolean in C:\laragon\www\cripack\application\Database.php:33
+Stack trace:
+#0 C:\laragon\www\cripack\models\TercerosModel.php(22): Database->Ejecutar_Sp('terceros_crear_...')
+#1 C:\laragon\www\cripack\controllers\TercerosController.php(323): TercerosModel->Visitantes_Grabar_Otros_Datos(Array)
+#2 C:\laragon\www\cripack\application\Bootstrap.php(32): TercerosController->Visitantes_Grabar_Datos('')
+#3 C:\laragon\www\cripack\index.php(17): Bootstrap::Run(Object(Request))
+#4 {main}
+  thrown in C:\laragon\www\cripack\application\Database.php on line 33
+[01-Jun-2017 00:45:39 UTC] PHP Notice:  Undefined index: nomtercero in C:\laragon\www\cripack\application_sections\terceros\04_otros_datos.php on line 42

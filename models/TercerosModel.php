@@ -43,11 +43,21 @@
 							$Registro   = $this->Db->Ejecutar_Sp("terceros_registro_feria_agradecimiento_email_enviado( $idregistro )");
 				}
 
+ 		public function Visitantes_Areas_Interes_Grabar( $texto_sql )		{
+ 				$Registro = $this->Db->Ejecutar_SQL( $texto_sql );
+ 		}
+
+
 
 				public function Visitantes_Convertir_Cliente ( $idregistro  ) {
 							$Registro   = $this->Db->Ejecutar_Sp("terceros_registro_feria_cliente_confirmado( $idregistro )");
 				}
 
+
+				public function Asistentes_Ferias(){
+							$Registro   = $this->Db->Ejecutar_Sp("terceros_asistentes_ferias(  )");
+							return $Registro ;
+				}
 
 
 				public function Clave_Temporal_Grabar_Cambio_Clave($idtercero, $password_temporal){
@@ -240,7 +250,7 @@
 				}
 
 				public function  Estilos_Trabajos ( ){
-						$Registro    =  $this->Db->Ejecutar_Sp("estilos_trabajos_consultar_activos()");
+						$Registro    =  $this->Db->Ejecutar_Sp("estilos_trabajos_consultar_activos_ferias()");
 						return $Registro;
 				}
 

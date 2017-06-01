@@ -501,9 +501,6 @@ $('.container-fluid').on('click','.btn-agregar-cliente',function(){
 
 
 
-
-
-
 $('#feria-grabar-registro').on('click',function(){
   var identificacion    = $("#identificacion_feria").val();
   var Tipo_Doc          = $("select[name='idtpdoc']").val();
@@ -516,7 +513,7 @@ $('#feria-grabar-registro').on('click',function(){
   var idpais            = $("select[name='idpais']").val();
   var idzona_ventas     = $("select[name='idzona_ventas']").val();
   var sector            = $("#sector").val();
-  var idestilotrabajo   = $("select[name='idestilotrabajo']").val();
+  var idestilotrabajo   = $("select[name='idestilotrabajo[]']").val();
   var observacion       = $("#observacion").val();
   var atendido_por      = $("#atendido-por").val();
 
@@ -534,6 +531,7 @@ $('#feria-grabar-registro').on('click',function(){
 
    Validaciones_Previas_Registro_Feria( identificacion,nomtercero, cliente, proveedor,email );
   if ( $Respuesta_Validacion != '' ){
+       $("#dv-img-cargando").hide();
        Mostrar_Mensajes('INFORMACIÓN REQUERIDA', $Respuesta_Validacion );
        return;
   }

@@ -1,12 +1,7 @@
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-12">
 
-    <div class=" form-group">
-      <label class="col-md-4 control-label" for="identificacion">Identificación :</label>
-      <div class="col-md-8">
-        <input id="identificacion_feria" name="identificacion_feria" type="text" placeholder="Número Identificación" class="form-control input-md">
-      </div><br><br>
-    </div>
+
 
     <div class="form-group">
       <label class="col-md-4 control-label" for="idtpdoc" >Tipo Documento :</label>
@@ -20,10 +15,23 @@
       </div><br><br>
     </div>
 
+    <div class=" form-group">
+      <label class="col-md-4 control-label" for="identificacion">Identificación :</label>
+      <div class="col-md-8">
+        <input id="identificacion_feria" name="identificacion_feria" type="text" placeholder="Número Identificación" class="form-control input-md">
+      </div><br><br>
+    </div>
+
     <div class="form-group">
       <label class="col-md-4 control-label" for="nomtercero">Nombre/Razón Social :</label>
       <div class="col-md-8">
         <input id="nomtercero" name="nomtercero" type="text" placeholder="Nombre/Razón Social" class="form-control input-md">
+      </div><br><br>
+    </div>
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="nomtercero">Quién nos visita ? :</label>
+      <div class="col-md-8">
+        <input id="persona-visita" name="persona-visita" type="text" placeholder="Persona que nos visita" class="form-control input-md">
       </div><br><br>
     </div>
 

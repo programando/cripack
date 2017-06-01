@@ -50,6 +50,7 @@
 												$CO          = $Visitante['co'];
 												$Interes     = $Visitante['nomestilotrabajo'];
 												$GraciasOK   = $Visitante['agradecimiento'];
+												$EsCliente   = $Visitante['cliente_confirmado'];
 
 												if ( $CE   == TRUE  ) { $Texto = 'CLIENTE EXISTENTE' ; }
 												if ( $CP   == TRUE  ) { $Texto = 'CLIENTE POTENCIAL' ; }
@@ -63,9 +64,16 @@
 													<td><?= $Interes ;?>					</td>
 													<td><?= $Observacion ;?>	</td>
 													<td>
-														<a href="#" class="btn btn-success btn-agregar-cliente" role="button" data-idregistro="<?=$IdRegistro;?>" >
-																	Registrar como Cliente
-														</a>
+
+													<?php if ( $EsCliente == TRUE) :?>
+																<a href="#" class="btn btn-primary btn-agregar-cliente" role="button" data-idregistro="<?=$IdRegistro;?>" disabled="disabled" >
+																	Pdte. Finalizar Registro
+																	</a>
+															<?php else :?>
+																		<a href="#" class="btn btn-success btn-agregar-cliente" role="button" data-idregistro="<?=$IdRegistro;?>" >
+																					Registrar como Cliente
+																		</a>
+															<?php endif ;?>
 
 														<?php if ( $GraciasOK  == TRUE) :?>
 																	<a href="#" class="btn btn-default"    role="button" id="<?=$IdRegistro;?>" disabled="disabled"  >
@@ -73,7 +81,7 @@
 																	</a>
 														<?php else :?>
 																			<a href="#" class="btn btn-info btn-agradecer"    role="button" data-idregistro="<?=$IdRegistro;?>" "  >
-																						Enviar Agradecimiento
+																						&nbsp;Enviar  &nbsp;&nbsp;Agradecimiento
 																			</a>
 														<?php endif ;?>
 
