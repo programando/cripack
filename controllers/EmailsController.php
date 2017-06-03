@@ -161,14 +161,10 @@
            $Texto_Correo    = str_replace("#_EMPRESA_#"   , $Empresa  ,$Texto_Correo);
            $Texto_Correo    = str_replace("#_CONTACTO_#"  , $Contacto ,$Texto_Correo);
            $Texto_Correo    = str_replace("#_CARGO_#"     , $Cargo    ,$Texto_Correo);
-
-            $this->Email->Body    =  $Texto_Correo  ;
-
-            $this->Email->AddAddress( 'jhonjamesmg@hotmail.com');
-            $this->Email->AddAddress( 'gerencia@cripack.com');
-            $Respuesta              = $this->Enviar_Correo();
-
-          }
+           $this->Email->Body    =  $Texto_Correo  ;
+           $this->Email->AddAddress($Email);
+           $Respuesta              = $this->Enviar_Correo();
+      }
 
 
 

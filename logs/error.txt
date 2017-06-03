@@ -23891,3 +23891,59 @@ Stack trace:
 [03-Jun-2017 01:58:29 UTC] PHP Notice:  Undefined variable: Registro in C:\laragon\www\cripack\controllers\EmailsController.php on line 155
 [03-Jun-2017 01:58:29 UTC] PHP Notice:  Undefined variable: Registro in C:\laragon\www\cripack\controllers\EmailsController.php on line 156
 [03-Jun-2017 01:58:29 UTC] PHP Notice:  Undefined variable: Registro in C:\laragon\www\cripack\controllers\EmailsController.php on line 157
+[03-Jun-2017 13:49:39 UTC] PHP Notice:  Undefined property: View::$idcargo in C:\laragon\www\cripack\application_sections\terceros\03_contacto.php on line 17
+[03-Jun-2017 13:49:43 UTC] PHP Notice:  Undefined property: View::$idcargo in C:\laragon\www\cripack\application_sections\terceros\03_contacto.php on line 17
+[03-Jun-2017 13:50:01 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetchall() on boolean in C:\laragon\www\cripack\application\Database.php:33
+Stack trace:
+#0 C:\laragon\www\cripack\models\TercerosModel.php(15): Database->Ejecutar_Sp('terceros_crear_...')
+#1 C:\laragon\www\cripack\controllers\TercerosController.php(383): TercerosModel->Visitantes_Grabar_Datos(Array)
+#2 C:\laragon\www\cripack\application\Bootstrap.php(32): TercerosController->Visitantes_Grabar_Datos('')
+#3 C:\laragon\www\cripack\index.php(19): Bootstrap::Run(Object(Request))
+#4 {main}
+  thrown in C:\laragon\www\cripack\application\Database.php on line 33
+[03-Jun-2017 13:50:10 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetchall() on boolean in C:\laragon\www\cripack\application\Database.php:33
+Stack trace:
+#0 C:\laragon\www\cripack\models\TercerosModel.php(15): Database->Ejecutar_Sp('terceros_crear_...')
+#1 C:\laragon\www\cripack\controllers\TercerosController.php(383): TercerosModel->Visitantes_Grabar_Datos(Array)
+#2 C:\laragon\www\cripack\application\Bootstrap.php(32): TercerosController->Visitantes_Grabar_Datos('')
+#3 C:\laragon\www\cripack\index.php(19): Bootstrap::Run(Object(Request))
+#4 {main}
+  thrown in C:\laragon\www\cripack\application\Database.php on line 33
+[03-Jun-2017 13:52:11 UTC] PHP Notice:  Undefined property: View::$idcargo in C:\laragon\www\cripack\application_sections\terceros\03_contacto.php on line 17
+[03-Jun-2017 13:52:24 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetchall() on boolean in C:\laragon\www\cripack\application\Database.php:33
+Stack trace:
+#0 C:\laragon\www\cripack\models\TercerosModel.php(15): Database->Ejecutar_Sp('terceros_crear_...')
+#1 C:\laragon\www\cripack\controllers\TercerosController.php(383): TercerosModel->Visitantes_Grabar_Datos(Array)
+#2 C:\laragon\www\cripack\application\Bootstrap.php(32): TercerosController->Visitantes_Grabar_Datos('')
+#3 C:\laragon\www\cripack\index.php(19): Bootstrap::Run(Object(Request))
+#4 {main}
+  thrown in C:\laragon\www\cripack\application\Database.php on line 33
+[03-Jun-2017 13:53:31 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetchall() on boolean in C:\laragon\www\cripack\application\Database.php:33
+Stack trace:
+#0 C:\laragon\www\cripack\models\TercerosModel.php(15): Database->Ejecutar_Sp('terceros_crear_...')
+#1 C:\laragon\www\cripack\controllers\TercerosController.php(384): TercerosModel->Visitantes_Grabar_Datos(Array)
+#2 C:\laragon\www\cripack\application\Bootstrap.php(32): TercerosController->Visitantes_Grabar_Datos('')
+#3 C:\laragon\www\cripack\index.php(19): Bootstrap::Run(Object(Request))
+#4 {main}
+  thrown in C:\laragon\www\cripack\application\Database.php on line 33
+[03-Jun-2017 13:54:07 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetchall() on boolean in C:\laragon\www\cripack\application\Database.php:33
+Stack trace:
+#0 C:\laragon\www\cripack\models\TercerosModel.php(16): Database->Ejecutar_Sp('terceros_crear_...')
+#1 C:\laragon\www\cripack\controllers\TercerosController.php(384): TercerosModel->Visitantes_Grabar_Datos(Array)
+#2 C:\laragon\www\cripack\application\Bootstrap.php(32): TercerosController->Visitantes_Grabar_Datos('')
+#3 C:\laragon\www\cripack\index.php(19): Bootstrap::Run(Object(Request))
+#4 {main}
+  thrown in C:\laragon\www\cripack\application\Database.php on line 33
+[03-Jun-2017 13:59:39 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetchall() on boolean in C:\laragon\www\cripack\application\Database.php:33
+Stack trace:
+#0 C:\laragon\www\cripack\models\TercerosModel.php(16): Database->Ejecutar_Sp('terceros_crear_...')
+#1 C:\laragon\www\cripack\controllers\TercerosController.php(384): TercerosModel->Visitantes_Grabar_Datos(Array)
+#2 C:\laragon\www\cripack\application\Bootstrap.php(32): TercerosController->Visitantes_Grabar_Datos('')
+#3 C:\laragon\www\cripack\index.php(19): Bootstrap::Run(Object(Request))
+#4 {main}
+  thrown in C:\laragon\www\cripack\application\Database.php on line 33
+[03-Jun-2017 14:16:36 UTC] PHP Notice:  Undefined property: View::$idcargo in C:\laragon\www\cripack\application_sections\terceros\03_contacto.php on line 17
+[03-Jun-2017 14:18:19 UTC] PHP Notice:  Use of undefined constant idtercero - assumed 'idtercero' in C:\laragon\www\cripack\application_sections\modales\terceros_ferias_areas_interes.php on line 25
+[03-Jun-2017 14:18:25 UTC] PHP Notice:  Undefined index: nom_cargo in C:\laragon\www\cripack\controllers\TercerosController.php on line 161
+[03-Jun-2017 14:18:25 UTC] PHP Notice:  Undefined index: nommcipio in C:\laragon\www\cripack\controllers\TercerosController.php on line 162
+[03-Jun-2017 14:18:26 UTC] PHP Notice:  Use of undefined constant idtercero - assumed 'idtercero' in C:\laragon\www\cripack\application_sections\modales\terceros_ferias_areas_interes.php on line 25

@@ -8,7 +8,7 @@
 <div class="p15">
  <div class="t40 colorCri1 ff2 mb20">Clientes sistema CrossCut</div>
  <div class="table-responsive">
-   <table id="listado-clientes" class="table table-hover display" cellspacing="0" width="100%">
+   <table  class="table table-hover display" cellspacing="0" width="100%">
    <thead>
     <tr>
      <th>#</th>
@@ -32,7 +32,7 @@
        $email      = trim( $Tercero['email']);
        $contacto   = trim( $Tercero['contacto']);
        $nom_cargo   = trim( $Tercero['nom_cargo']);
-
+       $idregistro  = $Tercero['idregistro'];
        $I++;
      ?>
 
@@ -42,12 +42,14 @@
      <td> <?= $contacto ;?>   </td>
      <td> <?= $nom_cargo ;?>   </td>
      <td> <?= $email ;?>   </td>
-     <td><a href="#" class="btn btn-success btn-invitacion-cliente" role="button"
+     <td><a href="#<?= $idregistro  ;?>"
+                class="btn btn-success btn-invitacion-cliente" role="button" id='btn-<?= $idregistro  ;?>'
               data-idtercero  ="<?=$idtercero;?>"
               data-nomtercero =" <?= $nomtercero  ;?>"
               data-email      = " <?= $email  ;?>"
               data-contacto      = " <?= $contacto  ;?>"
               data-nom_cargo      = " <?= $nom_cargo  ;?>"
+              data-idregistro      = " <?= $idregistro  ;?>"
               >
             Enviar Invitación </a>
       </td>

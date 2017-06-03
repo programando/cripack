@@ -14,7 +14,7 @@
       <label class="col-md-4 control-label" for="idcargo_externo" >Cargo :</label>
       <div class="col-md-8">
         <select name="idcargo_externo" id="idcargo_externo" class="form-control select-md" >
-          <option value=" <?= $this->idcargo  ;?>"> <?= $this->nom_cargo  ;?></option>
+          <option value=" <?= $this->idcargo_externo  ;?>"> <?= $this->nom_cargo  ;?></option>
           <?php foreach ( $this->Cargos as $Cargo ) :;?>
             <option value="<?= $Cargo['idcargo_externo'] ;?>"><?= $Cargo['nom_cargo'] ;?></option>
           <?php endforeach ;?>

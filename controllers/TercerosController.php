@@ -380,8 +380,9 @@ class TercerosController extends Controller
                             'dias_gracia' ,'dia_informa_pagos' ,'cod_cuenta_tcc' ,'alias' ,'fecha_nacimiento' ,
                             'prioridad_costeo' ,'aplica_ferias' ,'reg_ferias' );
 
+
             $Registro = $this->Terceros->Visitantes_Grabar_Datos ( $Datos_Registro );
-             $Respuesta ='Todo-Ok';
+            $Respuesta ='Todo-Ok';
             if ( $Registro ){
                 // GRABAR DATOS COMPLEMENTARIOS
                 //-----------------------------

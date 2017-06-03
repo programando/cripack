@@ -502,7 +502,8 @@ $('.table-responsive').on('click','.btn-invitacion-cliente',function(){
    var Contacto  = $(this).data('contacto');
    var Nom_Cargo = $(this).data('nom_cargo');
    var Email     = $(this).data('email');
-
+   var IdRegistro     = $(this).attr('id')
+   var Btn = document.getElementById(IdRegistro);
 
       $.ajax({
               data:  {"idtercero" :IdTercero, 'empresa':Empresa, "email":Email, 'contacto':Contacto, 'nom_cargo':Nom_Cargo},
@@ -510,12 +511,19 @@ $('.table-responsive').on('click','.btn-invitacion-cliente',function(){
               url:      '/terceros/Invitacion_Clientes/',
               type:     'post',
         success:  function (resultado)  {
-               window.location.href = "/terceros/Listado_General";
+               //window.location.href = "/terceros/Listado_General";
+               //btn-success
+               //Btn.addClass("disabled").removeClass('btn-success').addClass('btn-default');
             },
 
         });
 
+   Btn.classList.remove('btn-success');
+   Btn.className += " disabled";
+   Btn.className += " btn-danger";
+
 })
+
 
 
 //-----------------------------------------------------------------
