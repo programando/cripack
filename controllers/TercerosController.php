@@ -184,6 +184,28 @@ class TercerosController extends Controller
 
     public function Registro_Visitantes( $Identificacion = '') {
 
+          $this->View->idtercero          = 0;
+          $this->View->identificacion     = '';
+          $this->View->nomtercero         = '';
+          $this->View->cliente            = 0;
+          $this->View->proveedor          = 0;
+          $this->View->direccion          = '';
+          $this->View->telefono           = '';
+          $this->View->idmcipio           = 0;
+          $this->View->nommcipio          = '';
+          $this->View->idzona_ventas      = 0;
+          $this->View->nombre_zona_ventas = '';
+          $this->View->idtpdoc            = 0;
+          $this->View->nomtpdoc           = '';
+          $this->View->contacto           = '';
+          $this->View->idarea             = 0;
+          $this->View->nom_area           = '';
+          $this->View->celular            = '';
+          $this->View->email              = '';
+          $this->View->idcargo_externo    = 0;
+          $this->View->nom_cargo          = '';
+
+
       if ( !isset( $this->View->Tipos_Doc  )) { $this->View->Tipos_Doc    = $this->Terceros->Terceros_Tipos_Documentos(); }
       if ( !isset($this->View->Cargos) )      { $this->View->Cargos       = $this->Terceros->Terceros_Cargos_Externos();  }
       if ( !isset($this->View->AreasEmpresa)) { $this->View->AreasEmpresa = $this->Terceros->Terceros_Areas_Empresa();    }
