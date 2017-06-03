@@ -1,5 +1,6 @@
 <?php
-					define('DS', DIRECTORY_SEPARATOR);
+					ini_set('display_errors',false);
+     define('DS', DIRECTORY_SEPARATOR);
 					define('ROOT', realpath(dirname(__FILE__)) . DS);
 					define('LIBS',ROOT . 'libs' .DS);
 					define('APP_PATH', ROOT . 'application' . DS);
