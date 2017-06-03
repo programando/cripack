@@ -232,13 +232,15 @@ class TercerosController extends Controller
           $this->View->idtpdoc            = $Registro[0]['idtpdoc'];
           $this->View->nomtpdoc           = $Registro[0]['nomtpdoc'];
           $Registro = $this->Terceros->Buscar_Primer_Contacto ( $this->View->idtercero ) ;
-          $this->View->contacto        = $Registro[0]['contacto'];
-          $this->View->idarea          = $Registro[0]['idarea'];
-          $this->View->nom_area        = $Registro[0]['nom_area'];
-          $this->View->celular         = $Registro[0]['celular'];
-          $this->View->email           = $Registro[0]['email'];
-          $this->View->idcargo_externo = $Registro[0]['idcargo_externo'];
-          $this->View->nom_cargo       = $Registro[0]['nom_cargo'];
+          if ( !$Registro ) {
+            $this->View->contacto        = $Registro[0]['contacto'];
+            $this->View->idarea          = $Registro[0]['idarea'];
+            $this->View->nom_area        = $Registro[0]['nom_area'];
+            $this->View->celular         = $Registro[0]['celular'];
+            $this->View->email           = $Registro[0]['email'];
+            $this->View->idcargo_externo = $Registro[0]['idcargo_externo'];
+            $this->View->nom_cargo       = $Registro[0]['nom_cargo'];
+          }
       }
 
       $this->View->Mostrar_Vista('registro_feria');
