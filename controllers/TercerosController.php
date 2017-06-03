@@ -232,7 +232,7 @@ class TercerosController extends Controller
           $this->View->idtpdoc            = $Registro[0]['idtpdoc'];
           $this->View->nomtpdoc           = $Registro[0]['nomtpdoc'];
           $Registro = $this->Terceros->Buscar_Primer_Contacto ( $this->View->idtercero ) ;
-          if ( !$Registro ) {
+          if ( $Registro ) {
             $this->View->contacto        = $Registro[0]['contacto'];
             $this->View->idarea          = $Registro[0]['idarea'];
             $this->View->nom_area        = $Registro[0]['nom_area'];
