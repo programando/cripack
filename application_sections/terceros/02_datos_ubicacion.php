@@ -4,7 +4,8 @@
        <div class="form-group">
         <label class="col-md-3 control-label" for="direccion">Dirección :</label>
         <div class="col-md-9">
-         <input id="direccion" name="direccion" type="text" placeholder="Dirección" class="form-control input-md" required="">
+         <input id="direccion" name="direccion" type="text" placeholder="Dirección"
+         class="form-control input-md" required="" value=" <?= $this->direccion  ;?>">
         </div>
         <br><br>
        </div>
@@ -12,7 +13,8 @@
        <div class="form-group">
         <label class="col-md-3 control-label" for="telefono">Teléfono : </label>
         <div class="col-md-9">
-         <input id="telefono" name="telefono" type="text" placeholder="Números Teléfono" class="form-control input-md" required="">
+         <input id="telefono" name="telefono" type="text" value=" <?= $this->telefono  ;?>"
+         placeholder="Números Teléfono" class="form-control input-md" required="">
         </div>
         <br><br>
        </div>
@@ -35,7 +37,7 @@
         <label class="col-md-3 control-label" for="idmcipio" >Ciudad :</label>
         <div class="col-md-9">
          <select name="idmcipio" id="idmcipio" class="form-control select-md" >
-            <option value="0">SELECCIONE ....</option>
+            <option value=" <?= $this->idmcipio  ;?>"> <?= $this->nommcipio  ;?></option>
             <?php foreach ( $this->Municipios as $Municipio ) :;?>
                   <option value="<?= $Municipio['idmcipio'] ;?>"><?= $Municipio['nommcipio'] ;?></option>
             <?php endforeach ;?>
@@ -49,7 +51,7 @@
         <label class="col-md-3 control-label" for="idzona_ventas" >Zona Ventas :</label>
         <div class="col-md-9">
          <select name="idzona_ventas" id="idzona_ventas" class="form-control select-md" >
-            <option value="0">SELECCIONE ....</option>
+            <option value=" <?= $this->idzona_ventas  ;?>"> <?= $this->nombre_zona_ventas  ;?></option>
             <?php foreach ( $this->Zona_Ventas as $Zona_Venta ) :;?>
                   <option value="<?= $Zona_Venta['idzona_ventas'] ;?>"><?= $Zona_Venta['nombre_zona_ventas'] ;?></option>
             <?php endforeach ;?>

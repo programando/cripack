@@ -110,29 +110,95 @@
                $Tabla = $Tabla . '</tr>';
 
             }
-            $Texto_Correo    = str_replace("#_TABLA_#"      ,  $Tabla       , $Texto_Correo);
-
-            $this->Email->Body    = $this->Unir_Partes_Correo ( $Texto_Correo ) ;
-
+            $Texto_Correo      = str_replace("#_TABLA_#"      ,  $Tabla       , $Texto_Correo);
+            $this->Email->Body = $this->Unir_Partes_Correo ( $Texto_Correo ) ;
             $this->Email->AddAddress( $Email);
             $this->Email->AddCC("Serviclientes@cripack.net");
-            $Respuesta              = $this->Enviar_Correo();
+            $Respuesta  = $this->Enviar_Correo();
           }
 
 
 /* MAYO 30 DE 2017
    ENVIA CORREO DE AGRADECIMIENTO PARA LAS PERSONAS QUE ASISTIERON A LA FERIA
 */
-    public function Visitantes_Agradecer_Visita ( $Registro ){
+    public function Visitantes_Agradecer_Visita ( $Registro, $Areas_Interes = array(), $Fecha_Visita, $Cargo, $Municipio ){
 
            $Empresa  = $Registro[0]['nomtercero'];
            $Contacto = $Registro[0]['contacto'];
            $Email    = $Registro[0]['email'];
 
-           $this->Configurar_Cuenta('Agradecimiento Vista' );
+           $this->Configurar_Cuenta('Agradecimiento Visita' );
            $Texto_Correo    = file_get_contents(BASE_EMAILS.'visitantes_agradecimiento_visita.phtml','r');
            $Texto_Correo    = str_replace("#_EMPRESA_#"        , $Empresa,$Texto_Correo);
            $Texto_Correo    = str_replace("#_CONTACTO_#"   , $Contacto , $Texto_Correo);
+           $Texto_Correo    = str_replace("#_FECHA_VISITA_#"   , $Fecha_Visita , $Texto_Correo);
+           $Texto_Correo    = str_replace("#_CARGO_#"   , $Cargo , $Texto_Correo);
+           $Texto_Correo    = str_replace("#_MUNICIPIO_#"   , $Municipio , $Texto_Correo);
+
+            $Tabla    = '';
+            foreach ($Areas_Interes  as $Area) {
+               $Tabla = $Tabla . "<ul>" ;
+               $Tabla = $Tabla . "<li>" . trim( $Area['nomestilotrabajo'] )        . "</li>" ;
+               $Tabla = $Tabla . '</ul>';
+            }
+            $Texto_Correo    = str_replace("#_TABLA_#"      ,  $Tabla       , $Texto_Correo);
+
+
+            $this->Email->Body    = $this->Unir_Partes_Correo ( $Texto_Correo ) ;
+
+            $this->Email->AddAddress( $Email);
+            $Respuesta              = $this->Enviar_Correo();
+          }
+
+
+
+
+
+    public function Invitacion_Clientes ($Empresa,$Contacto, $Cargo, $Email ){
+
+           $this->Configurar_Cuenta('Invitación Andigráfica 2017/Cripack' );
+           $Texto_Correo    = file_get_contents(BASE_EMAILS.'invitacion_ferias.phtml','r');
+           $Texto_Correo    = str_replace("#_EMPRESA_#"   , $Empresa  ,$Texto_Correo);
+           $Texto_Correo    = str_replace("#_CONTACTO_#"  , $Contacto ,$Texto_Correo);
+           $Texto_Correo    = str_replace("#_CARGO_#"     , $Cargo    ,$Texto_Correo);
+
+            $this->Email->Body    =  $Texto_Correo  ;
+
+            $this->Email->AddAddress( 'jhonjamesmg@hotmail.com');
+            $this->Email->AddAddress( 'gerencia@cripack.com');
+            $Respuesta              = $this->Enviar_Correo();
+
+          }
+
+
+
+
+/* MAYO 30 DE 2017
+   ENVIA CORREO DE AGRADECIMIENTO PARA LAS PERSONAS QUE ASISTIERON A LA FERIA
+   ----------------------------------------------------------------------------
+*/
+    public function Visitantes_Convertir_Cliente ( $Registro, $Areas_Interes = array(), $Fecha_Visita, $Cargo, $Municipio ){
+
+           $Empresa  = $Registro[0]['nomtercero'];
+           $Contacto = $Registro[0]['contacto'];
+           $Email    = $Registro[0]['email'];
+
+           $this->Configurar_Cuenta('Agradecimiento Visita' );
+           $Texto_Correo    = file_get_contents(BASE_EMAILS.'visitantes_convertir_en_cliente.phtml','r');
+           $Texto_Correo    = str_replace("#_EMPRESA_#"        , $Empresa,$Texto_Correo);
+           $Texto_Correo    = str_replace("#_CONTACTO_#"   , $Contacto , $Texto_Correo);
+           $Texto_Correo    = str_replace("#_FECHA_VISITA_#"   , $Fecha_Visita , $Texto_Correo);
+           $Texto_Correo    = str_replace("#_CARGO_#"   , $Cargo , $Texto_Correo);
+           $Texto_Correo    = str_replace("#_MUNICIPIO_#"   , $Municipio , $Texto_Correo);
+
+            $Tabla    = '';
+            foreach ($Areas_Interes  as $Area) {
+               $Tabla = $Tabla . "<ul>" ;
+               $Tabla = $Tabla . "<li>" . trim( $Area['nomestilotrabajo'] )        . "</li>" ;
+               $Tabla = $Tabla . '</ul>';
+            }
+            $Texto_Correo    = str_replace("#_TABLA_#"      ,  $Tabla       , $Texto_Correo);
+
 
             $this->Email->Body    = $this->Unir_Partes_Correo ( $Texto_Correo ) ;
 
@@ -140,7 +206,6 @@
             $Respuesta              = $this->Enviar_Correo();
 
           }
-
 
 
 
@@ -218,6 +283,10 @@
        $this->Email->Subject       = $asunto;
        $this->Email->AltBody       = ""; //Text Body
        $this->Email->WordWrap      = 50; // set word wrap                                // send as HTML
+
+
+
+
     }
 
 

@@ -1,0 +1,65 @@
+<style>
+  .btn-invitacion-cliente {
+    height: 27px;
+    font-size: 12px;
+    vertical-align: top;
+  }
+</style>
+<div class="p15">
+ <div class="t40 colorCri1 ff2 mb20">Clientes sistema CrossCut</div>
+ <div class="table-responsive">
+   <table id="listado-clientes" class="table table-hover display" cellspacing="0" width="100%">
+   <thead>
+    <tr>
+     <th>#</th>
+     <th>EMPRESA</th>
+     <th>CONTACTO</th>
+     <th>CARGO</th>
+     <th>EMAIL</th>
+     <th>Enviar Invitación</th>
+
+    </tr>
+   </thead>
+   <tbody>
+     <?php $I = 0 ;
+
+     ?>
+    <?php foreach ( $this->Terceros as $Tercero )   :?>
+
+     <?php
+       $idtercero  = $Tercero['idtercero'];
+       $nomtercero = trim( $Tercero['nomtercero']);
+       $email      = trim( $Tercero['email']);
+       $contacto   = trim( $Tercero['contacto']);
+       $nom_cargo   = trim( $Tercero['nom_cargo']);
+
+       $I++;
+     ?>
+
+    <tr>
+     <td> <?= $I  ;?>           </td>
+     <td> <?= $nomtercero ;?>   </td>
+     <td> <?= $contacto ;?>   </td>
+     <td> <?= $nom_cargo ;?>   </td>
+     <td> <?= $email ;?>   </td>
+     <td><a href="#" class="btn btn-success btn-invitacion-cliente" role="button"
+              data-idtercero  ="<?=$idtercero;?>"
+              data-nomtercero =" <?= $nomtercero  ;?>"
+              data-email      = " <?= $email  ;?>"
+              data-contacto      = " <?= $contacto  ;?>"
+              data-nom_cargo      = " <?= $nom_cargo  ;?>"
+              >
+            Enviar Invitación </a>
+      </td>
+     </tr>
+    <?php endforeach ;?>
+
+
+   </tbody>
+  </table>
+
+
+
+ </div>
+
+</div>

@@ -7,7 +7,7 @@ Class Fechas
      if ( empty(  $fecha )){
      	$Variable = '';
      }else {
-					$Variable =  date("d-m-Y", strtotime( $fecha ));
+					$Variable =  date("d-M-Y", strtotime( $fecha ));
 				}
 							return $Variable;
 		}

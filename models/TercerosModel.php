@@ -23,6 +23,13 @@
 				}
 
 
+				public function Listado_General(){
+						$Registro                 = $this->Db->Ejecutar_Sp("terceros_listado_general_web()");
+						$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
+						return $Registro;
+
+				}
+
 				public function Visitantes_Listado () {
 						$Registro                 = $this->Db->Ejecutar_Sp("terceros_registro_feria_listado()");
 						$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
@@ -39,6 +46,11 @@
 				}
 
 
+				public function Buscar_Primer_Contacto( $idtercero  ) {
+							$Registro         = $this->Db->Ejecutar_Sp("terceros_clientes_contacto( $idtercero )");
+							return 	$Registro;
+				}
+
 				public function Visitantes_Agradecer_Visita_Email_Enviado( $idregistro  ) {
 							$Registro   = $this->Db->Ejecutar_Sp("terceros_registro_feria_agradecimiento_email_enviado( $idregistro )");
 				}
@@ -47,6 +59,11 @@
  				$Registro = $this->Db->Ejecutar_SQL( $texto_sql );
  		}
 
+
+				public function Visitantes_Areas_Interes_Consultar ( $idtercero  ) {
+							$Registro   = $this->Db->Ejecutar_Sp("terceros_registro_feria_consulta_areas_interes_x_cliente( $idtercero )");
+							return $Registro ;
+				}
 
 
 				public function Visitantes_Convertir_Cliente ( $idregistro  ) {

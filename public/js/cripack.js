@@ -386,17 +386,35 @@ $("#btn-inicio-no-token").on('click',function(){
     $Respuesta_Validacion = texto;
  }
 
-/*$('#identificacion_feria').on('blur',function(){
+$('#identificacion_feria').on('blur',function(){
    var $identificacion    = $("#identificacion_feria").val();
   $Parametros            = {'identificacion':$identificacion } ;
   Valida_Exista_Identificacion ( $Parametros );
   if ( $RespuestaAjax == 'ok'){
-       Mostrar_Mensajes('REGISTRO DATOS BÁSICOS', 'La identificación : ' + $identificacion +' ya se encuentra registrada en Cripack S.A.S.');
-       $("#identificacion_feria").val('');
+      window.location.href = "/terceros/Registro_Visitantes/"+$identificacion;
   }
 
 })
-*/
+
+$('.areas-interes').on('click',function(){
+    var IdTercero  = $(this).data('idtercero');
+    var NomTercero = $(this).data('nomtercero');
+    Parametros ={'idtercero':IdTercero};
+    alert ( "Pendiente mostrar otros tipos de trabajo en los que el cliente está interesado."   );
+
+  /*  $.ajax({
+         data:  Parametros,
+         dataType: 'json',
+         url:      '/terceros/Visitantes_Areas_Interes_Consultar/',
+         type:     'get',
+          success:  function ( MyServerResponse ) {
+                $('#modal_areas_interes').modal('show');
+            },
+      });
+      */
+
+})
+
 
 
 $('#entrega-tarjeta').on('click',function(){
@@ -465,6 +483,7 @@ $('#btn-eliminar').on('click',function(){
 $('.container-fluid').on('click','.btn-agradecer',function(){
   var IdRegistro = $(this).data('idregistro');
 
+
       $.ajax({
               data:  {"idregistro" :IdRegistro},
               dataType: 'text',
@@ -475,8 +494,29 @@ $('.container-fluid').on('click','.btn-agradecer',function(){
             },
 
         });
+})
+
+$('.table-responsive').on('click','.btn-invitacion-cliente',function(){
+   var IdTercero = $(this).data('idtercero');
+   var Empresa   = $(this).data('nomtercero');
+   var Contacto  = $(this).data('contacto');
+   var Nom_Cargo = $(this).data('nom_cargo');
+   var Email     = $(this).data('email');
+
+
+      $.ajax({
+              data:  {"idtercero" :IdTercero, 'empresa':Empresa, "email":Email, 'contacto':Contacto, 'nom_cargo':Nom_Cargo},
+              dataType: 'text',
+              url:      '/terceros/Invitacion_Clientes/',
+              type:     'post',
+        success:  function (resultado)  {
+               window.location.href = "/terceros/Listado_General";
+            },
+
+        });
 
 })
+
 
 //-----------------------------------------------------------------
 /* MAYO 30 2017     ENVIAR AGRADECIMIENTO A LOS VISITANTES
@@ -491,7 +531,6 @@ $('.container-fluid').on('click','.btn-agregar-cliente',function(){
               type:     'post',
         success:  function (resultado)  {
                window.location.href = "/terceros/Listado_Visitantes";
-               Mostrar_Mensajes('INFORMACIÓN', 'El registro se ha convertido en cliente. Desde CrossCut podrá complementar los datos.' );
             },
 
         });
@@ -600,6 +639,50 @@ var Ion = {
 
 	},
 
+  /*cargar_modal_estructura: function(id, action, rsp, tipo){
+
+      event.preventDefault();
+
+      $("#"+rsp).html('<center><img src="../resources/icons/loading.gif"/></center>');
+
+      $.post("../process/general/cargar-estructura.php",{ id: id, action: action, tipo: tipo},
+
+        function(data){
+
+          $("#"+rsp).html(data);
+        }
+      )
+    },
+
+
+
+  cargar_formulario: function(id, table, rsp, div_active, div_none){
+
+      event.preventDefault();
+
+      $("#"+rsp).html('<center><img src="../resources/icons/loading.gif"/></center>');
+
+      data = { id: id, table: table }
+
+       $.when(Funciones.ajax_connect("../process/general/cargar-formulario.php", data)).done(function(response) {
+
+        console.log(response);
+
+        $.each( response, function( key, value ) {
+          if(value != null) $("#"+key).val(value)
+        });
+
+       });
+
+    }
+    */
+
+
+
 };
 
 Ion.init();
+
+
+
+

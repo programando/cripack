@@ -7,6 +7,7 @@
 					define('VENTANAS_MODALES', 									ROOT . 'application_sections' . DS . 'modales' . DS );
 					define('EMAILS',           										ROOT . 'application_sections' . DS . 'emails' . DS );
 					define('APPLICATION_SECTIONS_TERC',  ROOT . 'application_sections' . DS . 'terceros' . DS );
+					define('APPLICATION_SECTIONS_MENU',  ROOT . 'application_sections' . DS . 'menus' . DS );
 
 					try{
 					    foreach (glob(APP_PATH .'*.php') as $file) { 	 require_once $file;     } //Arhivos de aplicacion

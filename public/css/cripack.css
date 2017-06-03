@@ -38,7 +38,7 @@ a									{ outline:none !important; }
 .btnIn1								{ border:solid 3px #20286d; display:inline-block; }
 
 
-.tablas		{ width:35%; height:auto;display:table ;}
+.tablas 		{ width:35%; height:auto;display:table ;}
 .tablas thead { color: red; }
 
     .logo-andigraf{
@@ -124,6 +124,7 @@ input[type="radio"] {
   margin-top: 1px;
   vertical-align: top;
 }
+
 
 
 

@@ -4,7 +4,8 @@
     <div class=" form-group">
       <label class="col-md-4 control-label" for="contacto">Contacto :</label>
       <div class="col-md-8">
-        <input id="contacto" name="contacto" type="text" placeholder="Nombre Contacto" class="form-control input-md">
+        <input id="contacto" name="contacto" type="text" value=" <?= $this->contacto  ;?>"
+          placeholder="Nombre Contacto" class="form-control input-md">
       </div><br><br>
     </div>
 
@@ -13,7 +14,7 @@
       <label class="col-md-4 control-label" for="idcargo_externo" >Cargo :</label>
       <div class="col-md-8">
         <select name="idcargo_externo" id="idcargo_externo" class="form-control select-md" >
-          <option value="0">SELECCIONE ....</option>
+          <option value=" <?= $this->idcargo  ;?>"> <?= $this->nom_cargo  ;?></option>
           <?php foreach ( $this->Cargos as $Cargo ) :;?>
             <option value="<?= $Cargo['idcargo_externo'] ;?>"><?= $Cargo['nom_cargo'] ;?></option>
           <?php endforeach ;?>
@@ -26,7 +27,7 @@
       <label class="col-md-4 control-label" for="idarea" >Área Empresa :</label>
       <div class="col-md-8">
         <select name="idarea" id="idarea" class="form-control select-md" >
-          <option value="0">SELECCIONE ....</option>
+          <option value=" <?= $this->idarea  ;?>"> <?= $this->nom_area  ;?></option>
           <?php foreach ( $this->AreasEmpresa as $AreaEmpresa ) :;?>
             <option value="<?= $AreaEmpresa['idarea'] ;?>"><?= $AreaEmpresa['nom_area'] ;?></option>
           <?php endforeach ;?>
@@ -38,14 +39,16 @@
     <div class=" form-group">
       <label class="col-md-4 control-label" for="celular">Nro Celular :</label>
       <div class="col-md-8">
-        <input id="celular" name="celular" type="text" placeholder="Número Celular" class="form-control input-md">
+        <input id="celular" name="celular" type="text" value=" <?= $this->celular  ;?>"
+        placeholder="Número Celular" class="form-control input-md">
       </div><br><br>
     </div>
 
     <div class=" form-group">
       <label class="col-md-4 control-label" for="email">Correo electrónico :</label>
       <div class="col-md-8">
-        <input id="email" name="email" type="email" placeholder="Correo electrónico" class="form-control input-md">
+        <input id="email" name="email" type="email" value=" <?= $this->email  ;?>"
+        placeholder="Correo electrónico" class="form-control input-md">
       </div><br><br>
     </div>
 
@@ -55,7 +58,12 @@
         <div class="checkbox">
 
           <label for="cliente-existente" class="checkbox-inline">
-            <input type="checkbox" value="" id="cliente-existente" name="cliente-existente">
+              <?php if ( $this->cliente ) : ; ?>
+                      <input type="checkbox" value="" id="cliente-existente" name="cliente-existente" checked="checked">
+                 <?php else :?>
+                    <input type="checkbox" value="" id="cliente-existente" name="cliente-existente">
+              <?php endif;?>
+
             <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
             CE
           </label>

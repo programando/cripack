@@ -139,17 +139,33 @@ class TercerosController extends Controller
     }
 
     public function Visitantes_Convertir_Cliente (){
-        $idregistro  = General_Functions::Validar_Entrada('idregistro','NUM');
-        $Registro  = $this->Terceros->Visitantes_Convertir_Cliente ( $idregistro  );
+        $idregistro    = General_Functions::Validar_Entrada('idregistro','NUM');
+        $Registro      = $this->Terceros->Visitantes_Agradecer_Visita ( $idregistro  );
+        $IdTercero      = $Registro[0]['idtercero'];
+        $Nom_Cargo     = $Registro[0]['nom_cargo'];
+        $Municipio     = $Registro[0]['nommcipio'];
+        $Fecha_Visita  = Fechas::Formato( $Registro[0]['fecha_registro'] );
+        $Areas_Interes = $this->Terceros->Visitantes_Areas_Interes_Consultar ( $IdTercero);
+        //ENVIAR CORREO AL TERCERO
+        $this->Emails->Visitantes_Convertir_Cliente ( $Registro,$Areas_Interes,$Fecha_Visita,$Nom_Cargo, $Municipio     );
+
+        $Registro      = $this->Terceros->Visitantes_Convertir_Cliente ( $idregistro  );
         echo "ok";
+
     }
 
     public function Visitantes_Agradecer_Visita(){
-        $idregistro  = General_Functions::Validar_Entrada('idregistro','NUM');
-        $Registro  = $this->Terceros->Visitantes_Agradecer_Visita ( $idregistro  );
+        $idregistro    = General_Functions::Validar_Entrada('idregistro','NUM');
+        $Registro      = $this->Terceros->Visitantes_Agradecer_Visita ( $idregistro  );
+        $IdTercero      = $Registro[0]['idtercero'];
+        $Nom_Cargo     = $Registro[0]['nom_cargo'];
+        $Municipio     = $Registro[0]['nommcipio'];
+        $Fecha_Visita  = Fechas::Formato( $Registro[0]['fecha_registro'] );
+        $Areas_Interes = $this->Terceros->Visitantes_Areas_Interes_Consultar ( $IdTercero );
 
-       // ENVIAR CORREO AL TERCERO
-       $this->Emails->Visitantes_Agradecer_Visita                ( $Registro     );
+        //ENVIAR CORREO AL TERCERO
+       $this->Emails->Visitantes_Agradecer_Visita ( $Registro,$Areas_Interes,$Fecha_Visita,$Nom_Cargo, $Municipio     );
+       //MARCAR REGISTRO COMO AGRADECIMIENTO ENVIADO
        $this->Terceros->Visitantes_Agradecer_Visita_Email_Enviado ( $idregistro   );
 
     }
@@ -166,7 +182,7 @@ class TercerosController extends Controller
           $this->View->Mostrar_Vista('registro_feria_listado');
     }
 
-    public function Registro_Visitantes() {
+    public function Registro_Visitantes( $Identificacion = '') {
 
       if ( !isset( $this->View->Tipos_Doc  )) { $this->View->Tipos_Doc    = $this->Terceros->Terceros_Tipos_Documentos(); }
       if ( !isset($this->View->Cargos) )      { $this->View->Cargos       = $this->Terceros->Terceros_Cargos_Externos();  }
@@ -178,7 +194,30 @@ class TercerosController extends Controller
       if ( !isset($this->View->Asistentes_Ferias ) ){
             $this->View->Asistentes_Ferias       = $this->Terceros->Asistentes_Ferias();
           }
-
+      if ( $Identificacion != null ) {
+          $Registro = $this->Terceros->Buscar_Por_Identificacion ( $Identificacion  ) ;
+          $this->View->idtercero          = $Registro[0]['idtercero'];
+          $this->View->identificacion     = $Registro[0]['identificacion'];
+          $this->View->nomtercero         = $Registro[0]['nomtercero'];
+          $this->View->cliente            = $Registro[0]['cliente'];
+          $this->View->proveedor          = $Registro[0]['proveedor'];
+          $this->View->direccion          = $Registro[0]['direccion'];
+          $this->View->telefono           = $Registro[0]['telefono'];
+          $this->View->idmcipio           = $Registro[0]['idmcipio'];
+          $this->View->nommcipio          = $Registro[0]['nommcipio'];
+          $this->View->idzona_ventas      = $Registro[0]['idzona_ventas'];
+          $this->View->nombre_zona_ventas = $Registro[0]['nombre_zona_ventas'];
+          $this->View->idtpdoc            = $Registro[0]['idtpdoc'];
+          $this->View->nomtpdoc           = $Registro[0]['nomtpdoc'];
+          $Registro = $this->Terceros->Buscar_Primer_Contacto ( $this->View->idtercero ) ;
+          $this->View->contacto        = $Registro[0]['contacto'];
+          $this->View->idarea          = $Registro[0]['idarea'];
+          $this->View->nom_area        = $Registro[0]['nom_area'];
+          $this->View->celular         = $Registro[0]['celular'];
+          $this->View->email           = $Registro[0]['email'];
+          $this->View->idcargo_externo = $Registro[0]['idcargo_externo'];
+          $this->View->nom_cargo       = $Registro[0]['nom_cargo'];
+      }
 
       $this->View->Mostrar_Vista('registro_feria');
     }
@@ -326,7 +365,9 @@ class TercerosController extends Controller
                $idestilotrabajo = 0 ;
                $Datos_Registro = compact('idtercero','idestilotrabajo','clien_existe','posible_clien','informacion','competencia','entrega_tarj','atendido_por','observacion' );
                  $this->Terceros->Visitantes_Grabar_Otros_Datos( $Datos_Registro );
-                 $this->Visitantes_Areas_Interes_Grabar( $idtercero , $idestilotrabajo_array );
+                 if ( is_array( $idestilotrabajo_array )) {
+                    $this->Visitantes_Areas_Interes_Grabar( $idtercero , $idestilotrabajo_array );
+                  }
             }else {
                $Respuesta ='Todo-No-Ok';
             }
@@ -350,6 +391,39 @@ class TercerosController extends Controller
           $Texto_SQL = substr($Texto_SQL, 0, strlen($Texto_SQL)-1);
           $this->Terceros->Visitantes_Areas_Interes_Grabar ( $Texto_SQL );
       }
+
+
+     public function  Listado_General(){
+        $this->View->Terceros = $this->Terceros->Listado_General();
+        $this->View->Mostrar_Vista('listado_general');
+     }
+
+      public function Invitacion_Clientes(){
+
+        $idtercero = General_Functions::Validar_Entrada('idtercero','NUM');
+        $empresa   = General_Functions::Validar_Entrada('empresa','TEXT');
+        $contacto  = General_Functions::Validar_Entrada('contacto','TEXT');
+        $nom_cargo = General_Functions::Validar_Entrada('nom_cargo','TEXT');
+        $email     = General_Functions::Validar_Entrada('email','TEXT-EMAIL');
+       //MARCAR REGISTRO COMO AGRADECIMIENTO ENVIADO
+       $this->Emails->Invitacion_Clientes ( $empresa, $contacto , $nom_cargo, $email );
+       //$this->Terceros->Invitacion_Feria_Enviada($idtercero );
+
+        echo "ok";
+      }
+
+      public function Visitantes_Areas_Interes_Consultar( ){
+
+      /* $idtercero = General_Functions::Validar_Entrada('idtercero','NUM');
+       Session::Destroy('MyVar');
+       Session::Set('MyVar', $idtercero);
+       $Respuesta  = compact('idtercero');
+       echo json_encode($Respuesta,256);
+       **/
+
+
+
+    }
 
     private function Visitantes_Validar_Datos( $Parametros =array()){
       $Texto = '';

@@ -5,7 +5,12 @@
 	.panel-title   {
 		color: #20286D   !important;
 	}
-
+ th  {
+ 	font-size: 11px;
+ }
+ td {
+ 	font-size: 12px;
+ }
 </style>
 
 <div class="listado-visitantes">
@@ -40,17 +45,19 @@
 										<tbody>
 											<?php foreach ( $this->Visitantes as $Visitante ) :?>
 												<?php
-												$Texto  = '';
-												$IdRegistro  = $Visitante['idegistro'] ;
-												$NomTercero  = $Visitante['nomtercero'];
-												$Observacion = $Visitante['observacion'];
-												$CE          = $Visitante['ce'];
-												$CP          = $Visitante['cp'];
-												$INFO        = $Visitante['inf'];
-												$CO          = $Visitante['co'];
-												$Interes     = $Visitante['nomestilotrabajo'];
-												$GraciasOK   = $Visitante['agradecimiento'];
-												$EsCliente   = $Visitante['cliente_confirmado'];
+												$Texto        = '';
+												$IdRegistro   = $Visitante['idegistro'] ;
+												$NomTercero   = $Visitante['nomtercero'];
+												$Observacion  = $Visitante['observacion'];
+												$CE           = $Visitante['ce'];
+												$CP           = $Visitante['cp'];
+												$INFO         = $Visitante['inf'];
+												$CO           = $Visitante['co'];
+												$Interes      = $Visitante['nomestilotrabajo'];
+												$GraciasOK    = $Visitante['agradecimiento'];
+												$EsCliente    = $Visitante['cliente_confirmado'];
+												$Cant_Estilos = $Visitante['cant_nomestilotrabajo'];
+												$IdTercero    = $Visitante['idtercero'];
 
 												if ( $CE   == TRUE  ) { $Texto = 'CLIENTE EXISTENTE' ; }
 												if ( $CP   == TRUE  ) { $Texto = 'CLIENTE POTENCIAL' ; }
@@ -61,7 +68,19 @@
 												<tr>
 													<td><?= $NomTercero ;?>		</td>
 													<td><?= $Texto ;?>							</td>
-													<td><?= $Interes ;?>					</td>
+
+													 <?php if ( $Cant_Estilos > 1 ) : ; ?>
+																			<td><?= $Interes ;?>
+																							<a href="#" class="areas-interes"
+																							data-idtercero  = "<?= $IdTercero  ;?>"
+																							data-nomtercero = "<?= $NomTercero  ;?>"
+																							style="font-size: 9px;"
+																							> ...Ver otros</a>
+																			</td>
+													    <?php else :?>
+																			<td><?= $Interes ;?>
+													 <?php endif;?>
+
 													<td><?= $Observacion ;?>	</td>
 													<td>
 
@@ -84,11 +103,11 @@
 																						&nbsp;Enviar  &nbsp;&nbsp;Agradecimiento
 																			</a>
 														<?php endif ;?>
-
+<!--
 														<a href="#" class="btn btn-danger visitante-eliminar " role="button" data-idregistro="<?=$IdRegistro;?>" >
 														    Eliminar
 														</a>
-
+ -->
 													</td>
 												</tr>
 
@@ -106,6 +125,18 @@
 
 				<?php endif ;?>
 			</div>
+			<!--
+	<a href="#load_informe" onClick="Ion.cargar_modal_estructura('0', 'informes', 'load_informe', 1);" data-toggle="modal">
+
+          Nuevo
+        </a>
+	<div id="load_informe" class="modal fade" role="dialog"></div>
+ -->
+
  <?php include ( VENTANAS_MODALES .'eliminar_registro.php') ;?>
+ <?php include ( VENTANAS_MODALES .'terceros_ferias_areas_interes.php') ;?>
 	</div>
+
+
+
 
