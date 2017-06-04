@@ -167,6 +167,7 @@
            $this->Email->AddAddress('jhonjamesmg@hotmail.com');
 
            $Respuesta              = $this->Enviar_Correo();
+           return $Respuesta ;
       }
 
 
@@ -203,7 +204,7 @@
 
             $this->Email->AddAddress( $Email);
             $Respuesta              = $this->Enviar_Correo();
-
+            return $Respuesta ;
           }
 
 

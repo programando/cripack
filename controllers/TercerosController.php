@@ -147,10 +147,13 @@ class TercerosController extends Controller
         $Fecha_Visita  = Fechas::Formato( $Registro[0]['fecha_registro'] );
         $Areas_Interes = $this->Terceros->Visitantes_Areas_Interes_Consultar ( $IdTercero);
         //ENVIAR CORREO AL TERCERO
-        $this->Emails->Visitantes_Convertir_Cliente ( $Registro,$Areas_Interes,$Fecha_Visita,$Nom_Cargo, $Municipio     );
-
-        $Registro      = $this->Terceros->Visitantes_Convertir_Cliente ( $idregistro  );
-        echo "ok";
+        $RespuestaEmail = $this->Emails->Visitantes_Convertir_Cliente ( $Registro,$Areas_Interes,$Fecha_Visita,$Nom_Cargo, $Municipio     );
+        if ( $RespuestaEmail == 'correo_OK'){
+              $Registro      = $this->Terceros->Visitantes_Convertir_Cliente ( $idregistro  );
+              echo "ok";}
+              else {
+                echo 'Nocorreo_OK';
+              }
 
     }
 
@@ -168,6 +171,9 @@ class TercerosController extends Controller
        //MARCAR REGISTRO COMO AGRADECIMIENTO ENVIADO
        if ($Respuesta_Email =='correo_OK') {
             $this->Terceros->Visitantes_Agradecer_Visita_Email_Enviado ( $idregistro   );
+            echo 'correo_OK';
+        }else{
+          echo 'Nocorreo_OK';
         }
 
     }
@@ -438,10 +444,14 @@ class TercerosController extends Controller
         $nom_cargo = General_Functions::Validar_Entrada('nom_cargo','TEXT');
         $email     = General_Functions::Validar_Entrada('email','TEXT-EMAIL');
        //MARCAR REGISTRO COMO AGRADECIMIENTO ENVIADO
-       $this->Emails->Invitacion_Clientes ( $empresa, $contacto , $nom_cargo, $email );
-       //$this->Terceros->Invitacion_Feria_Enviada($idtercero );
+       $RespuestaEmail = $this->Emails->Invitacion_Clientes ( $empresa, $contacto , $nom_cargo, $email );
+       if ( $RespuestaEmail == 'correo_OK' ){
+          echo "correo_OK";
+       }else {
+          echo "NOcorreo_OK";
+       }
 
-        echo "ok";
+
       }
 
       public function Visitantes_Areas_Interes_Consultar( ){

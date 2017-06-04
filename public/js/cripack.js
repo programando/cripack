@@ -490,7 +490,12 @@ $('.container-fluid').on('click','.btn-agradecer',function(){
               url:      '/terceros/Visitantes_Agradecer_Visita/',
               type:     'post',
         success:  function (resultado)  {
+                  if ( resultado != 'correo_OK'){
+
+                    Mostrar_Mensajes('ERROR EN EL ENVÍO DEL MENSAJE', "El mensaje no pudo ser enviado. Intente más tarde." );
+                  }else{
                window.location.href = "/terceros/Listado_Visitantes";
+             }
             },
 
         });
@@ -511,16 +516,18 @@ $('.table-responsive').on('click','.btn-invitacion-cliente',function(){
               url:      '/terceros/Invitacion_Clientes/',
               type:     'post',
         success:  function (resultado)  {
-               //window.location.href = "/terceros/Listado_General";
-               //btn-success
-               //Btn.addClass("disabled").removeClass('btn-success').addClass('btn-default');
+              if ( resultado != 'correo_OK'){
+                  Mostrar_Mensajes('ERROR EN EL ENVÍO DEL MENSAJE', "El mensaje no pudo ser enviado. Intente más tarde." );
+              }else{
+                   Btn.classList.remove('btn-success');
+                   Btn.className += " disabled";
+                   Btn.className += " btn-danger";
+              }
             },
 
         });
 
-   Btn.classList.remove('btn-success');
-   Btn.className += " disabled";
-   Btn.className += " btn-danger";
+
 
 })
 
@@ -538,7 +545,11 @@ $('.container-fluid').on('click','.btn-agregar-cliente',function(){
               url:      '/terceros/Visitantes_Convertir_Cliente/',
               type:     'post',
         success:  function (resultado)  {
-               window.location.href = "/terceros/Listado_Visitantes";
+                if ( resultado =='correo_OK'){
+                    window.location.href = "/terceros/Listado_Visitantes";
+                  }else{
+                    Mostrar_Mensajes('ERROR EN ENVÍO DE MENSAJE', 'El mensaje no pudo ser enviado. Por favor intente más tarde.' );
+                  }
             },
 
         });
