@@ -490,7 +490,7 @@ $('.container-fluid').on('click','.btn-agradecer',function(){
               url:      '/terceros/Visitantes_Agradecer_Visita/',
               type:     'post',
         success:  function (resultado)  {
-               //window.location.href = "/terceros/Listado_Visitantes";
+               window.location.href = "/terceros/Listado_Visitantes";
             },
 
         });

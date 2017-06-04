@@ -164,9 +164,11 @@ class TercerosController extends Controller
         $Areas_Interes = $this->Terceros->Visitantes_Areas_Interes_Consultar ( $IdTercero );
 
         //ENVIAR CORREO AL TERCERO
-       $this->Emails->Visitantes_Agradecer_Visita ( $Registro,$Areas_Interes,$Fecha_Visita,$Nom_Cargo, $Municipio     );
+       $Respuesta_Email = $this->Emails->Visitantes_Agradecer_Visita ( $Registro,$Areas_Interes,$Fecha_Visita,$Nom_Cargo, $Municipio     );
        //MARCAR REGISTRO COMO AGRADECIMIENTO ENVIADO
-       $this->Terceros->Visitantes_Agradecer_Visita_Email_Enviado ( $idregistro   );
+       if ($Respuesta_Email =='correo_OK') {
+            $this->Terceros->Visitantes_Agradecer_Visita_Email_Enviado ( $idregistro   );
+        }
 
     }
 
