@@ -288,7 +288,7 @@ class TercerosController extends Controller
 
 
 
-         $parametros = compact('identificacion','nomtercero','cliente','proveedor','contacto','Es_email');
+         $parametros = compact('identificacion','nomtercero','cliente','proveedor','contacto','Es_email','clien_existe','posible_clien','informacion','competencia');
 
          $Respuesta  = $this->Visitantes_Validar_Datos( $parametros ) ;
 
@@ -475,6 +475,11 @@ class TercerosController extends Controller
       if ( $Es_email == FALSE )     {
           $Texto  = $Texto. 'La dirección de correo no tiene un formato válido.'. '<br>' ;
         }
+
+      if ( $clien_existe == FALSE && $posible_clien == FALSE && $informacion == FALSE && $competencia == FALSE ) {
+          $Texto  = $Texto. 'Debe especificar si el registro corresponde a: CE , CP, IN, CO'. '<br>' ;
+      }
+
 
       return $Texto;
     }
