@@ -21,11 +21,8 @@
        <div class="modal-body text-aligment">
           <div id="contenido">
 
-                <?php
-                    Debug::Mostrar( Session::Get('MyVar') . idtercero );
-                    ?>
 
-                <input type="text" class="form-control" id="idtercero" name="idtercero" value=" <?= Session::Get('MyVar')  ;?>">
+                <input type="text" class="form-control" id="idtercero" name="idtercero" value="">
           </div>
        </div>
 
