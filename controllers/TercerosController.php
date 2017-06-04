@@ -275,7 +275,12 @@ class TercerosController extends Controller
          $atendido_por    = General_Functions::Validar_Entrada('atendido_por','TEXT');
          $observacion     = General_Functions::Validar_Entrada('observacion','TEXT');
 
+        if ( isset($_POST["idestilotrabajo"]  )){
         $idestilotrabajo_array = $_POST["idestilotrabajo"]; // Lo recibo de esta manera porque es un select multiseleccion
+      }else
+      {
+        $idestilotrabajo_array ='';
+      }
 
 
 
