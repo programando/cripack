@@ -1,0 +1,56 @@
+<style>
+  .btn-invitacion-cliente {
+    height: 27px;
+    font-size: 12px;
+    vertical-align: top;
+  }
+</style>
+<div class="p15">
+ <div class="t40 colorCri1 ff2 mb20">Clientes Sistema CrossCut</div>
+ <div class="table-responsive">
+   <table id ="listado-clientes" class="table table-hover display" cellspacing="0" width="100%">
+   <thead>
+    <tr>
+     <th>#</th>
+     <th>NIT</th>
+     <th>EMPRESA</th>
+     <th>CIUDAD</th>
+     <th></th>
+    </tr>
+   </thead>
+   <tbody>
+     <?php $I = 0 ;
+
+     ?>
+    <?php foreach ( $this->Terceros as $Tercero )   :?>
+
+     <?php
+       $idtercero      = $Tercero['idtercero'];
+       $nomtercero     = trim( $Tercero['alias']);
+       $nommcipio          = trim( $Tercero['nommcipio']);
+       $identificacion =  trim( $Tercero['identificacion']);
+
+       $I++;
+     ?>
+
+    <tr>
+     <td> <?= $I  ;?>           </td>
+     <td> <?= $identificacion ;?>   </td>
+     <td> <?= $nomtercero ;?>   </td>
+     <td> <?= $nommcipio ;?>   </td>
+
+
+     <td><a href="#"
+            class           = "btn btn-success btn-registrar-cliente" role="button"
+            data-identificacion  = " <?=$identificacion    ;?>"
+
+              >
+            Registrar como Visitante </a>
+      </td>
+     </tr>
+    <?php endforeach ;?>
+
+   </tbody>
+  </table>
+ </div>
+</div>

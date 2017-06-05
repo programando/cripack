@@ -150,11 +150,10 @@ class TercerosController extends Controller
         $RespuestaEmail = $this->Emails->Visitantes_Convertir_Cliente ( $Registro,$Areas_Interes,$Fecha_Visita,$Nom_Cargo, $Municipio     );
         if ( $RespuestaEmail == 'correo_OK'){
               $Registro      = $this->Terceros->Visitantes_Convertir_Cliente ( $idregistro  );
-              echo "ok";}
+              echo "correo_OK";}
               else {
                 echo 'Nocorreo_OK';
               }
-
     }
 
     public function Visitantes_Agradecer_Visita(){
@@ -173,7 +172,7 @@ class TercerosController extends Controller
             $this->Terceros->Visitantes_Agradecer_Visita_Email_Enviado ( $idregistro   );
             echo 'correo_OK';
         }else{
-          echo 'Nocorreo_OK';
+            echo 'Nocorreo_OK';
         }
 
     }
@@ -282,6 +281,8 @@ class TercerosController extends Controller
          $Es_email        = General_Functions::Validar_Entrada('email','EMAIL');
          $atendido_por    = General_Functions::Validar_Entrada('atendido_por','TEXT');
          $observacion     = General_Functions::Validar_Entrada('observacion','TEXT');
+         $quien_visita    = General_Functions::Validar_Entrada('persona_visita','TEXT');
+         $contactar_por   = General_Functions::Validar_Entrada('contactar_por','TEXT');
 
         if ( isset($_POST["idestilotrabajo"]  )){
         $idestilotrabajo_array = $_POST["idestilotrabajo"]; // Lo recibo de esta manera porque es un select multiseleccion
@@ -401,7 +402,14 @@ class TercerosController extends Controller
                 //-----------------------------
                $idtercero = $Registro [0]['idtercero'];
                $idestilotrabajo = 0 ;
-               $Datos_Registro = compact('idtercero','idestilotrabajo','clien_existe','posible_clien','informacion','competencia','entrega_tarj','atendido_por','observacion' );
+               $ce = $clien_existe;
+               $cp = $posible_clien;
+               $inf = $informacion ;
+               $co = $competencia;
+               $tj = $entrega_tarj;
+               $Datos_Registro = compact('idtercero' ,'idestilotrabajo' ,'ce' ,'cp' ,
+                        'inf' ,'co' ,'tj' ,'atendido_por' ,'observacion' ,
+                        'quien_visita' ,'contactar_por' ,'contacto' ,'idcargo_externo' ,'idarea' ,'celular');
                  $this->Terceros->Visitantes_Grabar_Otros_Datos( $Datos_Registro );
                  if ( is_array( $idestilotrabajo_array )) {
                     $this->Visitantes_Areas_Interes_Grabar( $idtercero , $idestilotrabajo_array );
@@ -431,10 +439,16 @@ class TercerosController extends Controller
       }
 
 
-     public function  Listado_General(){
-        $this->View->Terceros = $this->Terceros->Listado_General();
-        $this->View->Mostrar_Vista('listado_general');
+     public function  Listado_General_Contactos(){
+        $this->View->Terceros = $this->Terceros->Listado_General_Contactos();
+        $this->View->Mostrar_Vista('listado_general_contactos');
      }
+
+     public function  Listado_General_Clientes(){
+        $this->View->Terceros = $this->Terceros->Listado_General_Clientes();
+        $this->View->Mostrar_Vista('listado_general_clientes');
+     }
+
 
       public function Invitacion_Clientes(){
 

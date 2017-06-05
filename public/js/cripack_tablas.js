@@ -32,7 +32,7 @@ $('#tablas').DataTable( {
 $('#listado-clientes').DataTable( {
 
      "dom": '<"top"i>rt<"bottom"ftlp><"clear">',
-     "order": [[ 1, "asc" ]],
+     "order": [[ 2, "asc" ]],
      "language": {
                 "sProcessing":    "Procesando...",
      "sLengthMenu":     "Mostrar _MENU_ registros",

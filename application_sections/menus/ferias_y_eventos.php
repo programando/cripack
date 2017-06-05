@@ -12,9 +12,11 @@
       <a role="menuitem" tabindex="-1" href="<?=BASE_URL ;?>terceros/Listado_Visitantes">Listado y Gestión</a>
     </li>
     <li role="presentation">
-      <a role="menuitem" tabindex="-1" href="<?=BASE_URL ;?>terceros/Listado_General">Enviar Invitaciones</a>
+      <a role="menuitem" tabindex="-1" href="<?=BASE_URL ;?>terceros/Listado_General_Contactos">Enviar Invitaciones</a>
     </li>
-
+    <li role="presentation">
+      <a role="menuitem" tabindex="-1" href="<?=BASE_URL ;?>terceros/Listado_General_Clientes">Nuestros Clientes</a>
+    </li>
   </ul>
 
 </li>

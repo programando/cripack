@@ -19,17 +19,23 @@
 
 		 	public function Visitantes_Grabar_Otros_Datos( $Parametros = array() ){
 						extract( $Parametros );
-						$SQL = "$idtercero ,$idestilotrabajo ,$clien_existe ,$posible_clien ,$informacion ,$competencia ,$entrega_tarj ,'$atendido_por' ,'$observacion'";
+						$SQL = "$idtercero ,$idestilotrabajo ,$ce ,$cp ,$inf ,$co ,$tj ,'$atendido_por' ,'$observacion' ,'$quien_visita' ,'$contactar_por' ,'$contacto' ,$idcargo_externo ,$idarea ,'$celular'";
+
 						$Registro    =  $this->Db->Ejecutar_Sp("terceros_crear_registro_feria_otros_datos(".$SQL.")");
 				}
 
 
-				public function Listado_General(){
-						$Registro                 = $this->Db->Ejecutar_Sp("terceros_listado_general_web()");
+				public function Listado_General_Contactos(){
+						$Registro                 = $this->Db->Ejecutar_Sp("terceros_listado_general_web_contactos()");
 						$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
 						return $Registro;
-
 				}
+				public function Listado_General_Clientes(){
+						$Registro                 = $this->Db->Ejecutar_Sp("terceros_listado_general_web_clientes()");
+						$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
+						return $Registro;
+				}
+
 
 				public function Visitantes_Listado () {
 						$Registro                 = $this->Db->Ejecutar_Sp("terceros_registro_feria_listado()");

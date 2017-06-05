@@ -490,7 +490,8 @@ $('.container-fluid').on('click','.btn-agradecer',function(){
               url:      '/terceros/Visitantes_Agradecer_Visita/',
               type:     'post',
         success:  function (resultado)  {
-                  if ( resultado != 'correo_OK'){
+
+                  if ( $.trim(resultado) != 'correo_OK'){
 
                     Mostrar_Mensajes('ERROR EN EL ENVÍO DEL MENSAJE', "El mensaje no pudo ser enviado. Intente más tarde." );
                   }else{
@@ -516,7 +517,7 @@ $('.table-responsive').on('click','.btn-invitacion-cliente',function(){
               url:      '/terceros/Invitacion_Clientes/',
               type:     'post',
         success:  function (resultado)  {
-              if ( resultado != 'correo_OK'){
+              if ( $.trim(resultado) != 'correo_OK'){
                   Mostrar_Mensajes('ERROR EN EL ENVÍO DEL MENSAJE', "El mensaje no pudo ser enviado. Intente más tarde." );
               }else{
                    Btn.classList.remove('btn-success');
@@ -526,10 +527,15 @@ $('.table-responsive').on('click','.btn-invitacion-cliente',function(){
             },
 
         });
-
-
-
 })
+
+
+
+$('.table-responsive').on('click','.btn-registrar-cliente',function(){
+   var Identificacion = $(this).data('identificacion');
+   window.location.href='/terceros/Registro_Visitantes/' + $.trim(Identificacion);
+})
+
 
 
 
@@ -545,7 +551,8 @@ $('.container-fluid').on('click','.btn-agregar-cliente',function(){
               url:      '/terceros/Visitantes_Convertir_Cliente/',
               type:     'post',
         success:  function (resultado)  {
-                if ( resultado =='correo_OK'){
+
+                if ( $.trim(resultado) =='correo_OK'){
                     window.location.href = "/terceros/Listado_Visitantes";
                   }else{
                     Mostrar_Mensajes('ERROR EN ENVÍO DE MENSAJE', 'El mensaje no pudo ser enviado. Por favor intente más tarde.' );
@@ -560,32 +567,37 @@ $('.container-fluid').on('click','.btn-agregar-cliente',function(){
 
 
 $('#feria-grabar-registro').on('click',function(){
-  var identificacion    = $("#identificacion_feria").val();
-  var Tipo_Doc          = $("select[name='idtpdoc']").val();
-  var nomtercero        = $("#nomtercero").val();
-  var cliente           = $('#cliente').is(':checked');
-  var proveedor         = $('#proveedor').is(':checked');
-  var direccion         = $("#direccion").val();
-  var telefono          = $("#telefono").val();
-  var idmcipio          = $("select[name='idmcipio']").val();
-  var idpais            = $("select[name='idpais']").val();
-  var idzona_ventas     = $("select[name='idzona_ventas']").val();
-  var sector            = $("#sector").val();
-  var idestilotrabajo   = $("select[name='idestilotrabajo[]']").val();
-  var observacion       = $("#observacion").val();
-  var atendido_por      = $("#atendido-por").val();
+  var identificacion  = $("#identificacion_feria").val();
+  var Tipo_Doc        = $("select[name='idtpdoc']").val();
+  var nomtercero      = $("#nomtercero").val();
+  var cliente         = $('#cliente').is(':checked');
+  var proveedor       = $('#proveedor').is(':checked');
+  var direccion       = $("#direccion").val();
+  var telefono        = $("#telefono").val();
+  var idmcipio        = $("select[name='idmcipio']").val();
+  var idpais          = $("select[name='idpais']").val();
+  var idzona_ventas   = $("select[name='idzona_ventas']").val();
+  var sector          = $("#sector").val();
+  var idestilotrabajo = $("select[name='idestilotrabajo[]']").val();
+  var observacion     = $("#observacion").val();
+  var atendido_por    = $("#atendido-por").val();
 
-  var contacto          = $("#contacto").val();
-  var idcargo_externo   = $("select[name='idcargo_externo']").val();
-  var idarea            = $("select[name='idarea']").val();
-  var celular           = $("#celular").val();
-  var email             = $("#email").val();
+  var contacto        = $("#contacto").val();
+  var idcargo_externo = $("select[name='idcargo_externo']").val();
+  var idarea          = $("select[name='idarea']").val();
+  var celular         = $("#celular").val();
+  var email           = $("#email").val();
 
-  var clien_existe      = $('#cliente-existente').is(':checked');
-  var posible_clien     = $('#posible-cliente').is(':checked');
-  var informacion       = $('#informacion').is(':checked');
-  var competencia       = $('#competencia').is(':checked');
-  var entrega_tarj      = $('#entrega-tarjeta').is(':checked');
+  var clien_existe    = $('#cliente-existente').is(':checked');
+  var posible_clien   = $('#posible-cliente').is(':checked');
+  var informacion     = $('#informacion').is(':checked');
+  var competencia     = $('#competencia').is(':checked');
+  var entrega_tarj    = $('#entrega-tarjeta').is(':checked');
+
+
+  var persona_visita  = $("#persona-visita").val();
+  var contactar_por   = $('input:radio[name=optradio]:checked').val();
+
 
    Validaciones_Previas_Registro_Feria( identificacion,nomtercero, cliente, proveedor,email );
   if ( $Respuesta_Validacion != '' ){
@@ -594,9 +606,11 @@ $('#feria-grabar-registro').on('click',function(){
        return;
   }
 
-  parametros ={'identificacion':identificacion,'Tipo_Doc':Tipo_Doc,'nomtercero':nomtercero, 'cliente':cliente,'proveedor':proveedor, 'direccion':direccion,'telefono':telefono, 'idmcipio':idmcipio, 'idpais':idpais,'idzona_ventas':idzona_ventas, 'sector':sector,  'idestilotrabajo':idestilotrabajo,'observacion':observacion, 'atendido_por':atendido_por,'contacto':contacto,  'idcargo_externo':idcargo_externo, 'idarea':idarea, 'celular':celular, 'email':email, 'clien_existe':clien_existe, 'posible_clien':posible_clien,'informacion':informacion, 'competencia':competencia, 'entrega_tarj':entrega_tarj      };
+  parametros ={'identificacion':identificacion,'Tipo_Doc':Tipo_Doc,'nomtercero':nomtercero, 'cliente':cliente,'proveedor':proveedor, 'direccion':direccion,'telefono':telefono, 'idmcipio':idmcipio, 'idpais':idpais,'idzona_ventas':idzona_ventas, 'sector':sector,  'idestilotrabajo':idestilotrabajo,'observacion':observacion, 'atendido_por':atendido_por,'contacto':contacto,  'idcargo_externo':idcargo_externo, 'idarea':idarea, 'celular':celular, 'email':email, 'clien_existe':clien_existe, 'posible_clien':posible_clien,'informacion':informacion, 'competencia':competencia, 'entrega_tarj':entrega_tarj, 'persona_visita':persona_visita, 'contactar_por':contactar_por     };
 
   Visitantes_Grabar_Datos ( parametros );
+
+
 })
 
 //=========================================================================================================

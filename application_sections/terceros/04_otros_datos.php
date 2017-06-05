@@ -38,12 +38,12 @@
   </div>
 
     <div class="form-group">
-       <label class="col-md-3 control-label" for="observacion" >Contactar por :</label>
+       <label class="col-md-3 control-label" for="contactar-por" >Contactar por :</label>
          <div class="col-md-9">
-            <label class="radio-inline">  <input type="radio"   name="optradio"> Correo          </label>
-            <label class="radio-inline">  <input type="radio" name="optradio">Teléfono           </label>
-            <label class="radio-inline">  <input type="radio" name="optradio">Visita Comercial   </label>
-            <label class="radio-inline">  <input type="radio" name="optradio">Cualquiera         </label>
+            <label class="radio-inline">  <input type="radio" name="optradio" value="CO"> Correo          </label>
+            <label class="radio-inline">  <input type="radio" name="optradio" value="TE">Teléfono           </label>
+            <label class="radio-inline">  <input type="radio" name="optradio" value ="VI">Visita Comercial   </label>
+            <label class="radio-inline">  <input type="radio" name="optradio" value="CU">Cualquiera         </label>
         </div>
     </div>
 
