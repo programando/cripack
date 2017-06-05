@@ -208,7 +208,7 @@ $("#btn-actualizar-reporte").on('click', function() {
 
 
 	 if ( $Solucion  === '' ) {
-	 				Mostrar_Mensajes( "Datos Incompletos ", 'Debe diligneciar el campo: Respuesta del proveedor');
+	 				Mostrar_Mensajes( "Datos Incompletos ", 'Debe diligenciar el campo: Respuesta del proveedor');
 							return ;
 				}
 			$Parametros 	 						   = {'Solucion':$Solucion ,'Pasos':$Pasos,'Observaciones':$Observaciones, "idregistro":$IdRegistro   } ;
