@@ -17,7 +17,7 @@
             Cali-Colombia-Suramérica<br>
             (57) 2 382 7295<br>
             (57) 2 885 9899<br>
-            Visite nuestra página <a href="http://www.cripack.com">www.cripack.com</a>
+            Visite nuestro sitio web : <a href="http://www.cripack.com">www.cripack.com</a>
             <br>
           </strong>
         </div>
