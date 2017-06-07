@@ -375,12 +375,12 @@ $("#btn-inicio-no-token").on('click',function(){
 // REGISTRO DE DATOS EN FERIA
 //=========================================================================================================
 
- var Validaciones_Previas_Registro_Feria = function(identificacion,nomtercero, cliente, proveedor,email) {
+ var Validaciones_Previas_Registro_Feria = function(identificacion,nomtercero, cliente, proveedor,email, otro) {
     var texto = '';
     if ( $.trim( identificacion ) =='') { texto ='Debe registrar el número de identificación.<br>'; }
     if ( $.trim( nomtercero )     =='') { texto = texto +'Debe registrar el nombre o razón social.<br>'; }
-    if ( cliente == false && proveedor == false ){
-        texto = texto +'Indique si el registro es de un cliente o de un proveeor.<br>';
+    if ( cliente == false && proveedor == false && otro == false){
+        texto = texto +'Indique si el registro es de un cliente, proveeor u otro.<br>';
        }
     if ( $.trim( email )     =='') { texto = texto +'Registro el correo electrónico.<br>'; }
     $Respuesta_Validacion = texto;
@@ -572,6 +572,7 @@ $('#feria-grabar-registro').on('click',function(){
   var nomtercero      = $("#nomtercero").val();
   var cliente         = $('#cliente').is(':checked');
   var proveedor       = $('#proveedor').is(':checked');
+  var otro            = $('#otro').is(':checked');
   var direccion       = $("#direccion").val();
   var telefono        = $("#telefono").val();
   var idmcipio        = $("select[name='idmcipio']").val();
@@ -606,7 +607,7 @@ $('#feria-grabar-registro').on('click',function(){
        return;
   }
 
-  parametros ={'identificacion':identificacion,'Tipo_Doc':Tipo_Doc,'nomtercero':nomtercero, 'cliente':cliente,'proveedor':proveedor, 'direccion':direccion,'telefono':telefono, 'idmcipio':idmcipio, 'idpais':idpais,'idzona_ventas':idzona_ventas, 'sector':sector,  'idestilotrabajo':idestilotrabajo,'observacion':observacion, 'atendido_por':atendido_por,'contacto':contacto,  'idcargo_externo':idcargo_externo, 'idarea':idarea, 'celular':celular, 'email':email, 'clien_existe':clien_existe, 'posible_clien':posible_clien,'informacion':informacion, 'competencia':competencia, 'entrega_tarj':entrega_tarj, 'persona_visita':persona_visita, 'contactar_por':contactar_por     };
+  parametros ={'identificacion':identificacion,'Tipo_Doc':Tipo_Doc,'nomtercero':nomtercero, 'cliente':cliente,'proveedor':proveedor, 'direccion':direccion,'telefono':telefono, 'idmcipio':idmcipio, 'idpais':idpais,'idzona_ventas':idzona_ventas, 'sector':sector,  'idestilotrabajo':idestilotrabajo,'observacion':observacion, 'atendido_por':atendido_por,'contacto':contacto,  'idcargo_externo':idcargo_externo, 'idarea':idarea, 'celular':celular, 'email':email, 'clien_existe':clien_existe, 'posible_clien':posible_clien,'informacion':informacion, 'competencia':competencia, 'entrega_tarj':entrega_tarj, 'persona_visita':persona_visita, 'contactar_por':contactar_por,'otro':otro     };
 
   Visitantes_Grabar_Datos ( parametros );
 

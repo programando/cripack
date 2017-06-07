@@ -265,6 +265,7 @@ class TercerosController extends Controller
          $nomtercero      = General_Functions::Validar_Entrada('nomtercero','TEXT');
          $cliente         = General_Functions::Validar_Entrada('cliente','BOL');
          $proveedor       = General_Functions::Validar_Entrada('proveedor','BOL');
+         $otro            = General_Functions::Validar_Entrada('otro','BOL');
          $direccion       = General_Functions::Validar_Entrada('direccion','TEXT');
          $telefono        = General_Functions::Validar_Entrada('telefono','TEXT');
          $idmcipio        = General_Functions::Validar_Entrada('idmcipio','NUM');
@@ -286,12 +287,9 @@ class TercerosController extends Controller
 
         if ( isset($_POST["idestilotrabajo"]  )){
         $idestilotrabajo_array = $_POST["idestilotrabajo"]; // Lo recibo de esta manera porque es un select multiseleccion
-      }else
-      {
-        $idestilotrabajo_array ='';
-      }
-
-
+         }else     {
+            $idestilotrabajo_array ='';
+          }
 
          $clien_existe    = General_Functions::Validar_Entrada('clien_existe','BOL');
          $posible_clien   = General_Functions::Validar_Entrada('posible_clien','BOL');
@@ -302,7 +300,7 @@ class TercerosController extends Controller
 
 
 
-         $parametros = compact('identificacion','nomtercero','cliente','proveedor','contacto','Es_email','clien_existe','posible_clien','informacion','competencia');
+         $parametros = compact('identificacion','nomtercero','cliente','proveedor','contacto','Es_email','clien_existe','posible_clien','informacion','competencia', 'otro');
 
          $Respuesta  = $this->Visitantes_Validar_Datos( $parametros ) ;
 
@@ -409,7 +407,7 @@ class TercerosController extends Controller
                $tj = $entrega_tarj;
                $Datos_Registro = compact('idtercero' ,'idestilotrabajo' ,'ce' ,'cp' ,
                         'inf' ,'co' ,'tj' ,'atendido_por' ,'observacion' ,
-                        'quien_visita' ,'contactar_por' ,'contacto' ,'idcargo_externo' ,'idarea' ,'celular');
+                        'quien_visita' ,'contactar_por' ,'contacto' ,'idcargo_externo' ,'idarea' ,'celular','otro');
                  $this->Terceros->Visitantes_Grabar_Otros_Datos( $Datos_Registro );
                  if ( is_array( $idestilotrabajo_array )) {
                     $this->Visitantes_Areas_Interes_Grabar( $idtercero , $idestilotrabajo_array );
@@ -495,8 +493,8 @@ class TercerosController extends Controller
           $Texto  = $Texto. 'Especifique el nombre de la persona o empresa'. '<br>' ;
         }
 
-      if ( $cliente == FALSE && $proveedor == FALSE ) {
-          $Texto  = $Texto. 'Debe indicar si los datos que registra son de un cliente o proveedor.'. '<br>' ;
+      if ( $cliente == FALSE && $proveedor == FALSE && $otro == FALSE ) {
+          $Texto  = $Texto. 'Debe indicar si los datos que registra son de un cliente, proveedor u otro.'. '<br>' ;
       }
 
       if ( strlen($contacto) == 0 )     {

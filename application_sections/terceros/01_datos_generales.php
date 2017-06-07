@@ -52,6 +52,7 @@
             <?php endif ;?>
             <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
              Cliente
+
           </label>
 
           <label for="proveedor" class="checkbox-inline">
@@ -60,11 +61,16 @@
               <?php else :?>
                   <input type="checkbox" value="" id="proveedor" name="proveedor">
              <?php endif ;?>
-
             <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
-
             Proveedor
           </label>
+
+          <label for="otro" class="checkbox-inline">
+            <input type="checkbox" value="" id="otro" name="otro">
+            <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+            Otro
+          </label>
+
         </div>
 
 
