@@ -10,7 +10,7 @@
 
 				public function Visitantes_Grabar_Datos( $Parametros = array() ){
 					extract( $Parametros );
-
+					$alias = substr($alias, 0,29);
 					$SQL = "$idmcipio ,$idtpdoc ,$idvendedor ,$idformapago ,$idpais ,$idzona_ventas ,$codigo_tercero ,'$identificacion' ,'$dv' ,'$nomtercero' ,'$nom_sucursal' ,$cliente ,$proveedor ,$vendedor ,'$direccion' ,'$telefono' ,'$fax' ,'$contacto' ,'$email' ,$certificado_calidad ,$comision ,$vr_fletes ,'$atencion' ,'$cargo' ,'$despacho' ,'$celular' ,'$instrucciones' ,$costo_financiero ,$transportador ,'$cobros_contacto' ,'$cobros_telefono' ,$empleado ,'$cod_empleado' ,$aplica_extras ,$idcargo ,$salario ,'$fecha_ingreso' ,$vr_hora ,$vr_incentivo ,'$password_operario' ,$descarga_materiales ,$factor_salario ,$factor_transporte ,'$grupo_sanguineo' ,$inactivo ,'$maquinas' ,$presupuestoventas ,'$id_rgb' ,$incremento_ventas ,$comision_objetivo ,$id_lista_precio ,$cupo_credito ,$extra_cupo ,$cupo_pre_aprobado ,$dia_limite_recibe_facturas ,'$contacto_pagos' ,'$contacto_pagos_email' ,'$contacto_pagos_celular' ,$requiere_orden_compra ,$discrimina_materiales_factura ,$gran_contribuyente ,$auto_retenedor ,$retenedor_iva ,$retenedor_renta ,$agrupa_facturacion_estilo_trabajo ,$idcargo_externo ,$idarea ,'$horario_rbo_mercancia' ,'$dia_pago' ,$idbanco ,$plazo ,'$empleado_abrev' ,'$codigo_postal' ,$bloqueado ,'$ultimo_bloqueo' ,$dias_gracia ,$dia_informa_pagos ,'$cod_cuenta_tcc' ,'$alias' ,'$fecha_nacimiento' ,$prioridad_costeo ,$aplica_ferias ,$reg_ferias  ";
 					//Debug::Mostrar($SQL  );
 						$Registro    =  $this->Db->Ejecutar_Sp("terceros_crear_registro_feria(".$SQL.")");
