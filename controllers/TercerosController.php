@@ -44,8 +44,36 @@ class TercerosController extends Controller
         $this->Emails->Informe_Ots_Pendientes ( $cliente, $sucursal, $Destinatarios, $Ots  );
 
     }
-
   } // Pendientes_Produccion
+
+
+  public function Clientes_Bloqueados(){
+    /*  OCTUBRE 16 DE 2017
+        CONSULTA LOS CLIENTES QUE SE HAN BLOQUEADO PARA ENVIO DE NOTIFICACIÓN POR CORREO
+    */
+    $Clientes = $this->Terceros->Clientes_Bloqueados();
+    foreach ($Clientes as $Cliente) {
+        $idtercero = $Cliente['idtercero'];
+        $cliente   = trim( $Cliente['cliente'] );
+        $texto_email = trim( $Cliente['texto'] );
+
+        $Contactos = $this->Terceros->Clientes_Bloqueados_Contactos      ( $idtercero );
+        $Ots       = $this->Terceros->Ots_Pendientes_Por_IdTercero       ( $idtercero );
+        foreach ($Contactos as $Contacto) {
+          $email  = trim( $Contacto['correo']);
+          $MyCorreo = trim( $Contacto['correo']);
+
+          if ( !empty($email )){
+            // ENVIAR CORREO AL TERCERO
+            $Correo_Enviado = $this->Emails->Informe_Clientes_Bloqueados ( $cliente,  $email, $Ots , $texto_email );
+
+          if ( $Correo_Enviado == 'correo_OK'){
+                $this->Terceros->Clientes_Bloqueados_Borrar_Notificacion       ( $MyCorreo);
+            }
+          }
+        }
+    }
+  } // Clientes_Bloqueados
 
 
 

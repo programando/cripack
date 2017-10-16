@@ -118,6 +118,53 @@
           }
 
 
+
+ public function Informe_Clientes_Bloqueados ( $Empresa, $Destinatarios, $Datos_Ots, $Texto_Email   ){
+
+           $this->Configurar_Cuenta('Informe Trabajos Bloqueados ' . APP_NAME );
+           $Texto_Correo    = file_get_contents(BASE_EMAILS.'clientes_bloqueados.phtml','r');
+           $Texto_Correo    = str_replace("#_EMPRESA_#"        , $Empresa,$Texto_Correo);
+
+           $Cabecera ='<table   width="100%">
+                      <thead  style="text-align: center; color: #fff; background-color: #272C6B;">
+                        <tr>
+                          <th>Referencia</th>
+                          <th>Estilo</th>
+                          <th>Trabajo</th>
+                          <th>Cab.</th>
+                          <th>Cant.</th>
+                          <th>Estado</th>
+                        </tr>
+                      </thead>
+                      <tbody>';
+           $Tabla    = '';
+
+            foreach ($Datos_Ots  as $OT) {
+              $Tabla =  $Tabla ."<tr>" ;
+                 $Tabla = $Tabla . "<td>" . trim($OT['referencia'] )        . "</td>" ;
+                 $Tabla = $Tabla . "<td>" . trim($OT['nomestilotrabajo'] )  . "</td>" ;
+                 $Tabla = $Tabla . "<td>" . trim($OT['nomtipotrabajo'])     . "</td>" ;
+                 $Tabla = $Tabla . "<td style='text-align: center;'>" . trim($OT['cabida'] )            . "</td>" ;
+                 $Tabla = $Tabla . "<td style='text-align: center;'>" . $OT['cantidad']                 . "</td>" ;
+                 $Tabla = $Tabla . "<td style='text-align: left;'>" . $OT['abreviatura_labor']        . "</td>" ;
+               $Tabla = $Tabla . '</tr>';
+            }
+            $PieTabla ='      </tbody>    </table>' ;
+
+            if (  $Tabla != '' ) {
+              $Texto_Correo      = str_replace("#_TABLA_#"      ,  $Cabecera.$Tabla  .$PieTabla      , $Texto_Correo);
+            }else  {
+               $Texto_Correo      = str_replace("#_TABLA_#"      ,  ''      , $Texto_Correo);
+            }
+            $this->Email->Body = $Texto_Correo  ;
+            $this->Email->AddAddress($Destinatarios);
+            $this->Email->AddCC("Serviclientes@cripack.net");
+            $this->Email->AddCC("jhonjamesmg@hotmail.com");
+            $Respuesta  = $this->Enviar_Correo();
+            return $Respuesta;
+          }
+
+
 /* MAYO 30 DE 2017
    ENVIA CORREO DE AGRADECIMIENTO PARA LAS PERSONAS QUE ASISTIERON A LA FERIA
 */
@@ -142,10 +189,7 @@
                $Tabla = $Tabla . '</ul>';
             }
             $Texto_Correo    = str_replace("#_TABLA_#"      ,  $Tabla       , $Texto_Correo);
-
-
             $this->Email->Body    = $this->Unir_Partes_Correo ( $Texto_Correo ) ;
-
             $this->Email->AddAddress( $Email);
             $Respuesta              = $this->Enviar_Correo();
             return $Respuesta ;
@@ -164,8 +208,6 @@
            $Texto_Correo    = str_replace("#_CARGO_#"     , $Cargo    ,$Texto_Correo);
            $this->Email->Body    =  $Texto_Correo  ;
            $this->Email->AddAddress($Email);
-           $this->Email->AddAddress('jhonjamesmg@hotmail.com');
-
            $Respuesta              = $this->Enviar_Correo();
            return $Respuesta ;
       }

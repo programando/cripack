@@ -127,6 +127,23 @@
 						return $Ots;
 				}
 
+				public function Clientes_Bloqueados(){
+						 $Ots                = $this->Db->Ejecutar_Sp("ordenes_trabajo_consulta_pendientes_descarga");
+							$Ots                = $this->Db->Ejecutar_Sp("web_msj_bloq_cli_listado_bloqueados");
+						$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
+						return $Ots;
+				}
+
+				public function Clientes_Bloqueados_Contactos( $IdTercero ) {
+						$Ots                = $this->Db->Ejecutar_Sp("web_msj_bloq_cli_contactos_x_idtercero ( $IdTercero )");
+						$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
+						return $Ots;
+				}
+
+				public function Clientes_Bloqueados_Borrar_Notificacion( $Email ) {
+						$Ots    = $this->Db->Ejecutar_Sp("web_msj_bloq_cli_borrar_x_email ( '$Email' )");
+						return $Ots;
+				}
 
 				public function Contactos_Por_IdTercero ( $IdTercero ){
 						$Contactos                = $this->Db->Ejecutar_Sp("terceros_contactos_consultar_por_tercero ($IdTercero ) ");
