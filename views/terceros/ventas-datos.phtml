@@ -16,11 +16,11 @@
        <?php $Total = 0 ;?>
     <?php foreach ($this->Ventas as $Venta) : ;?>
       <tr>
-      <td><?= $Venta['fecha_terminada'] ;?></td>
+      <td><?= Fechas::Formato( $Venta['fecha_terminada']) ;?></td>
       <td><?= $Venta['OrdenTrabajo'] ;?></td>
       <td><?= $Venta['referencia'] ;?></td>
       <td><?= $Venta['numero_factura'] ;?></td>
-      <td><?= $Venta['PrecioVta'] ;?></td>
+      <td><?= Numeric_Functions::Formato_Numero($Venta['PrecioVta']) ;?></td>
        <?php $Total = $Total +  $Venta['PrecioVta'];?>
 
       </tr>
