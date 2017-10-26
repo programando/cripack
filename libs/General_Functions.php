@@ -83,7 +83,9 @@ public static function Generar_Codigo_Confirmacion($longitud=6){
 													 break;
 
 									case 'FECHA':
-															$valores								=  explode("/", $Clave_Recibida);
+															$valores								=  explode("-", $Clave_Recibida);
+
+
 															$Clave_Recibida =  $valores[2].'-'.$valores[1].'-'.$valores[0];
 														 $Clave_Recibida =  strtotime($Clave_Recibida );
 														 $Clave_Recibida =  date('Y-m-d',$Clave_Recibida);

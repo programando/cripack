@@ -16,7 +16,22 @@ class TercerosController extends Controller
     }
 
 
+    public function Ventas() {
+      $fecha_ini     = date("Y-m-01");
+      $fecha_fin     = date("Y-m-d");
+      $Ventas        = $this->Terceros->Ventas_x_Cliente_x_Fechas ($fecha_ini,$fecha_fin,73);
+      $this->View->Ventas = $Ventas ;
+      $this->View->Mostrar_Vista('ventas');
+    }
 
+  public function Ventas_x_Cliente_x_Fechas(){
+    $fecha_ini     = General_Functions::Validar_Entrada('fecha_ini','TEXT');
+    $fecha_fin     = General_Functions::Validar_Entrada('fecha_fin','TEXT');
+    $Ventas        = $this->Terceros->Ventas_x_Cliente_x_Fechas ($fecha_ini,$fecha_fin,73);
+    $this->View->Ventas = $Ventas ;
+    $this->View->Mostrar_Vista_Parcial('ventas-datos');
+
+  }
 
   public function Pendientes_Produccion(){
     /*  NOV. 26 2016

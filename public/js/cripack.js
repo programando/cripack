@@ -612,7 +612,38 @@ $('#feria-grabar-registro').on('click',function(){
   Visitantes_Grabar_Datos ( parametros );
 
 
-})
+});
+
+$("#consulta-ventas").on('click', function() {
+   var fecha_ini = $("#fecha_ini").val();
+   var fecha_fin = $("#fecha_fin").val();
+
+   if ( $.trim(fecha_ini )=='' || $.trim( fecha_fin )=='' ) {
+       Mostrar_Mensajes('ERROR EN LAS FECHAS', "Alguna de las fechas parece no tener un formato válido." );
+       return;
+   }
+   if ( fecha_ini > fecha_fin ){
+       Mostrar_Mensajes('ERROR EN LAS FECHAS', "La fecha inicial no puede ser mayor a la fecha final." );
+       return;
+   }
+
+
+  $.ajax({
+            data:  {'fecha_ini':fecha_ini,'fecha_fin':fecha_fin},
+            dataType: 'html',
+            url:      '/terceros/Ventas_x_Cliente_x_Fechas/',
+            type:     'post',
+      success:  function (MyServerResponse)  {
+
+             $('#datos-ventas').html('');
+             $('#datos-ventas').html( MyServerResponse );
+
+        }
+      });
+
+
+});
+
 
 //=========================================================================================================
 // FIN REGISTRO DE DATOS EN FERIA
@@ -673,49 +704,12 @@ var Ion = {
 
 	},
 
-  /*cargar_modal_estructura: function(id, action, rsp, tipo){
-
-      event.preventDefault();
-
-      $("#"+rsp).html('<center><img src="../resources/icons/loading.gif"/></center>');
-
-      $.post("../process/general/cargar-estructura.php",{ id: id, action: action, tipo: tipo},
-
-        function(data){
-
-          $("#"+rsp).html(data);
-        }
-      )
-    },
-
-
-
-  cargar_formulario: function(id, table, rsp, div_active, div_none){
-
-      event.preventDefault();
-
-      $("#"+rsp).html('<center><img src="../resources/icons/loading.gif"/></center>');
-
-      data = { id: id, table: table }
-
-       $.when(Funciones.ajax_connect("../process/general/cargar-formulario.php", data)).done(function(response) {
-
-        console.log(response);
-
-        $.each( response, function( key, value ) {
-          if(value != null) $("#"+key).val(value)
-        });
-
-       });
-
-    }
-    */
-
 
 
 };
 
 Ion.init();
+
 
 
 

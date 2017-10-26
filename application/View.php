@@ -48,6 +48,26 @@
             }
         }
 
+        public function Mostrar_Vista_Parcial($vista) {
+         /**
+         * REALIZA LA LLAMADA A LA VISTA DE ACUERDO A SU CONTROLADOR
+         * @param [text] $vista     [nombre de la vista]
+         * @param array  $View_Vars [parámetros para la vista]
+         */
+         $RutaView     = ROOT .  'views' . DS  . $this->Controlador. DS . $vista . '.phtml';
+         $RutaTemplate = $RutaView;
+
+
+            if(is_readable($RutaView))
+            {
+               require_once ($RutaView);
+            }
+            else {
+                throw new Exception(header('Location: ' . BASE_URL .'error/404.php'));
+            }
+          }
+
+
         /**
          * OCTUBRE 14 DE 2014
          * CARGA ARCHIVOS CSS INDEPENDIENTES EN CADA UNA DE LAS VISTAS

@@ -1,0 +1,68 @@
+<style >
+  .MyScroll {
+  height: 500px;
+  width: 100%;
+
+
+  overflow-y: scroll;
+}
+
+</style>
+
+
+ <div class="t40 colorCri1 ff2 mb20">
+ Ventas
+</div>
+<div class="col-xs-12 text-center ">
+  Desde : <input type="date" id="fecha_ini" value="<?php echo date("Y-m-01");?>">&nbsp;&nbsp;
+  Hasta : <input type="date" id="fecha_fin" value="<?php echo date("Y-m-d");?>">&nbsp;&nbsp;
+  <button type="button" id="consulta-ventas" class="btn btn-default btn-primary "> Consultar Ventas  </button><br>
+
+</div>
+
+<div id="datos-ventas" >
+ <div class="col-xs-12 ">
+ <div class="" style="height: 500px; overflow: auto; width: 100%;">
+
+<table class="table table-striped table-hover display "  >
+    <thead>
+      <tr>
+        <th>Fecha Terminada</th>
+        <th>#Ot</th>
+        <th>Referencia</th>
+        <th># Factura</th>
+        <th>Vr. Venta</th>
+      </tr>
+    </thead>
+
+    <tbody class="well">
+    <?php $Total = 0 ;?>
+    <?php foreach ($this->Ventas as $Venta) : ;?>
+      <tr>
+      <td><?= Fechas::Formato( $Venta['fecha_terminada']) ;?></td>
+      <td><?= $Venta['OrdenTrabajo'] ;?></td>
+      <td><?= $Venta['referencia'] ;?></td>
+      <td><?= $Venta['numero_factura'] ;?></td>
+      <td><?= Numeric_Functions::Formato_Numero($Venta['PrecioVta']) ;?></td>
+      <?php $Total = $Total +  $Venta['PrecioVta'];?>
+      </tr>
+    <?php endforeach;?>
+
+    </tbody>
+
+  </table>
+</div>
+
+<br>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="text-right">
+     <strong> Total : &nbsp; &nbsp;  <?= Numeric_Functions::Formato_Numero( $Total) ;?> </strong>
+ </div>
+</div>
+</div>
+
+</div>
+
+  </div>
+

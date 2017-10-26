@@ -8,6 +8,14 @@
 				}
 
 
+
+				public function Ventas_x_Cliente_x_Fechas ($fecha_ini, $fecha_fin, $idtercero ){
+						$Registro                 = $this->Db->Ejecutar_Sp("ordenes_trabajo_consulta_facturadas_por_fechas_x_cliente( '$fecha_ini','$fecha_fin',$idtercero )");
+						$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
+						return $Registro;
+
+				}
+
 				public function Visitantes_Grabar_Datos( $Parametros = array() ){
 					extract( $Parametros );
 					$alias = substr($alias, 0,29);
