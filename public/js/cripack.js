@@ -27,12 +27,17 @@ var Ingresar_Sistema = function( Parametros ) {
 							url:      '/terceros/Ingreso_Sistema_Validaciones',
 							type:     'post',
        success:  function ( Respuesta ){
-       		 if ( Respuesta.Resultado_Logueo =='NO-Logueo_OK'){
-       		 		 $('#modal_error').modal('show');
-       		 }
-       		 if ( Respuesta.Resultado_Logueo =='Logueo_OK'){
-       		 			window.location.href = "/terceros/Historial";
-       		 }
+
+           if ( parseInt(Respuesta.DiasSinCompra) > 180){
+            $('#mensaje_inactivo').modal('show');
+           }else {
+         		 if ( Respuesta.Resultado_Logueo =='NO-Logueo_OK'){
+         		 		 $('#modal_error').modal('show');
+         		 }
+         		 if ( Respuesta.Resultado_Logueo =='Logueo_OK'){
+         		 			window.location.href = "/terceros/Historial";
+         		 }
+            }
       	 	 }
 				});
 }

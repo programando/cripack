@@ -654,6 +654,7 @@ class TercerosController extends Controller
          }else {
               $Resultado_Logueo = "Logueo_OK";
               $Nombre           =  explode(' ',$Registro[0]['nombre_usuario']);
+              $DiasSinCompra    =  intval( $Registro[0]['dias_sin_compra']) ;
               Session::Set('logueado',   TRUE);
               Session::Set('idtercero',        $Registro[0]['idtercero'] ) ;
               Session::Set('nomtercero',       $Registro[0]['nomtercero'] ) ;
@@ -663,16 +664,17 @@ class TercerosController extends Controller
               Session::Set('proveedor'      ,   $Registro[0]['proveedor'] ) ;
               Session::Set('Cliente'      ,   $Registro[0]['cliente'] ) ;
               Session::Set('email'        , $Email);
+              Session::Set('cuenta_cripack'        , FALSE);
 
-             Session::Set('cuenta_cripack'        , FALSE);
                $Email_Cripack = strpos($Email,'cripack');
               if ( $Email_Cripack > 0 ){
                 Session::Set('cuenta_cripack'        , TRUE);
+                $DiasSinCompra = 1 ;
               }
 
            }
 
-           $Datos            = compact('Resultado_Logueo','Email');
+           $Datos            = compact('Resultado_Logueo','Email','DiasSinCompra');
            echo json_encode($Datos,256);
 
      }
