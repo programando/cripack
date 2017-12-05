@@ -169,6 +169,7 @@
 						$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
 						return $Ots;
 				}
+
 					public function Consulta_Tablero_Produccion_Ferias_Eventos (  )	{
 
 						$Ots                = $this->Db->Ejecutar_Sp("ferias_eventos_ot_consulta_estado_procesos_labores_web()");
