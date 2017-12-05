@@ -17,17 +17,23 @@ class TercerosController extends Controller
 
 
     public function Ventas() {
+      $idtercero     = Session::Get('idtercero');
       $fecha_ini     = date("Y-m-01");
       $fecha_fin     = date("Y-m-d");
-      $Ventas        = $this->Terceros->Ventas_x_Cliente_x_Fechas ($fecha_ini,$fecha_fin,73);
+      $Ventas        = $this->Terceros->Ventas_x_Cliente_x_Fechas ($fecha_ini,$fecha_fin,$idtercero);
       $this->View->Ventas = $Ventas ;
       $this->View->Mostrar_Vista('ventas');
     }
 
   public function Ventas_x_Cliente_x_Fechas(){
     $idtercero     = Session::Get('idtercero');
+
     $fecha_ini     = General_Functions::Validar_Entrada('fecha_ini','TEXT');
     $fecha_fin     = General_Functions::Validar_Entrada('fecha_fin','TEXT');
+    $fecha_ini = $fecha_ini .' 00:00:00';
+    $fecha_fin = $fecha_fin .' 23:59:00';
+
+
     $Ventas        = $this->Terceros->Ventas_x_Cliente_x_Fechas ($fecha_ini,$fecha_fin,$idtercero);
     $this->View->Ventas = $Ventas ;
     $this->View->Mostrar_Vista_Parcial('ventas-datos');
