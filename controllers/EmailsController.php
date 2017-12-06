@@ -158,8 +158,10 @@
             }
             $this->Email->Body = $Texto_Correo  ;
             $this->Email->AddAddress($Destinatarios);
-            $this->Email->AddCC("Serviclientes@cripack.net");
-            $this->Email->AddCC("jhonjamesmg@hotmail.com");
+            $this->Email->AddCC("serviclientes@cripack.net");
+            $this->Email->AddCC("cartera@cripack.com.co");
+            $this->Email->AddCC("produccion@cripack.com");
+            $this->Email->AddCC("contabilidad@cripack.com");
             $Respuesta  = $this->Enviar_Correo();
             return $Respuesta;
           }
