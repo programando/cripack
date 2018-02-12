@@ -44,8 +44,8 @@
                require_once ($RutaTemplate);
             }
             else {
-              echo $RutaView;
-                //throw new Exception(header('Location: ' . BASE_URL .'error/404.php'));
+              //echo $RutaView;
+                throw new Exception(header('Location: ' . BASE_URL .'error/404.php'));
             }
         }
 

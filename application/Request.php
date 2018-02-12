@@ -45,7 +45,7 @@ class Request
             {
                 $this->Controlador  = DEFAULT_CONTROLLER;
             }
-            $this->Controlador      =   String_Functions::Camel($this->Controlador);
+            //$this->Controlador      =   String_Functions::Camel($this->Controlador);
         }
 
     /**
