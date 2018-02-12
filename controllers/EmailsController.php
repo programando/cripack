@@ -162,6 +162,7 @@
             $this->Email->AddCC("cartera@cripack.com.co");
             $this->Email->AddCC("produccion@cripack.com");
             $this->Email->AddCC("contabilidad@cripack.com");
+            //$this->Email->AddCC("jhonjamesmg@hotmail.com");
             $Respuesta  = $this->Enviar_Correo();
             return $Respuesta;
           }

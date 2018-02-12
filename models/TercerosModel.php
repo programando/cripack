@@ -8,12 +8,23 @@
 				}
 
 
+				public function RemisionesPorConfirmarFechaEntrega(){
+					$Registro                 = $this->Db->Ejecutar_Sp("remisiones_x_confirmar_fecha_entrega()");
+						return $Registro;
+				}
+
+
+				public function RemisionesPorConfirmarActualizaDatos ( $idremision ,$idregistro_ot ,$fecha_cumplido){
+						$Registro                 = $this->Db->Ejecutar_Sp("remisiones_x_confirmar_upd_datos( $idremision,$idregistro_ot, '$fecha_cumplido'  )");
+						return $Registro;
+				}
+
+
 
 				public function Ventas_x_Cliente_x_Fechas ($fecha_ini, $fecha_fin, $idtercero ){
 						$Registro                 = $this->Db->Ejecutar_Sp("ordenes_trabajo_consulta_facturadas_por_fechas_x_cliente( '$fecha_ini','$fecha_fin',$idtercero )");
 						$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
 						return $Registro;
-
 				}
 
 				public function Visitantes_Grabar_Datos( $Parametros = array() ){

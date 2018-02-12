@@ -45,8 +45,7 @@ class Request
             {
                 $this->Controlador  = DEFAULT_CONTROLLER;
             }
-            //$this->Controlador      =   String_Functions::Camel($this->Controlador);
-
+            $this->Controlador      =   String_Functions::Camel($this->Controlador);
         }
 
     /**
@@ -70,6 +69,7 @@ class Request
         {
             $this->Argumentos = $segmentos_url;
         }
+
     public function getControlador() {  return $this->Controlador;    }
     public function getMetodo()      {  return $this->Metodo;         }
     public function getArgs()        {  return $this->Argumentos;     }

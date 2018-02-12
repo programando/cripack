@@ -16,6 +16,64 @@ class TercerosController extends Controller
     }
 
 
+    public function WebService() {
+
+
+
+      $Remisiones = $this->Terceros->RemisionesPorConfirmarFechaEntrega();
+      if ( !$Remisiones ) return ;
+
+      foreach ($Remisiones as $Remision) {
+        $idregistro_ot = $Remision['idregistro_ot'];
+        $idremision    = $Remision['idremision'];
+
+        $Respuesta = $this->ConsultaEstadoDespachoTCC ( $Remision['nro_guia']  );
+        if ( $Respuesta  !="" ){
+            $fecha_cumplido = $Respuesta ;
+            $fecha_cumplido = General_Functions::ConvertirFechaHora($fecha_cumplido);
+
+            $this->Terceros->RemisionesPorConfirmarActualizaDatos( $idremision ,$idregistro_ot ,$fecha_cumplido  );
+            echo $idremision;
+        }
+      }
+
+
+
+
+
+    }
+
+
+  private function ConsultaEstadoDespachoTCC( $NroGuia ){
+
+        $servicio              ="http://clientes.tcc.com.co/servicios/informacionremesas.asmx?wsdl";
+          try{
+              $client = new SoapClient($servicio );
+              $result = $client->ConsultarEstatusRemesasListaOSB([
+                  'Clave'       => 'CALCRIPACK',
+                  'remesas'     => "'".$NroGuia."'",
+                  'Respuesta'   =>'0',
+                  'Informacion' =>'',
+                  'Mensaje'     =>'',
+              ]);
+            $Resultado = json_decode(json_encode((array) simplexml_load_string($result->Informacion)),1);
+            if ( isset( $Resultado ['remesa']['fechacumplido'] )){
+                return $Resultado ['remesa']['fechacumplido'];
+          }else{
+            return "";
+          }
+
+
+
+
+          }
+          catch(Exception $e){
+              echo $e->getMessage();
+          }
+
+  }
+
+
     public function Ventas() {
       $idtercero     = Session::Get('idtercero');
       $fecha_ini     = date("Y-m-01");

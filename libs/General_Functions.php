@@ -32,12 +32,26 @@ public static function Generar_Codigo_Confirmacion($longitud=6){
 }
 
 
+public static function ConvertirFechaHora( $Clave_Recibida){
+
+																$valores          =  explode("/", $Clave_Recibida);
+															$anio             = substr($valores[2], 0,4);
+															$horas            = substr($valores[2], 5,2).':';
+															$minutos          = substr($valores[2], 8,2).':';
+															$segundos         ='00';
+															$Clave_Recibida   =  $anio.'-'.$valores[1].'-'.$valores[0] .' '. $horas . $minutos . 	$segundos;
+															$Clave_Recibida   =  strtotime($Clave_Recibida );
+															$Clave_Recibida   =  date('Y-m-d H:i:s',$Clave_Recibida);
+															return $Clave_Recibida;
+}
+
 
 	public static function Validar_Entrada($Clave,$Tipo_Validacion)
 			{
 				/* SEPTIEMBRE 13 DE 2014
 						Valida y depura la entrada recibida por POST
 				*/
+echo $_POST[$Clave];
 						if (isset($_POST[$Clave]))
 						{
 							$Clave_Recibida = $_POST[$Clave];
