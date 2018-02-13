@@ -38,10 +38,6 @@ class TercerosController extends Controller
         }
       }
 
-
-
-
-
     }
 
 
@@ -63,9 +59,30 @@ class TercerosController extends Controller
           }else{
             return "";
           }
+          }
+          catch(Exception $e){
+              echo $e->getMessage();
+          }
+
+  }
 
 
+  public  function RunWebService( ){
 
+        $servicio              ="http://clientes.tcc.com.co/servicios/informacionremesas.asmx?wsdl";
+          try{
+              $client = new SoapClient($servicio );
+              $result = $client->ConsultarEstatusRemesasListaOSB([
+                  'Clave'       => 'CALCRIPACK',
+                  'remesas'     => '326054347',
+                  'Respuesta'   =>'0',
+                  'Informacion' =>'',
+                  'Mensaje'     =>'',
+              ]);
+            $Resultado = json_decode(json_encode((array) simplexml_load_string($result->Informacion)),1);
+             if ( isset($Resultado['remesa']) ){
+                var_dump($Resultado );
+            }
 
           }
           catch(Exception $e){
@@ -73,6 +90,8 @@ class TercerosController extends Controller
           }
 
   }
+
+
 
 
     public function Ventas() {
