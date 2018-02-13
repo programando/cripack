@@ -30,10 +30,11 @@ class TercerosController extends Controller
         $Respuesta = $this->ConsultaEstadoDespachoTCC ( $Remision['nro_guia']  );
         if ( $Respuesta  !="" ){
             $fecha_cumplido = $Respuesta ;
-            $fecha_cumplido = General_Functions::ConvertirFechaHora($fecha_cumplido);
+            if ( gettype( $fecha_cumplido ) == 'string'){
+                $fecha_cumplido = General_Functions::ConvertirFechaHora($fecha_cumplido);
+                $this->Terceros->RemisionesPorConfirmarActualizaDatos( $idremision ,$idregistro_ot ,$fecha_cumplido  );
+              }
 
-            $this->Terceros->RemisionesPorConfirmarActualizaDatos( $idremision ,$idregistro_ot ,$fecha_cumplido  );
-            echo $idremision;
         }
       }
 
