@@ -39,6 +39,7 @@
 					<th>#Factura</th>
 					<th>#Remisión</th>
 					<th>#Guía</th>
+					<th>Fecha Entrega</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -88,6 +89,7 @@
 							<?php else : ?>
 								<td> <a target="_blank" href="https://www.tcc.com.co/rastreo?tipo=RE&documento=<?= $NumeroGuia ; ?> "> TCC-<?=	$NumeroGuia;?> </a></td>
 					<?php endif ;?>
+					<td> <?= Fechas::Formato( $OT['fecha_entrega'] );?> 													</td>
 
 				 </tr>
 				<?php endforeach ;?>
