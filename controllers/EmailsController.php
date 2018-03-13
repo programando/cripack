@@ -80,7 +80,7 @@
 
         $this->Configurar_Cuenta('Seguimiento Cotización Nro.: ' .$NroCotizacion  . ' Cripack S.A.S '   );
         $this->Email->AddAddress( $Email  );
-        $this->Email->AddCC("Serviclientes@cripack.net");
+        $this->Email->AddCC("serviclientes@cripack.com.co");
 
         $Respuesta   = $this->Enviar_Correo();
 
@@ -113,7 +113,7 @@
             $Texto_Correo      = str_replace("#_TABLA_#"      ,  $Tabla       , $Texto_Correo);
             $this->Email->Body = $this->Unir_Partes_Correo ( $Texto_Correo ) ;
             $this->Email->AddAddress( $Email);
-            $this->Email->AddCC("Serviclientes@cripack.net");
+            $this->Email->AddCC("serviclientes@cripack.com.co");
             $Respuesta  = $this->Enviar_Correo();
           }
 
@@ -158,7 +158,7 @@
             }
             $this->Email->Body = $Texto_Correo  ;
             $this->Email->AddAddress($Destinatarios);
-            $this->Email->AddCC("serviclientes@cripack.net");
+            $this->Email->AddCC("serviclientes@cripack.com.co");
             $this->Email->AddCC("cartera@cripack.com.co");
             $this->Email->AddCC("produccion@cripack.com");
             $this->Email->AddCC("contabilidad@cripack.com");
@@ -297,7 +297,7 @@
         $this->Email->Body    = $this->Unir_Partes_Correo ( $Texto_Correo ) ;
 
         $this->Email->AddAddress( $Email  );
-        $this->Email->AddCC("Serviclientes@cripack.net");
+        $this->Email->AddCC("serviclientes@cripack.com.co");
         $Respuesta              = $this->Enviar_Correo();
         return  $Respuesta;
       }
