@@ -14,6 +14,31 @@
       public function Index() { }
 
 
+
+
+      public function Enviar_PQR( $Empresa, $Persona, $email, $TipoProblema, $Problema,$Causa ) {
+         /** ABRIL 25 DE 2018
+         **  ENVÍA CORREOS A TERCRO SOBRE PQR O NO CONFORMIDADES
+         */
+
+          $this->Configurar_Cuenta('Radicación PQR Cripack S.A.S.');
+
+          $Texto_Correo       = file_get_contents(BASE_EMAILS.'pqr.phtml','r');
+          $Texto_Correo      = str_replace("#_EMPRESA_#"            ,  $Empresa       , $Texto_Correo);
+          $Texto_Correo      = str_replace("#_PERSONA_#"            ,  $Persona       , $Texto_Correo);
+          $Texto_Correo      = str_replace("#_TIPO_PROBLEMA_#"      ,  $TipoProblema  , $Texto_Correo);
+          $Texto_Correo      = str_replace("#_PROBLEMA_#"           ,  $Problema      , $Texto_Correo);
+          $Texto_Correo      = str_replace("#_CAUSA_#"              ,  $Causa         , $Texto_Correo);
+
+          $this->Email->Body = $this->Unir_Partes_Correo ( $Texto_Correo ) ;
+          $this->Email->AddAddress( $email);
+          $this->Email->AddCC("serviclientes@cripack.com.co");
+          $Respuesta  = $this->Enviar_Correo();
+          return $Respuesta;
+      }
+
+
+
       public function Recuperar_Password( $email ) {
          /** ENERO 31 DE 2015
          **  PROCEDIMIENTO PARA RECUPERAR CONTRASEÑA DE USUARIOS

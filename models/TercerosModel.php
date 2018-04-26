@@ -8,6 +8,16 @@
 				}
 
 
+				public function BorrarPqr( $IdPqr ){
+					$Registro                 = $this->Db->Ejecutar_Sp("pqr_emails_terceros_borrar( $IdPqr )");
+				}
+				public function InformarPqr(){
+					$Registro                 = $this->Db->Ejecutar_Sp("pqr_emails_terceros_listar()");
+						return $Registro;
+				}
+
+
+
 				public function RemisionesPorConfirmarFechaEntrega(){
 					$Registro                 = $this->Db->Ejecutar_Sp("remisiones_x_confirmar_fecha_entrega()");
 						return $Registro;

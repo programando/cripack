@@ -16,9 +16,31 @@ class TercerosController extends Controller
     }
 
 
+
+   public function InformarPqr(){
+      //$Empresa, $Persona, $email, $TipoProblema, $Problema,$Causa
+      $Emails = $this->Terceros->InformarPqr();
+
+      foreach ($Emails  as $Datos) {
+          $Empresa      = $Datos['empresa'];
+          $Persona      = $Datos['persona'];
+          $Email        = $Datos['email'];
+          $TipoProblema = $Datos['tipo_problema'];
+          $Problema     = $Datos['problema'];
+          $Causa        = $Datos['causa'];
+
+          $Enviado = $this->Emails->Enviar_PQR($Empresa,$Persona,$Email,$TipoProblema,$Problema ,$Causa);
+          if ( $Enviado =='correo_OK' ){
+              $Emails = $this->Terceros->BorrarPqr( $Datos['id_pqr'] );
+          }
+      }
+
+
+
+   }
+
+
     public function WebService() {
-
-
 
       $Remisiones = $this->Terceros->RemisionesPorConfirmarFechaEntrega();
       if ( !$Remisiones ) return ;
