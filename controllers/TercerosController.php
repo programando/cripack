@@ -32,6 +32,9 @@ class TercerosController extends Controller
          $ReclamaBodega      = $Remision['reclama_en_bodega'] ;
          $Boomerang          = $Remision['docs_devolver'];
          $FechaDespacho      = $Remision['fecha_ws'];
+         $TipoDocumento      = $Remision['tipo_documento'];
+         $NumeroDocumento    = $Remision['num_documento'];
+         $FechaDocumento     = $Remision['fecha_documento'];
           if ( $ReclamaBodega == true ){
               $ReclamaBodega = 'SI';
           }else{
@@ -39,13 +42,15 @@ class TercerosController extends Controller
           }
 
          $NumeroRemesa = $this->TccGrabarDespacho( $Destinatario , $Direccion, $Telefono, $CiudadDestino  , $Observaciones,
-                                  $ReclamaBodega, $KilosReales, $KilosVolumen, $ValorMcia, $Boomerang, $FechaDespacho);
+                                  $ReclamaBodega, $KilosReales, $KilosVolumen, $ValorMcia, $Boomerang, $FechaDespacho,
+                                  $TipoDocumento,$NumeroDocumento,$FechaDocumento);
           $this->RemisionesIntegracionUpdNroRemesa($NumeroRemesa, $IdRegistro );
 
 
           if ( $Boomerang > 0 ){
                $NumeroRemesa = $this->TccGrabarDespacho( $Destinatario , $Direccion, $Telefono, $CiudadDestino  , $Observaciones,
-                                  $ReclamaBodega, $KilosReales, $KilosVolumen, $ValorMcia, $Boomerang, $FechaDespacho);
+                                  $ReclamaBodega, $KilosReales, $KilosVolumen, $ValorMcia, $Boomerang, $FechaDespacho,
+                                  $TipoDocumento,$NumeroDocumento,$FechaDocumento);
                 $this->RemisionesIntegracionUpdNroRemesa($NumeroRemesa, $IdRegistro );
           }
         }
@@ -59,9 +64,18 @@ class TercerosController extends Controller
     }
 
     private function TccGrabarDespacho( $Destinatario, $Direccion, $Telefono, $Ciudad, $Observaciones, $ReclamaBodega,
-                                        $KilosReales, $PesoVolumen,$VrMcia, $Boomerang, $FechaDespacho ){
+                                        $KilosReales, $PesoVolumen,$VrMcia, $Boomerang, $FechaDespacho, $TipoDocumento,
+                                        $NumeroDocumento, $FechaDocumento ){
       //Se estable la url del servicio web de TCC
           $url = 'http://clientes.tcc.com.co/preservicios/wsdespachos.asmx?wsdl';
+
+          $DocumentoReferencia = array(
+                  array('tipodocumento' => $TipoDocumento,
+                  'numerodocumento'     => $NumeroDocumento,
+                  'fechadocumento'      => $FechaDocumento
+                  )
+                );
+
           //Se configuran las unidades de la remesa para este ejemplo se envian dos unidades
           if ( $Boomerang == 0) {
             $unidad = array(
@@ -130,7 +144,7 @@ class TercerosController extends Controller
                       'centrocostos'                   => '',
                       'totalvalorproducto'             => '',
                       'unidad'                         => $unidad,
-                      'documentoreferencia'            => '',
+                      'documentoreferencia'            => $DocumentoReferencia,
                       'generarDocumentos'              => true
               ),'respuesta'      => 0,
               'remesa'           => '',
@@ -182,11 +196,11 @@ class TercerosController extends Controller
           if ( $NumeroRemesa  > 0 ) {
               $this->RespuestaTcc = substr( $resp->mensaje,0,45);
             //Se realiza la decodificación del string enviado por el servicio a base64 para su posterior grabación o descarga en un archivo binario.
-             $decoded = base64_decode($resp->IMGRelacionEnvio);
+            // $decoded = base64_decode($resp->IMGRelacionEnvio);
             //Se asigna el nombre del archivo
-             $file = "$resp->remesa".'.pdf';
+          //   $file = "$resp->remesa".'.pdf';
             //Se realiza la descarga del archivo.
-             file_put_contents($file, $resp->IMGRelacionEnvio);
+           //  file_put_contents($file, $resp->IMGRelacionEnvio);
             //echo($file);
              return $NumeroRemesa;
         } else {
