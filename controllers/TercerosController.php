@@ -7,7 +7,7 @@
 class TercerosController extends Controller
 {
 
-
+   private $RespuestaTcc ;
 
     public function __construct()  {
         parent::__construct();
@@ -15,6 +15,210 @@ class TercerosController extends Controller
         $this->Emails   = $this->Load_Controller('Emails');
     }
 
+    public function RemisionesIntegracionTcc(){
+      $Remisiones = $this->Terceros->RemisionesIntegracionTcc();
+
+      foreach ($Remisiones as $Remision ) {
+         $this->RespuestaTcc = '';
+         $IdRegistro         = $Remision['idregistro'];
+         $Destinatario       = $Remision['nom_destinatario'];
+         $Direccion          = $Remision['dir_destinatario'];
+         $Telefono           = $Remision['tel_destinatario'];
+         $CiudadDestino      = $Remision['cod_ciudad_destino'];
+         $Observaciones      = $Remision['observacion_1'];
+         $KilosReales        = $Remision['kilos_reales'];
+         $KilosVolumen       = $Remision['kilos_volumen'];
+         $ValorMcia          = $Remision['valor_mercancia'];
+         $ReclamaBodega      = $Remision['reclama_en_bodega'] ;
+         $Boomerang          = $Remision['docs_devolver'];
+         $FechaDespacho      = $Remision['fecha_ws'];
+          if ( $ReclamaBodega == true ){
+              $ReclamaBodega = 'SI';
+          }else{
+             $ReclamaBodega = 'NO';
+          }
+
+         $NumeroRemesa = $this->TccGrabarDespacho( $Destinatario , $Direccion, $Telefono, $CiudadDestino  , $Observaciones,
+                                  $ReclamaBodega, $KilosReales, $KilosVolumen, $ValorMcia, $Boomerang, $FechaDespacho);
+          $this->RemisionesIntegracionUpdNroRemesa($NumeroRemesa, $IdRegistro );
+
+
+          if ( $Boomerang > 0 ){
+               $NumeroRemesa = $this->TccGrabarDespacho( $Destinatario , $Direccion, $Telefono, $CiudadDestino  , $Observaciones,
+                                  $ReclamaBodega, $KilosReales, $KilosVolumen, $ValorMcia, $Boomerang, $FechaDespacho);
+                $this->RemisionesIntegracionUpdNroRemesa($NumeroRemesa, $IdRegistro );
+          }
+        }
+        echo "<h5> El proceso de envío de guías a TCC ha finalizado!!!</h5>";
+    }
+
+    private function RemisionesIntegracionUpdNroRemesa ( $NumeroRemesa, $IdRegistro ){
+         if ( $NumeroRemesa  > 0 ) {
+            $this->Terceros->RemisionesIntegracionTccUpdNroRemesa( $IdRegistro, $this->RespuestaTcc,  $NumeroRemesa  ) ;
+          }
+    }
+
+    private function TccGrabarDespacho( $Destinatario, $Direccion, $Telefono, $Ciudad, $Observaciones, $ReclamaBodega,
+                                        $KilosReales, $PesoVolumen,$VrMcia, $Boomerang, $FechaDespacho ){
+      //Se estable la url del servicio web de TCC
+          $url = 'http://clientes.tcc.com.co/preservicios/wsdespachos.asmx?wsdl';
+          //Se configuran las unidades de la remesa para este ejemplo se envian dos unidades
+          if ( $Boomerang == 0) {
+            $unidad = array(
+                  array('tipounidad' => 'TIPO_UND_PAQ',
+                  'claseempaque'     => '',
+                  'dicecontener'     => $Observaciones,
+                  'cantidadunidades' => '1',
+                  'kilosreales'      => $KilosReales,
+                  'pesovolumen'      => $PesoVolumen,
+                  'valormercancia'   => $VrMcia
+                  )
+                );
+          }else{
+              $unidad = array(
+                  array('tipounidad' => 'TIPO_UND_DOCB',
+                  'claseempaque'     => 'CLEM_SOBRE',
+                  'dicecontener'     => $Observaciones,
+                  'cantidadunidades' => '1',
+                  'kilosreales'      => '0',
+                  'pesovolumen'      => '0',
+                  'valormercancia'   => '0'
+                  )
+                );
+          }
+
+          $objDespacho = array(
+                'objDespacho' => array(
+                      'clave'                          => 'CALCRIPACK',
+                      'fechahoralote'                  => '',
+                      'numeroremesa'                   => '',
+                      'numeroDepacho'                  => '',
+                      'unidadnegocio'                  => '1',
+                      'fechadespacho'                  => $FechaDespacho,
+                      'cuentaremitente'                => '1608700',
+                      'sederemitente'                  => '',
+                      'primernombreremitente'          => '',
+                      'segundonombreremitente'         => '',
+                      'primerapellidoremitente'        => '',
+                      'segundoapellidoremitente'       => '',
+                      'razonsocialremitente'           => 'CRIPACK S.A.S.',
+                      'naturalezaremitente'            => 'J',
+                      'tipoidentificacionremitente'    => 'NIT',
+                      'identificacionremitente'        => '800149062',
+                      'telefonoremitente'              => '8298217',
+                      'direccionremitente'             => 'CARRERA 6 # 21 - 44 ',
+                      'ciudadorigen'                   => '76001000',
+                      'tipoidentificaciondestinatario' => '',
+                      'identificaciondestinatario'     => '',
+                      'sededestinatario'               => '',
+                      'primernombredestinatario'       => '',
+                      'segundonombredestinatario'      => '',
+                      'primerapellidodestinatario'     => '',
+                      'segundoapellidodestinatario'    => '',
+                      'razonsocialdestinatario'        => $Destinatario,
+                      'naturalezadestinatario'         => 'N',
+                      'direcciondestinatario'          => $Direccion,
+                      'telefonodestinatario'           => $Telefono,
+                      'ciudaddestinatario'             => $Ciudad,
+                      'barriodestinatario'             => '',
+                      'totalpeso'                      => '',
+                      'totalpesovolumen'               => '',
+                      'formapago'                      => '',
+                      'observaciones'                  => $Observaciones,
+                      'llevabodega'                    => '',
+                      'recogebodega'                   => $ReclamaBodega,
+                      'centrocostos'                   => '',
+                      'totalvalorproducto'             => '',
+                      'unidad'                         => $unidad,
+                      'documentoreferencia'            => '',
+                      'generarDocumentos'              => true
+              ),'respuesta'      => 0,
+              'remesa'           => '',
+              'URLRelacionEnvio' => '',
+              'URLRotulos'       => '',
+              'URLRemesa'        => '',
+              'IMGRelacionEnvio' => null,
+              'IMGRotulos'       => null,
+              'IMGRemesa'        => null,
+              'respuesta'        => 0,
+              'mensaje'          => ''
+          );
+
+          $client                             = new SoapClient($url);
+          $remesa                             = new \StdClass;
+          $remesa->remesa                     = '';
+          $URLRelacionEnvio                   = new \StdClass;
+          $URLRelacionEnvio->URLRelacionEnvio ='';
+          $URLRotulos                         = new \StdClass;
+          $URLRotulos->URLRotulos             ='';
+          $URLRemesa                          = new \StdClass;
+          $URLRemesa->URLRemesa               ='';
+          $IMGRelacionEnvio                   = new \StdClass;
+          $IMGRelacionEnvio->IMGRelacionEnvio = null;
+          $IMGRotulos                         = new \StdClass;
+          $IMGRotulos->IMGRotulos             =null;
+          $IMGRemesa                          = new \StdClass;
+          $IMGRemesa->IMGRemesa               =null;
+          $respuesta                          = new \StdClass;
+          $respuesta->respuesta               = 0;
+          $mensaje                            = new \StdClass;
+          $mensaje->mensaje                   = '';
+
+
+          try {
+
+          //Despues de realizar la configuración del xml a enviar, se realiza el consumo del servicio web
+          $resp = $client->GrabarDespacho4($objDespacho, $remesa,$URLRelacionEnvio,$URLRotulos,$URLRemesa,$IMGRelacionEnvio,$IMGRotulos,$IMGRemesa,$respuesta,$mensaje);
+
+          //Aqui se hace el manejo de la excepción del consumo
+          echo $client->__getLastRequest() ."\n";
+
+          }catch(Exception $e){
+            echo 'Excepción capturada: ',  $e->getMessage() , '<br>';
+          }
+
+
+          $NumeroRemesa = intval($resp->remesa);
+          if ( $NumeroRemesa  > 0 ) {
+              $this->RespuestaTcc = substr( $resp->mensaje,0,45);
+            //Se realiza la decodificación del string enviado por el servicio a base64 para su posterior grabación o descarga en un archivo binario.
+             $decoded = base64_decode($resp->IMGRelacionEnvio);
+            //Se asigna el nombre del archivo
+             $file = "$resp->remesa".'.pdf';
+            //Se realiza la descarga del archivo.
+             file_put_contents($file, $resp->IMGRelacionEnvio);
+            //echo($file);
+             return $NumeroRemesa;
+        } else {
+          var_dump($resp->mensaje);
+          echo '<br>';
+           return -1;
+        }
+
+           /* $arrayDe100Valores = array( array());
+            for($i = 0; $i < 10; $i++) {
+                $arrayDe100Valores[$i]['tipounidad'] = $i;
+                $arrayDe100Valores[$i]['claseempaque'] = '525000';
+
+            }
+
+
+            Debug::Mostrar($unidad);
+            Debug::Mostrar($arrayDe100Valores);
+
+            return ;
+          //Se configura la informacion de la remesa, IMPORTARTE ACLARAR QUE LA VARIABLE "Clave",
+          //es la asignada por TCC para cada cliente, por tal motivo en el ejemplo se envia como XXXXXXXXXXXX la cual NO funcionará hasta tanto NO sea reemplazada.
+*/
+                         //var_dump($resp->URLRelacionEnvio);
+             //var_dump($resp->URLRotulos);
+              // var_dump($resp->respuesta);
+             //echo '<br>';
+              // var_dump($resp->mensaje);
+              // echo '<br>';
+              //var_dump($resp);
+
+    }
 
 
    public function InformarPqr(){
@@ -951,8 +1155,6 @@ class TercerosController extends Controller
        }else{
         echo "NO-OK";
        }
-
-
 
    }
 

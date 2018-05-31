@@ -16,6 +16,14 @@
 						return $Registro;
 				}
 
+        public function RemisionesIntegracionTcc(){
+          $Registro                 =  $this->Db->Ejecutar_Sp("remisiones_despachos_integrar_ws_tcc()");
+           return $Registro;
+        }
+
+        public function RemisionesIntegracionTccUpdNroRemesa ( $idregistro ,$respuesta ,$nro_rmsa_tcc){
+            $Registro    = $this->Db->Ejecutar_Sp("remisiones_despachos_integrar_ws_upd_nro_remesa( $idregistro,'$respuesta', $nro_rmsa_tcc  )");
+        }
 
 
 				public function RemisionesPorConfirmarFechaEntrega(){
@@ -28,7 +36,6 @@
 						$Registro                 = $this->Db->Ejecutar_Sp("remisiones_x_confirmar_upd_datos( $idremision,$idregistro_ot, '$fecha_cumplido'  )");
 						return $Registro;
 				}
-
 
 
 				public function Ventas_x_Cliente_x_Fechas ($fecha_ini, $fecha_fin, $idtercero ){
