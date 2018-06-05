@@ -21,11 +21,11 @@ class TercerosController extends Controller
       foreach ($Remisiones as $Remision ) {
          $this->RespuestaTcc = '';
          $IdRegistro         = $Remision['idregistro'];
-         $Destinatario       = $Remision['nom_destinatario'];
-         $Direccion          = $Remision['dir_destinatario'];
+         $Destinatario       = $Remision['nom_destinatario_Tcc'];
+         $Direccion          = $Remision['dir_destinatario_Tcc'] ;
          $Telefono           = $Remision['tel_destinatario'];
          $CiudadDestino      = $Remision['cod_ciudad_destino'];
-         $Observaciones      = $Remision['observacion_1'];
+         $Observaciones      = $Remision['observacion_Tcc'];
          $KilosReales        = $Remision['kilos_reales'];
          $KilosVolumen       = $Remision['kilos_volumen'];
          $ValorMcia          = $Remision['valor_mercancia'];
@@ -41,10 +41,12 @@ class TercerosController extends Controller
              $ReclamaBodega = 'NO';
           }
 
-         $NumeroRemesa = $this->TccGrabarDespacho( $Destinatario , $Direccion, $Telefono, $CiudadDestino  , $Observaciones,
-                                  $ReclamaBodega, $KilosReales, $KilosVolumen, $ValorMcia, $Boomerang, $FechaDespacho,
-                                  $TipoDocumento,$NumeroDocumento,$FechaDocumento);
-          $this->RemisionesIntegracionUpdNroRemesa($NumeroRemesa, $IdRegistro );
+         if ( $Boomerang == 0 ){
+                  $NumeroRemesa = $this->TccGrabarDespacho( $Destinatario , $Direccion, $Telefono, $CiudadDestino  , $Observaciones,
+                                           $ReclamaBodega, $KilosReales, $KilosVolumen, $ValorMcia, $Boomerang, $FechaDespacho,
+                                           $TipoDocumento,$NumeroDocumento,$FechaDocumento);
+                   $this->RemisionesIntegracionUpdNroRemesa($NumeroRemesa, $IdRegistro );
+                 }
 
 
           if ( $Boomerang > 0 ){
@@ -54,6 +56,7 @@ class TercerosController extends Controller
                 $this->RemisionesIntegracionUpdNroRemesa($NumeroRemesa, $IdRegistro );
           }
         }
+
         echo "<h5> El proceso de envío de guías a TCC ha finalizado!!!</h5>";
     }
 
@@ -67,7 +70,11 @@ class TercerosController extends Controller
                                         $KilosReales, $PesoVolumen,$VrMcia, $Boomerang, $FechaDespacho, $TipoDocumento,
                                         $NumeroDocumento, $FechaDocumento ){
       //Se estable la url del servicio web de TCC
+          // Pruebas
           $url = 'http://clientes.tcc.com.co/preservicios/wsdespachos.asmx?wsdl';
+          //Producción
+         // $url = 'http://clientes.tcc.com.co/Servicios/wsdespachos.asmx?wsdl';
+
 
           $DocumentoReferencia = array(
                   array('tipodocumento' => $TipoDocumento,
