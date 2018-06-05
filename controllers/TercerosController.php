@@ -71,9 +71,9 @@ class TercerosController extends Controller
                                         $NumeroDocumento, $FechaDocumento ){
       //Se estable la url del servicio web de TCC
           // Pruebas
-          $url = 'http://clientes.tcc.com.co/preservicios/wsdespachos.asmx?wsdl';
+          //$url = 'http://clientes.tcc.com.co/preservicios/wsdespachos.asmx?wsdl';
           //Producción
-         // $url = 'http://clientes.tcc.com.co/Servicios/wsdespachos.asmx?wsdl';
+         $url = 'http://clientes.tcc.com.co/Servicios/wsdespachos.asmx?wsdl';
 
 
           $DocumentoReferencia = array(
