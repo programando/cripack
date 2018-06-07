@@ -15,11 +15,13 @@ class TercerosController extends Controller
         $this->Emails   = $this->Load_Controller('Emails');
     }
 
+
     public function RemisionesIntegracionTcc(){
       $Remisiones = $this->Terceros->RemisionesIntegracionTcc();
 
       foreach ($Remisiones as $Remision ) {
          $this->RespuestaTcc = '';
+         $CodBarra           = 'CRIP'.intval( time());
          $IdRegistro         = $Remision['idregistro'];
          $Destinatario       = $Remision['nom_destinatario_Tcc'];
          $Direccion          = $Remision['dir_destinatario_Tcc'] ;
@@ -44,37 +46,36 @@ class TercerosController extends Controller
          if ( $Boomerang == 0 ){
                   $NumeroRemesa = $this->TccGrabarDespacho( $Destinatario , $Direccion, $Telefono, $CiudadDestino  , $Observaciones,
                                            $ReclamaBodega, $KilosReales, $KilosVolumen, $ValorMcia, $Boomerang, $FechaDespacho,
-                                           $TipoDocumento,$NumeroDocumento,$FechaDocumento);
-                   $this->RemisionesIntegracionUpdNroRemesa($NumeroRemesa, $IdRegistro );
+                                           $TipoDocumento,$NumeroDocumento,$FechaDocumento, $CodBarra );
+                   $this->RemisionesIntegracionUpdNroRemesa($NumeroRemesa, $IdRegistro,$CodBarra );
                  }
 
 
           if ( $Boomerang > 0 ){
                $NumeroRemesa = $this->TccGrabarDespacho( $Destinatario , $Direccion, $Telefono, $CiudadDestino  , $Observaciones,
                                   $ReclamaBodega, $KilosReales, $KilosVolumen, $ValorMcia, $Boomerang, $FechaDespacho,
-                                  $TipoDocumento,$NumeroDocumento,$FechaDocumento);
-                $this->RemisionesIntegracionUpdNroRemesa($NumeroRemesa, $IdRegistro );
+                                  $TipoDocumento,$NumeroDocumento,$FechaDocumento, $CodBarra );
+                $this->RemisionesIntegracionUpdNroRemesa($NumeroRemesa, $IdRegistro, $CodBarra );
           }
         }
 
         echo "<h5> El proceso de envío de guías a TCC ha finalizado!!!</h5>";
     }
 
-    private function RemisionesIntegracionUpdNroRemesa ( $NumeroRemesa, $IdRegistro ){
+    private function RemisionesIntegracionUpdNroRemesa ( $NumeroRemesa, $IdRegistro,  $CodBarra ){
          if ( $NumeroRemesa  > 0 ) {
-            $this->Terceros->RemisionesIntegracionTccUpdNroRemesa( $IdRegistro, $this->RespuestaTcc,  $NumeroRemesa  ) ;
+            $this->Terceros->RemisionesIntegracionTccUpdNroRemesa( $IdRegistro, $this->RespuestaTcc,  $NumeroRemesa,  $CodBarra  ) ;
           }
     }
 
     private function TccGrabarDespacho( $Destinatario, $Direccion, $Telefono, $Ciudad, $Observaciones, $ReclamaBodega,
                                         $KilosReales, $PesoVolumen,$VrMcia, $Boomerang, $FechaDespacho, $TipoDocumento,
-                                        $NumeroDocumento, $FechaDocumento ){
-      //Se estable la url del servicio web de TCC
+                                        $NumeroDocumento, $FechaDocumento, $CodBarra  ){
+          //Se estable la url del servicio web de TCC
           // Pruebas
           //$url = 'http://clientes.tcc.com.co/preservicios/wsdespachos.asmx?wsdl';
           //Producción
          $url = 'http://clientes.tcc.com.co/Servicios/wsdespachos.asmx?wsdl';
-
 
           $DocumentoReferencia = array(
                   array('tipodocumento' => $TipoDocumento,
@@ -92,7 +93,8 @@ class TercerosController extends Controller
                   'cantidadunidades' => '1',
                   'kilosreales'      => $KilosReales,
                   'pesovolumen'      => $PesoVolumen,
-                  'valormercancia'   => $VrMcia
+                  'valormercancia'   => $VrMcia,
+                  'codigobarras'     => $CodBarra
                   )
                 );
           }else{
@@ -103,7 +105,8 @@ class TercerosController extends Controller
                   'cantidadunidades' => '1',
                   'kilosreales'      => '0',
                   'pesovolumen'      => '0',
-                  'valormercancia'   => '0'
+                  'valormercancia'   => '0',
+                  'codigobarras'     => $CodBarra
                   )
                 );
           }

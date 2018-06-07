@@ -21,8 +21,8 @@
            return $Registro;
         }
 
-        public function RemisionesIntegracionTccUpdNroRemesa ( $idregistro ,$respuesta ,$nro_rmsa_tcc){
-            $Registro    = $this->Db->Ejecutar_Sp("remisiones_despachos_integrar_ws_upd_nro_remesa( $idregistro,'$respuesta', $nro_rmsa_tcc  )");
+        public function RemisionesIntegracionTccUpdNroRemesa ( $idregistro ,$respuesta ,$nro_rmsa_tcc, $codbarra){
+            $Registro    = $this->Db->Ejecutar_Sp("remisiones_despachos_integrar_ws_upd_nro_remesa( $idregistro,'$respuesta', $nro_rmsa_tcc,'$codbarra'  )");
         }
 
 
