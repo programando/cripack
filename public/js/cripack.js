@@ -443,7 +443,9 @@ function Visitantes_Grabar_Datos( Parametros ){
        type:     'post',
         success:  function ( MyServerResponse ) {
           if ( MyServerResponse.Respuesta == 'Todo-Ok'){
-                window.location.href = "/terceros/Listado_Visitantes";
+                alert('Registro almacenado con éxito !!!');
+                window.location.href = "/terceros/Registro_Visitantes";
+                //window.location.href = "/terceros/Listado_Visitantes";
                $("#dv-img-cargando").hide();
               }else{
                 Mostrar_Mensajes('REGISTRO DE VISITANTES', MyServerResponse.Respuesta);
@@ -575,8 +577,8 @@ $('#feria-grabar-registro').on('click',function(){
   var identificacion  = $("#identificacion_feria").val();
   var Tipo_Doc        = $("select[name='idtpdoc']").val();
   var nomtercero      = $("#nomtercero").val();
-  var cliente         = $('#cliente').is(':checked');
-  var proveedor       = $('#proveedor').is(':checked');
+  var cliente         = true ;//$('#cliente').is(':checked');
+  var proveedor       = false; //$('#proveedor').is(':checked');
   var otro            = $('#otro').is(':checked');
   var direccion       = $("#direccion").val();
   var telefono        = $("#telefono").val();

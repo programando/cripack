@@ -37,6 +37,7 @@
     <br><br>
   </div>
 
+<!--
     <div class="form-group">
        <label class="col-md-3 control-label" for="contactar-por" >Contactar por :</label>
          <div class="col-md-9">
@@ -46,12 +47,12 @@
             <label class="radio-inline">  <input type="radio" name="optradio" value="CU">Cualquiera         </label>
         </div>
     </div>
-
+-->
 
 
 
   <br>
-
+ <!--
   <div class="form-group">
     <label class="col-md-3 control-label" for="atendido-por">Atendido por :</label>
     <div class="col-md-9">
@@ -62,7 +63,7 @@
         <?php endforeach ;?>
       </select>
     </div>
-
   </div>
+-->
 
 </div>

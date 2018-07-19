@@ -1,0 +1,61 @@
+
+<div class=" allionIn">
+  <div class=" general hH">
+    <div class=" tabAll">
+
+      <div class="row form-group">
+        <div class="col-xs-6">
+          <span class="colorCri1 t30"><p>Registro de Clientes</p></span>
+        </div>
+
+      </div>
+
+      <br>
+      <form>
+        <div class=" row">
+          <div class="col-xs-6 col-sm-6 col-md-6">
+            <?php include ( APPLICATION_SECTIONS_TERC .'01_datos_generales.php') ;?>
+          </div>
+
+
+          <div class="col-xs-6 col-sm-6 col-md-6">
+            <?php include ( APPLICATION_SECTIONS_TERC .'02_datos_ubicacion.php') ;?>
+          </div>
+        </div>
+
+        <!--  SEGUNDA SECCION DEL REGISTRO      -->
+
+        <div class=" row">
+          <div class="col-xs-6 col-sm-6 col-md-6">
+            <?php include ( APPLICATION_SECTIONS_TERC .'03_contacto.php') ;?>
+          </div>
+
+          <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="row">
+              <?php include ( APPLICATION_SECTIONS_TERC .'04_otros_datos.php') ;?>
+            </div>
+          </div>
+        </div>
+
+        <br><br>
+          <div class="text-center" id="dv-img-cargando"  >
+            <img id="imagen-cargando" src= "<?= BASE_IMAGES ;?>cargando.gif" alt="" />
+            <br>
+          </div>
+
+
+        <div class="row">
+          <div class="col-md-2 col-md-offset-5">
+            <a href="#" class="btn btn-primary btn-lg btn-block " id='feria-grabar-registro'>
+              <span class="glyphicon glyphicon-floppy-disk"></span> Grabar Datos
+            </a>
+          </div>
+        </div>
+
+      </form>
+
+
+    </div>
+  </div>
+</div>
+

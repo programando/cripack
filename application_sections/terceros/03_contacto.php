@@ -1,27 +1,10 @@
 <div class=" row">
   <div class="col-xs-12 col-sm-12 col-md-12">
 
-    <div class=" form-group">
-      <label class="col-md-4 control-label" for="contacto">Contacto :</label>
-      <div class="col-md-8">
-        <input id="contacto" name="contacto" type="text" value=" <?= $this->contacto  ;?>"
-          placeholder="Nombre Contacto" class="form-control input-md">
-      </div><br><br>
-    </div>
 
 
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="idcargo_externo" >Cargo :</label>
-      <div class="col-md-8">
-        <select name="idcargo_externo" id="idcargo_externo" class="form-control select-md" >
-          <option value=" <?= $this->idcargo_externo  ;?>"> <?= $this->nom_cargo  ;?></option>
-          <?php foreach ( $this->Cargos as $Cargo ) :;?>
-            <option value="<?= $Cargo['idcargo_externo'] ;?>"><?= $Cargo['nom_cargo'] ;?></option>
-          <?php endforeach ;?>
-        </select>
-      </div>
-      <br><br>
-    </div>
+
+
 
     <div class="form-group">
       <label class="col-md-4 control-label" for="idarea" >Área Empresa :</label>
@@ -51,7 +34,7 @@
         placeholder="Correo electrónico" class="form-control input-md">
       </div><br><br>
     </div>
-
+<!--
     <div class="form-group">
       <label class="col-md-4 control-label" for="email">Otra Información :</label>
       <div class="col-md-8">
@@ -89,6 +72,7 @@
       </div>
     </div>
 
+
     <div class="form-group">
       <label class="col-md-4 control-label" for="email">Entrega Tarjeta :</label>
       <div class="col-md-8">
@@ -100,7 +84,7 @@
         </div>
       </div>
     </div>
-
+  -->
 
   </div>
 </div>

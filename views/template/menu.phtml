@@ -42,10 +42,9 @@
 
         <li class="aa1"><a class="t16 ff2" href="<?=BASE_URL ;?>terceros/Contacto">Contacto</a></li>
 
-        <?php if ( Session::Get('cuenta_cripack') == TRUE ) : ?>
+         <?php if ( Session::Get('cuenta_cripack') == TRUE ) : ?>
            <?php include ( APPLICATION_SECTIONS_MENU .'ferias_y_eventos.php') ;?>
-
-        <?php endif ;?>
+         <?php endif ;?>
 
       <?php else :?>
 

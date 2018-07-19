@@ -18,7 +18,6 @@ class TercerosController extends Controller
 
     public function RemisionesIntegracionTcc(){
       $Remisiones = $this->Terceros->RemisionesIntegracionTcc();
-
       foreach ($Remisiones as $Remision ) {
          $this->RespuestaTcc = '';
          $CodBarra           = 'CRIP'.intval( time());
@@ -628,7 +627,8 @@ class TercerosController extends Controller
           }
       }
 
-      $this->View->Mostrar_Vista('registro_feria');
+    //  $this->View->Mostrar_Vista('registro_feria');
+      $this->View->Mostrar_Vista('registro_cliente_datos_basicos');
     }
 
 
@@ -883,10 +883,10 @@ class TercerosController extends Controller
           $Texto  = $Texto. 'La dirección de correo no tiene un formato válido.'. '<br>' ;
         }
 
-      if ( $clien_existe == FALSE && $posible_clien == FALSE && $informacion == FALSE && $competencia == FALSE ) {
+     /* if ( $clien_existe == FALSE && $posible_clien == FALSE && $informacion == FALSE && $competencia == FALSE ) {
           $Texto  = $Texto. 'Debe especificar si el registro corresponde a: CE , CP, IN, CO'. '<br>' ;
       }
-
+*/
 
       return $Texto;
     }
