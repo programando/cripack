@@ -188,6 +188,13 @@
 
 
 				}
+          public function Consulta_Tablero_Produccion_Cartonera ( )  {
+
+            $Ots                = $this->Db->Ejecutar_Sp("ordenes_trabajo_consulta_estado_procesos_labores_web_cartonera( )");
+            $this->Cantidad_Registros = $this->Db->Cantidad_Registros;
+            return $Ots;
+         }
+
 
 					public function Consulta_Tablero_Produccion ( $idtercero )	{
 						if ( empty ( $idtercero  )) {
@@ -196,7 +203,7 @@
 						$Ots                = $this->Db->Ejecutar_Sp("ordenes_trabajo_consulta_estado_procesos_labores_web_cliente( $idtercero )");
 						$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
 						return $Ots;
-				}
+				 }
 
 					public function Consulta_Tablero_Produccion_Ferias_Eventos (  )	{
 

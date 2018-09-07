@@ -902,11 +902,20 @@ class TercerosController extends Controller
             $idtercero                     = Session::Get('idtercero') ;
           }
 
+          $Email = Session::Get('email');
+
           if ( Session::Get('cuenta_cripack') === TRUE ){
               $this->View->Ots               = $this->Terceros->Consulta_Tablero_Produccion_Ferias_Eventos() ; // Paso 01
             }else{
-              $this->View->Ots               = $this->Terceros->Consulta_Tablero_Produccion( $idtercero ) ; // Paso 01 Conformación Tabla temporal
+              if ( $Email=='andres.ordonez@cartonera.com.co' || $Email=='victor.echeverry@cartonera.com.co' ){
+                  $this->View->Ots               = $this->Terceros->Consulta_Tablero_Produccion_Cartonera( ) ;
+              }else
+              {
+                $this->View->Ots               = $this->Terceros->Consulta_Tablero_Produccion( $idtercero ) ; // Paso 01 Conformación Tabla
+              }
             }
+
+
           $this->View->Ots               = $this->estado_ordenes_trabajo_ots_unicas ( $idtercero );
           $this->View->CantidadRegistros = $this->Terceros->Cantidad_Registros ;
           $this->View->Mostrar_Vista('tablero_produccion');
