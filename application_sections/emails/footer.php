@@ -12,7 +12,7 @@
         <div style="float: right; width: 72%; font-family: arial;font-size: 14px;  " >
             <br>
             <strong>Servicio al Cliente<br>
-            serviclientes@cripack.net<br>
+            serviclientes@cripack.com<br>
             Cra 6 # 21 - 44
             Cali-Colombia-Suramérica<br>
             (57) 2 382 7295<br>
