@@ -388,12 +388,31 @@ class TercerosController extends Controller
             $Destinatarios = $Destinatarios . $email .';';
           }
         }
-
         // ENVIAR CORREO AL TERCERO
         $this->Emails->Informe_Ots_Pendientes ( $cliente, $sucursal, $Destinatarios, $Ots  );
-
     }
   } // Pendientes_Produccion
+
+  /*  OCTUBRE 17 DE 2018
+      CONSULTA CONTACTOS DE CLIENTES BLOQUEADOS PARA ENVIAR UN CORREO SEMANAL
+  */
+   public function Bloqueados_Correo_Semanal(){
+      $Bloqueados = $this->Terceros->Bloqueados();
+      foreach ($Bloqueados as $Cliente) {
+          $Contactos = $this->Terceros->Bloqueados_Contactos_Cartera ( $Cliente ['idtercero']);
+
+          if ( count( $Contactos) > 0 ) {
+             foreach ($Contactos as $Contacto ) {
+                 $email        =  $Contacto ['email'];
+                 $destinatario =  $Contacto ['contacto'];
+                 $Empresa      = $Cliente['nomtercero'];
+                 $Correo_Enviado = $this->Emails->Clientes_Bloqueados_Correo_Semanal ($destinatario,  $email, $Empresa );
+             }
+        }
+      }
+
+   }
+
 
 
   public function Clientes_Bloqueados(){
@@ -415,8 +434,7 @@ class TercerosController extends Controller
           if ( !empty($email )){
             // ENVIAR CORREO AL TERCERO
             $Correo_Enviado = $this->Emails->Informe_Clientes_Bloqueados ( $cliente,  $email, $Ots , $texto_email );
-
-          if ( $Correo_Enviado == 'correo_OK'){
+           if ( $Correo_Enviado == 'correo_OK'){
                 $this->Terceros->Clientes_Bloqueados_Borrar_Notificacion       ( $MyCorreo);
             }
           }

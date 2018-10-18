@@ -7,6 +7,18 @@
 					parent::__construct();
 				}
 
+        public function Bloqueados(){
+            $Registro                 = $this->Db->Ejecutar_Sp("terceros_bloqueados_listado()");
+            return $Registro;
+        }
+
+        public function Bloqueados_Contactos_Cartera ( $idtercero  ) {
+              $Registro         = $this->Db->Ejecutar_Sp("terceros_bloqueados_contactos_cartera( $idtercero )");
+              return  $Registro;
+        }
+
+
+
 
 				public function BorrarPqr( $IdPqr ){
 					$Registro                 = $this->Db->Ejecutar_Sp("pqr_emails_terceros_borrar( $IdPqr )");
