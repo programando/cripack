@@ -21,7 +21,9 @@ class TercerosController extends Controller
             $IdCliente = $Cliente['idtercero'];
             $Emails    = $this->Terceros->OtBloquedasDibujoEnAprobacion_02_Emails( $IdCliente );
             $Ots       = $this->Terceros->OtBloquedasDibujoEnAprobacion_03_OTs( $IdCliente );
-            $this->Emails->OtBloquedasDibujoEnAprobacion( $Cliente['nomtercero']  , $Emails, $Ots);
+            if ( isset ( $Emails) && isset( $Ots )){
+              $this->Emails->OtBloquedasDibujoEnAprobacion( $Cliente['nomtercero']  , $Emails, $Ots);
+            }
         }
 
         /*$ColumIdTercero = array_column( $Datos, 'idregistro');
