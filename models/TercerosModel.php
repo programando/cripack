@@ -7,6 +7,21 @@
 					parent::__construct();
 				}
 
+       public function OtBloquedasDibujoEnAprobacion_01_Clientes(){
+            $Registro                 = $this->Db->Ejecutar_Sp("ord_trab_bloqueadas_dib_x_aprobacion_01_clientes_bloqueados()");
+            return $Registro;
+        }
+        public function OtBloquedasDibujoEnAprobacion_02_Emails( $IdTercero ){
+            $Registro                 = $this->Db->Ejecutar_Sp("ord_trab_bloqueadas_dib_x_aprobacion_02_emails_contactos( $IdTercero )");
+            return $Registro;
+        }
+
+        public function OtBloquedasDibujoEnAprobacion_03_OTs( $IdTercero ){
+            $Registro                 = $this->Db->Ejecutar_Sp("ord_trab_bloqueadas_dib_x_aprobacion_03_ots( $IdTercero )");
+            return $Registro;
+        }
+
+
         public function Bloqueados(){
             $Registro                 = $this->Db->Ejecutar_Sp("terceros_bloqueados_listado()");
             return $Registro;

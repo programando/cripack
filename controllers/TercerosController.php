@@ -15,6 +15,33 @@ class TercerosController extends Controller
         $this->Emails   = $this->Load_Controller('Emails');
     }
 
+    public function OtBloquedasDibujoEnAprobacion(){
+        $Clientes = $this->Terceros->OtBloquedasDibujoEnAprobacion_01_Clientes();
+         foreach ( $Clientes as $Cliente ) {
+            $IdCliente = $Cliente['idtercero'];
+            $Emails    = $this->Terceros->OtBloquedasDibujoEnAprobacion_02_Emails( $IdCliente );
+            $Ots       = $this->Terceros->OtBloquedasDibujoEnAprobacion_03_OTs( $IdCliente );
+            $this->Emails->OtBloquedasDibujoEnAprobacion( $Cliente['nomtercero']  , $Emails, $Ots);
+        }
+
+        /*$ColumIdTercero = array_column( $Datos, 'idregistro');
+        $ColumIdTercero = array_unique( $ColumIdTercero);
+        Debug::Mostrar ( $ColumIdTercero );
+        foreach ($ColumIdTercero as $IdTercero) {
+            $IdTerceroBuscar = $IdTercero ;
+            $NuevoRegistro = array();
+            foreach ( $Datos as $Registro ) {
+              if ( $Registro['idregistro'] == $IdTerceroBuscar  ){
+                  $NuevoRegistro[]= $Registro;
+              }
+            }
+            //Debug::Mostrar ( $NuevoRegistro );
+             //$this->Emails->OtBloquedasDibujoEnAprobacion(   $Registro);
+        }
+        */
+
+     }
+
 
     public function RemisionesIntegracionTcc(){
       $Remisiones = $this->Terceros->RemisionesIntegracionTcc();

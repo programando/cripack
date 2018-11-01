@@ -78,7 +78,6 @@
         $FechaCotiz    =  Fechas::Formato( $Cotizacion_H[0]['fecha']) ;
         $NroCotizacion = $Cotizacion_H[0]['numcotizacion'];
         $Texto_Correo  = file_get_contents(BASE_EMAILS.'cotizaciones.phtml','r');
-
         $Texto_Correo    = str_replace("#_EMPRESA_#"              , $Empresa        , $Texto_Correo);
         $Texto_Correo    = str_replace("#_DESTINATARIO_#"         , $Destinatario   , $Texto_Correo);
         $Texto_Correo    = str_replace("#_FECHA_COTIZACION_#"     , $FechaCotiz     , $Texto_Correo);
@@ -87,9 +86,7 @@
          $Tabla    = '';
 
         foreach ($Cotizacion_Dt  as $CotizDt) {
-
            $Tabla =  $Tabla ."<tr>" ;
-
            $Tabla = $Tabla . "<td>" . trim( $CotizDt['referencia']        )    . "</td>" ;
            $Tabla = $Tabla . "<td>" . trim( $CotizDt['nomestilotrabajo']  )    . "</td>" ;
            $Tabla = $Tabla . "<td>" . trim( $CotizDt['nomtipotrabajo']    )    . "</td>" ;
@@ -111,34 +108,51 @@
 
     }
 
-
-
-
-//
-
     public function Clientes_Bloqueados_Correo_Semanal ( $destinatario,  $Email, $Empresa   ){
            $this->Configurar_Cuenta('Bloqueo crédito en Cripack S.A.S.' );
-           $Texto_Correo    = file_get_contents(BASE_EMAILS.'clientes_bloqueados_correo_semanal.phtml','r');
-           $Texto_Correo    = str_replace("#_EMPRESA_#"             , $Empresa,$Texto_Correo);
-           $Texto_Correo    = str_replace("#_DESTINATARIO_#"        , $destinatario,$Texto_Correo);
+           $fecha        = date('j M Y');
+           $nuevafecha   = strtotime ( '-3 day' , strtotime ( $fecha ) ) ;
+           $nuevafecha   = date ( 'j M Y' , $nuevafecha );
+           $Texto_Correo = file_get_contents(BASE_EMAILS.'clientes_bloqueados_correo_semanal.phtml','r');
+           $Texto_Correo = str_replace("#_EMPRESA_#"             , $Empresa,$Texto_Correo);
+           $Texto_Correo = str_replace("#_DESTINATARIO_#"        , $destinatario,$Texto_Correo);
+           $Texto_Correo = str_replace("#_FECHA_CORTE_#"        ,  $nuevafecha,$Texto_Correo);
 
             $Header             = file_get_contents(EMAILS . 'header.php','r');
 
             $this->Email->Body = $Header.$Texto_Correo  ;
             $this->Email->AddAddress( $Email);
-            //$this->Email->AddCC("serviclientes@cripack.com");
+            $this->Email->AddCC("cartera@cripack.com.co");
+            $this->Email->AddCC("jhonjamesmg@hotmail.com");
             $Respuesta  = $this->Enviar_Correo();
           }
-/*
-  private function Unir_Partes_Correo (   $Body ){
-
-       $Footer             = file_get_contents(EMAILS . 'footer.php','r');
 
 
-       return $Texto_Final_Correo ;
-    }
-    */
 
+    public function OtBloquedasDibujoEnAprobacion ( $Empresa, $Emails, $Ots   ){
+       /*  OCTUBRE 25 2018
+            RECORDATORIO PARA OTS QUE SE ENCUENTRAN BLOQUEADAS POR DIBUJO EN APROBACIÓN
+      */
+           $this->Configurar_Cuenta("Informe Ot's bloquedas por dibujo en aprobación" );
+             $Tabla    = '';
+            foreach ( $Ots  as $OT ) {
+              $Tabla =  $Tabla ."<tr>" ;
+                 $Tabla = $Tabla . "<td>" . trim($OT['referencia'] )        . "</td>" ;
+                 $Tabla = $Tabla . "<td>" . trim($OT['nomestilotrabajo'] )  . "</td>" ;
+                 $Tabla = $Tabla . "<td>" . trim($OT['nomtipotrabajo'])     . "</td>" ;
+              $Tabla = $Tabla . '</tr>';
+            }
+            $Texto_Correo    = file_get_contents(BASE_EMAILS.'ots_bloqueadas_dib_aprobacion.phtml','r');
+            $Texto_Correo    = str_replace("#_EMPRESA_#"    , $Empresa , $Texto_Correo);
+            $Texto_Correo    = str_replace("#_TABLA_#"      ,  $Tabla  , $Texto_Correo);
+            $this->Email->Body = $this->Unir_Partes_Correo ( $Texto_Correo ) ;
+                foreach ( $Emails as $Email) {
+                $this->Email->AddAddress( $Email['email']);
+              }
+             $this->Email->AddCC("serviclientes@cripack.com");
+             $this->Email->AddCC("jhonjamesmg@hotmail.com");
+             $Respuesta  = $this->Enviar_Correo();
+      }
 
 
     public function Informe_Ots_Pendientes ( $Empresa, $Sucursal, $Email, $Datos_Ots    ){
@@ -165,7 +179,7 @@
             $this->Email->AddAddress( $Email);
             $this->Email->AddCC("serviclientes@cripack.com");
             $Respuesta  = $this->Enviar_Correo();
-          }
+      }
 
 
 
