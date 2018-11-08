@@ -123,7 +123,7 @@
             $this->Email->Body = $Header.$Texto_Correo  ;
             $this->Email->AddAddress( $Email);
             $this->Email->AddCC("cartera@cripack.com.co");
-            $this->Email->AddCC("jhonjamesmg@hotmail.com");
+           // $this->Email->AddCC("jhonjamesmg@hotmail.com");
             $Respuesta  = $this->Enviar_Correo();
           }
 
