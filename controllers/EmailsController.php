@@ -14,8 +14,6 @@
       public function Index() { }
 
 
-
-
       public function Enviar_PQR( $Empresa, $Persona, $email, $TipoProblema, $Problema,$Causa ) {
          /** ABRIL 25 DE 2018
          **  ENVÍA CORREOS A TERCRO SOBRE PQR O NO CONFORMIDADES
@@ -74,14 +72,14 @@
             REALIZA ENVÍO DE CORREOS DE NOTIFICACIÓN PARA LAS COTIZACIONES  A LAS QUE HACEMOS SEGUIMIENTO
       */
 
-        $Empresa       =  $Cotizacion_H[0]['nomtercero'];
-        $FechaCotiz    =  Fechas::Formato( $Cotizacion_H[0]['fecha']) ;
-        $NroCotizacion = $Cotizacion_H[0]['numcotizacion'];
-        $Texto_Correo  = file_get_contents(BASE_EMAILS.'cotizaciones.phtml','r');
-        $Texto_Correo    = str_replace("#_EMPRESA_#"              , $Empresa        , $Texto_Correo);
-        $Texto_Correo    = str_replace("#_DESTINATARIO_#"         , $Destinatario   , $Texto_Correo);
-        $Texto_Correo    = str_replace("#_FECHA_COTIZACION_#"     , $FechaCotiz     , $Texto_Correo);
-        $Texto_Correo    = str_replace("#_NUMERO_COTIZACION_#"    , $NroCotizacion  , $Texto_Correo);
+        $Empresa        =  $Cotizacion_H[0]['nomtercero'];
+        $FechaCotiz     =  Fechas::Formato( $Cotizacion_H[0]['fecha']) ;
+        $NroCotizacion  = $Cotizacion_H[0]['numcotizacion'];
+        $Texto_Correo   = file_get_contents(BASE_EMAILS.'cotizaciones.phtml','r');
+        $Texto_Correo   = str_replace("#_EMPRESA_#"              , $Empresa        , $Texto_Correo);
+        $Texto_Correo   = str_replace("#_DESTINATARIO_#"         , $Destinatario   , $Texto_Correo);
+        $Texto_Correo   = str_replace("#_FECHA_COTIZACION_#"     , $FechaCotiz     , $Texto_Correo);
+        $Texto_Correo   = str_replace("#_NUMERO_COTIZACION_#"    , $NroCotizacion  , $Texto_Correo);
 
          $Tabla    = '';
 
@@ -123,7 +121,8 @@
             $this->Email->Body = $Header.$Texto_Correo  ;
             $this->Email->AddAddress( $Email);
             $this->Email->AddCC("cartera@cripack.com.co");
-           // $this->Email->AddCC("jhonjamesmg@hotmail.com");
+
+
             $Respuesta  = $this->Enviar_Correo();
           }
 
@@ -150,7 +149,6 @@
                 $this->Email->AddAddress( $Email['email']);
               }
              $this->Email->AddCC("serviclientes@cripack.com");
-             $this->Email->AddCC("jhonjamesmg@hotmail.com");
              $Respuesta  = $this->Enviar_Correo();
       }
 
@@ -226,7 +224,6 @@
             $this->Email->AddCC("cartera@cripack.com.co");
             $this->Email->AddCC("produccion@cripack.com");
             $this->Email->AddCC("contabilidad@cripack.com");
-            //$this->Email->AddCC("jhonjamesmg@hotmail.com");
             $Respuesta  = $this->Enviar_Correo();
             return $Respuesta;
           }
