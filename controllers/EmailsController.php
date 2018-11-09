@@ -18,9 +18,7 @@
          /** ABRIL 25 DE 2018
          **  ENVÍA CORREOS A TERCRO SOBRE PQR O NO CONFORMIDADES
          */
-
           $this->Configurar_Cuenta('Radicación PQR Cripack S.A.S.');
-
           $Texto_Correo       = file_get_contents(BASE_EMAILS.'pqr.phtml','r');
           $Texto_Correo      = str_replace("#_EMPRESA_#"            ,  $Empresa       , $Texto_Correo);
           $Texto_Correo      = str_replace("#_PERSONA_#"            ,  $Persona       , $Texto_Correo);
@@ -44,7 +42,6 @@
 
           $this->Configurar_Cuenta('Recuperación de Contraseña.');
           $this->Email->AddAddress($email );
-
           $codigo_confirmacion = General_Functions::Generar_Codigo_Confirmacion();
           $enlace              = '<a href=' . BASE_URL .'terceros/Reset_Password/'. $codigo_confirmacion .'> Cambio de Contraseña </a>';
           $Pagina_Correo       = file_get_contents(BASE_EMAILS.'password_cambiar.phtml','r');
@@ -71,7 +68,6 @@
       /*  OCTUBRE 03 DE 2016
             REALIZA ENVÍO DE CORREOS DE NOTIFICACIÓN PARA LAS COTIZACIONES  A LAS QUE HACEMOS SEGUIMIENTO
       */
-
         $Empresa        =  $Cotizacion_H[0]['nomtercero'];
         $FechaCotiz     =  Fechas::Formato( $Cotizacion_H[0]['fecha']) ;
         $NroCotizacion  = $Cotizacion_H[0]['numcotizacion'];
@@ -82,7 +78,6 @@
         $Texto_Correo   = str_replace("#_NUMERO_COTIZACION_#"    , $NroCotizacion  , $Texto_Correo);
 
          $Tabla    = '';
-
         foreach ($Cotizacion_Dt  as $CotizDt) {
            $Tabla =  $Tabla ."<tr>" ;
            $Tabla = $Tabla . "<td>" . trim( $CotizDt['referencia']        )    . "</td>" ;
@@ -115,14 +110,10 @@
            $Texto_Correo = str_replace("#_EMPRESA_#"             , $Empresa,$Texto_Correo);
            $Texto_Correo = str_replace("#_DESTINATARIO_#"        , $destinatario,$Texto_Correo);
            $Texto_Correo = str_replace("#_FECHA_CORTE_#"        ,  $nuevafecha,$Texto_Correo);
-
             $Header             = file_get_contents(EMAILS . 'header.php','r');
-
             $this->Email->Body = $Header.$Texto_Correo  ;
             $this->Email->AddAddress( $Email);
             $this->Email->AddCC("cartera@cripack.com.co");
-
-
             $Respuesta  = $this->Enviar_Correo();
           }
 
