@@ -25,24 +25,153 @@ class TercerosController extends Controller
               $this->Emails->OtBloquedasDibujoEnAprobacion( $Cliente['nomtercero']  , $Emails, $Ots);
             }
         }
+      }
+    public function IntegracionCordinadora(){
 
-        /*$ColumIdTercero = array_column( $Datos, 'idregistro');
-        $ColumIdTercero = array_unique( $ColumIdTercero);
-        Debug::Mostrar ( $ColumIdTercero );
-        foreach ($ColumIdTercero as $IdTercero) {
-            $IdTerceroBuscar = $IdTercero ;
-            $NuevoRegistro = array();
-            foreach ( $Datos as $Registro ) {
-              if ( $Registro['idregistro'] == $IdTerceroBuscar  ){
-                  $NuevoRegistro[]= $Registro;
-              }
-            }
-            //Debug::Mostrar ( $NuevoRegistro );
-             //$this->Emails->OtBloquedasDibujoEnAprobacion(   $Registro);
+            $url="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php";
+
+              $p                         =new stdClass();
+              $p->codigo_remision        ="";
+              $p->fecha                  ="";
+              $p->id_cliente             =29444;
+              $p->id_remitente           =0;
+              $p->nombre_remitente       ="Cripack S.A.S.";
+              $p->direccion_remitente    ="Carrera 6 #21-44";
+              $p->telefono_remitente     ="3873164";
+              $p->ciudad_remitente       ="76001000";
+              $p->nit_destinatario       ="11111";
+              $p->div_destinatario       ="01";
+              $p->nombre_destinatario    ="Prueba Destinatario";
+              $p->direccion_destinatario ="Kr24 #45-03";
+              $p->ciudad_destinatario    ="05001000";
+              $p->telefono_destinatario  ="58700000";
+              $p->valor_declarado        =500000;
+              $p->codigo_cuenta          =1;
+              $p->codigo_producto        =0;
+              $p->nivel_servicio         ="1";
+              $p->linea                  ="";
+              $p->contenido              ="Zapatos";
+              $p->referencia             ="";
+              $p->observaciones          ="cajas delicadas";
+              $p->estado                 ="IMPRESO";
+              $p->detalle                =array();
+
+              $item1                     =new stdClass();
+              $item1->ubl                ="0";
+              $item1->alto               ="50";
+              $item1->ancho              ="50";
+              $item1->largo              ="10";
+              $item1->peso               ="10";
+              $item1->unidades           ="1";
+              $item1->referencia         ="";
+              $item1->nombre_empaque     ="";
+
+              array_push($p->detalle,$item1);
+
+              $p->recaudos=array();
+
+              //array_push($p->recaudos,$recaudo);
+
+              $p->cuenta_contable   ="";
+              $p->centro_costos     ="";
+              $p->recaudos          ="";
+              $p->margen_izquierdo  ="3";
+              $p->margen_superior   ="1";
+              $p->formato_impresion =0;
+              $p->usuario_vmi       ="";
+              $p->atributo1_nombre  ="";
+              $p->atributo1_valor   ="";
+              $p->usuario           ="cripack.ws";
+              $p->clave             ="c3a68e4d97aa9b683262bc80fe36191610681f64499f23e30b10bb22da279a1c";
+
+              for ($i=1; $i<=1; $i++ ){
+                  $client = new SoapClient(null, array("location"    =>$url,
+                                       "uri"         =>$url,
+                                       "use"         =>SOAP_LITERAL,
+                                     "trace"       =>true,
+                                     "exceptions"  =>true,
+                                     "soap_version"=>SOAP_1_2,
+                                     "connection_timeout"=>30,
+                                     "encoding"=>"utf-8"));
+
+                  //try{
+
+                     $res     =$client->Guias_generarGuia($p);
+                     $rem     = ["item" => $res->codigo_remision];
+                     $pdfFile = $this->IntegracionCordinadoraRotulo( $rem );
+                     $this->IntegracionCordinadoraRotuloImprimir ( $pdfFile, $rem['item'] );
+                  }
+              //}catch (SoapFault $e) {
+               // echo "<pre>".$e->getMessage()."</pre>";
+             // }
+
+    }
+
+public function Mostrar($Texto, $Variable ) {
+      echo '<pre>';
+      echo $Texto . ' --> ' . $Variable ;
+      echo '</pre>';
+
+}
+
+    public function IntegracionCordinadoraRotulo ( $NroRemision ) {
+        $url="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php";
+        $p                   =new stdClass();
+        $p->id_rotulo        = 55;
+        $p->codigos_remisiones  = (array)$NroRemision['item'];
+        $p->usuario          = "cripack.ws";
+        $p->clave            = "c3a68e4d97aa9b683262bc80fe36191610681f64499f23e30b10bb22da279a1c";
+        $client = new SoapClient(null, array("location"    =>$url,
+                             "uri"                =>$url,
+                             "use"                =>SOAP_LITERAL,
+                             "trace"              =>true,
+                             "exceptions"         =>true,
+                             "soap_version"       =>SOAP_1_2,
+                             "connection_timeout" =>30,
+                             "encoding"           =>"utf-8"));
+        try{
+          $res=$client->Guias_imprimirRotulos($p);
+          return  $res->rotulos ;
+
+        }catch (SoapFault $e) {
+          echo "<pre>".$e->getMessage()."</pre>";
         }
-        */
 
-     }
+}
+
+
+
+
+public function IntegracionCordinadoraRotuloImprimir( $rsptaBase_64, $nroRemision ) {
+      $decoded = base64_decode($rsptaBase_64);
+      $file = $nroRemision . '.pdf';
+      file_put_contents($file, $decoded);
+
+      if (file_exists($file)) {
+/*          header('Content-Description: File Transfer');
+          header('Content-Type: application/octet-stream');
+          header('Content-Disposition: attachment; filename="'.basename($file).'"');
+          header('Expires: 0');
+          header('Cache-Control: must-revalidate');
+          header('Pragma: public');
+          header('Content-Length: ' . filesize($file));
+          readfile($file);
+          */
+            header("Content-type: application/pdf");
+
+    //print base64 decoded
+    echo $decoded;
+
+
+      }
+
+}
+
+
+
+
+
+
 
 
     public function RemisionesIntegracionTcc(){

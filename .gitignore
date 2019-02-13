@@ -3,3 +3,4 @@ application/Config.php
 views-old
 resources
 .idea
+*.pdf

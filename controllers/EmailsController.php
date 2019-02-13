@@ -214,7 +214,7 @@
             $this->Email->AddCC("serviclientes@cripack.com");
             $this->Email->AddCC("cartera@cripack.com.co");
             $this->Email->AddCC("produccion@cripack.com");
-            $this->Email->AddCC("contabilidad@cripack.com");
+            $this->Email->AddCC("auxiliarcontable@cripack.com");
             $Respuesta  = $this->Enviar_Correo();
             return $Respuesta;
           }
