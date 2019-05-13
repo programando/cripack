@@ -15,6 +15,9 @@ class TercerosController extends Controller
         $this->Emails   = $this->Load_Controller('Emails');
     }
 
+    public function OtBitacoraMovimientoDiario(){
+          $this->Terceros->OtBitacoraMovimientoDiario();
+    }
     public function OtBloquedasDibujoEnAprobacion(){
         $Clientes = $this->Terceros->OtBloquedasDibujoEnAprobacion_01_Clientes();
          foreach ( $Clientes as $Cliente ) {

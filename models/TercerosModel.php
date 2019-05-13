@@ -7,10 +7,15 @@
 					parent::__construct();
 				}
 
+       public function OtBitacoraMovimientoDiario(){
+           $this->Db->Ejecutar_Sp("btcra_mvto_ots_registro_11_pm()");
+        }
+
        public function OtBloquedasDibujoEnAprobacion_01_Clientes(){
             $Registro                 = $this->Db->Ejecutar_Sp("ord_trab_bloqueadas_dib_x_aprobacion_01_clientes_bloqueados()");
             return $Registro;
         }
+
         public function OtBloquedasDibujoEnAprobacion_02_Emails( $IdTercero ){
             $Registro                 = $this->Db->Ejecutar_Sp("ord_trab_bloqueadas_dib_x_aprobacion_02_emails_contactos( $IdTercero )");
             return $Registro;
