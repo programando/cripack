@@ -15,6 +15,13 @@ class TercerosController extends Controller
         $this->Emails   = $this->Load_Controller('Emails');
     }
 
+
+    public function otsExteriorInfomeGestionInterna() {
+      $Ots = $this->Terceros->otsExteriorInfomeGestionInterna();
+      $this->Emails->otsExteriorInfomeGestionInterna ( $Ots)  ; 
+    }
+
+
     public function OtBitacoraMovimientoDiario(){
           $this->Terceros->OtBitacoraMovimientoDiario();
     }

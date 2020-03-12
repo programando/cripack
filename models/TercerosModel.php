@@ -9,6 +9,10 @@
 
        public function OtBitacoraMovimientoDiario(){
            $this->Db->Ejecutar_Sp("btcra_mvto_ots_registro_11_pm()");
+		}
+		
+       public function otsExteriorInfomeGestionInterna(){
+           return $this->Db->Ejecutar_Sp("web_ots_exterior_informar_ctrl_interno()");
         }
 
        public function OtBloquedasDibujoEnAprobacion_01_Clientes(){

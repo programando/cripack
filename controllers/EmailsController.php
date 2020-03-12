@@ -118,6 +118,34 @@
           }
 
 
+        public function otsExteriorInfomeGestionInterna ( $OTs  ){
+          /*  OCTUBRE 25 2018
+                RECORDATORIO PARA OTS QUE SE ENCUENTRAN BLOQUEADAS POR DIBUJO EN APROBACIÓN
+          */
+              
+                $Tabla    = '';
+                  foreach ( $OTs as $Ot ) {
+                    $Tabla =  $Tabla ."<tr>" ;
+                      $Tabla = $Tabla . "<td>" . trim($Ot['numero_ot'])        . "</td>" ;
+                      $Tabla = $Tabla . "<td>" . trim($Ot['nomtercero'] )      . "</td>" ;
+                      $Tabla = $Tabla . "<td>" . trim($Ot['referencia'] )      . "</td>" ;
+                    $Tabla = $Tabla . '</tr>';
+                  }
+              
+                $this->Configurar_Cuenta("Órdenes de trabajo del exterior pendientes por despacho" );
+                $Texto_Correo    = file_get_contents(BASE_EMAILS.'ots_exterior_infome_gestion_interna.phtml','r');
+                $Texto_Correo    = str_replace("#_TABLA_#"      ,  $Tabla  , $Texto_Correo);        
+                $this->Email->Body = $this->Unir_Partes_Correo ( $Texto_Correo ) ;
+                $this->Email->AddAddress( 'jhonjamesmg@hotmail.com');
+                $this->Email->AddAddress( 'jhonjamesmg@gmail.com');
+                $this->Email->AddAddress( 'sistemas@balquimia.com');
+                
+                $Respuesta  = $this->Enviar_Correo();
+                
+          }
+
+
+
 
     public function OtBloquedasDibujoEnAprobacion ( $Empresa, $Emails, $Ots   ){
        /*  OCTUBRE 25 2018
