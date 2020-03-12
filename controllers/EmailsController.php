@@ -136,10 +136,12 @@
                 $Texto_Correo    = file_get_contents(BASE_EMAILS.'ots_exterior_infome_gestion_interna.phtml','r');
                 $Texto_Correo    = str_replace("#_TABLA_#"      ,  $Tabla  , $Texto_Correo);        
                 $this->Email->Body = $this->Unir_Partes_Correo ( $Texto_Correo ) ;
-                $this->Email->AddAddress( 'jhonjamesmg@hotmail.com');
-                $this->Email->AddAddress( 'jhonjamesmg@gmail.com');
-                $this->Email->AddAddress( 'sistemas@balquimia.com');
                 
+                $this->Email->AddAddress( 'almacen@cripack.com');
+                $this->Email->AddAddress( 'serviclientes@cripack.com');
+                $this->Email->AddAddress( 'produccion@cripack.com');
+                $this->Email->AddAddress( 'auxiliarcontable2@cripack.com');
+                $this->Email->AddAddress( 'jhonjamesmg@hotmail.com');
                 $Respuesta  = $this->Enviar_Correo();
                 
           }
