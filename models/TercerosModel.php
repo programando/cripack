@@ -7,8 +7,15 @@
 					parent::__construct();
 				}
 
+
+
+
        public function OtBitacoraMovimientoDiario(){
            $this->Db->Ejecutar_Sp("btcra_mvto_ots_registro_11_pm()");
+		}
+	
+		public function otsExteriorInfomeGestionInternaCorreoEnviadoCripacks( $Id_Reg ){
+            $Registro                 = $this->Db->Ejecutar_Sp("web_ots_exterior_informar_ctrl_interno_correo_enviado( $Id_Reg )");
 		}
 		
        public function otsExteriorInfomeGestionInterna(){

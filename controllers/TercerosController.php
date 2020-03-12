@@ -18,7 +18,17 @@ class TercerosController extends Controller
 
     public function otsExteriorInfomeGestionInterna() {
       $Ots = $this->Terceros->otsExteriorInfomeGestionInterna();
-      $this->Emails->otsExteriorInfomeGestionInterna ( $Ots)  ; 
+      $correoEnviado = $this->Emails->otsExteriorInfomeGestionInterna ( $Ots)  ; 
+      // Si correo fue enviado con éxito, cambio de estado las OT's para que no vuelvan a ser informacas
+      // y quedan en espera para el informe al cliente una vez que se registren datos de la guía.
+      if ( $correoEnviado != 'correo_OK') return ;
+      $this->otsExteriorInfomeGestionInternaCorreoEnviadoCripacks ( $Ots)
+    }
+
+    private function otsExteriorInfomeGestionInternaCorreoEnviadoCripacks ( $OtsInformadas ) {
+      foreach ( $OtsInformadas as $Ot ){
+        $this->Terceros->otsExteriorInfomeGestionInternaCorreoEnviadoCripacks ( $Ot['id_reg']) ;
+     }
     }
 
 
