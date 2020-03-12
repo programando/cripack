@@ -140,7 +140,7 @@
                 $this->Email->AddAddress( 'almacen@cripack.com');
                 $this->Email->AddAddress( 'serviclientes@cripack.com');
                 $this->Email->AddAddress( 'produccion@cripack.com');
-                $this->Email->AddAddress( 'auxiliarcontable2@cripack.com');
+                $this->Email->AddAddress( 'auxiliarcontable@cripack.com');
                 $this->Email->AddAddress( 'jhonjamesmg@hotmail.com');
                 $Respuesta  = $this->Enviar_Correo();
                 return $Respuesta;
