@@ -143,7 +143,7 @@
                 $this->Email->AddAddress( 'auxiliarcontable2@cripack.com');
                 $this->Email->AddAddress( 'jhonjamesmg@hotmail.com');
                 $Respuesta  = $this->Enviar_Correo();
-                
+                return $Respuesta;
           }
 
 
