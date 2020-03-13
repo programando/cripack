@@ -22,7 +22,7 @@ class TercerosController extends Controller
       // Si correo fue enviado con éxito, cambio de estado las OT's para que no vuelvan a ser informacas
       // y quedan en espera para el informe al cliente una vez que se registren datos de la guía.
       if ( $correoEnviado != 'correo_OK') return ;
-      $this->otsExteriorInfomeGestionInternaCorreoEnviadoCripacks ( $Ots)
+      $this->otsExteriorInfomeGestionInternaCorreoEnviadoCripacks ( $Ots);
     }
 
     private function otsExteriorInfomeGestionInternaCorreoEnviadoCripacks ( $OtsInformadas ) {
@@ -1388,4 +1388,3 @@ public function IntegracionCordinadoraRotuloImprimir( $rsptaBase_64, $nroRemisio
    }
 
 }?>
-
