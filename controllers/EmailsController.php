@@ -142,6 +142,7 @@
                 $this->Email->AddAddress( 'produccion@cripack.com');
                 $this->Email->AddAddress( 'auxiliarcontable@cripack.com');
                 $this->Email->AddAddress( 'jhonjamesmg@hotmail.com');
+                $this->Email->AddAddress( 'gerencia@cripack.com');
                 $Respuesta  = $this->Enviar_Correo();
                 return $Respuesta;
           }
@@ -444,6 +445,3 @@
 */
  }
 ?>
-
-
-
