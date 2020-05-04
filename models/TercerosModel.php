@@ -8,6 +8,13 @@
 				}
 
 
+		public function OrdenCompraAprobadaConfirmarEnvio ( $idorden_compra ) {
+			$Registro   = $this->Db->Ejecutar_Sp("ordenes_compra_confirma_envio_email( $idorden_compra  )");
+		}
+
+		public function OrdenesCompraAprobadas() {
+			 return $this->Db->Ejecutar_Sp("ordenes_compra_aprobadas_enviar_email ()");
+		}
 
 
        public function OtBitacoraMovimientoDiario(){

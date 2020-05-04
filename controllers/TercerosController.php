@@ -16,6 +16,18 @@ class TercerosController extends Controller
     }
 
 
+   public function OrdenesCompraAprobadas() {
+     /* Mayo 05 2020
+        Realiza envio de correo a compras de las Oc's aprobadas por gerencia.
+     */
+     $OrdsCompra    = $this->Terceros->OrdenesCompraAprobadas();
+     $CorreoEnviado = $this->Emails->OrdenesCompraAprobadas( $OrdsCompra);
+      if ( $CorreoEnviado ) {
+          $this->Terceros->OrdenCompraAprobadaConfirmarEnvio( $Oc ['idorden_compra']);
+      }
+   }
+
+
     public function otsExteriorInfomeGestionInterna() {
       $Ots = $this->Terceros->otsExteriorInfomeGestionInterna();
       if ( empty($Ots ) ) return ;

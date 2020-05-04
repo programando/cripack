@@ -1,1 +1,53 @@
  [12-Mar-2020 02:33:36 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[04-May-2020 21:36:31 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[04-May-2020 21:36:31 UTC] PHP Notice:  Undefined property: TercerosController::$Email in D:\Laragon\www\cripack\controllers\TercerosController.php on line 21
+[04-May-2020 21:36:31 UTC] PHP Fatal error:  Uncaught Error: Call to a member function OrdenesCompraAprobadas() on null in D:\Laragon\www\cripack\controllers\TercerosController.php:21
+Stack trace:
+#0 D:\Laragon\www\cripack\application\Bootstrap.php(32): TercerosController->OrdenesCompraAprobadas()
+#1 D:\Laragon\www\cripack\index.php(19): Bootstrap::Run(Object(Request))
+#2 {main}
+  thrown in D:\Laragon\www\cripack\controllers\TercerosController.php on line 21
+[04-May-2020 21:36:56 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[04-May-2020 21:36:56 UTC] PHP Notice:  Undefined property: TercerosController::$Email in D:\Laragon\www\cripack\controllers\TercerosController.php on line 21
+[04-May-2020 21:36:56 UTC] PHP Fatal error:  Uncaught Error: Call to a member function OrdenesCompraAprobadas() on null in D:\Laragon\www\cripack\controllers\TercerosController.php:21
+Stack trace:
+#0 D:\Laragon\www\cripack\application\Bootstrap.php(32): TercerosController->OrdenesCompraAprobadas()
+#1 D:\Laragon\www\cripack\index.php(19): Bootstrap::Run(Object(Request))
+#2 {main}
+  thrown in D:\Laragon\www\cripack\controllers\TercerosController.php on line 21
+[04-May-2020 21:37:40 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[04-May-2020 21:37:40 UTC] PHP Notice:  Undefined property: TercerosController::$Email in D:\Laragon\www\cripack\controllers\TercerosController.php on line 22
+[04-May-2020 21:37:40 UTC] PHP Fatal error:  Uncaught Error: Call to a member function OrdenesCompraAprobadas() on null in D:\Laragon\www\cripack\controllers\TercerosController.php:22
+Stack trace:
+#0 D:\Laragon\www\cripack\application\Bootstrap.php(32): TercerosController->OrdenesCompraAprobadas()
+#1 D:\Laragon\www\cripack\index.php(19): Bootstrap::Run(Object(Request))
+#2 {main}
+  thrown in D:\Laragon\www\cripack\controllers\TercerosController.php on line 22
+[04-May-2020 21:38:11 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[04-May-2020 21:38:11 UTC] PHP Notice:  Undefined property: TercerosController::$Email in D:\Laragon\www\cripack\controllers\TercerosController.php on line 22
+[04-May-2020 21:38:11 UTC] PHP Fatal error:  Uncaught Error: Call to a member function OrdenesCompraAprobadas() on null in D:\Laragon\www\cripack\controllers\TercerosController.php:22
+Stack trace:
+#0 D:\Laragon\www\cripack\application\Bootstrap.php(32): TercerosController->OrdenesCompraAprobadas()
+#1 D:\Laragon\www\cripack\index.php(19): Bootstrap::Run(Object(Request))
+#2 {main}
+  thrown in D:\Laragon\www\cripack\controllers\TercerosController.php on line 22
+[04-May-2020 21:38:40 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[04-May-2020 21:38:40 UTC] PHP Notice:  Undefined property: TercerosController::$Email in D:\Laragon\www\cripack\controllers\TercerosController.php on line 22
+[04-May-2020 21:38:40 UTC] PHP Fatal error:  Uncaught Error: Call to a member function OrdenesCompraAprobadas() on null in D:\Laragon\www\cripack\controllers\TercerosController.php:22
+Stack trace:
+#0 D:\Laragon\www\cripack\application\Bootstrap.php(32): TercerosController->OrdenesCompraAprobadas()
+#1 D:\Laragon\www\cripack\index.php(19): Bootstrap::Run(Object(Request))
+#2 {main}
+  thrown in D:\Laragon\www\cripack\controllers\TercerosController.php on line 22
+[04-May-2020 21:39:10 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[04-May-2020 21:39:10 UTC] PHP Notice:  Undefined variable: Oc in D:\Laragon\www\cripack\controllers\TercerosController.php on line 22
+[04-May-2020 21:39:10 UTC] PHP Warning:  Invalid argument supplied for foreach() in D:\Laragon\www\cripack\controllers\EmailsController.php on line 152
+[04-May-2020 21:39:16 UTC] PHP Notice:  Undefined variable: Oc in D:\Laragon\www\cripack\controllers\TercerosController.php on line 24
+[04-May-2020 21:41:51 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[04-May-2020 21:41:51 UTC] PHP Notice:  Undefined variable: Oc in D:\Laragon\www\cripack\controllers\TercerosController.php on line 22
+[04-May-2020 21:41:51 UTC] PHP Warning:  Invalid argument supplied for foreach() in D:\Laragon\www\cripack\controllers\EmailsController.php on line 152
+[04-May-2020 21:42:22 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[04-May-2020 21:48:27 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[04-May-2020 21:49:10 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[04-May-2020 21:51:23 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[04-May-2020 21:54:22 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45

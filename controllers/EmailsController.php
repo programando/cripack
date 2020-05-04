@@ -147,7 +147,27 @@
                 return $Respuesta;
           }
 
-
+      public function OrdenesCompraAprobadas (  $OCs ) {
+                  $Tabla    = '';
+                  foreach ( $OCs as $Oc ) {
+                    $Tabla = $Tabla ."<tr>" ;
+                    $Tabla = $Tabla . "<td>" . trim($Oc['orden_compra_numero'])        . "</td>" ;
+                    $Tabla = $Tabla . "<td>" . trim($Oc['nomtercero'] )      . "</td>" ;
+                    $Tabla = $Tabla . "<td>" . trim($Oc['observaciones'] )      . "</td>" ;
+                    $Tabla = $Tabla . '</tr>';
+                  }
+             
+                $this->Configurar_Cuenta("Órdenes de compra aprobadas" );
+                $Texto_Correo      = file_get_contents(BASE_EMAILS.'ocs_aprobadas.phtml','r');
+                $Texto_Correo      = str_replace("#_TABLA_#"      ,  $Tabla  , $Texto_Correo);
+                $IncluirFooter = false;
+                $TextoFooter  = '<br><br> Cordialmente, <br><br> Gerencia General';
+                $this->Email->Body = $this->Unir_Partes_Correo ( $Texto_Correo, $IncluirFooter, $TextoFooter ) ;
+                $this->Email->AddAddress( 'compras.facturacion.electronica@cripack.com');
+                //$this->Email->AddAddress( 'jhonjamesmg@hotmail.com');
+                $Respuesta  = $this->Enviar_Correo();
+                return $Respuesta;      
+      }
 
 
     public function OtBloquedasDibujoEnAprobacion ( $Empresa, $Emails, $Ots   ){
@@ -429,10 +449,11 @@
         }
      }
 
-   private function Unir_Partes_Correo (   $Body ){
+   private function Unir_Partes_Correo (   $Body, $IncluirFooter=true, $TextoFooter='' ){
        $Header             = file_get_contents(EMAILS . 'header.php','r');
        $Footer             = file_get_contents(EMAILS . 'footer.php','r');
-       $Texto_Final_Correo = $Header.$Body.$Footer;
+       if ( $IncluirFooter == true )  $Texto_Final_Correo = $Header.$Body.$Footer;
+       if ( $IncluirFooter == false )  $Texto_Final_Correo = $Header.$Body.$TextoFooter;
 
        return $Texto_Final_Correo ;
     }
