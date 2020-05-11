@@ -200,15 +200,10 @@ public function IntegracionCordinadoraRotuloImprimir( $rsptaBase_64, $nroRemisio
 
 }
 
-
-
-
-
-
-
-
+ 
     public function RemisionesIntegracionTcc(){
       $Remisiones = $this->Terceros->RemisionesIntegracionTcc();
+       
       foreach ($Remisiones as $Remision ) {
          $this->RespuestaTcc = '';
          $CodBarra           = 'CRIP'.intval( time());
@@ -264,8 +259,10 @@ public function IntegracionCordinadoraRotuloImprimir( $rsptaBase_64, $nroRemisio
           //Se estable la url del servicio web de TCC
           // Pruebas
           //$url = 'http://clientes.tcc.com.co/preservicios/wsdespachos.asmx?wsdl';
-          //Producción
-         $url = 'http://clientes.tcc.com.co/Servicios/wsdespachos.asmx?wsdl';
+            
+        
+
+         $url = TCC_SOAP_ENDPOINT;
 
           $DocumentoReferencia = array(
                   array('tipodocumento' => $TipoDocumento,
@@ -300,16 +297,16 @@ public function IntegracionCordinadoraRotuloImprimir( $rsptaBase_64, $nroRemisio
                   )
                 );
           }
-
+        
           $objDespacho = array(
                 'objDespacho' => array(
-                      'clave'                          => 'CALCRIPACK',
+                      'clave'                          => TCC_SOAP_PASSWORD,
                       'fechahoralote'                  => '',
                       'numeroremesa'                   => '',
                       'numeroDepacho'                  => '',
                       'unidadnegocio'                  => '1',
                       'fechadespacho'                  => $FechaDespacho,
-                      'cuentaremitente'                => '1608700',
+                      'cuentaremitente'                => TCC_SOAP_CUENTA,
                       'sederemitente'                  => '',
                       'primernombreremitente'          => '',
                       'segundonombreremitente'         => '',
@@ -357,6 +354,8 @@ public function IntegracionCordinadoraRotuloImprimir( $rsptaBase_64, $nroRemisio
               'respuesta'        => 0,
               'mensaje'          => ''
           );
+          
+
 
           $client                             = new SoapClient($url);
           $remesa                             = new \StdClass;
@@ -377,13 +376,13 @@ public function IntegracionCordinadoraRotuloImprimir( $rsptaBase_64, $nroRemisio
           $respuesta->respuesta               = 0;
           $mensaje                            = new \StdClass;
           $mensaje->mensaje                   = '';
-
+ 
 
           try {
 
           //Despues de realizar la configuración del xml a enviar, se realiza el consumo del servicio web
           $resp = $client->GrabarDespacho4($objDespacho, $remesa,$URLRelacionEnvio,$URLRotulos,$URLRemesa,$IMGRelacionEnvio,$IMGRotulos,$IMGRemesa,$respuesta,$mensaje);
-
+          
           //Aqui se hace el manejo de la excepción del consumo
           echo $client->__getLastRequest() ."\n";
 
