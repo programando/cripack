@@ -11,10 +11,7 @@
         public    $Mensaje_Error;
         protected    $Css    = array();
         protected    $Js     = array();
-
-
-
-
+ 
         public function __construct(Request $peticion)
         {
             $this->Controlador = $peticion->getControlador();
@@ -34,7 +31,7 @@
          $RutaTemplate = ROOT .  'views' . DS . 'template' .DS . 'template.phtml';
          $RutaFooter   = ROOT .  'views' . DS . 'template' .DS .  'footer.phtml';
          $RutaLogoMenu = ROOT .  'views' . DS . 'template' .DS . 'menu.phtml';
-
+ 
             if(is_readable($RutaView)) {
 
                extract($View_Vars);

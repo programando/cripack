@@ -9,12 +9,12 @@ class Bootstrap
     public static function Run(Request $peticion)
     {
         $Controller      = $peticion->getControlador(). 'Controller';
-	$Controller	 = String_Functions::Camel($Controller);
+	    $Controller	 = String_Functions::Camel($Controller);
         $RutaControlador = ROOT . 'controllers'       . DS . $Controller . '.php';
         $Metodo          = $peticion->getMetodo();
         $args            = $peticion->getArgs();
 
-
+         
 
         if(is_readable($RutaControlador))
         {

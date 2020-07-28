@@ -1,0 +1,118 @@
+ <style>
+ .custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: 'Seleccione archivo ';
+  display: inline-block;
+  background: linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+}
+.custom-file-input:hover::before {
+  border-color: black;
+}
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.contenedor-imagen{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align:center;
+}
+
+.contenedor-imagen img {
+      height: 40px;  
+      padding-left: 10px;
+}
+
+.contenedor-imagen p {
+    display: block;
+    margin-block-start: 0.5px;
+    font-weight: 600;
+    font-size: 14px;
+    
+}
+ 
+ </style>
+
+<div class="p15">
+	<div class="t40 colorCri1 ff2 mb20"> Braille - Resultado análisis </div>
+  	<div class="container">
+ 
+ <table class="table table-striped table-hover display "  >
+    <thead>
+      <tr>
+        <th width="20%">Texto deseado</th>
+        <th width="5%">Máx.Carac</th>
+        <th width="5%">Máx.Filas</th>
+        <th width="5%">Cara 1</th>
+        <th width="5%">Long.</th>
+        <th width="5%">Cara 2</th>
+        <th width="5%">Long.</th>     
+        <th>Braile</th>     
+
+      </tr>
+    </thead>
+
+    <tbody class="well">
+    
+    <?php foreach ($this->Braille as $Fila) : ;?>
+        <?php $id_impresion = $Fila['id_impresion'] ;?>
+      <tr>
+          <td ><?= $Fila['texto'] ;?></td>
+          <td ><?= $Fila['max_filas'] ;?></td>
+          <td width="5%"><?= $Fila['max_cara'] ;?></td>
+          <td width="5%"><?= $Fila['cara_1'] ;?></td>
+          <td width="5%"><?= $Fila['cara_1_long'] ;?></td>
+          <td width="5%"><?= $Fila['cara_2'] ;?></td>
+          <td width="5%"><?= $Fila['cara_2_long'] ;?></td>
+          <td>
+            <div class="grid">
+            
+             <?php foreach ($this->Simbolos as $Simbolo) : ;?>
+                    <div class="contenedor-imagen">
+                      <?php if ( $id_impresion === $Simbolo['id_impresion']) : ;?>
+                        <img class ='myimagen' src="<?= BASE_URL. 'public/images/braile/' . $Simbolo['simbolo'] ;?>"  >
+                        <p><?= $Simbolo['caracter'] ;?></p>
+                         
+                      <?php endif ;?>
+                      
+                  </div>
+              <?php endforeach;?>
+              
+            </div>
+          </td>
+      </tr>
+    <?php endforeach;?>
+
+    </tbody>
+
+  </table>
+
+
+		</div>
+ </div>
+</div>
+
+<!-- 
+        
+             
+            
+       
+     -->

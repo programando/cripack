@@ -141,7 +141,6 @@
                 $this->Email->AddAddress( 'serviclientes@cripack.com');
                 $this->Email->AddAddress( 'produccion@cripack.com');
                 $this->Email->AddAddress( 'auxiliarcontable@cripack.com');
-                $this->Email->AddAddress( 'jhonjamesmg@hotmail.com');
                 $this->Email->AddAddress( 'gerencia@cripack.com');
                 $Respuesta  = $this->Enviar_Correo();
                 return $Respuesta;
@@ -164,7 +163,6 @@
                 $TextoFooter  = '<br><br> Cordialmente, <br><br> Gerencia General';
                 $this->Email->Body = $this->Unir_Partes_Correo ( $Texto_Correo, $IncluirFooter, $TextoFooter ) ;
                 $this->Email->AddAddress( 'compras.facturacion.electronica@cripack.com');
-                //$this->Email->AddAddress( 'jhonjamesmg@hotmail.com');
                 $Respuesta  = $this->Enviar_Correo();
                 return $Respuesta;      
       }

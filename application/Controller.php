@@ -84,6 +84,7 @@ abstract class Controller
         *   SE ENCRGA DE LLAMAR LIBRERÍAS EXTERNAS AL PROYECTO COMO POR EJEMPLO PHPMAILER O PDF
         */
         $rutaLibreria = ROOT . 'libs_external' . DS . $libreria . '.php';
+    
         if(is_readable($rutaLibreria)){
             require_once $rutaLibreria;
         }

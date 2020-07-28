@@ -15,7 +15,6 @@ class TercerosController extends Controller
         $this->Emails   = $this->Load_Controller('Emails');
     }
 
-
    public function OrdenesCompraAprobadas() {
      /* Mayo 05 2020
         Realiza envio de correo a compras de las Oc's aprobadas por gerencia.
@@ -1235,15 +1234,11 @@ public function IntegracionCordinadoraRotuloImprimir( $rsptaBase_64, $nroRemisio
           if ( $idtercero == 0 ) {
             $idtercero = Session::Get('idtercero') ;
           }
-          //Session::Set('logueado', TRUE );
-          //Session::Set('Cliente', TRUE );
           if ( Session::Get('cuenta_cripack') === TRUE ){
             $this->View->Ots               = $this->Terceros->Consulta_Trabajos_Ferias_Eventos( ) ;
           }else{
             $this->View->Ots               = $this->Terceros->Consulta_Trabajos_x_Tercero( $idtercero ) ;
           }
-
-
           $this->View->CantidadRegistros =  $this->Terceros->Cantidad_Registros ;
 	        $this->View->Mostrar_Vista('historial');
 	    }

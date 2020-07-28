@@ -19,11 +19,13 @@ class Request
     {
         $this->url='';
 
+       
+
         if(!isset($_GET['url']))    { $this->url="";                }
         else                        { $this->url = $_GET['url'];    }
 
         $segmentos_url = explode('/',$this->url);
-
+        
         $this->ResolveController($segmentos_url);
         $this->ResolveMethod    ($segmentos_url);
         $this->ResolveParams    ($segmentos_url);
