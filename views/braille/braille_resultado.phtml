@@ -45,10 +45,15 @@
     display: block;
     margin-block-start: 0.5px;
     font-weight: 600;
-    font-size: 14px;
-    
+    font-size: 14px;   
 }
- 
+th {
+   text-align: center;
+}
+td {
+   text-align: left;
+   vertical-align: 50% !important;
+}
  </style>
 
 <div class="p15">
@@ -75,8 +80,8 @@
     <?php foreach ($this->Braille as $Fila) : ;?>
         <?php $id_impresion = $Fila['id_impresion'] ;?>
       <tr>
-          <td ><?= $Fila['texto'] ;?></td>
-          <td ><?= $Fila['max_filas'] ;?></td>
+          <td width="20%"><?= $Fila['texto'] ;?></td>
+          <td width="5%"><?= $Fila['max_filas'] ;?></td>
           <td width="5%"><?= $Fila['max_cara'] ;?></td>    
           <td width="5%"><?= $Fila['cara_1']      != '0' ? $Fila['cara_1'] :'' ;?></td>
           <td width="5%"><?= $Fila['cara_1_long'] != '0' ? $Fila['cara_1_long']: '' ;?></td>
