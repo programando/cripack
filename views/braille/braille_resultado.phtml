@@ -77,14 +77,13 @@
       <tr>
           <td ><?= $Fila['texto'] ;?></td>
           <td ><?= $Fila['max_filas'] ;?></td>
-          <td width="5%"><?= $Fila['max_cara'] ;?></td>
-          <td width="5%"><?= $Fila['cara_1'] ;?></td>
-          <td width="5%"><?= $Fila['cara_1_long'] ;?></td>
-          <td width="5%"><?= $Fila['cara_2'] ;?></td>
-          <td width="5%"><?= $Fila['cara_2_long'] ;?></td>
+          <td width="5%"><?= $Fila['max_cara'] ;?></td>    
+          <td width="5%"><?= $Fila['cara_1']      != '0' ? $Fila['cara_1'] :'' ;?></td>
+          <td width="5%"><?= $Fila['cara_1_long'] != '0' ? $Fila['cara_1_long']: '' ;?></td>
+          <td width="5%"><?= $Fila['cara_2']      != '0' ? $Fila['cara_2'] :'' ;?></td>
+          <td width="5%"><?= $Fila['cara_2_long'] != '0' ? $Fila['cara_2_long']: '' ;?></td>
           <td>
-            <div class="grid">
-            
+            <div class="grid"> 
              <?php foreach ($this->Simbolos as $Simbolo) : ;?>
                     <div class="contenedor-imagen">
                       <?php if ( $id_impresion === $Simbolo['id_impresion']) : ;?>
