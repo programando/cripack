@@ -40,8 +40,8 @@
 				return $Registros;
 		}
 
-	  public function simbolosBraileGrabar ( $idtercero, $id_impresion, $caracter, $simbolo ) {
-				$Registros = $this->Db->Ejecutar_Sp("braile_textos_impresion_simbolos_grabar( $idtercero, $id_impresion, '$caracter', '$simbolo'   )");
+	  public function simbolosBraileGrabar ( $idtercero, $id_impresion, $caracter, $imgBraile_1, $imgBraile_2 ) {
+				$Registros = $this->Db->Ejecutar_Sp("braile_textos_impresion_simbolos_grabar( $idtercero, $id_impresion, '$caracter', '$imgBraile_1', '$imgBraile_2'   )");
 		}
 
 	 	  public function impresionSimbolos ( $idtercero ) {
