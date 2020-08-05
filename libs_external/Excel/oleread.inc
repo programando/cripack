@@ -34,9 +34,6 @@ function GetInt4d($data, $pos)
 }
 
 
-
-
-
 class OLERead {
     var $data = '';
     
