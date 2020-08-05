@@ -5,3 +5,4 @@ resources
 .idea
 *.pdf
 public/images/braile
+logs/error.txt
