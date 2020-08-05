@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
      define('DS', DIRECTORY_SEPARATOR);
 					define('ROOT', realpath(dirname(__FILE__)) . DS);
 					define('LIBS',ROOT . 'libs' .DS);
