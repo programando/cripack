@@ -1,86 +1,97 @@
- <style>
- .custom-file-input::-webkit-file-upload-button {
-  visibility: hidden;
-}
-.custom-file-input::before {
-  content: 'Seleccione archivo ';
-  display: inline-block;
-  background: linear-gradient(top, #f9f9f9, #e3e3e3);
-  border: 1px solid #999;
-  border-radius: 3px;
-  padding: 5px 8px;
-  outline: none;
-  white-space: nowrap;
-  -webkit-user-select: none;
-  cursor: pointer;
-  text-shadow: 1px 1px #fff;
-  font-weight: 700;
-  font-size: 10pt;
-}
-.custom-file-input:hover::before {
-  border-color: black;
-}
-.custom-file-input:active::before {
-  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
-}
+<div class="main-container">
 
-.container {
-  display: flex;
-  justify-content:space-between;
-  align-items: center;
-}
+  <div class="container-datos-entrada w-full">
 
-.container-text {
-  display:flex;
-  flex-direction: column;
- 
-}
-.container-inputs {
-  display:flex;
-   justify-content:space-between;
-}
- </style>
+      <div class="item w-1/2 archivos">
+          <p class='capitalize p-4 mb-3 font-bold text-center text-3xl'> Traducción archivos</p>
+          <p class="p-4" > A través de esta opción, podrá realizar la traducción de textos incluidos en un archivo con las siguientes especicificaciones :</p>
+            <ol class="pl-2">
+                <li class="py-2">1. El archivo debe estar conformado por 3 columnas: Texto deseado, Largo, Alto</li>
+                <li class="py-2">2. No debe tener título de columnas</li>
+                <li class="py-2">3. Archivo en formato Microsoft Excel</li>
+            </ol>
+           
+            <div class="flex justify-center mt-20">  
+                <div class="pr-10">
+                    <input type="file" class="custom-file-input mt-6 mb-8" id="inputFile">
+                </div>
+               
+               <div  >
+                  <button class = "mr-3 float-right bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded mt-3 mb-3" id = "btnEnviar">
+                    Traducir textos del archivo
+                  </button> 
+              </div>
 
-<div class="p15">
-	<div class="t40 colorCri1 ff2 mb20"> Braille </div>
-  	<div class="container">
-      <div>
-          <input type="file" class="custom-file-input mt-6 mb-8" id="inputFile">
-
-  <!--       			<button class = " bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded mt-3 mb-3" id = "btnEnviar">
-              Analizar archivo
-          </button>    
-           -->
-
-          <a href="/braille/resultado" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded mt-3 mb-3" id="btnEnviar">
-              Traducir archivo
-          </a>    
+            </div>  
+   
+          <div id="myProgress">
+            <div id="myBar"></div>
+          </div>
       </div>
+ 
 
-      <div>
-
-         <div class="container-text">
-            <div class="container-inputs mb-5">
-                  <label class="block text-gray-700 text-2xl font-bold mb-2" for="Texto"> Texto a traducir : </label>
-                  <input class="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight ml-3 focus:outline-none focus:shadow-outline" type="text" name="Texto" id="Texto">
-              </div>
-              <div class="container-inputs mb-5">
-                  <label class="block text-gray-700 text-2xl font-bold mb-2" for="Largo"> Largo de la caja :  </label>
-                  <input class="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight ml-3 focus:outline-none focus:shadow-outline" type="text" name="Largo" id="Largo">
-              </div>
-              <div class="container-inputs mb-5">
-                  <label class="block text-gray-700 text-2xl font-bold mb-2" for="Alto"> Alto de la caja : </label>
-                  <input class="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight ml-3 focus:outline-none focus:shadow-outline" type="text" name="Alto" id="Alto">
+        <div class="item w-1/2">
+          <p class="capitalize p-2 mb-3 font-bold text-center text-3xl">  Traduccion palabras o frase</p>
+          
+            <div class="m-2">
+              <label class="text-gray-700 font-bold mb-1 pr-4" for="Texto">
+                Palabras o frase a traducir
+              </label>
             </div>
- 
+            <div class="m-2">
+                  <input class=" block bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white    
+                        focus:border-purple-500" id="Texto" type="text"  >
+            </div>
+            <p class="m-2 text-gray-700 font-bold mb-1 pr-4 text-center"> Dimensiones de la caja</p>
+
+            <div class="md:flex md:items-center mb-6">
+              <div class="md:w-1/3">
+                <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="Largo">
+                  Largo :
+                </label>
+              </div>
+              <div class="md:w-2/3">
+                <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="Largo" type="text" >
+              </div>
+            </div>
+
+
+            <div class="md:flex md:items-center mb-6">
+              <div class="md:w-1/3">
+                <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="Ancho">
+                  Ancho :
+                </label>
+              </div>
+              <div class="md:w-2/3">
+                <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="Ancho" type="text" >
+              </div>
+            </div>
+
+            <div class="md:flex md:items-center mb-6">
+                <div class="md:w-1/3">
+                  <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="Alto">
+                    Alto :
+                  </label>
+                </div>
+                <div class="md:w-2/3">
+                  <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="Alto" type="text" >
+                </div>
+              </div>
+
+                        <div>
+                  <button class = "mr-3 float-right bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded mt-3 mb-3" id = "btnEnviarTexto">
+                    Traducir texto registrado
+                  </button> 
+              </div>
         </div>
 
-        <div class="mt-2">
-           <a href="/braille/resultado" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded  " id="btnEnviarTexto">
-                Traducir texto
-            </a>
-        </div>
+  </div> 
+  
+ 
+</div>
+
+<div class="container-respuesta w-full">
+     <div class="datos-respuesta w-full">
+         <div class="contenido-respuesta"> </div>
       </div>
-			
-		</div>
- </div>
+</div>

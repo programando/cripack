@@ -10,9 +10,11 @@ class BrailleController extends Controller
    private $RespuestaTcc ;
 
    var $Estandar, $Minimo, $Caracteres, $Simbolos, $imgBraile_1, $imgBraile_2, $SimboloExcepcion;
+   var $IdTercero;
  
     public function __construct()  {
         parent::__construct();
+        $this->IdTercero  =  Session::Get('idtercero');
         $this->Braille  = $this->Load_Model('Braille');
         $this->Email    = $this->Load_External_Library('Excel/reader');
         $this->reservarSimbolos();
@@ -20,6 +22,7 @@ class BrailleController extends Controller
     }
    		public function index() {
           $this->View->SetJs(array('uploadBraileFile'));
+           $this->View->SetCss(array('braile'));
 	      $this->View->Mostrar_Vista('braille');
 	    }
 
@@ -34,19 +37,15 @@ class BrailleController extends Controller
             $this->Braille->textsDelete     ( $idtercero  );
             $this->brailleFileSave          ( $idtercero, $archivo["name"] );
             $this->distribuirImpresion      ( $idtercero    ) ;
-            echo "OK";
+            $this->resultado();
         } else {
             echo "Error al subir archivo";
         }
       }
 
      public function resultado () {
-        $idtercero           = Session::Get('idtercero');
-        $Braille             = $this->Braille->textPrinteQuery ( $idtercero );
-        $Simbolos             = $this->Braille->impresionSimbolos ( $idtercero );
-        $this->View->Braille = $Braille;
-        $this->View->Simbolos = $Simbolos;
-        $this->View->Mostrar_Vista('braille_resultado');  
+        $this->View->Tabla = $this->impresion();
+        $this->View->Mostrar_Vista_parcial('impresion');  
      }
 
 
@@ -65,7 +64,10 @@ class BrailleController extends Controller
             
             //$max_cara   = $data->sheets[0]['cells'][$i][5] ;
             //$max_filas  = $data->sheets[0]['cells'][$i][6] ;
-            $this->saveText ( $idtercero, $texto , $caja_largo, $caja_ancho, $caja_alto ); // , $max_cara , $max_filas 
+            if ( strlen ( $texto )> 0) {
+                $this->saveText ( $idtercero, $texto , $caja_largo, $caja_ancho, $caja_alto );  
+            }
+           
         }
 
      }
@@ -89,6 +91,7 @@ class BrailleController extends Controller
       }
 
       public function saveText( $idtercero, $texto , $caja_largo, $caja_ancho, $caja_alto ) {  
+          
             //, $max_cara, $max_filas
              $caracteres = strlen ( $texto );
              $espacios   = substr_count ($texto, ' ' );
@@ -166,39 +169,60 @@ class BrailleController extends Controller
         $Frase         = explode( ' ', $Frase );
         $LongAcumulada = 0;
         $Fila          = '';
-        $pos           = 0;
-        $Filas = array();  
+        $Filas         = array();  
         while ( count ( $Frase ) ) {  
-            $Palabra     = $Frase[$pos];
+            $Palabra     =   $Frase[0]  ;
             $LongPalabra = strlen ( $Palabra ) + $LongAcumulada;
-            if ($LongPalabra <= $MaxCara ) {
-                $Fila          = $Fila . $Palabra . ' ';
-                $LongAcumulada = strlen ( $Fila );
-                unset($Frase[$pos] );
-                $Frase = array_values ( $Frase  );
-            }else {
+  
+            if ( strlen ( $Palabra ) > $MaxCara  ){
                 $Filas[]       = $Fila;
+                $Filas[]       = 'N/A-' .$Palabra ;
+                $Frase         = $this->depurarArray( $Frase );
                 $Fila          = '';
                 $LongAcumulada = 0;
             }
+            else{
+                if ($LongPalabra <= $MaxCara ){
+                    $Fila          = $Fila . $Palabra . ' ';
+                    $LongAcumulada = strlen ( $Fila );
+                    $Frase  = $this->depurarArray( $Frase );
+                }else {                    
+                    $Filas[]       = $Fila;
+                    $Fila          = '';
+                    $LongAcumulada = 0;                 
+                }
+            }
+            
         } // EndWhile
         $Filas[]=$Fila;
+    
         return $Filas;
+    }
+
+    private function depurarArray( &$datos  ){
+        unset($datos[0] );
+        return array_values ( $datos  );
+
+        /*                     unset($Frase[$pos] );
+                    $Frase = array_values ( $Frase  ); */
+
     }
 
     private function grabarCaras ($idtercero, $texto, $Filas = array(), $MaxCara, $MaxFilas) {
         $FilasOcupadas = 1;
         foreach ($Filas as $Fila ) {
-            $Cara = strtolower(trim($Fila));
-            $Long = strlen( $Cara ) ;
+            $palabrasAtraducir = strtolower(trim($Fila));
+            $palabraError      = substr( $palabrasAtraducir,0,4)== 'n/a-' ? 1 : 0;
+            $palabrasAtraducir = $palabraError == 1 ? substr( $palabrasAtraducir,4,strlen($palabrasAtraducir )) : $palabrasAtraducir;
+            $Long              = strlen( $palabrasAtraducir ) ;
             if ( $FilasOcupadas <= $MaxFilas ) {
-                $id_impresion  = $this->Braille->textSavePrinter ($idtercero, $texto, $MaxCara, $MaxFilas, $Cara, $Long, 0, 0);
+                $id_impresion  = $this->Braille->textSavePrinter ($idtercero, $texto, $MaxCara, $MaxFilas, $palabrasAtraducir, $Long, 0, 0, $palabraError, '1');
                 $FilasOcupadas=  $FilasOcupadas  + 1;
-                $this->grabarSimbolosBraile ( $id_impresion[0]['id_impresion'], $Cara );
+                $this->grabarSimbolosBraile ( $id_impresion[0]['id_impresion'], $palabrasAtraducir );
             }else {
-                $id_impresion  = $this->Braille->textSavePrinter ($idtercero, '', $MaxCara, $MaxFilas, 0, 0, $Cara, $Long);
+                $id_impresion  = $this->Braille->textSavePrinter ($idtercero, $texto, $MaxCara, $MaxFilas, 0, 0, $palabrasAtraducir, $Long, $palabraError,'2');
                 $FilasOcupadas  =  $FilasOcupadas  + 1;
-                $this->grabarSimbolosBraile ( $id_impresion[0]['id_impresion'] , $Cara );
+                $this->grabarSimbolosBraile ( $id_impresion[0]['id_impresion'] , $palabrasAtraducir );
             }
         }
          
@@ -222,6 +246,55 @@ class BrailleController extends Controller
          }
     }
 
+    public function impresion(){
+        $Tablas = '';
+        $textosUnicos = $this->Braille->textosUnicosImpresion( $this->IdTercero );
+        
+        foreach ($textosUnicos as $Frase) {
+            $Tabla  = '<table>';
+            $Tabla  .= '<th colspan='. $Frase['LongMayor'].'>';
+            $Tabla  .= $Frase['texto'] . '</th>';
+            $Tabla  =  $this->impresionCara ( '1', $Frase['texto'] , $Tabla );
+            $Tabla  =  $this->impresionCara ( '2', $Frase['texto'] , $Tabla );  
+            $Tabla  .= '</table>';
+            $Tabla  .= '<br>';
+            $Tablas .= $Tabla;
+        }
+        return  $Tablas;
+       
+    }
+
+    private function impresionCara ( $CaraImprimir, $Texto, &$Tabla) {
+            $imgUrl = BASE_URL. 'public/images/braile/';
+            $Tabla  .=  '<tbody>';
+            $textosCara1 = $this->Braille->textosPorCara ($this->IdTercero ,$CaraImprimir,$Texto );
+            $Fila = 1;
+            foreach ( $textosCara1 as $ImprimirTexto) {
+                $Tabla .= '<tr>';
+                if ( $Fila == 1 ) {
+                    $Tabla  .=  '<td class="cara" rowspan='. $this->Braille->Cantidad_Registros.'>' .'CARA ' .$CaraImprimir .' </td>';
+                    $Fila = 2;
+                }
+                $simbolos = $this->Braille->simbolosPorCara ( $ImprimirTexto['id_impresion']) ;
+                foreach ($simbolos as $simbolo) {
+                        $Tabla .=     $ImprimirTexto['wordhaserror'] 
+                                    ? '<td class="border-error td-config"><div class="img-letra-container">' 
+                                    : '<td class="td-config"><div class="img-letra-container"> ';
+
+                        $Tabla .= '<div class="imagenes"> <img src="' . $imgUrl.$simbolo['simbolo_1']  .'">';
+                        if ( strlen ( $simbolo['simbolo_2'])>0 ) {
+                            $Tabla .= '<img src="' . $imgUrl.$simbolo['simbolo_2'] .'">';
+                        }
+                        $Tabla .= '</div>';
+                        $Tabla .= '<div class="contendor-letra"><p class="letra">' . $simbolo['caracter'] .'</p></div>';
+                        $Tabla .= '</div></td>' ;
+                } //foreach ($simbolos
+                $Tabla .=  '</tr>';
+            }//foreach ( $textosCara1
+
+            $Tabla  .=  '</tbody>';
+            return $Tabla;
+    }
 
 
 

@@ -1,0 +1,130 @@
+.main-container {
+  display: flex;
+  
+}
+
+.container-datos-entrada {
+  display: flex;
+
+  flex-direction: row;
+  justify-content: space-between;
+  
+}
+.item {
+
+  margin: 5px;
+  border: 1px solid black;
+   
+}
+
+ 
+ .custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: 'Seleccione archivo ';
+  display: inline-block;
+  background: linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+}
+.custom-file-input:hover::before {
+  border-color: black;
+}
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+
+ 
+
+  table {
+      
+      width: 70%;
+      border-collapse: collapse;
+  }
+  th {
+    text-align: center;
+    padding: 8px 8px;
+    font-weight: 600;
+    font-size: 18px;     
+    background-color :#20286D;
+    color: #f9f9f9;
+    border: 1px solid black;
+    }
+
+td {
+      text-align: center;
+      ;
+      padding: 5px 10px;  
+      margin: 3px;
+}
+ .td-config { 
+       display: inline-block;
+      text-align: center;
+      width: auto !important;
+  }
+
+.cara {
+    width : 10%;
+    font-weight: 600;
+    font-size: 14px;
+    border: 0.5px solid #999
+}
+
+  .border-error {
+      border: 1px solid red;
+  }
+/*img {
+      height: 40px;  
+      text-aling:center;
+}*/
+
+.imagenes{
+
+    height: 100%;
+    display:flex;
+    flex: 1;
+    justify-content: center;
+   
+}
+
+.contendor-letra{
+  display: block;
+  float:right;
+  margin-right: 5px;
+}
+.letra {
+    display: inline;
+    margin-block-start: 0.5px;
+    font-weight: 600;
+    font-size: 14px;   
+}
+.img-letra-container {
+    display: inline-block;
+}
+
+.contenido-respuesta {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#myProgress {
+  width: 100%;
+  background-color: gainsboro ;
+}
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: green;
+}

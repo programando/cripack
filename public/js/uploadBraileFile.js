@@ -1,20 +1,21 @@
 const btnEnviar      = document.querySelector("#btnEnviar");
 const btnEnviarTexto = document.querySelector("#btnEnviarTexto");
 const inputFile      = document.querySelector("#inputFile");
-
+$('#myProgress').hide();
  
 btnEnviar.addEventListener("click", () => {
- 
-     if (inputFile.files.length > 0) {
+  newRecord();   
+  if (inputFile.files.length > 0) {
         let formData = new FormData();
-        formData.append("brailleFile", inputFile.files[0]); // En la posición 0; es decir, el primer elemento
+         formData.append("brailleFile", inputFile.files[0]); // En la posición 0; es decir, el primer elemento
+         move();
         fetch("/braille/fileStarProccess", {
             method: 'POST',
             body: formData,
         })
         .then(respuesta => respuesta.text())
-        .then(decodificado => {
-                console.log( decodificado);
+            .then(decodificado => {    
+              showAnswer(decodificado);
          });
         
     } else {
@@ -27,13 +28,13 @@ btnEnviarTexto.addEventListener("click", () => {
     var res = validarEntradaManual();
     if (res == false) {
         return;
-    }
-     let Texto          = document.querySelector("#Texto").value;
-    let Largo          = document.querySelector("#Largo").value;
-    let Alto = document.querySelector("#Alto").value; 
+  }
+  newRecord();
+     let Texto = document.querySelector("#Texto").value;
+     let Largo = document.querySelector("#Largo").value;
+     let Alto  = document.querySelector("#Alto").value;
     
     let formData = new FormData();
-
     formData.append('Texto', Texto);
     formData.append('Largo', Largo);
     formData.append('Alto', Alto);
@@ -41,10 +42,10 @@ btnEnviarTexto.addEventListener("click", () => {
     fetch("/braille/textTraslate", {
         method: 'POST',
         body: formData,
-    })
-        .then(respuesta => respuesta.text())
+    })  
+      .then(respuesta => respuesta.text())
         .then(decodificado => {
-            console.log(decodificado);
+            showAnswer(decodificado);
         });
 });
 
@@ -65,4 +66,34 @@ function validarEntradaManual() {
         return false;
     } 
     return true;
+}
+
+var i = 0;
+function move() {
+  $('#myProgress').show();
+  if (i == 0) {
+    i = 1;
+    var elem = document.getElementById("myBar");
+    var width = 1;
+    var id = setInterval(frame, 20);
+    function frame() {
+      if (width >= 100) {
+        clearInterval(id);
+        i = 0;
+      } else {
+        width++;
+        elem.style.width = width + "%";
+      }
+    }
+  }
+}
+
+function newRecord() {
+  $('.contenido-respuesta').html('');
+}
+
+function showAnswer(resultado) {
+    $('.contenido-respuesta').html('');
+    $('.contenido-respuesta').html(resultado);
+    $('#myProgress').hide(); 
 }

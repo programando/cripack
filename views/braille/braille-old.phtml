@@ -1,0 +1,90 @@
+ <style>
+ .custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: 'Seleccione archivo ';
+  display: inline-block;
+  background: linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+}
+.custom-file-input:hover::before {
+  border-color: black;
+}
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+.container {
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+}
+
+.container-text {
+  display:flex;
+  flex-direction: column;
+ 
+}
+.container-inputs {
+  display:flex;
+   justify-content:space-between;
+}
+ </style>
+
+<div class="p15">
+	<div class="t40 colorCri1 ff2 mb20"> Braille </div>
+  	<div class="container">
+      <div>
+          <input type="file" class="custom-file-input mt-6 mb-8" id="inputFile">
+
+        			<button class = " bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded mt-3 mb-3" id = "btnEnviar">
+              Analizar archivo
+          </button>    
+           
+
+<!--           <a href="/braille/resultado" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded mt-3 mb-3" id="btnEnviar">
+              Traducir archivo
+          </a>   -->  
+      </div>
+
+      <div>
+
+         <div class="container-text">
+            <div class="container-inputs mb-5">
+                  <label class="block text-gray-700 text-2xl font-bold mb-2" for="Texto"> Texto a traducir : </label>
+                  <input class="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight ml-3 focus:outline-none focus:shadow-outline" type="text" name="Texto" id="Texto">
+              </div>
+              <div class="container-inputs mb-5">
+                  <label class="block text-gray-700 text-2xl font-bold mb-2" for="Largo"> Largo de la caja :  </label>
+                  <input class="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight ml-3 focus:outline-none focus:shadow-outline" type="text" name="Largo" id="Largo">
+              </div>
+              <div class="container-inputs mb-5">
+                  <label class="block text-gray-700 text-2xl font-bold mb-2" for="Alto"> Alto de la caja : </label>
+                  <input class="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight ml-3 focus:outline-none focus:shadow-outline" type="text" name="Alto" id="Alto">
+            </div>
+ 
+        </div>
+
+        <div class="mt-2">
+           <a href="/braille/resultado" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded  " id="btnEnviarTexto">
+                Traducir texto
+            </a>
+        </div>
+
+        <div class="contenido-respuesta">
+        </div>
+
+      </div>
+			
+		</div>
+ </div>

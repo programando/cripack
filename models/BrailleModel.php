@@ -25,8 +25,8 @@
 	 
 	  }
 
-    public function textSavePrinter ( $idtercero, $texto, $max_cara, $max_filas, $cara_1, $cara_1_long, $cara_2, $cara_2_long) {
-			$Registros = $this->Db->Ejecutar_Sp("braile_textos_impresion_crear($idtercero, '$texto', $max_cara, $max_filas, '$cara_1', $cara_1_long, '$cara_2', $cara_2_long )");
+    public function textSavePrinter ( $idtercero, $texto, $max_cara, $max_filas, $cara_1, $cara_1_long, $cara_2, $cara_2_long, $palabraError, $cara) {
+			$Registros = $this->Db->Ejecutar_Sp("braile_textos_impresion_crear($idtercero, '$texto', $max_cara, $max_filas, '$cara_1', $cara_1_long, '$cara_2', $cara_2_long,$palabraError,'$cara' )");
 			return $Registros;
 		}
 
@@ -48,6 +48,22 @@
 				$Registros = $this->Db->Ejecutar_Sp("braile_textos_impresion_simbolos_consulta( $idtercero  )");
 				return $Registros ;
 		}
+
+		public function textosUnicosImpresion ( $Idtercero ) {
+				$Registros = $this->Db->Ejecutar_Sp("braile_impresion_textos_unicos_x_tercero( $Idtercero  )");
+				return $Registros;
+		}
+
+		public function textosPorCara ( $Idtercero, $cara, $texto ) {
+				$Registros                = $this->Db->Ejecutar_Sp("braile_impresion_textos_x_cara( $Idtercero,'$cara','$texto'   )");
+				$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
+				return $Registros;
+		}
+		public function simbolosPorCara ( $id_impresion ) {
+				$Registros                = $this->Db->Ejecutar_Sp("braile_impresion_simbolos( $id_impresion  )");
+				return $Registros;
+		}
+
 
 
   	}
