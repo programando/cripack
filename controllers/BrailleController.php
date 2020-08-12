@@ -31,13 +31,13 @@ class BrailleController extends Controller
         $idtercero      = Session::Get('idtercero');
         $archivo        = $_FILES["brailleFile"];
         $filename       = $archivo["name"];
-        $destination    = $_SERVER['DOCUMENT_ROOT'] . '/public/images/braile/' .$filename ;
+        $destination    = $_SERVER['DOCUMENT_ROOT'] . '/public/files/' .$filename ;
         $resultado = move_uploaded_file( $archivo["tmp_name"],  $destination );
           
         if ($resultado) {
             $this->setParameters            ();
             $this->Braille->textsDelete     ( $idtercero  );
-            $this->brailleFileSave          ( $idtercero, $filename );
+            $this->brailleFileSave          ( $idtercero, $destination );
             $this->distribuirImpresion      ( $idtercero    ) ;
             $this->resultado();
         } else {
