@@ -256,6 +256,8 @@ class Spreadsheet_Excel_Reader
      *
      * Some basic initialisation
      */ 
+
+    //function Spreadsheet_Excel_Reader()
     function __construct()
     {
         $this->_ole =new OLERead();

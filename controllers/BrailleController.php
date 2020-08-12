@@ -28,14 +28,15 @@ class BrailleController extends Controller
 
 
       public function fileStarProccess() {
-        $idtercero     = Session::Get('idtercero');
-        $archivo = $_FILES["brailleFile"];
-        $resultado = move_uploaded_file($archivo["tmp_name"], $archivo["name"]);
-         
+        $idtercero      = Session::Get('idtercero');
+        $archivo        = $_FILES["brailleFile"];
+        $filename       = $archivo["name"];
+        $resultado = move_uploaded_file( $archivo["tmp_name"],  $filename);
+          
         if ($resultado) {
             $this->setParameters            ();
             $this->Braille->textsDelete     ( $idtercero  );
-            $this->brailleFileSave          ( $idtercero, $archivo["name"] );
+            $this->brailleFileSave          ( $idtercero, $filename );
             $this->distribuirImpresion      ( $idtercero    ) ;
             $this->resultado();
         } else {
