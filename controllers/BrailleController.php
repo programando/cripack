@@ -31,7 +31,8 @@ class BrailleController extends Controller
         $idtercero      = Session::Get('idtercero');
         $archivo        = $_FILES["brailleFile"];
         $filename       = $archivo["name"];
-        $resultado = move_uploaded_file( $archivo["tmp_name"],  $filename);
+        $destination    = $_SERVER['DOCUMENT_ROOT'] . '/public/images/brile' .$filename ;
+        $resultado = move_uploaded_file( $archivo["tmp_name"],  $destination );
           
         if ($resultado) {
             $this->setParameters            ();

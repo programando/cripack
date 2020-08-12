@@ -38,3 +38,7 @@
 [12-Aug-2020 21:43:57 UTC] PHP Warning:  move_uploaded_file(): Unable to move 'C:\Users\James\AppData\Local\Temp\phpFD33.tmp' to 'http://cripack.local/public/images/braile/TextoBraile.xls' in D:\Laragon\www\cripack\controllers\BrailleController.php on line 35
 [12-Aug-2020 21:46:00 UTC] PHP Warning:  move_uploaded_file(http://cripack.local/public/images/braile/TextoBraile.xls): failed to open stream: HTTP wrapper does not support writeable connections in D:\Laragon\www\cripack\controllers\BrailleController.php on line 35
 [12-Aug-2020 21:46:00 UTC] PHP Warning:  move_uploaded_file(): Unable to move 'C:\Users\James\AppData\Local\Temp\phpDE3A.tmp' to 'http://cripack.local/public/images/braile/TextoBraile.xls' in D:\Laragon\www\cripack\controllers\BrailleController.php on line 35
+[12-Aug-2020 22:12:27 UTC] PHP Warning:  session_unset() expects exactly 0 parameters, 1 given in D:\Laragon\www\cripack\controllers\IndexController.php on line 20
+[12-Aug-2020 22:12:28 UTC] PHP Warning:  session_unset() expects exactly 0 parameters, 1 given in D:\Laragon\www\cripack\controllers\IndexController.php on line 20
+[12-Aug-2020 22:17:25 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[12-Aug-2020 22:17:25 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
