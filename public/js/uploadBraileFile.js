@@ -86,6 +86,7 @@ function move() {
       }
     }
   }
+  elem.value = "procesando datos... por favor espere...";
 }
 
 function newRecord() {
