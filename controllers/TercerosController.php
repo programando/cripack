@@ -1193,8 +1193,7 @@ public function IntegracionCordinadoraRotuloImprimir( $rsptaBase_64, $nroRemisio
 
 
    public function Ingreso_Sistema_Validaciones(){
-
-      	 Session::Set('logueado',   FALSE);
+       	 Session::Set('logueado',   FALSE);
          $Email                = General_Functions::Validar_Entrada('email','TEXT-EMAIL');
          $Password             = General_Functions::Validar_Entrada('Password','TEXT');
          $Password             = md5($Password );
@@ -1224,10 +1223,8 @@ public function IntegracionCordinadoraRotuloImprimir( $rsptaBase_64, $nroRemisio
               }
 
            }
-
            $Datos            = compact('Resultado_Logueo','Email','DiasSinCompra');
-           echo json_encode($Datos,256);
-
+           echo json_encode($Datos);
      }
 
 		public function Historial($idtercero = 0) {

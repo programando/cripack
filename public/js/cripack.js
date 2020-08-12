@@ -15,19 +15,25 @@ var Mostrar_Mensajes = function( $Titulo, $Contenido ){
      $('#modal_error').modal('show');
 }
 
+$("#btn-ingresar").on('click', function() {
+		var $email 		 = $("#email").val();
+		var $password = $("#password").val();
+		$Parametros 	 = {'email':$email,'Password':$password  } ;
+		Ingresar_Sistema ( $Parametros)
+});
+
 
 //=========================================================================================================
 /// PROCESO DE INGRESO AL SISTEMA   btn-ingresar
 //=========================================================================================================
 var Ingresar_Sistema = function( Parametros ) {
-
 			$.ajax({
 							data:  Parametros,
 							dataType: 'json',
 							url:      '/terceros/Ingreso_Sistema_Validaciones',
-							type:     'post',
-       success:  function ( Respuesta ){
-         console.log(Respuesta);
+              type: 'post',
+
+        success: function (Respuesta) {   
            if ( parseInt(Respuesta.DiasSinCompra) > 180){
             $('#mensaje_inactivo').modal('show');
            }else {
@@ -38,15 +44,13 @@ var Ingresar_Sistema = function( Parametros ) {
          		 			window.location.href = "/terceros/Historial";
          		 }
             }
-      	 	 }
+        },
+            error: function (xhr, textStatus, errorMessage) {
+              console.log("ERROR -> " + errorMessage);
+              console.log(xhr);
+            } 
 				});
 }
-$("#btn-ingresar").on('click', function() {
-		var $email 		 = $("#email").val();
-		var $password = $("#password").val();
-		$Parametros 	 = {'email':$email,'Password':$password  } ;
-		Ingresar_Sistema ( $Parametros)
-});
 
 //=========================================================================================================
 /// FIN PROCESO DE INGRESO			btn-ingresar
