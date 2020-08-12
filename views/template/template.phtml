@@ -30,17 +30,17 @@
 
 
 
-   		<link type="text/css" rel="stylesheet" href="<?=BASE_CSS ;?>cripack.css?<?= $FileVersion ;?>"   />
-        <link type="text/css" rel="stylesheet" href="<?=BASE_CSS ;?>fixion.css?<?= $FileVersion ;?>"   />
-        <link type="text/css" rel="stylesheet" href="<?=BASE_CSS ;?>responsion.css?<?= $FileVersion ;?>"   />
-        <link type="text/css" rel="stylesheet" href="<?=BASE_CSS ;?>bootstrap-select.css?<?= $FileVersion ;?>"   />
+   		<link type="text/css" rel="stylesheet" href="<?=BASE_CSS ;?>cripack.css<?= $FileVersion ;?>"   />
+        <link type="text/css" rel="stylesheet" href="<?=BASE_CSS ;?>fixion.css<?= $FileVersion ;?>"   />
+        <link type="text/css" rel="stylesheet" href="<?=BASE_CSS ;?>responsion.css<?= $FileVersion ;?>"   />
+        <link type="text/css" rel="stylesheet" href="<?=BASE_CSS ;?>bootstrap-select.css<?= $FileVersion ;?>"   />
 
         <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 
         <!-- OCTUBRE 09 DE 2014 -> INCLUSIÓN DE ARCHIVOS CC - REALACIONADOS CON LA VISTA EN PARTUCULAR QUE ESTOY CARGANDO -->
         <?php if( isset($this->Css) && !empty($this->Css) ) : ; ?>
             <?php foreach ($this->Css as $Archivo_Css) : ;?>
-                 <link type="text/css"  rel="stylesheet" href="<?= $Archivo_Css ;?>?<?= $FileVersion ;?>"   />
+                 <link type="text/css"  rel="stylesheet" href="<?= $Archivo_Css ;?><?= $FileVersion ;?>"   />
         	<?php endforeach ;?>
         <?php endif ;?>
     </head>
@@ -62,20 +62,20 @@
         <?php include ( VENTANAS_MODALES .'mensaje_error.php') ;?>
         <?php include ( VENTANAS_MODALES .'mensaje_inactivo.php') ;?>
 
-        <script src ="<?= BASE_JS ; ?>jquery-3.1.0.min.js?<?= $FileVersion ;?>"  type="text/javascript"  >   </script>
-        <script src ="<?= BASE_JS ; ?>bootstrap.min.js?<?= $FileVersion ;?>"     type="text/javascript"  >   </script>
-        <script src ="<?= BASE_JS ; ?>dataTables.min.js?<?= $FileVersion ;?>"    type="text/javascript"  >   </script>
-        <script src ="<?= BASE_JS ; ?>funciones.js?<?= $FileVersion ;?>"         type="text/javascript"  >   </script>
+        <script src ="<?= BASE_JS ; ?>jquery-3.1.0.min.js<?= $FileVersion ;?>"  type="text/javascript"  >   </script>
+        <script src ="<?= BASE_JS ; ?>bootstrap.min.js<?= $FileVersion ;?>"     type="text/javascript"  >   </script>
+        <script src ="<?= BASE_JS ; ?>dataTables.min.js<?= $FileVersion ;?>"    type="text/javascript"  >   </script>
+        <script src ="<?= BASE_JS ; ?>funciones.js<?= $FileVersion ;?>"         type="text/javascript"  >   </script>
         <script src ="<?= BASE_JS ; ?>cripack.js?<?= $FileVersion ;?>"           type="text/javascript"  >   </script>
-        <script src ="<?= BASE_JS ; ?>cripack_tablas.js?<?= $FileVersion ;?>"    type="text/javascript"  >   </script>
-        <script src ="<?= BASE_JS ; ?>bootstrap-select.min.js?<?= $FileVersion ;?>"    type="text/javascript"  >   </script>
+        <script src ="<?= BASE_JS ; ?>cripack_tablas.js<?= $FileVersion ;?>"    type="text/javascript"  >   </script>
+        <script src ="<?= BASE_JS ; ?>bootstrap-select.min.js<?= $FileVersion ;?>"    type="text/javascript"  >   </script>
 
 
     <?php
 		    if(isset($this->Js) && !empty($this->Js)){
     		    foreach ($this->Js as $Archivo_Js){
 	       ?>
-            <script src="<?= $Archivo_Js ;?>?<?= $FileVersion ;?>" type="text/javascript"></script>
+            <script src="<?= $Archivo_Js ;?><?= $FileVersion ;?>" type="text/javascript"></script>
 	       <?php
     		}
 		}
