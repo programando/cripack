@@ -42,3 +42,8 @@
 [12-Aug-2020 22:12:28 UTC] PHP Warning:  session_unset() expects exactly 0 parameters, 1 given in D:\Laragon\www\cripack\controllers\IndexController.php on line 20
 [12-Aug-2020 22:17:25 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
 [12-Aug-2020 22:17:25 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[13-Aug-2020 21:08:20 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[13-Aug-2020 21:08:20 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[13-Aug-2020 21:08:24 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[13-Aug-2020 21:08:53 UTC] PHP Warning:  session_unset() expects exactly 0 parameters, 1 given in D:\Laragon\www\cripack\controllers\IndexController.php on line 20
+[13-Aug-2020 21:08:53 UTC] PHP Warning:  session_unset() expects exactly 0 parameters, 1 given in D:\Laragon\www\cripack\controllers\IndexController.php on line 20

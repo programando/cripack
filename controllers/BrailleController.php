@@ -283,9 +283,9 @@ class BrailleController extends Controller
                                     ? '<td class="border-error td-config"><div class="img-letra-container">' 
                                     : '<td class="td-config"><div class="img-letra-container"> ';
 
-                        $Tabla .= '<div class="imagenes"> <img src="' . $imgUrl.$simbolo['simbolo_1']  .'">';
+                        $Tabla .= '<div class="imagenes"> <img loading="lazy" src="' . $imgUrl.$simbolo['simbolo_1']  .'">';
                         if ( strlen ( $simbolo['simbolo_2'])>0 ) {
-                            $Tabla .= '<img src="' . $imgUrl.$simbolo['simbolo_2'] .'">';
+                            $Tabla .= '<img loading="lazy" src="' . $imgUrl.$simbolo['simbolo_2'] .'">';
                         }
                         $Tabla .= '</div>';
                         $Tabla .= '<div class="contendor-letra"><p class="letra">' . $simbolo['caracter'] .'</p></div>';
