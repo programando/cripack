@@ -4,6 +4,8 @@ views-old
 resources
 .idea
 *.pdf
+*.xls
+*.txt
 public/images/braile
-public/files
+public/files/
 logs/error.txt
