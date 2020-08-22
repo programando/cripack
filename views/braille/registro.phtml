@@ -1,0 +1,74 @@
+<div class="ionix allion" >
+
+	<div class="tabAll">
+    	<div class="tabIn" style="background:url(<?= BASE_URL ; ?>public/images/backRun.jpg); background-size:cover;">
+        	<div class="w500 mAUTO taC p40" style="background:url(public/images/shad.png); background-size:cover;">
+
+                <img src="<?= BASE_URL ; ?>public/images/logo.png" class="mb10" alt="Cripack S.A.S." />
+
+ 
+                <form class=" form-login-braile " id="form-login-braile" name="form-login-braile" method="post" action="">
+                        <div class="colorfff t16 ff0 mb30">
+                            Sistema transcripción Braille - registro de datos  
+                        </div>
+                    <div class="colorfff">
+                        <div class="row t12">
+                            <input type="hidden" value="1" name="Aceptar" />
+                            <div class="col-sm-3 col-xs-12 vcenter taL mb5">
+                                <label>ID / NIT:</label>
+                            </div><!--
+                            --><div class="col-sm-9 col-xs-12 vcenter taL color333 mb5">
+                                <input id="braile-nit" class="w100p p1020" type="text" autofocus required placeholder="Ingrese nit o cédula"><br>
+                            </div>
+
+                            <div class="col-sm-3 col-xs-12 vcenter taL mb5">
+                                <label>Nombre :</label>
+                            </div><!--
+                            --><div class="col-sm-9 col-xs-12 vcenter taL color333 mb5">
+                                <input id="braile-nom"class="w100p p1020" type="text" placeholder="Nombre de la empresa"
+                                ><br>
+                            </div>
+                            <div class ="col-sm-3 col-xs-12 vcenter taL mb5">
+                                <label>Teléfono(s):</label>
+                            </div><!--
+                            --><div class="col-sm-9 col-xs-12 vcenter taL color333 mb5">
+                                <input id ="braile-telefonos" class="w100p p1020" type="text" placeholder="números de teléfono"><br>
+                            </div>
+
+                            <div class="col-sm-3 col-xs-12 vcenter taL mb5">
+                                <label>E-mail 1:</label>
+                            </div><!--
+                            --><div class="col-sm-9 col-xs-12 vcenter taL color333 mb5">
+                                <input id ="braile-email-1" class="w100p p1020" type="text" placeholder="Correo electrónico"><br>
+                            </div>
+ 
+                             <div class="col-sm-3 col-xs-12 vcenter taL mb5">
+                                <label>E-mail 2:</label>
+                            </div><!--
+                            --><div class="col-sm-9 col-xs-12 vcenter taL color333 mb5">
+                                <input id ="braile-email-2" class="w100p p1020" type="text" placeholder="Correo electrónico"><br>
+                            </div>
+
+ 
+                            <div class="col-sm-12 col-xs-12">
+                                <button id="braile-btn-registro" type="button" class="btn btn-block btn-success btn-md btn-login">Registrar Datos</button>
+                            </div>
+
+
+                        </div>
+                        <br>
+                        
+                    </div>
+                </form>
+
+
+
+			</div>
+		</div>
+	</div>
+
+
+    <?php include ( VENTANAS_MODALES .'password_cambiar.php') ;?>
+
+
+</div>

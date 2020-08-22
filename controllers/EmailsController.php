@@ -33,6 +33,28 @@
           return $Respuesta;
       }
 
+      public function braileConfirmacionCuentaCorreo( $email, $codigo_confirmacion ) {
+         /** ENERO 31 DE 2015
+         **  PROCEDIMIENTO PARA RECUPERAR CONTRASEÑA DE USUARIOS
+         */
+
+          $this->Configurar_Cuenta('Confirmación cuenta correo electrónico');
+          $this->Email->AddAddress($email );
+          $enlace              = '<a href=' . BASE_URL .'braille/emailConfirm/'. $codigo_confirmacion .'> Finalizar registro </a>';
+          $Pagina_Correo       = file_get_contents(BASE_EMAILS.'braile_confirma_email.phtml','r');
+          $Pagina_Correo       = str_replace("#_ENLACE_RECUPERA_PASSWORD_#"   , $enlace  ,$Pagina_Correo);
+
+          $this->Email->Body   = $this->Unir_Partes_Correo ($Pagina_Correo );
+
+          if ( $this->Email->Send()) {
+              $this->Email->clearAddresses();
+              $CorreoEnviado ='Ok';
+            }
+            else {
+              $CorreoEnviado='NoOk';
+            }
+            return $CorreoEnviado ;
+      }
 
 
       public function Recuperar_Password( $email ) {

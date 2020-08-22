@@ -3,22 +3,29 @@
   <div class="container-datos-entrada w-full">
 
       <div class="item w-1/2 archivos">
-          <p class='capitalize p-4 mb-3 font-bold text-center text-3xl'> Traducción archivos</p>
-          <p class="p-4" > A través de esta opción, podrá realizar la traducción de textos incluidos en un archivo con las siguientes especicificaciones :</p>
+          <p class='capitalize p-4 mb-3 font-bold text-center text-3xl'> Transcripción archivos</p>
+          <p class="p-4" > A través de esta opción, podrá realizar la transcripción de textos incluidos en un archivo con las siguientes especicificaciones :</p>
             <ol class="pl-2">
-                <li class="py-2">1. El archivo debe estar conformado por 3 columnas: Texto deseado, Largo, Alto</li>
-                <li class="py-2">2. No debe tener título de columnas</li>
-                <li class="py-2">3. Archivo en formato Microsoft Excel</li>
+                <li class="py-2">1. Archivo en formato Microsoft Excel</li>
+                <li class="py-2">2. No debe tener títulos de columnas</li>
+                <li class="py-2">3. El archivo debe estar conformado por 4 columnas: Texto a transcribir, Largo, Alto, Ancho</li>
+                <span class="flex">
+                  <img src="../../public/images/braile/file-example.png" alt="">
+                </span>
             </ol>
-           
-            <div class="flex justify-center mt-20">  
+            <br>
+            <div class="p-2 ml-5 mt-2  inline-block">
+            <small class="">Nota: <br>Los textos que no puedan ser transcritos aparecerán en un recuadro rojo.</small>
+            <small></small><span class="border-error">&nbsp;&nbsp;&nbsp;</span></small>
+            </div>
+            <div class="flex justify-center mt-10">  
                 <div class="pr-10">
                     <input type="file" class="custom-file-input mt-6 mb-8" id="inputFile">
                 </div>
                
                <div  >
                   <button class = "mr-3 float-right bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded mt-3 mb-3" id = "btnEnviar">
-                    Traducir textos del archivo
+                    Trascribir textos del archivo
                   </button> 
               </div>
 
@@ -31,11 +38,11 @@
  
 
         <div class="item w-1/2">
-          <p class="capitalize p-2 mb-3 font-bold text-center text-3xl">  Traduccion palabras o frase</p>
+          <p class=" p-2 mb-3 font-bold text-center text-3xl">  Transcipción palabras o frases</p>
           
             <div class="m-2">
               <label class="text-gray-700 font-bold mb-1 pr-4" for="Texto">
-                Palabras o frase a traducir
+                Palabras o frase a transcribir
               </label>
             </div>
             <div class="m-2">
@@ -80,7 +87,7 @@
 
                         <div>
                   <button class = "mr-3 float-right bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded mt-3 mb-3" id = "btnEnviarTexto">
-                    Traducir texto registrado
+                    Transcribir texto registrado
                   </button> 
               </div>
         </div>

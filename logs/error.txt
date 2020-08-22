@@ -1,49 +1,40 @@
-[12-Aug-2020 21:34:31 UTC] PHP Warning:  session_unset() expects exactly 0 parameters, 1 given in D:\Laragon\www\cripack\controllers\IndexController.php on line 20
-[12-Aug-2020 21:34:31 UTC] PHP Warning:  session_unset() expects exactly 0 parameters, 1 given in D:\Laragon\www\cripack\controllers\IndexController.php on line 20
-[12-Aug-2020 21:34:36 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[12-Aug-2020 21:34:36 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[12-Aug-2020 21:34:39 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[12-Aug-2020 21:34:45 UTC] PHP Warning:  move_uploaded_file(http://cripack.local/public/images/TextoBraile.xls): failed to open stream: HTTP wrapper does not support writeable connections in D:\Laragon\www\cripack\controllers\BrailleController.php on line 34
-[12-Aug-2020 21:34:45 UTC] PHP Warning:  move_uploaded_file(): Unable to move 'C:\Users\James\AppData\Local\Temp\php90B5.tmp' to 'http://cripack.local/public/images/TextoBraile.xls' in D:\Laragon\www\cripack\controllers\BrailleController.php on line 34
-[12-Aug-2020 21:35:18 UTC] PHP Warning:  move_uploaded_file(http://cripack.local/public/images/TextoBraile.xls): failed to open stream: HTTP wrapper does not support writeable connections in D:\Laragon\www\cripack\controllers\BrailleController.php on line 34
-[12-Aug-2020 21:35:18 UTC] PHP Warning:  move_uploaded_file(): Unable to move 'C:\Users\James\AppData\Local\Temp\php12F6.tmp' to 'http://cripack.local/public/images/TextoBraile.xls' in D:\Laragon\www\cripack\controllers\BrailleController.php on line 34
-[12-Aug-2020 21:36:11 UTC] PHP Warning:  move_uploaded_file(http://cripack.local/public/images/TextoBraile.xls): failed to open stream: HTTP wrapper does not support writeable connections in D:\Laragon\www\cripack\controllers\BrailleController.php on line 34
-[12-Aug-2020 21:36:11 UTC] PHP Warning:  move_uploaded_file(): Unable to move 'C:\Users\James\AppData\Local\Temp\phpE192.tmp' to 'http://cripack.local/public/images/TextoBraile.xls' in D:\Laragon\www\cripack\controllers\BrailleController.php on line 34
-[12-Aug-2020 21:38:49 UTC] PHP Warning:  move_uploaded_file(/public/images//TextoBraile.xls): failed to open stream: No such file or directory in D:\Laragon\www\cripack\controllers\BrailleController.php on line 35
-[12-Aug-2020 21:38:49 UTC] PHP Warning:  move_uploaded_file(): Unable to move 'C:\Users\James\AppData\Local\Temp\php4C69.tmp' to '/public/images//TextoBraile.xls' in D:\Laragon\www\cripack\controllers\BrailleController.php on line 35
-[12-Aug-2020 21:38:50 UTC] PHP Warning:  move_uploaded_file(/public/images//TextoBraile.xls): failed to open stream: No such file or directory in D:\Laragon\www\cripack\controllers\BrailleController.php on line 35
-[12-Aug-2020 21:38:50 UTC] PHP Warning:  move_uploaded_file(): Unable to move 'C:\Users\James\AppData\Local\Temp\php50DE.tmp' to '/public/images//TextoBraile.xls' in D:\Laragon\www\cripack\controllers\BrailleController.php on line 35
-[12-Aug-2020 21:38:51 UTC] PHP Warning:  move_uploaded_file(/public/images//TextoBraile.xls): failed to open stream: No such file or directory in D:\Laragon\www\cripack\controllers\BrailleController.php on line 35
-[12-Aug-2020 21:38:51 UTC] PHP Warning:  move_uploaded_file(): Unable to move 'C:\Users\James\AppData\Local\Temp\php53ED.tmp' to '/public/images//TextoBraile.xls' in D:\Laragon\www\cripack\controllers\BrailleController.php on line 35
-[12-Aug-2020 21:38:52 UTC] PHP Warning:  move_uploaded_file(/public/images//TextoBraile.xls): failed to open stream: No such file or directory in D:\Laragon\www\cripack\controllers\BrailleController.php on line 35
-[12-Aug-2020 21:38:52 UTC] PHP Warning:  move_uploaded_file(): Unable to move 'C:\Users\James\AppData\Local\Temp\php567E.tmp' to '/public/images//TextoBraile.xls' in D:\Laragon\www\cripack\controllers\BrailleController.php on line 35
-[12-Aug-2020 21:39:13 UTC] PHP Warning:  move_uploaded_file(/public/images/TextoBraile.xls): failed to open stream: No such file or directory in D:\Laragon\www\cripack\controllers\BrailleController.php on line 35
-[12-Aug-2020 21:39:13 UTC] PHP Warning:  move_uploaded_file(): Unable to move 'C:\Users\James\AppData\Local\Temp\phpA962.tmp' to '/public/images/TextoBraile.xls' in D:\Laragon\www\cripack\controllers\BrailleController.php on line 35
-[12-Aug-2020 21:39:35 UTC] PHP Warning:  move_uploaded_file(http://cripack.local/public/images/TextoBraile.xls): failed to open stream: HTTP wrapper does not support writeable connections in D:\Laragon\www\cripack\controllers\BrailleController.php on line 35
-[12-Aug-2020 21:39:35 UTC] PHP Warning:  move_uploaded_file(): Unable to move 'C:\Users\James\AppData\Local\Temp\phpFDEB.tmp' to 'http://cripack.local/public/images/TextoBraile.xls' in D:\Laragon\www\cripack\controllers\BrailleController.php on line 35
-[12-Aug-2020 21:39:53 UTC] PHP Warning:  move_uploaded_file(http://cripack.local/public/images/braile//TextoBraile.xls): failed to open stream: HTTP wrapper does not support writeable connections in D:\Laragon\www\cripack\controllers\BrailleController.php on line 35
-[12-Aug-2020 21:39:53 UTC] PHP Warning:  move_uploaded_file(): Unable to move 'C:\Users\James\AppData\Local\Temp\php44AA.tmp' to 'http://cripack.local/public/images/braile//TextoBraile.xls' in D:\Laragon\www\cripack\controllers\BrailleController.php on line 35
-[12-Aug-2020 21:39:59 UTC] PHP Warning:  move_uploaded_file(http://cripack.local/public/images/braile/TextoBraile.xls): failed to open stream: HTTP wrapper does not support writeable connections in D:\Laragon\www\cripack\controllers\BrailleController.php on line 35
-[12-Aug-2020 21:39:59 UTC] PHP Warning:  move_uploaded_file(): Unable to move 'C:\Users\James\AppData\Local\Temp\php5B7E.tmp' to 'http://cripack.local/public/images/braile/TextoBraile.xls' in D:\Laragon\www\cripack\controllers\BrailleController.php on line 35
-[12-Aug-2020 21:40:36 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[12-Aug-2020 21:42:27 UTC] PHP Warning:  move_uploaded_file(http://cripack.local/public/images/braile/TextoBraile.xls): failed to open stream: HTTP wrapper does not support writeable connections in D:\Laragon\www\cripack\controllers\BrailleController.php on line 35
-[12-Aug-2020 21:42:27 UTC] PHP Warning:  move_uploaded_file(): Unable to move 'C:\Users\James\AppData\Local\Temp\phpA08D.tmp' to 'http://cripack.local/public/images/braile/TextoBraile.xls' in D:\Laragon\www\cripack\controllers\BrailleController.php on line 35
-[12-Aug-2020 21:42:34 UTC] PHP Warning:  move_uploaded_file(http://cripack.local/public/images/braile/TextoBraile.xls): failed to open stream: HTTP wrapper does not support writeable connections in D:\Laragon\www\cripack\controllers\BrailleController.php on line 35
-[12-Aug-2020 21:42:34 UTC] PHP Warning:  move_uploaded_file(): Unable to move 'C:\Users\James\AppData\Local\Temp\phpBA12.tmp' to 'http://cripack.local/public/images/braile/TextoBraile.xls' in D:\Laragon\www\cripack\controllers\BrailleController.php on line 35
-[12-Aug-2020 21:43:10 UTC] PHP Warning:  move_uploaded_file(http://cripack.local/public/images/braile/TextoBraile.xls): failed to open stream: HTTP wrapper does not support writeable connections in D:\Laragon\www\cripack\controllers\BrailleController.php on line 35
-[12-Aug-2020 21:43:10 UTC] PHP Warning:  move_uploaded_file(): Unable to move 'C:\Users\James\AppData\Local\Temp\php451C.tmp' to 'http://cripack.local/public/images/braile/TextoBraile.xls' in D:\Laragon\www\cripack\controllers\BrailleController.php on line 35
-[12-Aug-2020 21:43:56 UTC] PHP Warning:  move_uploaded_file(http://cripack.local/public/images/braile/TextoBraile.xls): failed to open stream: HTTP wrapper does not support writeable connections in D:\Laragon\www\cripack\controllers\BrailleController.php on line 35
-[12-Aug-2020 21:43:56 UTC] PHP Warning:  move_uploaded_file(): Unable to move 'C:\Users\James\AppData\Local\Temp\phpF9C7.tmp' to 'http://cripack.local/public/images/braile/TextoBraile.xls' in D:\Laragon\www\cripack\controllers\BrailleController.php on line 35
-[12-Aug-2020 21:43:57 UTC] PHP Warning:  move_uploaded_file(http://cripack.local/public/images/braile/TextoBraile.xls): failed to open stream: HTTP wrapper does not support writeable connections in D:\Laragon\www\cripack\controllers\BrailleController.php on line 35
-[12-Aug-2020 21:43:57 UTC] PHP Warning:  move_uploaded_file(): Unable to move 'C:\Users\James\AppData\Local\Temp\phpFD33.tmp' to 'http://cripack.local/public/images/braile/TextoBraile.xls' in D:\Laragon\www\cripack\controllers\BrailleController.php on line 35
-[12-Aug-2020 21:46:00 UTC] PHP Warning:  move_uploaded_file(http://cripack.local/public/images/braile/TextoBraile.xls): failed to open stream: HTTP wrapper does not support writeable connections in D:\Laragon\www\cripack\controllers\BrailleController.php on line 35
-[12-Aug-2020 21:46:00 UTC] PHP Warning:  move_uploaded_file(): Unable to move 'C:\Users\James\AppData\Local\Temp\phpDE3A.tmp' to 'http://cripack.local/public/images/braile/TextoBraile.xls' in D:\Laragon\www\cripack\controllers\BrailleController.php on line 35
-[12-Aug-2020 22:12:27 UTC] PHP Warning:  session_unset() expects exactly 0 parameters, 1 given in D:\Laragon\www\cripack\controllers\IndexController.php on line 20
-[12-Aug-2020 22:12:28 UTC] PHP Warning:  session_unset() expects exactly 0 parameters, 1 given in D:\Laragon\www\cripack\controllers\IndexController.php on line 20
-[12-Aug-2020 22:17:25 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[12-Aug-2020 22:17:25 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[13-Aug-2020 21:08:20 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[13-Aug-2020 21:08:20 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[13-Aug-2020 21:08:24 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[13-Aug-2020 21:08:53 UTC] PHP Warning:  session_unset() expects exactly 0 parameters, 1 given in D:\Laragon\www\cripack\controllers\IndexController.php on line 20
-[13-Aug-2020 21:08:53 UTC] PHP Warning:  session_unset() expects exactly 0 parameters, 1 given in D:\Laragon\www\cripack\controllers\IndexController.php on line 20
+[21-Aug-2020 21:33:05 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[21-Aug-2020 21:33:11 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[21-Aug-2020 21:35:08 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[21-Aug-2020 21:35:08 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[21-Aug-2020 21:45:49 UTC] PHP Warning:  session_unset() expects exactly 0 parameters, 1 given in D:\Laragon\www\cripack\controllers\IndexController.php on line 20
+[21-Aug-2020 21:45:49 UTC] PHP Warning:  session_unset() expects exactly 0 parameters, 1 given in D:\Laragon\www\cripack\controllers\IndexController.php on line 20
+[21-Aug-2020 21:45:50 UTC] PHP Warning:  session_unset() expects exactly 0 parameters, 1 given in D:\Laragon\www\cripack\controllers\IndexController.php on line 20
+[22-Aug-2020 00:52:15 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[22-Aug-2020 00:52:15 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[22-Aug-2020 00:52:20 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[22-Aug-2020 00:52:20 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[22-Aug-2020 00:52:24 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[22-Aug-2020 00:52:24 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[22-Aug-2020 00:52:29 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[22-Aug-2020 00:55:30 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[22-Aug-2020 01:04:42 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[22-Aug-2020 01:04:47 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[22-Aug-2020 01:05:41 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[22-Aug-2020 01:05:46 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[22-Aug-2020 01:07:27 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[22-Aug-2020 01:07:32 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[22-Aug-2020 01:08:26 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[22-Aug-2020 01:08:31 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[22-Aug-2020 01:09:31 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[22-Aug-2020 01:09:35 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[22-Aug-2020 01:10:33 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[22-Aug-2020 01:10:37 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[22-Aug-2020 01:11:19 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[22-Aug-2020 01:11:25 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[22-Aug-2020 01:11:56 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[22-Aug-2020 01:12:01 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[22-Aug-2020 01:12:18 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[22-Aug-2020 01:12:22 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[22-Aug-2020 01:26:57 UTC] PHP Warning:  session_unset() expects exactly 0 parameters, 1 given in D:\Laragon\www\cripack\controllers\IndexController.php on line 20
+[22-Aug-2020 01:26:58 UTC] PHP Warning:  session_unset() expects exactly 0 parameters, 1 given in D:\Laragon\www\cripack\controllers\IndexController.php on line 20
+[22-Aug-2020 01:28:07 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[22-Aug-2020 01:28:07 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[22-Aug-2020 01:28:10 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[22-Aug-2020 01:28:10 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[22-Aug-2020 01:28:15 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45

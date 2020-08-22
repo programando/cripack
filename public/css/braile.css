@@ -48,7 +48,7 @@
 
   table {
       
-      width: 70%;
+      width: 95%;
       border-collapse: collapse;
   }
   th {
@@ -63,7 +63,6 @@
 
 td {
       text-align: center;
-      ;
       padding: 5px 10px;  
       margin: 3px;
 }
@@ -71,10 +70,12 @@ td {
        display: inline-block;
       text-align: center;
       width: auto !important;
+      padding: 0px !important;
+     
   }
 
 .cara {
-    width : 10%;
+    width : 5%;
     font-weight: 600;
     font-size: 14px;
     border: 0.5px solid #999
@@ -94,6 +95,8 @@ td {
     display:flex;
     flex: 1;
     justify-content: center;
+    border:none !important;
+    outline: none !important;
    
 }
 
@@ -128,3 +131,7 @@ td {
   height: 30px;
   background-color: green;
 }
+
+img {
+  border-style: none !important;
+  }

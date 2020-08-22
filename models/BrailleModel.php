@@ -9,6 +9,29 @@
 
 				public function Index(  ) { }
 
+			public function tokenConfirm ( $Token ) {
+					$Registros = $this->Db->Ejecutar_Sp("terceros_braille_token_confirm( '$Token ' )");
+					$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
+					return $Registros;			
+			}
+
+			public function tercerosNewRecord( $_identificacion, $_nombre, $_telefonos, $_email_1, $_email_2, $_token) {
+					$Registros = $this->Db->Ejecutar_Sp("terceros_braille_crear('$_identificacion', '$_nombre', '$_telefonos','$_email_1','$_email_2','$_token'  )");
+			}
+
+			public function tercerosBuscarNit( $nit ){
+					$Registros = $this->Db->Ejecutar_Sp("terceros_braile_buscar_x_nit( '$nit' )");
+					$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
+					return $Registros;
+			}
+
+			public function tercerosClienteBuscarNit( $nit ){
+					$Registros = $this->Db->Ejecutar_Sp("terceros_braile_buscar_cliente_x_nit( '$nit' )");
+					$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
+					return $Registros;
+			}
+
+
 				public function textsDelete( $Idtercero )	{
 						$Registros = $this->Db->Ejecutar_Sp("braille_textos_borrar($Idtercero  )");
 				}

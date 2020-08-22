@@ -14,18 +14,82 @@ class BrailleController extends Controller
  
     public function __construct()  {
         parent::__construct();
-        $this->IdTercero  =  Session::Get('idtercero');
-        $this->Braille  = $this->Load_Model('Braille');
-        $this->Email    = $this->Load_External_Library('Excel/reader');
+        $this->IdTercero = Session::Get('idtercero');
+        $this->Braille   = $this->Load_Model('Braille');
+        $this->Emails    = $this->Load_Controller('Emails');
+        $this->Excel     = $this->Load_External_Library('Excel/reader');
         $this->reservarSimbolos();
     
     }
-   		public function index() {
-          $this->View->SetJs(array('uploadBraileFile'));
-           $this->View->SetCss(array('braile'));
+        public function index(){}
+
+        public function login() {
+            $this->View->Mostrar_Vista('login');
+        }
+
+        public function registro(){
+           $this->View->SetJs(array('braileRegistro'));
+           $this->View->Mostrar_Vista('registro');
+        }
+
+        public function newRegistro() {
+            $identificacion = General_Functions::Validar_Entrada('identificacion','TEXT');
+            $nombre         = General_Functions::Validar_Entrada('nombre','TEXT');
+            $telefonos      = General_Functions::Validar_Entrada('telefonos','TEXT');
+            $email_1        = General_Functions::Validar_Entrada('email_1','TEXT');
+            $email_2        = General_Functions::Validar_Entrada('email_2','TEXT');
+            $token          = sha1(time());
+            $this->Braille->tercerosNewRecord ( $identificacion, $nombre, $telefonos, $email_1, $email_2,   $token  );
+            $this->Emails->braileConfirmacionCuentaCorreo ($email_1 , $token);
+            $respuestas = compact("token" );
+            echo json_encode( $respuestas );
+        }
+
+        public function emailConfirm( $token ) {
+            $Registro = $this->Braille->tokenConfirm ($token )    ;
+            if ( $this->Braille->Cantidad_Registros > 0 )  {
+                 $this->setUsuarioLogueado (  $Registro[0]['id'], $Registro[0]['nombre'], $Registro[0]['email_1'], $Registro[0]['identificacion']) ;
+                 $this->View->Mostrar_Vista('login');
+            }
+        }
+ 
+               
+ 
+
+        public function terceroRegistrado( ) {
+            $existe    = false;
+            $esCliente = false;
+            $nit       = General_Functions::Validar_Entrada('nit','TEXT');
+            $existe    = $this->Braille->tercerosBuscarNit($nit );
+            if ( !$existe ) {
+                $esCliente = $this->Braille->tercerosClienteBuscarNit($nit );
+            }
+
+            if (!$existe     ) {
+                $existe    = false;
+            }else {
+                $this->setUsuarioLogueado (  $existe[0]['id'], $existe[0]['nombre'], $existe[0]['email_1'], $existe[0]['identificacion']) ;
+            }
+            if (!$esCliente  ) $esCliente = false;
+
+            $respuestas = compact("existe","esCliente" );
+            echo json_encode( $respuestas );
+        }
+
+   		public function ingreso() {         
+          $this->View->SetJs(array('braileUploadFileText'));
+          $this->View->SetCss(array('braile'));
 	      $this->View->Mostrar_Vista('braille');
 	    }
 
+      private function setUsuarioLogueado ( $id, $nombre, $email, $identificacion) {
+            Session::Set('logueado',   TRUE);
+            Session::Set('idtercero',        $id) ;
+            Session::Set('nomtercero',       $nombre ) ;
+            Session::Set('email'        ,    $email);
+            Session::Set('identificacion',   $identificacion) ;
+            Session::Set('usuario-braile',   TRUE ) ;
+      }
 
       public function fileStarProccess() {
         $idtercero      = Session::Get('idtercero');
@@ -328,23 +392,23 @@ class BrailleController extends Controller
 
     private function caracterEsEspacio ( $caraterBusqueda ) {
         if ( $caraterBusqueda == ' ') {
-            $this->imgBraile_1 = 'espacio.jpg';
+            $this->imgBraile_1 = 'espacio.png';
             $this->SimboloExcepcion = true;
         }
     }
 
     private function caracterEsSignoPesos ( $caraterBusqueda ) {
         if ( $caraterBusqueda == '$') {
-            $this->imgBraile_1 = 'Sim047.jpg';
-            $this->imgBraile_2 = 'Sim041.jpg';
+            $this->imgBraile_1 = 'moneda1.png';
+            $this->imgBraile_2 = 'moneda2.png';
             $this->SimboloExcepcion = true;
         }
     }
 
     private function caracterEsPorcentaje ( $caraterBusqueda ) {
         if ( $caraterBusqueda == '%') {
-            $this->imgBraile_1 = 'Sim047.jpg';
-            $this->imgBraile_2 = 'Sim042B.jpg';
+            $this->imgBraile_1 = 'porcentaje1.png';
+            $this->imgBraile_2 = 'porcentaje2.png';
             $this->SimboloExcepcion = true;
         }
     }
@@ -359,24 +423,24 @@ class BrailleController extends Controller
 
     private function caracterEsLlaveCierre ( $caraterBusqueda ) {
         if ( $caraterBusqueda == '{') {
-            $this->imgBraile_1 = 'Sim047.jpg';
-            $this->imgBraile_2 = 'Sim044.jpg';
+            $this->imgBraile_1 = 'corcheteIzq1.png';
+            $this->imgBraile_2 = 'corcheteIzq2.png';
             $this->SimboloExcepcion = true;
         }
     }
 
     private function caracterEsBackSlash ( $caraterBusqueda ) {
         if ( $caraterBusqueda == '\\') {
-            $this->imgBraile_1 = 'Sim044.jpg';
-            $this->imgBraile_2 = 'Sim053.jpg';
+            $this->imgBraile_1 = 'barra invertida1';
+            $this->imgBraile_2 = 'barra invertida 2.png';
             $this->$this->$SimboloExcepcion = true;
         }
     }
 
    private function caracterEsSignoEuros ( $caraterBusqueda ) {
         if ( $caraterBusqueda == '€') {
-            $this->imgBraile_1 = 'Sim047.jpg';
-            $this->imgBraile_2 = 'Sim005.jpg';
+            $this->imgBraile_1 = 'euro1.png';
+            $this->imgBraile_2 = 'euro1.png';
             $this->$this->$SimboloExcepcion = true;
         }
     }
