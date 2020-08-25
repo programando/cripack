@@ -6,7 +6,7 @@ resources
 *.pdf
 *.xls
 *.txt
+public/files/
 public/images/braile
 public/images/braile/TextoBraile.xls
-public/files/
 logs/error.txt

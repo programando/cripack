@@ -110,7 +110,7 @@ class BrailleController extends Controller
             $this->resultado();
             $this->Braille->updateConteoTranscripciones  (  ) ;
         } else {
-            echo "Error al subir archivo";
+            echo "Error al subir archivo.";
         }
       }
 
