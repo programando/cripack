@@ -137,9 +137,9 @@ class BrailleController extends Controller
             $caja_alto  = $data->sheets[0]['cells'][$i][4] ;
  
             //$max_cara   = $data->sheets[0]['cells'][$i][5] ;
-            //$max_filas  = $data->sheets[0]['cells'][$i][6] ;
+            //$max_filas  = $data->sheets[0]['cells'][$i][6] ; $texto =  ;
             if ( strlen ( $texto )> 0) {
-                $this->saveText ( $idtercero, $texto , $caja_largo, $caja_ancho, $caja_alto );  
+                $this->saveText ( $idtercero, utf8_encode( $texto) , $caja_largo, $caja_ancho, $caja_alto );  
             }
            
         }
@@ -149,8 +149,6 @@ class BrailleController extends Controller
           $texto    =  General_Functions::Validar_Entrada('Texto','TEXT'); 
           $largo    =  General_Functions::Validar_Entrada('Largo','NUM');
           $alto     =  General_Functions::Validar_Entrada('Alto','NUM');
-          $textArray = explode("," ,$_POST['TextArray']);
-          //Debug::Mostrar ($textArray );
           if ( empty($texto )  || empty($largo ) || empty($alto)) {
               echo "Error!";
               return ;
@@ -167,7 +165,9 @@ class BrailleController extends Controller
       }
 
       public function saveText( $idtercero, $texto , $caja_largo, $caja_ancho, $caja_alto ) {  
-          
+            
+            
+             
             //, $max_cara, $max_filas
              $caracteres = strlen ( $texto );
              $espacios   = substr_count ($texto, ' ' );
@@ -278,10 +278,6 @@ class BrailleController extends Controller
     private function depurarArray( &$datos  ){
         unset($datos[0] );
         return array_values ( $datos  );
-
-        /*                     unset($Frase[$pos] );
-                    $Frase = array_values ( $Frase  ); */
-
     }
 
     private function grabarCaras ($idtercero, $texto, $Filas = array(), $MaxCara, $MaxFilas) {  
@@ -352,7 +348,9 @@ class BrailleController extends Controller
                 $Tabla .= '<tr>';
                 if ( $Fila == 1 ) {
                     $Tabla  .=  '<td class="cara" rowspan='. $this->Braille->Cantidad_Registros.'>' .'CARA ' .$CaraImprimir .' 
-                    <br><br><small> Longitud<br> máxima<br>' . $ImprimirTexto['LongMayor'].' <br>caracteres por fila </small> </td>';
+                    <br><br><small> MC : ' . $ImprimirTexto['LongMayor'].'   </small> 
+                    <br><br><small> MF : ' . $ImprimirTexto['max_filas'].'   </small> 
+                    </td>';
                     $Fila = 2;
                 }
                 $simbolos = $this->Braille->simbolosPorCara ( $ImprimirTexto['id_impresion']) ;
