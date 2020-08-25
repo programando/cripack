@@ -17,7 +17,7 @@ if (btnIngresar != null) {
               type:     'post',
               success: function (response) {
                 if (response.existe) {
-                  alert(response.registroBloqueado);
+                  console.log(response);
                   if (response.registroBloqueado === false) {
                         window.location.href = "/braille/ingreso";
                   } else {
