@@ -70,8 +70,10 @@ class BrailleController extends Controller
                 $registroBloqueado = false;
             }else {
                 $this->setUsuarioLogueado (  $existe[0]['id'], $existe[0]['nombre'], $existe[0]['email_1'], $existe[0]['identificacion']) ;
-                $conteo_trnscrpcion = $existe[0]['conteo_trnscrpcion'];
-                if ( $conteo_trnscrpcion > 10 ) $registroBloqueado = true;
+                $conteo_trnscrpcion         = $existe[0]['conteo_trnscrpcion'];
+                if ( $conteo_trnscrpcion > 10 ) {
+                    $registroBloqueado = true;
+                }
             }
             if (!$esCliente  )    $esCliente = false;
                  

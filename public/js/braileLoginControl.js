@@ -17,13 +17,14 @@ if (btnIngresar != null) {
               type:     'post',
               success: function (response) {
                 if (response.existe) {
-                  if (response.registroBloqueado == false) {
-                    window.location.href = "/braille/ingreso";
+                  alert(response.registroBloqueado);
+                  if (response.registroBloqueado === false) {
+                        window.location.href = "/braille/ingreso";
                   } else {
                     Mostrar_Mensajes('INFORMACIÓN', 'Se ha completado la cantidad permitada de pruebas. Comuníquese con CRIPACK para modificar sus registros.');
                   }
-                  
                 }
+
                 if (response.esCliente == false && response.existe == false) {
                     window.location.href = "/braille/registro";
                 }
