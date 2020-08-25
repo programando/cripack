@@ -97,13 +97,15 @@ td {
     justify-content: center;
     border:none !important;
     outline: none !important;
+    margin: 0px;
+    padding: 0px;
    
 }
 
 .contendor-letra{
-  display: block;
-  float:right;
-  margin-right: 5px;
+  display: inline-block;
+   
+  margin: 0px;
 }
 .letra {
     display: inline;
@@ -134,4 +136,6 @@ td {
 
 img {
   border-style: none !important;
+      margin: 0px;
+    padding: 0px;
   }

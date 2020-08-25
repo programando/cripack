@@ -33,11 +33,13 @@ btnEnviarTexto.addEventListener("click", () => {
      let Texto = document.querySelector("#Texto").value;
      let Largo = document.querySelector("#Largo").value;
      let Alto  = document.querySelector("#Alto").value;
-    
+   
     let formData = new FormData();
     formData.append('Texto', Texto);
     formData.append('Largo', Largo);
     formData.append('Alto', Alto);
+    formData.append('TextArray', Texto.split(""));
+
 
     fetch("/braille/textTraslate", {
         method: 'POST',

@@ -1,40 +1,5 @@
-[21-Aug-2020 21:33:05 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[21-Aug-2020 21:33:11 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[21-Aug-2020 21:35:08 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[21-Aug-2020 21:35:08 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[21-Aug-2020 21:45:49 UTC] PHP Warning:  session_unset() expects exactly 0 parameters, 1 given in D:\Laragon\www\cripack\controllers\IndexController.php on line 20
-[21-Aug-2020 21:45:49 UTC] PHP Warning:  session_unset() expects exactly 0 parameters, 1 given in D:\Laragon\www\cripack\controllers\IndexController.php on line 20
-[21-Aug-2020 21:45:50 UTC] PHP Warning:  session_unset() expects exactly 0 parameters, 1 given in D:\Laragon\www\cripack\controllers\IndexController.php on line 20
-[22-Aug-2020 00:52:15 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[22-Aug-2020 00:52:15 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[22-Aug-2020 00:52:20 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[22-Aug-2020 00:52:20 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[22-Aug-2020 00:52:24 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[22-Aug-2020 00:52:24 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[22-Aug-2020 00:52:29 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[22-Aug-2020 00:55:30 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[22-Aug-2020 01:04:42 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[22-Aug-2020 01:04:47 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[22-Aug-2020 01:05:41 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[22-Aug-2020 01:05:46 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[22-Aug-2020 01:07:27 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[22-Aug-2020 01:07:32 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[22-Aug-2020 01:08:26 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[22-Aug-2020 01:08:31 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[22-Aug-2020 01:09:31 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[22-Aug-2020 01:09:35 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[22-Aug-2020 01:10:33 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[22-Aug-2020 01:10:37 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[22-Aug-2020 01:11:19 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[22-Aug-2020 01:11:25 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[22-Aug-2020 01:11:56 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[22-Aug-2020 01:12:01 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[22-Aug-2020 01:12:18 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[22-Aug-2020 01:12:22 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[22-Aug-2020 01:26:57 UTC] PHP Warning:  session_unset() expects exactly 0 parameters, 1 given in D:\Laragon\www\cripack\controllers\IndexController.php on line 20
-[22-Aug-2020 01:26:58 UTC] PHP Warning:  session_unset() expects exactly 0 parameters, 1 given in D:\Laragon\www\cripack\controllers\IndexController.php on line 20
-[22-Aug-2020 01:28:07 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[22-Aug-2020 01:28:07 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[22-Aug-2020 01:28:10 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[22-Aug-2020 01:28:10 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[22-Aug-2020 01:28:15 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[25-Aug-2020 13:30:30 UTC] PHP Warning:  session_unset() expects exactly 0 parameters, 1 given in D:\Laragon\www\cripack\controllers\IndexController.php on line 20
+[25-Aug-2020 13:30:31 UTC] PHP Warning:  session_unset() expects exactly 0 parameters, 1 given in D:\Laragon\www\cripack\controllers\IndexController.php on line 20
+[25-Aug-2020 13:30:35 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[25-Aug-2020 13:30:36 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[25-Aug-2020 13:30:38 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45

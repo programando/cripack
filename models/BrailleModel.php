@@ -9,6 +9,12 @@
 
 				public function Index(  ) { }
 
+
+			public function updateConteoTranscripciones ( ) {
+				$identificacion = Session::Get('identificacion');
+				$this->Db->Ejecutar_Sp("terceros_braile_upd_conteo_transcripcion( '$identificacion' )");
+			}
+
 			public function tokenConfirm ( $Token ) {
 					$Registros = $this->Db->Ejecutar_Sp("terceros_braille_token_confirm( '$Token ' )");
 					$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
