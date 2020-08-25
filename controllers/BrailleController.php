@@ -56,18 +56,19 @@ class BrailleController extends Controller
     
 
         public function terceroRegistrado( ) {
-            $existe    = false;
-            $esCliente = false;
-            $nit       = General_Functions::Validar_Entrada('nit','TEXT');
-            $existe    = $this->Braille->tercerosBuscarNit($nit );
+            $existe             = false;
+            $esCliente          = false;
+            $registroBloqueado  = false;
+            $conteo_trnscrpcion = 0;
+            $nit                = General_Functions::Validar_Entrada('nit','TEXT');
+            $existe             = $this->Braille->tercerosBuscarNit($nit );
+
             if ( !$existe ) {
                 $esCliente = $this->Braille->tercerosClienteBuscarNit($nit );
             }
 
             if (!$existe     ) {
                 $existe    = false;
-                $conteo_trnscrpcion =0 ;
-                $registroBloqueado = false;
             }else {
                 $this->setUsuarioLogueado (  $existe[0]['id'], $existe[0]['nombre'], $existe[0]['email_1'], $existe[0]['identificacion']) ;
                 $conteo_trnscrpcion         = $existe[0]['conteo_trnscrpcion'];
