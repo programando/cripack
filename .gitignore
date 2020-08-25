@@ -7,5 +7,6 @@ resources
 *.xls
 *.txt
 public/images/braile
+public/images/braile/TextoBraile.xls
 public/files/
 logs/error.txt
