@@ -16,6 +16,7 @@ if (btnIngresar != null) {
               url:      '/braille/terceroRegistrado/',
               type:     'post',
               success: function (response) {
+                console.log( response)
                 if (response.existe) {
                   if (response.registroBloqueado === false) {
                         window.location.href = "/braille/ingreso";

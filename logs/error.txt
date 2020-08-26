@@ -1,261 +1,51 @@
-[25-Aug-2020 18:35:27 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 18:35:35 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 18:36:19 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 18:36:24 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 18:36:24 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetchall() on boolean in D:\Laragon\www\cripack\application\Database.php:33
-Stack trace:
-#0 D:\Laragon\www\cripack\models\BrailleModel.php(53): Database->Ejecutar_Sp('braille_textos_...')
-#1 D:\Laragon\www\cripack\controllers\BrailleController.php(227): BrailleModel->textSave('16', 'bue\xF1as tardes', '36', 0, '78', 13, 1, 2, 5, 5, 0, 0, 0, 0, 0, 0, 0, 5, 5, 0, 0, 0, 0, 0, 0, 0, 2, 3, 10, 20, 30, 1.3, 2, 1, 1, 1, 1, 10, 10, 10, 1.3, 2, 2, 2, 10, 3)
-#2 D:\Laragon\www\cripack\controllers\BrailleController.php(142): BrailleController->saveText('16', 'bue\xF1as tardes', '36', 0, '78')
-#3 D:\Laragon\www\cripack\controllers\BrailleController.php(111): BrailleController->brailleFileSave('16', 'D:/Laragon/www/...')
-#4 D:\Laragon\www\cripack\application\Bootstrap.php(32): BrailleController->fileStarProccess()
-#5 D:\Laragon\www\cripack\index.php(19): Bootstrap::Run(Object(Request))
-#6 {main}
-  thrown in D:\Laragon\www\cripack\application\Database.php on line 33
-[25-Aug-2020 18:36:50 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 18:36:50 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetchall() on boolean in D:\Laragon\www\cripack\application\Database.php:33
-Stack trace:
-#0 D:\Laragon\www\cripack\models\BrailleModel.php(53): Database->Ejecutar_Sp('braille_textos_...')
-#1 D:\Laragon\www\cripack\controllers\BrailleController.php(227): BrailleModel->textSave('16', 'bue\xF1as tardes', '36', 0, '78', 13, 1, 2, 5, 5, 0, 0, 0, 0, 0, 0, 0, 5, 5, 0, 0, 0, 0, 0, 0, 0, 2, 3, 10, 20, 30, 1.3, 2, 1, 1, 1, 1, 10, 10, 10, 1.3, 2, 2, 2, 10, 3)
-#2 D:\Laragon\www\cripack\controllers\BrailleController.php(142): BrailleController->saveText('16', 'bue\xF1as tardes', '36', 0, '78')
-#3 D:\Laragon\www\cripack\controllers\BrailleController.php(111): BrailleController->brailleFileSave('16', 'D:/Laragon/www/...')
-#4 D:\Laragon\www\cripack\application\Bootstrap.php(32): BrailleController->fileStarProccess()
-#5 D:\Laragon\www\cripack\index.php(19): Bootstrap::Run(Object(Request))
-#6 {main}
-  thrown in D:\Laragon\www\cripack\application\Database.php on line 33
-[25-Aug-2020 18:38:15 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 18:38:15 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetchall() on boolean in D:\Laragon\www\cripack\application\Database.php:33
-Stack trace:
-#0 D:\Laragon\www\cripack\models\BrailleModel.php(53): Database->Ejecutar_Sp('braille_textos_...')
-#1 D:\Laragon\www\cripack\controllers\BrailleController.php(227): BrailleModel->textSave('16', 'bue\xF1as tardes', '36', 0, '78', 13, 1, 2, 5, 5, 0, 0, 0, 0, 0, 0, 0, 5, 5, 0, 0, 0, 0, 0, 0, 0, 2, 3, 10, 20, 30, 1.3, 2, 1, 1, 1, 1, 10, 10, 10, 1.3, 2, 2, 2, 10, 3)
-#2 D:\Laragon\www\cripack\controllers\BrailleController.php(142): BrailleController->saveText('16', 'bue\xF1as tardes', '36', 0, '78')
-#3 D:\Laragon\www\cripack\controllers\BrailleController.php(111): BrailleController->brailleFileSave('16', 'D:/Laragon/www/...')
-#4 D:\Laragon\www\cripack\application\Bootstrap.php(32): BrailleController->fileStarProccess()
-#5 D:\Laragon\www\cripack\index.php(19): Bootstrap::Run(Object(Request))
-#6 {main}
-  thrown in D:\Laragon\www\cripack\application\Database.php on line 33
-[25-Aug-2020 18:38:37 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 18:38:37 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetchall() on boolean in D:\Laragon\www\cripack\application\Database.php:33
-Stack trace:
-#0 D:\Laragon\www\cripack\models\BrailleModel.php(53): Database->Ejecutar_Sp('braille_textos_...')
-#1 D:\Laragon\www\cripack\controllers\BrailleController.php(227): BrailleModel->textSave('16', 'bue\xF1as tardes', '36', 0, '78', 13, 1, 2, 5, 5, 0, 0, 0, 0, 0, 0, 0, 5, 5, 0, 0, 0, 0, 0, 0, 0, 2, 3, 10, 20, 30, 1.3, 2, 1, 1, 1, 1, 10, 10, 10, 1.3, 2, 2, 2, 10, 3)
-#2 D:\Laragon\www\cripack\controllers\BrailleController.php(142): BrailleController->saveText('16', 'bue\xF1as tardes', '36', 0, '78')
-#3 D:\Laragon\www\cripack\controllers\BrailleController.php(111): BrailleController->brailleFileSave('16', 'D:/Laragon/www/...')
-#4 D:\Laragon\www\cripack\application\Bootstrap.php(32): BrailleController->fileStarProccess()
-#5 D:\Laragon\www\cripack\index.php(19): Bootstrap::Run(Object(Request))
-#6 {main}
-  thrown in D:\Laragon\www\cripack\application\Database.php on line 33
-[25-Aug-2020 18:47:05 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 18:47:05 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetchall() on boolean in D:\Laragon\www\cripack\application\Database.php:33
-Stack trace:
-#0 D:\Laragon\www\cripack\models\BrailleModel.php(53): Database->Ejecutar_Sp('braille_textos_...')
-#1 D:\Laragon\www\cripack\controllers\BrailleController.php(227): BrailleModel->textSave('16', 'bue\xF1as tardes', '36', 0, '78', 13, 1, 2, 5, 5, 0, 0, 0, 0, 0, 0, 0, 5, 5, 0, 0, 0, 0, 0, 0, 0, 2, 3, 10, 20, 30, 1.3, 2, 1, 1, 1, 1, 10, 10, 10, 1.3, 2, 2, 2, 10, 3)
-#2 D:\Laragon\www\cripack\controllers\BrailleController.php(142): BrailleController->saveText('16', 'bue\xF1as tardes', '36', 0, '78')
-#3 D:\Laragon\www\cripack\controllers\BrailleController.php(111): BrailleController->brailleFileSave('16', 'D:/Laragon/www/...')
-#4 D:\Laragon\www\cripack\application\Bootstrap.php(32): BrailleController->fileStarProccess()
-#5 D:\Laragon\www\cripack\index.php(19): Bootstrap::Run(Object(Request))
-#6 {main}
-  thrown in D:\Laragon\www\cripack\application\Database.php on line 33
-[25-Aug-2020 18:47:08 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 18:47:16 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 18:47:16 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetchall() on boolean in D:\Laragon\www\cripack\application\Database.php:33
-Stack trace:
-#0 D:\Laragon\www\cripack\models\BrailleModel.php(53): Database->Ejecutar_Sp('braille_textos_...')
-#1 D:\Laragon\www\cripack\controllers\BrailleController.php(227): BrailleModel->textSave('16', 'bue\xF1as tardes', '36', 0, '78', 13, 1, 2, 5, 5, 0, 0, 0, 0, 0, 0, 0, 5, 5, 0, 0, 0, 0, 0, 0, 0, 2, 3, 10, 20, 30, 1.3, 2, 1, 1, 1, 1, 10, 10, 10, 1.3, 2, 2, 2, 10, 3)
-#2 D:\Laragon\www\cripack\controllers\BrailleController.php(142): BrailleController->saveText('16', 'bue\xF1as tardes', '36', 0, '78')
-#3 D:\Laragon\www\cripack\controllers\BrailleController.php(111): BrailleController->brailleFileSave('16', 'D:/Laragon/www/...')
-#4 D:\Laragon\www\cripack\application\Bootstrap.php(32): BrailleController->fileStarProccess()
-#5 D:\Laragon\www\cripack\index.php(19): Bootstrap::Run(Object(Request))
-#6 {main}
-  thrown in D:\Laragon\www\cripack\application\Database.php on line 33
-[25-Aug-2020 18:48:33 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 18:48:33 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetchall() on boolean in D:\Laragon\www\cripack\application\Database.php:33
-Stack trace:
-#0 D:\Laragon\www\cripack\models\BrailleModel.php(53): Database->Ejecutar_Sp('braille_textos_...')
-#1 D:\Laragon\www\cripack\controllers\BrailleController.php(227): BrailleModel->textSave('16', 'bue\xF1as tardes', '36', 0, '78', 13, 1, 2, 5, 5, 0, 0, 0, 0, 0, 0, 0, 5, 5, 0, 0, 0, 0, 0, 0, 0, 2, 3, 10, 20, 30, 1.3, 2, 1, 1, 1, 1, 10, 10, 10, 1.3, 2, 2, 2, 10, 3)
-#2 D:\Laragon\www\cripack\controllers\BrailleController.php(142): BrailleController->saveText('16', 'bue\xF1as tardes', '36', 0, '78')
-#3 D:\Laragon\www\cripack\controllers\BrailleController.php(111): BrailleController->brailleFileSave('16', 'D:/Laragon/www/...')
-#4 D:\Laragon\www\cripack\application\Bootstrap.php(32): BrailleController->fileStarProccess()
-#5 D:\Laragon\www\cripack\index.php(19): Bootstrap::Run(Object(Request))
-#6 {main}
-  thrown in D:\Laragon\www\cripack\application\Database.php on line 33
-[25-Aug-2020 18:48:58 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 18:48:58 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetchall() on boolean in D:\Laragon\www\cripack\application\Database.php:33
-Stack trace:
-#0 D:\Laragon\www\cripack\models\BrailleModel.php(53): Database->Ejecutar_Sp('braille_textos_...')
-#1 D:\Laragon\www\cripack\controllers\BrailleController.php(227): BrailleModel->textSave('16', 'bue\xF1as tardes', '36', 0, '78', 13, 1, 2, 5, 5, 0, 0, 0, 0, 0, 0, 0, 5, 5, 0, 0, 0, 0, 0, 0, 0, 2, 3, 10, 20, 30, 1.3, 2, 1, 1, 1, 1, 10, 10, 10, 1.3, 2, 2, 2, 10, 3)
-#2 D:\Laragon\www\cripack\controllers\BrailleController.php(142): BrailleController->saveText('16', 'bue\xF1as tardes', '36', 0, '78')
-#3 D:\Laragon\www\cripack\controllers\BrailleController.php(111): BrailleController->brailleFileSave('16', 'D:/Laragon/www/...')
-#4 D:\Laragon\www\cripack\application\Bootstrap.php(32): BrailleController->fileStarProccess()
-#5 D:\Laragon\www\cripack\index.php(19): Bootstrap::Run(Object(Request))
-#6 {main}
-  thrown in D:\Laragon\www\cripack\application\Database.php on line 33
-[25-Aug-2020 18:49:20 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 18:49:20 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 18:49:20 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 18:49:20 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 18:49:20 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 18:49:20 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 18:49:20 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 18:49:20 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 18:49:20 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 18:49:20 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 18:49:20 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 18:49:20 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 18:49:20 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 18:49:20 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 18:49:20 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 18:49:20 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 18:52:47 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 18:53:00 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 18:57:48 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 18:58:11 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 18:58:43 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 18:59:13 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 18:59:20 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 18:59:32 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 18:59:32 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 18:59:32 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 18:59:32 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 18:59:32 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 18:59:32 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 18:59:32 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 18:59:32 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 18:59:32 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 18:59:32 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 18:59:32 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 18:59:32 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 18:59:32 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 18:59:32 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 18:59:32 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 18:59:32 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:00:03 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 19:00:03 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:00:03 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:00:03 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:00:03 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:00:03 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:00:03 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:00:03 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:00:03 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:00:03 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:00:03 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:00:03 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:00:03 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:00:03 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:00:03 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:00:03 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:01:21 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 19:01:22 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:01:22 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:01:22 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:01:22 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:01:22 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:01:22 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:01:22 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:01:22 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:01:22 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:01:22 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:01:22 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:01:22 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:01:22 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:01:22 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:01:22 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:01:42 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 19:01:42 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:01:42 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:01:42 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:01:42 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:01:42 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:01:42 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:01:42 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:01:42 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:01:42 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:01:42 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:01:42 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:01:42 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:01:42 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:01:42 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:01:42 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:04:14 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 19:04:14 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:04:14 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:04:14 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:04:14 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:04:14 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:04:14 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:04:14 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:04:14 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:04:14 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:04:14 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:04:14 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:04:14 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:04:14 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:04:14 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:04:14 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:04:50 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 19:06:19 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 19:06:55 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 19:08:54 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 19:09:10 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 19:09:10 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:09:10 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:09:10 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:09:10 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:09:10 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:09:10 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:09:10 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:09:10 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:09:10 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:09:10 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:09:10 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:09:10 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:09:10 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:09:10 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:09:10 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:10:18 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 19:10:19 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 19:10:25 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 19:10:25 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:10:25 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:10:25 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:10:25 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:10:25 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:10:25 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:10:25 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:10:25 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:10:25 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:10:25 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:10:25 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:10:25 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:10:25 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:10:25 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:10:25 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:10:39 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 19:10:44 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 19:10:44 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:10:44 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:10:44 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:10:44 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:10:44 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:10:44 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:10:44 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:10:44 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:10:44 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:10:44 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:10:44 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:10:44 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:10:44 UTC] PHP Notice:  Undefined offset: 1 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 134
-[25-Aug-2020 19:10:44 UTC] PHP Notice:  Undefined offset: 2 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 135
-[25-Aug-2020 19:10:44 UTC] PHP Notice:  Undefined offset: 4 in D:\Laragon\www\cripack\controllers\BrailleController.php on line 137
-[25-Aug-2020 19:11:25 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 19:11:46 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 19:20:11 UTC] PHP Warning:  session_unset() expects exactly 0 parameters, 1 given in D:\Laragon\www\cripack\controllers\IndexController.php on line 20
-[25-Aug-2020 19:20:11 UTC] PHP Warning:  session_unset() expects exactly 0 parameters, 1 given in D:\Laragon\www\cripack\controllers\IndexController.php on line 20
-[25-Aug-2020 19:41:22 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 19:41:22 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 19:41:25 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 19:41:25 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 19:41:31 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 19:41:52 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[25-Aug-2020 19:42:02 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 22:21:08 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 22:21:09 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 22:21:21 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 22:21:34 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 22:21:35 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 22:21:38 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 22:21:38 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 22:22:50 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 22:23:04 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 22:24:48 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 22:28:05 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 22:43:42 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 22:43:48 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 22:51:22 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 22:51:29 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 22:52:30 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 22:52:51 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 22:52:57 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 22:53:08 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 22:53:26 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 22:53:41 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 22:53:48 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 22:55:09 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 22:56:22 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 22:56:26 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 22:56:49 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 22:57:06 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 22:57:22 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 22:57:42 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 22:57:48 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 22:57:57 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 23:00:19 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 23:00:23 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 23:00:32 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 23:01:14 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 23:01:55 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 23:02:56 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 23:03:05 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 23:03:34 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 23:04:15 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 23:06:11 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 23:06:28 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 23:07:08 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 23:07:39 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 23:08:00 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 23:08:26 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 23:08:42 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 23:09:38 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 23:09:45 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 23:10:52 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[26-Aug-2020 23:11:14 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45

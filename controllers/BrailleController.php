@@ -65,20 +65,16 @@ class BrailleController extends Controller
 
             if ( !$existe ) {
                 $esCliente = $this->Braille->tercerosClienteBuscarNit($nit );
-            }
-
-            if (!$existe     ) {
                 $existe    = false;
-            }else {
+            }
+            if (!$esCliente  )    $esCliente = false;
+            if ($existe     ) {
                 $this->setUsuarioLogueado (  $existe[0]['id'], $existe[0]['nombre'], $existe[0]['email_1'], $existe[0]['identificacion']) ;
                 $conteo_trnscrpcion         = $existe[0]['conteo_trnscrpcion'];
                 if ( $conteo_trnscrpcion > 10 ) {
                     $registroBloqueado = true;
                 }
             }
-            if (!$esCliente  )    $esCliente = false;
-                 
-
             $respuestas = compact("existe","esCliente","conteo_trnscrpcion", "registroBloqueado" );
             echo json_encode( $respuestas );
         }
@@ -164,10 +160,7 @@ class BrailleController extends Controller
           $this->Braille->updateConteoTranscripciones  (     ) ;
       }
 
-      public function saveText( $idtercero, $texto , $caja_largo, $caja_ancho, $caja_alto ) {  
-            
-            
-             
+      public function saveText( $idtercero, $texto , $caja_largo, $caja_ancho, $caja_alto ) {          
             //, $max_cara, $max_filas
              $caracteres = strlen ( $texto );
              $espacios   = substr_count ($texto, ' ' );
@@ -288,6 +281,7 @@ class BrailleController extends Controller
             $palabraError      = substr( $palabrasAtraducir,0,4)== 'n/a-' ? 1 : 0;
             $palabrasAtraducir = $palabraError == 1 ? substr( $palabrasAtraducir,4,strlen($palabrasAtraducir )) : $palabrasAtraducir;
             $Long              = strlen( $palabrasAtraducir ) ;
+             
             if ( $FilasOcupadas <= $MaxFilas ) {
                 $id_impresion  = $this->Braille->textSavePrinter ($idtercero, $texto, $MaxCara, $MaxFilas, $palabrasAtraducir, $Long, 0, 0, $palabraError, '1');
                 $FilasOcupadas=  $FilasOcupadas  + 1;
@@ -304,17 +298,34 @@ class BrailleController extends Controller
     private function grabarSimbolosBraile ( $id_impresion, $Palabra  ) {
          $Palabra            = trim( $Palabra  );
          $excepciones        = array ('$','%','{','}','€', '\\');
+         $numeros            = array ('1','2','3','4','5','6','7','8','9','0');
          $idtercero          = Session::Get('idtercero');
          $Letras             = preg_split('//u',$Palabra ,-1, PREG_SPLIT_NO_EMPTY)  ;  /// Separa cada palabra en letras para encontrar su simbolo braile 
          $complementoSimbolo = 0;
+         $complementoNumero  = true;
+         //Debug::Mostrar ( $Letras ) ;
          foreach ( $Letras as $Letra) {
              $letraToSave = strtolower( $Letra);
-             $this->buscarSimbolo ( $letraToSave ) ;      
-             if ( $complementoSimbolo > 0 && !in_array( $letraToSave,$excepciones ))        $this->imgBraile_2=''; 
+             $this->buscarSimbolo ( $letraToSave ) ;  
+             if ( $this->imgBraile_1 == 'espacio.png' ){
+                  $complementoNumero = true;    
+             }
+
+             // es numero y es el primero de la lista
+             if ( in_array( $letraToSave, $numeros ) && $complementoNumero == true  ) {
+                 $this->imgBraile_2 = $this->imgBraile_1 ;
+                 $this->imgBraile_1 = 'numeral.png';
+                 $complementoNumero = false;
+             }
+
+             if ( $complementoSimbolo > 0 && !in_array( $letraToSave,$excepciones ) && $complementoNumero == true )  {
+                     $this->imgBraile_2=''; 
+             }     
              
              $this->Braille->simbolosBraileGrabar ( $idtercero, $id_impresion, $letraToSave, $this->imgBraile_1, $this->imgBraile_2) ;
             
             if ( strlen($this->imgBraile_2) > 0  )     $complementoSimbolo++;
+            
              
          }
     }
@@ -381,7 +392,7 @@ class BrailleController extends Controller
            $this->imgBraile_1 ='';
            $this->imgBraile_2 = '';
            $this->SimboloExcepcion = false;
-
+        
            $this->caracterEsEspacio         ( $caraterBusqueda  );
            $this->caracterEsSignoPesos      ( $caraterBusqueda  );
            $this->caracterEsPorcentaje      ( $caraterBusqueda  );   
