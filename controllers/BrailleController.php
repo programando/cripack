@@ -359,8 +359,8 @@ class BrailleController extends Controller
                 $Tabla .= '<tr>';
                 if ( $Fila == 1 ) {
                     $Tabla  .=  '<td class="cara" rowspan='. $this->Braille->Cantidad_Registros.'>' .'CARA ' .$CaraImprimir .' 
-                    <br><br><small> MC : ' . $ImprimirTexto['LongMayor'].'   </small> 
-                    <br><br><small> MF : ' . $ImprimirTexto['cantFilas'].'   </small> 
+                    <br><br><small> MC : ' . $ImprimirTexto['max_cara'].'   </small> 
+                    <br><br><small> MF : ' . $ImprimirTexto['max_filas'].'   </small> 
                     </td>';
                     $Fila = 2;
                 }
