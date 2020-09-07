@@ -93,7 +93,18 @@
 				return $Registros;
 		}
 
+		public function DatosOts() {
+			$Registros                = $this->Db->Ejecutar_Sp("temp_datos_ots()");
+				return $Registros;	
+		}
 
+		public function DatosOtsUpdCant ($idregistro, $cant) {
+				$Registros   = $this->Db->Ejecutar_Sp("temp_datos_ots_upd_cant($idregistro,$cant )");
+		}
 
+		public function distribuirPalabras ( $texto_sql){
+				$this->Db->Ejecutar_SQL($texto_sql);
   	}
+
+		}
 	?>

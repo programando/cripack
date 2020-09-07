@@ -23,6 +23,32 @@ class BrailleController extends Controller
     }
         public function index(){}
 
+
+        public function DatosOts() {
+            $Datos = $this->Braille->DatosOts();
+            foreach ( $Datos as  $OT) {
+                $referencia = $OT['referencia'];
+                $referencia = str_replace("'",' ', $referencia);
+                 
+                $palabras = array_values( array_filter( explode( ' ' ,trim( $referencia))));
+                $CantPalabras = count($palabras);
+                //$this->Braille->DatosOtsUpdCant( $OT['idregistro_ot'],$CantPalabras );
+                $i=1;
+                $SqlText='';
+                foreach ($palabras as $palabra) {
+                    $SqlText .= 'p'.$i. "='" . $palabra . "',";
+                    $i++;
+                }
+                $SqlText = substr( $SqlText, 0, strlen( $SqlText)-1);
+                $SqlText = "UPDATE cDatosOts SET " . $SqlText . " WHERE idregistro_ot =" . $OT['idregistro_ot'] .';';
+                $this->Braille->distribuirPalabras( $SqlText ) ;
+                echo $SqlText . '  '. "\n";
+               // return ;
+            }
+             
+
+        }
+
         public function login() {
             $this->View->Mostrar_Vista('login');
         }

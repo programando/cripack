@@ -42,7 +42,7 @@ class Database extends PDO
 
     public function Ejecutar_SQL($texto_SQL)
     {
-
+      //Debug::Mostrar ($texto_SQL );
       $this->Cantidad_Registros = 0;
       $resultado_consulta       = $this->query($texto_SQL);
       $Respuesta_Bd             = $resultado_consulta->fetchall();
