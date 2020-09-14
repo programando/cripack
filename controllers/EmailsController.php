@@ -14,6 +14,25 @@
       public function Index() { }
 
 
+      public function transcripcionBraileEnvioEmail( $Email1,  $Email2, $DatosEmail ) {
+          $this->Configurar_Cuenta('Cripack - Transcripción braile');   
+          $Texto_Correo      = file_get_contents(BASE_EMAILS.'braile_email.phtml','r');
+          $Tabla             = $DatosEmail;
+          $Texto_Correo      = str_replace("#_TABLA_#"      ,  $Tabla       , $Texto_Correo);
+          $this->Email->Body = $this->Unir_Partes_Correo ( $Texto_Correo ) ;
+          $this->Email->AddAddress( strtolower( $Email1));
+          if ( !empty( $Email2)) $this->Email->AddAddress( strtolower($Email2));
+          if ( $this->Email->Send()) {
+              $this->Email->clearAddresses();
+              $CorreoEnviado ='Ok';
+            }
+            else {
+              $CorreoEnviado='NoOk';
+            }
+            return $CorreoEnviado ;
+      }
+
+
       public function Enviar_PQR( $Empresa, $Persona, $email, $TipoProblema, $Problema,$Causa ) {
          /** ABRIL 25 DE 2018
          **  ENVÍA CORREOS A TERCRO SOBRE PQR O NO CONFORMIDADES

@@ -4,13 +4,17 @@
 			a Cada controlador el corresponde una vista. en el proyecto se encuentran dentro de carpetas
 			La extensión de estas vistas es PHTML, dentro del rectorio views
 	 */
+ 
+     
 class BrailleController extends Controller
 {
-
+    
+ 
    private $RespuestaTcc ;
 
    var $Estandar, $Minimo, $Caracteres, $Simbolos, $imgBraile_1, $imgBraile_2, $SimboloExcepcion;
    var $IdTercero;
+   var $htmlTable='';
  
     public function __construct()  {
         parent::__construct();
@@ -18,11 +22,16 @@ class BrailleController extends Controller
         $this->Braille   = $this->Load_Model('Braille');
         $this->Emails    = $this->Load_Controller('Emails');
         $this->Excel     = $this->Load_External_Library('Excel/reader');
-        $this->reservarSimbolos();
-    
+        $this->reservarSimbolos(); 
     }
         public function index(){}
 
+
+
+        public function sendEmail(){
+              $Datos = $this->Braille->htmlResultConsulta();
+              $this->Emails->transcripcionBraileEnvioEmail ($Datos[0]['email_1'], $Datos[0]['email_2'], $Datos[0]['html'] );            
+        }
 
         public function DatosOts() {
             $Datos = $this->Braille->DatosOts();
@@ -42,8 +51,6 @@ class BrailleController extends Controller
                 $SqlText = substr( $SqlText, 0, strlen( $SqlText)-1);
                 $SqlText = "UPDATE cDatosOts SET " . $SqlText . " WHERE idregistro_ot =" . $OT['idregistro_ot'] .';';
                 $this->Braille->distribuirPalabras( $SqlText ) ;
-                echo $SqlText . '  '. "\n";
-               // return ;
             }
              
 
@@ -141,7 +148,7 @@ class BrailleController extends Controller
 
      public function resultado () {
         $this->View->Tabla = $this->impresion();
-        $this->View->Mostrar_Vista_parcial('impresion');  
+        $this->View->Mostrar_Vista_Parcial('impresion');  
      }
 
 
@@ -182,8 +189,8 @@ class BrailleController extends Controller
           $this->Braille->textsDelete     ( $idtercero  );
           $this->saveText ( $idtercero, $texto, $largo, 0, $alto ); 
           $this->distribuirImpresion      ( $idtercero    ) ;
-          $this->resultado(); 
           $this->Braille->updateConteoTranscripciones  (     ) ;
+          $this->resultado(); 
       }
 
       public function saveText( $idtercero, $texto , $caja_largo, $caja_ancho, $caja_alto ) {          
@@ -361,19 +368,27 @@ class BrailleController extends Controller
     public function impresion(){
         $Tablas = '';
         $textosUnicos = $this->Braille->textosUnicosImpresion( $this->IdTercero );
-        
+        $this->htmlTable = '';
         foreach ($textosUnicos as $Frase) {
             $Tabla  = '<table>';
-            $Tabla  .= '<th colspan='. $Frase['LongMayor'].'>';
+            $Tabla  .= '<th colspan='. $Frase['LongMayor'].' style="background-color :#20286D;">';
             $Tabla  .= $Frase['texto'] . '</th>';
             $Tabla  =  $this->impresionCara ( '1', $Frase['texto'] , $Tabla );
             $Tabla  =  $this->impresionCara ( '2', $Frase['texto'] , $Tabla );  
             $Tabla  .= '</table>';
             $Tabla  .= '<br>';
             $Tablas .= $Tabla;
+            
         }
+        
+        $this->htmlResultSave ( $Tablas); 
         return  $Tablas;
-       
+    }
+
+   private function htmlResultSave( $html ) {
+        $identificacion = Session::Get('identificacion');
+        $this->Braille->htmlResultSave($identificacion, $html );
+
     }
 
     private function impresionCara ( $CaraImprimir, $Texto, &$Tabla) {
@@ -395,18 +410,18 @@ class BrailleController extends Controller
                         $Tabla .=     $ImprimirTexto['wordhaserror'] 
                                     ? '<td class="border-error td-config"><div class="img-letra-container">' 
                                     : '<td class="td-config"><div class="img-letra-container"> ';
-                        $Tabla .= '<div class="contendor-letra uppercase"><p class="letra">' . $simbolo['caracter'] .'</p></div>';
-                        $Tabla .= '<div class="imagenes"> <img loading="lazy" src="' . $imgUrl.$simbolo['simbolo_1']  .'">';
+                        $Tabla .= '<div class="contendor-letra" style="text-transform:uppercase;"><p class="letra">' . $simbolo['caracter'] .'</p></div>';
+                        $Tabla .= '<div class="imagenes"> <img  src="' . $imgUrl.$simbolo['simbolo_1']  .'">';
                         
                         if ( strlen ( $simbolo['simbolo_2'])>0 ) {
-                            $Tabla .= '<img loading="lazy" src="' . $imgUrl.$simbolo['simbolo_2'] .'">';
+                            $Tabla .= '<img  src="' . $imgUrl.$simbolo['simbolo_2'] .'">';
                         }
                         $Tabla .= '</div>';
                         
                         $Tabla .= '</div></td>' ;
                 } //foreach ($simbolos
                 $Tabla .=  '</tr>';
-            }//foreach ( $textosCara1
+            }//foreach  $textosCara1
 
             $Tabla  .=  '</tbody>';
             return $Tabla;
@@ -630,6 +645,88 @@ class BrailleController extends Controller
                   ['key-ini' => 141, 'key-fin'=> 500, 'value' => 21 ],
  
                 );
+       }
+
+
+       private function getCssBraile(){
+           return '<style>
+                
+  table {
+      
+      width: 100%;
+      border-collapse: collapse;
+  }
+  th {
+    text-align: center;
+    padding: 8px 8px;
+    font-weight: 600;
+    font-size: 18px;     
+    background-color :#20286D;
+    color: #f9f9f9;
+    border: 1px solid black;
+    }
+
+td {
+      text-align: center;
+      padding: 5px 10px;  
+      margin: 3px;
+}
+ .td-config { 
+       display: inline-block;
+      text-align: center;
+      width: auto !important;
+      padding: 0px !important;
+     
+  }
+
+.cara {
+    width : 5px;
+    font-weight: 600;
+    font-size: 14px;
+    border: 0.5px solid #999
+}
+
+  .border-error {
+      border: 1px solid red;
+  }
+ 
+.imagenes{
+    display:inline-block;
+    border:none !important;
+    outline: none !important;
+    margin: 50px;
+    padding: 0px;
+   
+}
+
+img {
+  border-style: none !important;
+      margin: 0px;
+    padding: 0px;
+    float: left;
+  }
+
+.contendor-letra{
+  display: inline-block;
+   
+  margin: 0px;
+}
+.letra {
+    display: inline;
+    margin-block-start: 0.5px;
+    font-weight: 600;
+    font-size: 14px;   
+}
+.img-letra-container {
+    display: inline-block;
+}
+
+.contenido-respuesta {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+ </style>';
        }
 
 }

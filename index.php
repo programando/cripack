@@ -3,6 +3,7 @@ error_reporting(0);
      define('DS', DIRECTORY_SEPARATOR);
 					define('ROOT', realpath(dirname(__FILE__)) . DS);
 					define('LIBS',ROOT . 'libs' .DS);
+					define('EXTERNAL_LIBS',ROOT . 'libs_external' .DS);
 					define('APP_PATH', ROOT . 'application' . DS);
 
 					define('VENTANAS_MODALES', 									ROOT . 'application_sections' . DS . 'modales' . DS );

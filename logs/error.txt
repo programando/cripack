@@ -1,34 +1,19 @@
-[04-Sep-2020 15:19:23 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[04-Sep-2020 15:19:24 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetchall() on boolean in D:\Laragon\www\cripack\application\Database.php:48
-Stack trace:
-#0 D:\Laragon\www\cripack\models\BrailleModel.php(106): Database->Ejecutar_SQL('UPDATE cDatosOt...')
-#1 D:\Laragon\www\cripack\controllers\BrailleController.php(41): BrailleModel->distribuirPalabras('UPDATE cDatosOt...')
-#2 D:\Laragon\www\cripack\application\Bootstrap.php(32): BrailleController->DatosOts()
-#3 D:\Laragon\www\cripack\index.php(19): Bootstrap::Run(Object(Request))
-#4 {main}
-  thrown in D:\Laragon\www\cripack\application\Database.php on line 48
-[04-Sep-2020 15:19:42 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[04-Sep-2020 15:19:43 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetchall() on boolean in D:\Laragon\www\cripack\application\Database.php:48
-Stack trace:
-#0 D:\Laragon\www\cripack\models\BrailleModel.php(106): Database->Ejecutar_SQL('UPDATE cDatosOt...')
-#1 D:\Laragon\www\cripack\controllers\BrailleController.php(41): BrailleModel->distribuirPalabras('UPDATE cDatosOt...')
-#2 D:\Laragon\www\cripack\application\Bootstrap.php(32): BrailleController->DatosOts()
-#3 D:\Laragon\www\cripack\index.php(19): Bootstrap::Run(Object(Request))
-#4 {main}
-  thrown in D:\Laragon\www\cripack\application\Database.php on line 48
-[04-Sep-2020 15:22:09 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[04-Sep-2020 15:22:10 UTC] PHP Warning:  trim() expects at least 1 parameter, 0 given in D:\Laragon\www\cripack\controllers\BrailleController.php on line 32
-[04-Sep-2020 15:22:10 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetchall() on boolean in D:\Laragon\www\cripack\application\Database.php:48
-Stack trace:
-#0 D:\Laragon\www\cripack\models\BrailleModel.php(106): Database->Ejecutar_SQL('UPDATE cDatosOt...')
-#1 D:\Laragon\www\cripack\controllers\BrailleController.php(43): BrailleModel->distribuirPalabras('UPDATE cDatosOt...')
-#2 D:\Laragon\www\cripack\application\Bootstrap.php(32): BrailleController->DatosOts()
-#3 D:\Laragon\www\cripack\index.php(19): Bootstrap::Run(Object(Request))
-#4 {main}
-  thrown in D:\Laragon\www\cripack\application\Database.php on line 48
-[04-Sep-2020 15:22:54 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[04-Sep-2020 15:23:48 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[04-Sep-2020 15:23:56 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[04-Sep-2020 15:24:15 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[04-Sep-2020 17:59:18 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
-[04-Sep-2020 19:17:04 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[14-Sep-2020 22:08:38 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[14-Sep-2020 22:09:11 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[14-Sep-2020 22:09:17 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[14-Sep-2020 22:09:20 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[14-Sep-2020 22:11:14 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[14-Sep-2020 22:11:16 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[14-Sep-2020 22:11:17 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[14-Sep-2020 22:17:22 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[14-Sep-2020 22:17:29 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[14-Sep-2020 22:19:34 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[14-Sep-2020 22:20:41 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[14-Sep-2020 22:21:27 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[14-Sep-2020 22:21:49 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[14-Sep-2020 22:22:30 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[14-Sep-2020 22:48:51 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[14-Sep-2020 22:48:53 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[14-Sep-2020 22:50:00 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[14-Sep-2020 22:53:10 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45
+[14-Sep-2020 22:53:15 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in D:\Laragon\etc\php\pear\PHPMailerAutoload.php on line 45

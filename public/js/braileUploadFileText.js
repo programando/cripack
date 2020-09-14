@@ -1,7 +1,24 @@
-const btnEnviar      = document.querySelector("#btnEnviar");
-const btnEnviarTexto = document.querySelector("#btnEnviarTexto");
-const inputFile      = document.querySelector("#inputFile");
+const btnEnviar       = document.querySelector("#btnEnviar");
+const btnEnviarTexto  = document.querySelector("#btnEnviarTexto");
+const inputFile       = document.querySelector("#inputFile");
+const btnEnviarCorreo = document.querySelector('#btnEnviarCorreo');
 $('#myProgress').hide();
+ 
+btnEnviarCorreo.classList.add('hide');
+
+
+
+
+btnEnviarCorreo.addEventListener("click", () => {
+          fetch("/braille/sendEmail", {
+            method: 'POST',
+            body: '',
+        })
+        .then(respuesta => respuesta.text())
+            .then(decodificado => { 
+                  Mostrar_Mensajes('CONFIRMACIÓN CORREO ELECTRÓNICO', "Hemos enviado un mensaje a la cuenta de correo registrada con información sobre la transcripción.");
+            }); 
+})
  
 btnEnviar.addEventListener("click", () => {
   newRecord();   
@@ -14,7 +31,8 @@ btnEnviar.addEventListener("click", () => {
             body: formData,
         })
         .then(respuesta => respuesta.text())
-            .then(decodificado => {    
+          .then(decodificado => {  
+              btnEnviarCorreo.classList.remove('hide');
               showAnswer(decodificado);
          });
         
@@ -46,7 +64,8 @@ btnEnviarTexto.addEventListener("click", () => {
         body: formData,
     })  
       .then(respuesta => respuesta.text())
-        .then(decodificado => {
+       .then(decodificado => {
+           btnEnviarCorreo.classList.remove('hide');
             showAnswer(decodificado);
         });
 });

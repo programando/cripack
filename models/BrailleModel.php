@@ -106,5 +106,14 @@
 				$this->Db->Ejecutar_SQL($texto_sql);
   	}
 
+		public function htmlResultSave( $identificacion, $html) {
+				$Registros   = $this->Db->Ejecutar_Sp("braile_html_result_grabar('$identificacion', '$html' )");
+		}
+
+		public function htmlResultConsulta() {
+					$identificacion = Session::Get('identificacion');
+				$Registros   = $this->Db->Ejecutar_Sp("braile_html_result_consultar('$identificacion')");
+				return $Registros ;
+		}
 		}
 	?>
