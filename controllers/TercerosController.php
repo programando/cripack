@@ -1191,7 +1191,8 @@ public function IntegracionCordinadoraRotuloImprimir( $rsptaBase_64, $nroRemisio
  
 
    public function Ingreso_Sistema_Validaciones(){
-         
+
+         Debug::Mostrar('Ingreso_Sistema_Validaciones ... ' . email );
        	 Session::Set('logueado',   FALSE);
          $Email                = General_Functions::Validar_Entrada('email','TEXT-EMAIL');
          $Password             = General_Functions::Validar_Entrada('Password','TEXT');
