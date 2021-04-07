@@ -19,7 +19,7 @@ public static function Menor_Entre_2_Numeros ( $numero1 , $numero2){
 		$max     = strlen($pattern)-1;
 	 for($i=0;$i < $longitud;$i++)
 	 	{
-	 		 $key .= $pattern{mt_rand(0,$max)};
+	 		 $key .= $pattern[mt_rand(0,$max)];
 	 	}
 	 return strtoupper($key);
 	}
