@@ -29,12 +29,12 @@ $("#btn-ingresar").on('click', function() {
 var Ingresar_Sistema = function( Parametros ) {
 			$.ajax({
 							data:  Parametros,
-							dataType: 'json',
+ 
 							url:      '/terceros/Ingreso_Sistema_Validaciones',
               type: 'post',
 
         success: function (Respuesta) {
-          Respuesta = $.parseJSON(Respuesta);
+           
           
            if ( parseInt(Respuesta.DiasSinCompra) > 180){
             $('#mensaje_inactivo').modal('show');
@@ -48,8 +48,9 @@ var Ingresar_Sistema = function( Parametros ) {
             }
         },
             error: function (xhr, textStatus, errorMessage) {
-              console.log("ERROR -> " + errorMessage);
+              console.log("ERROR ->... " + errorMessage);
               console.log(xhr);
+              console.log(textStatus);
             } 
 				});
 }
