@@ -19,7 +19,7 @@ class Request
     {
         $this->url='';
 
-        Debug::Mostrar($_SERVER );
+       
         $_GET['url'] = $_SERVER['REQUEST_URI'];
 
         if(!isset($_GET['url']))    { $this->url="";                }
