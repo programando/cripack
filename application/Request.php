@@ -27,7 +27,7 @@ class Request
 
         $segmentos_url = explode('/',$this->url);
         
-        Debug::Mostrar ($segmentos_url );
+        
         $this->ResolveController($segmentos_url);
         $this->ResolveMethod    ($segmentos_url);
         $this->ResolveParams    ($segmentos_url);
@@ -61,6 +61,8 @@ class Request
     public function ResolveMethod(&$segmentos_url)
         {
             $this->Metodo = array_shift($segmentos_url);
+            Debug::Mostrar ('metodo' . $this->Metodo  );
+
             if (empty($this->Metodo ))
             {
                 $this->Metodo   = DEFAULT_METHOD;
