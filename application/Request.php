@@ -19,7 +19,7 @@ class Request
     {
         $this->url='';
 
-        //$_GET['url'] = $_SERVER['REQUEST_URI'];
+        $_GET['url'] = $_SERVER['REQUEST_URI'];
 
         if(!isset($_GET['url']))    { $this->url="";                }
         else                        { $this->url = $_GET['url'];    }

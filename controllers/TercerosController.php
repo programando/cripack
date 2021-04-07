@@ -1189,11 +1189,14 @@ public function IntegracionCordinadoraRotuloImprimir( $rsptaBase_64, $nroRemisio
       return $DatosTablero;
     }
 
+    public function ej(){
+      Debug::Mostrar ( "Desldkjfslkflksd");
+    }
 
 
 
    public function Ingreso_Sistema_Validaciones(){
-        return "datos";
+         
        	 Session::Set('logueado',   FALSE);
          $Email                = General_Functions::Validar_Entrada('email','TEXT-EMAIL');
          $Password             = General_Functions::Validar_Entrada('Password','TEXT');
