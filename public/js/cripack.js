@@ -33,7 +33,9 @@ var Ingresar_Sistema = function( Parametros ) {
 							url:      '/terceros/Ingreso_Sistema_Validaciones',
               type: 'post',
 
-        success: function (Respuesta) {   
+        success: function (Respuesta) {
+          Respuesta = $.parseJSON(Respuesta);
+          
            if ( parseInt(Respuesta.DiasSinCompra) > 180){
             $('#mensaje_inactivo').modal('show');
            }else {
