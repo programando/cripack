@@ -34,9 +34,7 @@ var Ingresar_Sistema = function( Parametros ) {
               type: 'post',
 
         success: function (Respuesta) {
-           
-          console.log(Respuesta);
-         /*  if ( parseInt(Respuesta.DiasSinCompra) > 180){
+          if ( parseInt(Respuesta.DiasSinCompra) > 180){
             $('#mensaje_inactivo').modal('show');
            }else {
          		 if ( Respuesta.Resultado_Logueo =='NO-Logueo_OK'){
@@ -46,7 +44,7 @@ var Ingresar_Sistema = function( Parametros ) {
          		 			window.location.href = "/terceros/Historial";
          		 }
             }
-            */
+             
         },
             error: function (xhr, textStatus, errorMessage) {
               console.log("ERROR -> ...." + errorMessage);

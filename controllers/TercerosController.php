@@ -1188,12 +1188,7 @@ public function IntegracionCordinadoraRotuloImprimir( $rsptaBase_64, $nroRemisio
 
       return $DatosTablero;
     }
-
-    public function ej(){
-      Debug::Mostrar ( "Desldkjfslkflksd");
-    }
-
-
+ 
 
    public function Ingreso_Sistema_Validaciones(){
          
