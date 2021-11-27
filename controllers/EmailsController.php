@@ -313,7 +313,7 @@
 /* MAYO 30 DE 2017
    ENVIA CORREO DE AGRADECIMIENTO PARA LAS PERSONAS QUE ASISTIERON A LA FERIA
 */
-    public function Visitantes_Agradecer_Visita ( $Registro, $Areas_Interes = array(), $Fecha_Visita, $Cargo, $Municipio ){
+    public function Visitantes_Agradecer_Visita ( $Registro, array $Areas_Interes  , $Fecha_Visita, $Cargo, $Municipio ){
 
            $Empresa  = $Registro[0]['nomtercero'];
            $Contacto = $Registro[0]['contacto'];
@@ -364,7 +364,7 @@
    ENVIA CORREO DE AGRADECIMIENTO PARA LAS PERSONAS QUE ASISTIERON A LA FERIA
    ----------------------------------------------------------------------------
 */
-    public function Visitantes_Convertir_Cliente ( $Registro, $Areas_Interes = array(), $Fecha_Visita, $Cargo, $Municipio ){
+    public function Visitantes_Convertir_Cliente ( $Registro, array $Areas_Interes , $Fecha_Visita, $Cargo, $Municipio ){
 
            $Empresa  = $Registro[0]['nomtercero'];
            $Contacto = $Registro[0]['contacto'];
@@ -438,8 +438,8 @@
         $Texto_Correo    = str_replace("#_KILOS_#"      ,  $TextoKilos      , $Texto_Correo);
         $this->Email->Body    = $this->Unir_Partes_Correo ( $Texto_Correo ) ;
 
-        $this->Email->AddAddress( $Email  );
-        $this->Email->AddCC("serviclientes@cripack.com");
+        $this->Email->AddAddress( 'jhonjamesmg@hotmail.com'  );
+        //$this->Email->AddCC("serviclientes@cripack.com");
         $Respuesta              = $this->Enviar_Correo();
         return  $Respuesta;
       }

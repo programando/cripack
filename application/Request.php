@@ -20,7 +20,7 @@ class Request
         $this->url='';
 
        
-        $_GET['url'] = $_SERVER['REQUEST_URI'];
+       $_GET['url'] = $_SERVER['REQUEST_URI'];
 
         if(!isset($_GET['url']))    { $this->url="";                }
         else                        { $this->url = $_GET['url'];    }
@@ -29,6 +29,7 @@ class Request
         $segmentos_url = array_diff($segmentos_url, array('')) ;
         $segmentos_url = array_values( $segmentos_url );
         
+        //Debug::Mostrar ( $segmentos_url);
          
 
         $this->ResolveController($segmentos_url);

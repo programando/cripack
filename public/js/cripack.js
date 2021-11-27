@@ -18,7 +18,8 @@ var Mostrar_Mensajes = function( $Titulo, $Contenido ){
 $("#btn-ingresar").on('click', function() {
 		var $email 		 = $("#email").val();
 		var $password = $("#password").val();
-		$Parametros 	 = {'email':$email,'Password':$password  } ;
+    $Parametros = { "email": $email, "Password": $password };
+  
 		Ingresar_Sistema ( $Parametros)
 });
 
@@ -26,7 +27,9 @@ $("#btn-ingresar").on('click', function() {
 //=========================================================================================================
 /// PROCESO DE INGRESO AL SISTEMA   btn-ingresar
 //=========================================================================================================
-var Ingresar_Sistema = function( Parametros ) {
+  var Ingresar_Sistema = function (Parametros) {
+ 
+
 			$.ajax({
 							data:  Parametros,
 							dataType: 'json',
@@ -52,8 +55,36 @@ var Ingresar_Sistema = function( Parametros ) {
               console.log(xhr);
             } 
 				});
-}
+}  
 
+/* 
+var Ingresar_Sistema =  function searchForDetalle(Parametros) {
+  $.ajax({
+    url: '/terceros/Ingreso_Sistema_Validaciones',
+    method: 'post',
+    /* Por defecto javascript crea un índice con el mismo nombre de la variable */
+    //data: {
+      //Parametros
+    //},
+    //success: response => {
+      //try {
+        /* Si el JSON está mal formado se generará una excepción */
+        //let info = JSON.parse(response);
+        //if (info.error == true) {
+          /* Si hemos enviado por JSON un error, lo notificamos */
+          //console.log('ERROR detectado:', info);
+          //return;
+        //}
+      //} catch {
+        /* Si el JSON está mal, notificamos su contenido */
+        //console.log('ERROR. Recibido:', response);
+      //}
+    //},
+    /* En caso de error XHR mostramos el error (pasará los parámetros a console.log) */
+    //error: console.log,
+  //});
+//}
+ 
 //=========================================================================================================
 /// FIN PROCESO DE INGRESO			btn-ingresar
 //=========================================================================================================

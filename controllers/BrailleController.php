@@ -18,7 +18,7 @@ class BrailleController extends Controller
  
     public function __construct()  {
         parent::__construct();
-        $this->IdTercero = Session::Get('idtercero');
+        $this->IdTercero = 553;
         $this->Braille   = $this->Load_Model('Braille');
         $this->Emails    = $this->Load_Controller('Emails');
         $this->Excel     = $this->Load_External_Library('Excel/reader');
@@ -257,14 +257,15 @@ class BrailleController extends Controller
 
 
      private function distribuirImpresion ( $idtercero ) {
-        $Registros = $this->Braille->textsQueryToAnalisys ( $idtercero );
-        
+        $Registros = $this->Braille->textsQueryToAnalisys ( 553 );       
         foreach ( $Registros as $Registro ) {
             $Filas = $this->distribuirPalabra ( $Registro['texto'], $Registro['max_cara'] );  
             $this->grabarCaras ($idtercero,$Registro['texto'], $Filas , $Registro['max_cara'] , $Registro['max_filas'] );
         }
         
      }
+
+     
 
 
     private function distribuirPalabra ( $Frase, $MaxCara  ) {
@@ -306,7 +307,7 @@ class BrailleController extends Controller
         return array_values ( $datos  );
     }
 
-    private function grabarCaras ($idtercero, $texto, $Filas = array(), $MaxCara, $MaxFilas) {  
+    private function grabarCaras ($idtercero, $texto,    $Filas , $MaxCara=5, $MaxFilas=8) {  
         $FilasOcupadas = 1;
          $texto = trim( $texto); 
         foreach ($Filas as $Fila ) {

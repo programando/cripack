@@ -47,6 +47,7 @@ class TercerosController extends Controller
     public function OtBitacoraMovimientoDiario(){
           $this->Terceros->OtBitacoraMovimientoDiario();
     }
+    
     public function OtBloquedasDibujoEnAprobacion(){
         $Clientes = $this->Terceros->OtBloquedasDibujoEnAprobacion_01_Clientes();
          foreach ( $Clientes as $Cliente ) {
@@ -1185,20 +1186,20 @@ public function IntegracionCordinadoraRotuloImprimir( $rsptaBase_64, $nroRemisio
 
         $I++;
       }
-
+      //Debug::Mostrar ( $DatosTablero);
       return $DatosTablero;
     }
  
 
    public function Ingreso_Sistema_Validaciones(){
 
-         Debug::Mostrar('Ingreso_Sistema_Validaciones ... ' . email );
+         //Debug::Mostrar('Ingreso_Sistema_Validaciones ... ' . email );
        	 Session::Set('logueado',   FALSE);
          $Email                = General_Functions::Validar_Entrada('email','TEXT-EMAIL');
          $Password             = General_Functions::Validar_Entrada('Password','TEXT');
          $Password             = md5($Password );
          $Registro             = $this->Terceros->Consulta_Datos_Por_Password_Email( $Password, $Email );
-
+     
       	if (!$Registro ) {
            $Resultado_Logueo = "NO-Logueo_OK";
          }else {
@@ -1217,14 +1218,16 @@ public function IntegracionCordinadoraRotuloImprimir( $rsptaBase_64, $nroRemisio
               Session::Set('cuenta_cripack'        , FALSE);
 
                $Email_Cripack = strpos($Email,'cripack');
+               $DiasSinCompra = 1 ;
               if ( $Email_Cripack > 0 ){
                 Session::Set('cuenta_cripack'        , TRUE);
                 $DiasSinCompra = 1 ;
               }
 
            }
+           $DiasSinCompra = 1 ;
            $Datos            = compact('Resultado_Logueo','Email','DiasSinCompra');
-           echo json_encode($Datos);
+           echo  json_encode($Datos);
      }
 
 		public function Historial($idtercero = 0) {

@@ -193,8 +193,7 @@
 
 
 				public function Consulta_Datos_Por_Email($email)	{
-						/** ENERO 31DE 2014
-								 CONSULTA DATOS DEL USUARIO CON  EMAIL. DESDE EL LOGIN				*/
+						/** ENERO 31DE 2014 						 CONSULTA DATOS DEL USUARIO CON  EMAIL. DESDE EL LOGIN				*/
 						$Terceros                 = $this->Db->Ejecutar_Sp("terceros_consulta_datos_x_email('$email')");
 						$this->Cantidad_Registros = $this->Db->Cantidad_Registros;
 
