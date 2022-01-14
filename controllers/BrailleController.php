@@ -182,6 +182,7 @@ class BrailleController extends Controller
               echo "Error!";
               return ;
           }
+          Session::set('idtercero',553);
           $idtercero = Session::Get('idtercero');
           $largo     = (int)$largo;
           $alto      = (int)$alto;

@@ -227,3 +227,13 @@
 [26-Nov-2021 02:16:21 UTC] PHP Warning:  Trying to access array offset on value of type null in D:\Laragon\www\cripack\controllers\BrailleController.php on line 326
 [26-Nov-2021 02:16:21 UTC] PHP Warning:  Trying to access array offset on value of type null in D:\Laragon\www\cripack\controllers\BrailleController.php on line 326
 [26-Nov-2021 02:16:21 UTC] PHP Warning:  Trying to access array offset on value of type null in D:\Laragon\www\cripack\controllers\BrailleController.php on line 326
+[11-Jan-2022 22:21:13 UTC] PHP Warning:  Trying to access array offset on value of type null in D:\Laragon\www\cripack\controllers\BrailleController.php on line 322
+[11-Jan-2022 22:21:13 UTC] PHP Warning:  Trying to access array offset on value of type null in D:\Laragon\www\cripack\controllers\BrailleController.php on line 322
+[11-Jan-2022 22:21:13 UTC] PHP Warning:  Trying to access array offset on value of type null in D:\Laragon\www\cripack\controllers\BrailleController.php on line 326
+[11-Jan-2022 22:21:13 UTC] PHP Warning:  Trying to access array offset on value of type null in D:\Laragon\www\cripack\controllers\BrailleController.php on line 326
+[11-Jan-2022 22:21:13 UTC] PHP Warning:  Trying to access array offset on value of type null in D:\Laragon\www\cripack\controllers\BrailleController.php on line 326
+[11-Jan-2022 22:21:13 UTC] PHP Warning:  Trying to access array offset on value of type null in D:\Laragon\www\cripack\controllers\BrailleController.php on line 326
+[11-Jan-2022 22:21:13 UTC] PHP Warning:  Trying to access array offset on value of type null in D:\Laragon\www\cripack\controllers\BrailleController.php on line 326
+[11-Jan-2022 22:21:13 UTC] PHP Warning:  Trying to access array offset on value of type null in D:\Laragon\www\cripack\controllers\BrailleController.php on line 326
+[11-Jan-2022 22:21:13 UTC] PHP Warning:  Trying to access array offset on value of type null in D:\Laragon\www\cripack\controllers\BrailleController.php on line 326
+[11-Jan-2022 22:21:13 UTC] PHP Warning:  Trying to access array offset on value of type null in D:\Laragon\www\cripack\controllers\BrailleController.php on line 326
