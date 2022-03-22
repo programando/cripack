@@ -89,7 +89,7 @@
 				return $Registros;
 		}
 		public function simbolosPorCara ( $id_impresion ) {
-				$Registros                = $this->Db->Ejecutar_Sp("braile_impresion_simbolos( $id_impresion  )");
+				$Registros                = $this->Db->Ejecutar_Sp("braile_impresion_simbolos_old( $id_impresion  )");
 				return $Registros;
 		}
 

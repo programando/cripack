@@ -237,3 +237,7 @@
 [11-Jan-2022 22:21:13 UTC] PHP Warning:  Trying to access array offset on value of type null in D:\Laragon\www\cripack\controllers\BrailleController.php on line 326
 [11-Jan-2022 22:21:13 UTC] PHP Warning:  Trying to access array offset on value of type null in D:\Laragon\www\cripack\controllers\BrailleController.php on line 326
 [11-Jan-2022 22:21:13 UTC] PHP Warning:  Trying to access array offset on value of type null in D:\Laragon\www\cripack\controllers\BrailleController.php on line 326
+[24-Jan-2022 16:37:47 UTC] PHP Warning:  foreach() argument must be of type array|object, null given in D:\Laragon\www\cripack\controllers\BrailleController.php on line 411
+[24-Jan-2022 16:40:55 UTC] PHP Warning:  foreach() argument must be of type array|object, null given in D:\Laragon\www\cripack\controllers\BrailleController.php on line 411
+[24-Jan-2022 16:41:02 UTC] PHP Warning:  foreach() argument must be of type array|object, null given in D:\Laragon\www\cripack\controllers\BrailleController.php on line 411
+[24-Jan-2022 16:41:02 UTC] PHP Warning:  foreach() argument must be of type array|object, null given in D:\Laragon\www\cripack\controllers\BrailleController.php on line 411
